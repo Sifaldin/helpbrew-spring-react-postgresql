@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import PostsApi from '../../api/PostsApi';
 import PostCard from './PostCard';
 
-function PostsPage() {
+export default function PostsPage() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
-    const fetchPosts = async () => {
+      const fetchPosts = async () => {
       const response = await PostsApi.getAllPosts();
       setPosts(response.data);
     };
@@ -17,4 +17,3 @@ function PostsPage() {
   return posts === [] ? 'Loading....' : <div className="row">{postList}</div>;
 }
 
-export default PostsPage;

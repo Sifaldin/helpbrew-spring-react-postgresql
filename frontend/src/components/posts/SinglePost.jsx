@@ -4,15 +4,20 @@ import ErrorScreen from '../tempscreens/ErrorScreen';
 import PostsApi from '../../api/PostsApi';
 import ChatApi from '../../api/ChatApi';
 import CommentsPage from '../comments/CommentsPage';
+import PostUpdateForm from "./PostUpdateForm";
+import Api from "../../api/Api";
 
-function SinglePost() {
+function SinglePost( onUpdateClick ) {
+
   const userEmail = window.sessionStorage.getItem('userEmail');
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
   const [post, setPost] = useState(passedPost);
   const history = useHistory();
   const isPoster = userEmail === post.email;
+  const [isUpdating, setIsUpdating] = useState(false);
 
+  
   const handleClaim = () => {
     const setClaimed = async () => {
       try {
@@ -37,62 +42,98 @@ function SinglePost() {
     };
     createOrDirect();
   };
+
+  const deletePost = id => {
+    Api.delete('/posts/' + post.id).then(response => PostsApi.getAllPosts());
+  };
+
+  
+  const updatePost = updatedPost => {
+    PostsApi.updatePost('/posts', updatedPost).then(() => PostsApi.getPostById(post.id));
+  };
+
+
+  const handleUpdateClick = () => {
+    setIsUpdating(true);
+  };
+
+  console.log(post);
+
   try {
-    return (
-      <div className="singlePost-card">
-        <div className="container-fliud">
-          <div className="wrapper row">
-            <div className="preview col-md-6">
-              <div className="preview-pic tab-content">
-                <div className="tab-pane active" id="pic-1">
-                  <img src={post.imageUrl} alt="Single post img" />
+    return isUpdating ? (
+      <PostUpdateForm
+        oldPost={post}
+         onUpdateClick = {() => {
+          updatePost();
+          setIsUpdating(false);
+          } }
+       
+      />
+    ) : (
+        <div className="singlePost-card">
+          <div className="container-fliud">
+            <div className="wrapper row">
+              <div className="preview col-md-6">
+                <div className="preview-pic tab-content">
+                  <div className="tab-pane active" id="pic-1">
+                    <img src={post.imageUrl} alt="Single post img" />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="details col-md-6">
-              <h3 className="product-title">{post.title}</h3>
-              <div className="rating">
-                <div className="stars">
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star unchecked"></span>
-                  <span className="fa fa-star unchecked"></span>
+              <div className="details col-md-6">
+                <h3 className="product-title">{post.title}</h3>
+                <div className="rating">
+                  <div className="stars">
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star checked"></span>
+                    <span className="fa fa-star unchecked"></span>
+                    <span className="fa fa-star unchecked"></span>
+                  </div>
+                  <span className="review-no">41 reviews</span>
                 </div>
-                <span className="review-no">41 reviews</span>
-              </div>
-              <p className="product-description">{post.body}</p>
+                <p className="product-description">{post.body}</p>
+                <div>
+                    <button className="comment-btn" onClick={() => deletePost()}>
+                      Delete
+                    </button>
 
-              <CommentsPage />
+                    <button className="comment-btn" onClick={handleUpdateClick}>
+                      Update
+                    </button>
+                  </div>
 
-              <div className="action">
-                {isPoster ? (
-                  <button
-                    className="singlePost-btn btn btn-default"
-                    onClick={handleClaim}
-                    type="button">
-                    {post.claimed ? 'Set Available' : 'Set Claimed'}
+
+                <CommentsPage />
+
+                <div className="action">
+                  {isPoster ? (
+                    <button
+                      className="singlePost-btn btn btn-default"
+                      onClick={handleClaim}
+                      type="button">
+                      {post.claimed ? 'Set Available' : 'Set Claimed'}
+                    </button>
+                  ) : null}
+
+                  {isPoster ? null : (
+                    <button
+                      className="singlePost-btn btn btn-default"
+                      onClick={messageHandler}
+                      type="button">
+                      Message Poster
+                    </button>
+                  )}
+
+                  <button className="like btn btn-default" type="button">
+                    <span className="fa fa-heart"></span>
                   </button>
-                ) : null}
-
-                {isPoster ? null : (
-                  <button
-                    className="singlePost-btn btn btn-default"
-                    onClick={messageHandler}
-                    type="button">
-                    Message Poster
-                  </button>
-                )}
-
-                <button className="like btn btn-default" type="button">
-                  <span className="fa fa-heart"></span>
-                </button>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    );
+      );
   } catch (e) {
     console.log(e);
     return <ErrorScreen />;
