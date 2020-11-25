@@ -46,8 +46,8 @@ function SinglePost( onUpdateClick ) {
   const deletePost = id => {
     if (window.confirm("Are you sure you want to delete this post?")) {
     Api.delete('/posts/' + post.id).then(() => {
-     setTimeout(history.push('/posts'), 1000);
-    });
+      setTimeout(history.push('/posts'), 1000);
+     });
     }
   };
 

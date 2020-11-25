@@ -1,6 +1,8 @@
 package se.kth.sda.skeleton.post;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+
 import se.kth.sda.skeleton.comments.*;
 
 import java.util.List;
@@ -21,8 +23,8 @@ public class Post {
     @Column(name = "body")
     private String body;
 
-    @Column(name = "claimed")
-    private boolean claimed;
+//    @Column(name = "claimed")
+//    private boolean claimed;
 
     @Column(name = "image_url")
     private String imageUrl;
@@ -35,6 +37,11 @@ public class Post {
 
     @Column(name = "poster")
     private String poster;
+
+    @NotNull(message = "Post type may not be null")
+    private String postType;
+
+    private String category;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
@@ -63,13 +70,13 @@ public class Post {
         this.body = body;
     }
 
-    public boolean isClaimed() {
-        return claimed;
-    }
-
-    public void setClaimed(boolean claimed) {
-        this.claimed = claimed;
-    }
+//    public boolean isClaimed() {
+//        return claimed;
+//    }
+//
+//    public void setClaimed(boolean claimed) {
+//        this.claimed = claimed;
+//    }
 
     public String getImageUrl() {
         return imageUrl;
@@ -101,5 +108,21 @@ public class Post {
 
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    public String getPostType() {
+        return postType;
+    }
+
+    public void setPostType(String postType) {
+        this.postType = postType;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }

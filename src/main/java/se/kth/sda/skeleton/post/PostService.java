@@ -36,4 +36,12 @@ public class PostService {
     public void delete(Long id) {
         repository.deleteById(id);
     }
+
+    public List<Post> getAllByPostType(String postType) {
+        return repository.findAllByPostType(postType);
+    }
+
+    public List<Post> getAllByPostCategory(String category) {
+        return repository.findAllByCategory(category);
+    }
 }

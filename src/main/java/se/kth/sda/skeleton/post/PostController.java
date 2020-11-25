@@ -31,6 +31,18 @@ public class PostController {
         return service.getById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+    @GetMapping("/label/{postType}")
+    public List<Post> getAllByPostType(@PathVariable String postType) {
+        return service.getAllByPostType(postType);
+    }
+
+
+    @GetMapping("/category/{category}")
+    public List<Post> getAllByPostCategory(@PathVariable String category) {
+        return service.getAllByPostCategory(category);
+    }
+
+
     @PostMapping("/new")
     public Post create(@RequestBody Post newPost) {
         newPost.setEmail(authService.getLoggedInUserEmail());
