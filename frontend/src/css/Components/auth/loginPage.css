@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+
+.login-container{
+    background-image: url("..//../Images/LoginPage/Background-login.png");
+    position:relative;
+	width:100%;
+	height: 100vh;
+	box-sizing: border-box;
+    background-repeat: no-repeat;
+    font-family: Quicksand;
+    line-height: 15px;
+    
+}
+
+.loginNSignup{
+    background-image: url("..//..//Images/LoginPage/login-rectangle.png");
+    position: relative;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    height: 95vh;
+    padding: 90px 16px 11px 75px;
+    background-position: left 40px;
+    background-position-x: 4%;
+
+}
+
+.login-button{
+    background-color:#B52B65;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 20%;
+}

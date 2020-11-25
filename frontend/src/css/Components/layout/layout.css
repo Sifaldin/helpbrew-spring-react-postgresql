@@ -1,0 +1,61 @@
+.bg-dark{
+    background-color: transparent !important;
+}
+.navbar-dark .navbar-nav .nav-link{
+    color: #848484;
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #B52B65;
+    font-size: 20px;
+}
+.active-link{
+    color: #B52B65 !important;
+    font-size: 20px;
+}
+.logo-img{
+    height:50px;
+}
+.btn-outline-info{
+    color: #B52B65;
+    border-color: #B52B65;
+}
+.btn-outline-info:hover{
+    background-color: #B52B65;
+}
+.line{
+    position: absolute;
+    width: 1440px;
+    height: 0px;
+    left: 0px;
+    top: 70px;
+
+    /* Harvest pink */
+    border: 1px solid #B52B65;
+}
+.navbar-nav{
+    flex: none;
+    order: 0;
+    margin-left: 72%;
+}
+.navbar-toggler {
+    background-color: #B52B65 !important;
+    border: 1px solid #B52B65 !important;
+}
+.navbar-expand-lg .navbar-nav .nav-link {
+    padding-right: .8rem !important;
+    padding-left: .8rem !important;
+}
+
+@media(min-width: 834px) {
+    .navbar-nav{
+        margin-left: 58%;
+    }
+}
+@media (min-width: 1200px){
+    .container{
+        max-width: 1334px;
+    }
+    .line{
+        width: 1990px;
+    }
+}
