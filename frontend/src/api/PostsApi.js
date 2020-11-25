@@ -1,24 +1,24 @@
-import Api from './Api';
+import Api from "./Api";
 
 class PostsApi {
   getAllPosts() {
-    return Api.get('/posts');
+    return Api.get("/posts");
   }
 
   getPostById(id) {
-    return Api.get('/posts/' + id);
+    return Api.get("/posts/" + id);
   }
 
   createPost(post) {
-    return Api.post('/posts/new', post);
+    return Api.post("/posts/new", post);
   }
 
   updatePost(post) {
-    return Api.put('/posts', post);
+    return Api.put("/posts", post);
   }
 
   deletePost(id) {
-    return Api.delete('/posts/' + id);
+    return Api.delete("/posts/" + id);
   }
 }
 
