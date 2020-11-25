@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import ErrorScreen from '../tempscreens/ErrorScreen';
 import PostsApi from '../../api/PostsApi';
@@ -8,6 +8,21 @@ import PostUpdateForm from "./PostUpdateForm";
 import Api from "../../api/Api";
 
 function SinglePost( onUpdateClick ) {
+  const [posts, setPosts] = useState([]);
+
+ 
+
+  const getAll = () => {
+    Api.get('/posts').then(response => setPosts(response.data));
+  };
+
+  useEffect(() => {
+    getAll();
+  }, []);
+
+  const deletePost = id => {
+    Api.delete('/posts/' + post.id).then(response => getAll());
+  };
 
   const userEmail = window.sessionStorage.getItem('userEmail');
   const { state } = useLocation();
@@ -43,13 +58,13 @@ function SinglePost( onUpdateClick ) {
     createOrDirect();
   };
 
-  const deletePost = id => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
-    Api.delete('/posts/' + post.id).then(() => {
-      setTimeout(history.push('/posts'), 1000);
-     });
-    }
-  };
+  // const deletePost = id => {
+  //   if (window.confirm("Are you sure you want to delete this post?")) {
+  //   Api.delete('/posts/' + post.id).then(() => {
+  //     setTimeout(history.push('/posts'), 1000);
+  //    });
+  //   }
+  // };
 
   
   const updatePost = updatedPost => {
