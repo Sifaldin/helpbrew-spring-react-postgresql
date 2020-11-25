@@ -17,7 +17,7 @@ function SinglePost( onUpdateClick ) {
   const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
 
-  
+
   const handleClaim = () => {
     const setClaimed = async () => {
       try {
@@ -44,7 +44,11 @@ function SinglePost( onUpdateClick ) {
   };
 
   const deletePost = id => {
-    Api.delete('/posts/' + post.id).then(response => PostsApi.getAllPosts());
+    if (window.confirm("Are you sure you want to delete this post?")) {
+    Api.delete('/posts/' + post.id).then(() => {
+     setTimeout(history.push('/posts'), 1000);
+    });
+    }
   };
 
   
