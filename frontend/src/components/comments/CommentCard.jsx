@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import CommentUpdateForm from './CommentUpdateForm';
+import React, { useState } from "react";
+import CommentUpdateForm from "./CommentUpdateForm";
 
 function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
@@ -11,17 +11,18 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   return isUpdating ? (
     <CommentUpdateForm
       oldComment={comment}
-      onUpdateClick={updateComment => {
-        setIsUpdating(false);
-        onUpdateClick = { updateComment };
-      }}
+      onUpdateClick={onUpdateClick}
+      setIsUpdating={setIsUpdating}
     />
   ) : (
     <div>
       <h5>{comment.authorName}</h5>
       <h4>{comment.body}</h4>
       <div>
-        <button className="comment-btn" onClick={() => onDeleteClick(comment.id)}>
+        <button
+          className="comment-btn"
+          onClick={() => onDeleteClick(comment.id)}
+        >
           Delete
         </button>
 
