@@ -5,6 +5,8 @@ import ImageUploader from './ImageUploader';
 function NewPostForm({ setPost }) {
   const [imgUrl, setImgUrl] = useState('');
   const [postTitle, setPostTitle] = useState('');
+  const [postType, setPostType] = useState('');
+
   const [details, setDetails] = useState('');
   const [postAs, setPostAs] = useState('');
   const [uploading, setUploading] = useState(true);
@@ -12,7 +14,7 @@ function NewPostForm({ setPost }) {
   const submitHandler = event => {
     event.preventDefault();
     setPost({
-      title: postTitle,
+      postType: postType,
       body: details,
       claimed: false,
       imageUrl: imgUrl,
@@ -43,7 +45,7 @@ function NewPostForm({ setPost }) {
               className="form-control"
               id="formGroupExampleInput1"
               placeholder="What are you donating?"
-              onChange={e => setPostTitle(e.target.value)}
+              onChange={e => setPostType(e.target.value)}
             />
           </div>
           <div className="form-group">
