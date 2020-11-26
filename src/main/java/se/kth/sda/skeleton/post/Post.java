@@ -57,11 +57,12 @@ public class Post {
         this.reaction = reaction;
     }
 
-    public Post(Long id, String title, String body, Reaction reaction) {
+    public Post(Long id, String title, String body, String postType, Reaction reaction) {
         this.id = id;
         this.title = title;
         this.body = body;
         this.reaction = reaction;
+        this.postType = postType;
     }
 
     public Long getId() {

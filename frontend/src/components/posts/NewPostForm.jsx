@@ -8,6 +8,7 @@ function NewPostForm({ setPost }) {
   const [details, setDetails] = useState('');
   const [postAs, setPostAs] = useState('');
   const [uploading, setUploading] = useState(true);
+  const [postType, setPostType] = useState("DummyType");
 
   const submitHandler = event => {
     event.preventDefault();
@@ -16,6 +17,7 @@ function NewPostForm({ setPost }) {
       body: details,
       claimed: false,
       imageUrl: imgUrl,
+      postType: postType,
       date: format(new Date(), 'dd-MMM-yyyy'),
       poster: postAs
     });
