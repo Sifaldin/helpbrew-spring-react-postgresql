@@ -40,7 +40,7 @@ public class Post {
     @Column(name = "poster")
     private String poster;
 
-//    @NotNull(message = "Post type may not be null")
+    @NotNull(message = "Post type may not be null")
     private String postType;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
