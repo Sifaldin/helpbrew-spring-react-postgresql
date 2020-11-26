@@ -3,14 +3,18 @@ import { useHistory } from 'react-router-dom';
 import slide1 from '../../Images/slide1.png';
 import slide2 from '../../Images/slide2.jpg';
 import slide3 from '../../Images/slide3.jpg';
+/*import Header from "../layout/header";*/
+/*import Footer from "../layout/footer";*/
 
 function HomePage() {
   const history = useHistory();
   return (
+
     <div >
       <div >
         <div style={{ marginTop: '3%' }} >
           <h1 >Harvest</h1>
+
 
           <p >
             Harvest was started as an initiative to compact Food Waste.
@@ -30,6 +34,7 @@ function HomePage() {
           <button onClick={() => history.push('/posts')} >
             Start Claiming{' '}
           </button>
+          
         </div>
 
         <div >
@@ -76,6 +81,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

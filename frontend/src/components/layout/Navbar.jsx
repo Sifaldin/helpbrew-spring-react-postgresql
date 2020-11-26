@@ -1,8 +1,11 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+
 function Navbar({ onLogout }) {
   return (
+
+
     <nav >
       <a >
         <h1>HelpBrew</h1>
