@@ -15,17 +15,14 @@ function SinglePost(onUpdateClick) {
   const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
 
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("");
 
   useEffect(() => {
-    Api.get("/user/")
-      .then(response => {
-        const email = response.data
-        setEmail(email);
-      });
+    Api.get("/user/").then((response) => {
+      const email = response.data;
+      setEmail(email);
+    });
   }, []);
-
-  
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {
@@ -58,7 +55,7 @@ function SinglePost(onUpdateClick) {
   const deletePost = (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       Api.delete("/posts/" + post.id).then((res) => {
-        history.push("/posts");
+        history.push(`/posts/category/${post.category}`);
       });
     }
   };
@@ -79,29 +76,26 @@ function SinglePost(onUpdateClick) {
         setIsUpdating={setIsUpdating}
       />
     ) : (
-      <div >
-        <div >
-          <div >
-            <div >
-              <div >
-                <div  id="pic-1">
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div id="pic-1">
                   <img src={post.imageUrl} alt="Single post img" />
                 </div>
               </div>
             </div>
-            <div >
-              <h3 >{post.title}</h3>
-              <p >{post.body}</p>
-              {(post.email === email) ? 
-    <div>
-      <button onClick={() => deletePost()}>
-        Delete
-      </button>
+            <div>
+              <h3>{post.title}</h3>
+              <p>{post.body}</p>
+              {post.email === email ? (
+                <div>
+                  <button onClick={() => deletePost()}>Delete</button>
 
-      <button onClick={handleUpdateClick}>
-        Update
-      </button>
-    </div> : null}
+                  <button onClick={handleUpdateClick}>Update</button>
+                </div>
+              ) : null}
 
               <CommentsPage post={post} />
 

@@ -12,7 +12,6 @@ import Navbar from "./components/layout/Navbar";
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/PostsPage";
-import NewPosts from "./components/posts/NewPosts";
 import SinglePost from "./components/posts/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
 import CommentPage from "./components/comments/CommentsPage";
