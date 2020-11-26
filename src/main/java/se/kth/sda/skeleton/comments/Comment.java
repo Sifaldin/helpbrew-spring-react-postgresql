@@ -1,7 +1,10 @@
 package se.kth.sda.skeleton.comments;
 
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.post.Post;
+import se.kth.sda.skeleton.reactions.Reaction;
 
 @Table(name = "comments")
 @Entity
@@ -21,13 +24,20 @@ public class Comment {
     @ManyToOne
     private Post post;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "reaction_id", referencedColumnName = "id")
+    private Reaction reaction;
+
     public Comment() {
+        reaction = new Reaction();
     }
 
-    public Comment(Long id, String body, String authorName) {
+    public Comment(Long id, String body, String authorName, Reaction reaction) {
         this.id = id;
         this.body = body;
         this.authorName = authorName;
+        this.reaction = reaction;
     }
 
     public Long getId() {
@@ -60,5 +70,13 @@ public class Comment {
 
     public void setPost(Post post) {
         this.post = post;
+    }
+
+    public Reaction getReaction() {
+        return reaction;
+    }
+
+    public void setReaction(Reaction reaction) {
+        this.reaction = reaction;
     }
 }

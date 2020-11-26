@@ -10,13 +10,13 @@ export default function PostUpdateForm({
   return (
     <div>
       <textarea
-        className="form-control comment-text"
+        
         placeholder="What else do you wanna add?"
         value={body}
         onChange={(event) => setBody(event.target.value)}
       />
       <button
-        className="comment-btn"
+        
         onClick={() => {
           onUpdateClick({ ...oldPost, body });
           setIsUpdating(false);

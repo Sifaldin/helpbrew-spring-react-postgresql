@@ -6,13 +6,13 @@ function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
   return (
     <div>
       <textarea
-        className="form-control comment-text"
+        
         placeholder="type your comment here.."
         value={body}
         onChange={(event) => setBody(event.target.value)}
       />
       <button
-        className="comment-btn"
+        
         onClick={() => {
           const updated = { ...oldComment, body };
           console.log(updated);

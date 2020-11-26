@@ -22,4 +22,10 @@ public class UserController {
     }
 
 
+    @GetMapping("/user")
+    public String userEmail() {
+
+        return authService.getLoggedInUserEmail();
+    }
+
 }

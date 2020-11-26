@@ -19,20 +19,20 @@ function LoginPage() {
   };
 
   return (
-    <div className="row">
-      <div className="login-container">
-        <div className="card">
-          <div className="login-box">
-            <div className="login-snip">
-              <input id="tab-1" type="radio" name="tab" className="sign-in" checked />
-              <label htmlFor="tab-1" className="tab">
+    <div >
+      <div >
+        <div >
+          <div >
+            <div >
+              <input id="tab-1" type="radio" name="tab"  checked />
+              <label htmlFor="tab-1" >
                 Login
               </label>
-              <input id="tab-2" type="radio" name="tab" className="sign-up" />
-              <label htmlFor="tab-2" className="tab">
+              <input id="tab-2" type="radio" name="tab"  />
+              <label htmlFor="tab-2" >
                 Sign Up
               </label>
-              <div className="login-space">
+              <div >
                 <LoginForm onSubmit={login} />
 
                 <RegisterForm onSubmit={register} />
