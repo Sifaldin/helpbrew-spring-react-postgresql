@@ -41,7 +41,7 @@ public class PostController {
         return service.getAllByPostCategory(category);
     }
 
-    @PostMapping("/new")
+    @PostMapping("")
     public Post create(@RequestBody Post newPost) {
         newPost.setEmail(authService.getLoggedInUserEmail());
         return service.create(newPost);
