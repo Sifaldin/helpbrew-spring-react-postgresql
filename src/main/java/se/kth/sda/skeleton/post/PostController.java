@@ -36,12 +36,10 @@ public class PostController {
         return service.getAllByPostType(postType);
     }
 
-
     @GetMapping("/category/{category}")
     public List<Post> getAllByPostCategory(@PathVariable String category) {
         return service.getAllByPostCategory(category);
     }
-
 
     @PostMapping("/new")
     public Post create(@RequestBody Post newPost) {

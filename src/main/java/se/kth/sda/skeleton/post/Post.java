@@ -3,7 +3,9 @@ package se.kth.sda.skeleton.post;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.comments.*;
+import se.kth.sda.skeleton.reactions.Reaction;
 
 import java.util.List;
 
@@ -41,10 +43,27 @@ public class Post {
 //    @NotNull(message = "Post type may not be null")
     private String postType;
 
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "reaction_id", referencedColumnName = "id")
+    private Reaction reaction;
+
     private String category;
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
+
+    public Post() {
+        this.reaction = new Reaction();
+    }
+
+    public Post(Long id, String title, String body, String postType) {
+        this.id = id;
+        this.title = title;
+        this.body = body;
+        this.reaction = new Reaction();
+        this.postType = postType;
+    }
 
     public Long getId() {
         return id;
@@ -124,5 +143,13 @@ public class Post {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public Reaction getReaction() {
+        return reaction;
+    }
+
+    public void setReaction(Reaction articleReaction) {
+        this.reaction = articleReaction;
     }
 }

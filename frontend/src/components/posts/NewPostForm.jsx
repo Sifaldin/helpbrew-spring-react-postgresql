@@ -14,10 +14,10 @@ function NewPostForm({ setPost }) {
   const submitHandler = event => {
     event.preventDefault();
     setPost({
-      postType: postType,
       body: details,
       claimed: false,
       imageUrl: imgUrl,
+      postType: postType,
       date: format(new Date(), 'dd-MMM-yyyy'),
       poster: postAs
     });
