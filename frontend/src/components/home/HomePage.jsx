@@ -3,13 +3,18 @@ import { useHistory } from 'react-router-dom';
 import slide1 from '../../Images/slide1.png';
 import slide2 from '../../Images/slide2.jpg';
 import slide3 from '../../Images/slide3.jpg';
+/*import Header from "../layout/header";*/
+/*import Footer from "../layout/footer";*/
 
 function HomePage() {
   const history = useHistory();
   return (
     <div className="container">
+      
       <div className="row home-data">
+
         <div style={{ marginTop: '3%' }} className="col-md-3">
+       
           <h1 className="card-title">Harvest</h1>
 
           <p className="smallpara">
@@ -30,6 +35,7 @@ function HomePage() {
           <button onClick={() => history.push('/posts')} className="btn-home-claim">
             Start Claiming{' '}
           </button>
+          
         </div>
 
         <div className="col-md-9">
@@ -82,6 +88,7 @@ function HomePage() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

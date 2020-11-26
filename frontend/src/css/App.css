@@ -1,4 +1,6 @@
 @import "./Components/layout/layout.css";
+@import "./Components/layout/header.css";
+@import "./Components/layout/footer.css";
 @import "./Components/Post/PostsPage.css";
 @import "./Components/Chat/ChatPage.css";
 @import "./Components/Post/SinglePostPage.css";
