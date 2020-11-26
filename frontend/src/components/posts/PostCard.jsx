@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import Api from "../../api/Api";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 function PostCard({ post }) {
   const [reaction, setReaction] = useState(post.reaction);
@@ -19,36 +19,31 @@ function PostCard({ post }) {
   };
 
   return (
-    <div >
-      <div >
-        <div >
+    <div>
+      <div>
+        <div>
           <a href={post.imageUrl}>
             <img
-              className={post.claimed ? 'claimed pic-1' : 'pic-1'}
-              src={post.imageUrl}
-              alt=""
-            />
-            <img
-              className={post.claimed ? 'claimed pic-2' : 'pic-2'}
+              style={{ width: "100px" }}
+              className={post.claimed ? "claimed pic-1" : "pic-1"}
               src={post.imageUrl}
               alt=""
             />
           </a>
-          {post.claimed ? (
-            <span >Claimed</span>
-          ) : (
-            <span >Available</span>
-          )}
+          {post.claimed ? <span>Claimed</span> : <span>Available</span>}
         </div>
-        <div >
-          <h3 >
+        <div>
+          <h3>
             <a href={post.title}>{post.title}</a>
           </h3>
-          <div >
+          <div>
             <span>{post.date}</span>
             <br />
           </div>
-          <Link className="claim" to={{ pathname: `/posts/${post.id}`, state: { post } }}>
+          <Link
+            className="claim"
+            to={{ pathname: `/posts/${post.id}`, state: { post } }}
+          >
             View Post
           </Link>
 
@@ -60,11 +55,10 @@ function PostCard({ post }) {
               <i className="fas fa-thumbs-down"></i> {reaction.dislike}
             </button>
           </div>
-
         </div>
       </div>
     </div>
-  ); 
+  );
 }
 
 export default PostCard;

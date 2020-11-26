@@ -63,14 +63,14 @@ public class PostController {
     public List<Post> getAllByPostCategory(@PathVariable String category) {
         return service.getAllByPostCategory(category);
     }
-
+    
     /**
      * EndPoint that receives new post data and send them to the post service to create the new post
      * @param newPost
      * @return Invoke the create function in the postService class.
      * The new post.
      */
-    @PostMapping("/new")
+    @PostMapping("")
     public Post create(@RequestBody Post newPost) {
         newPost.setEmail(authService.getLoggedInUserEmail());
         return service.create(newPost);

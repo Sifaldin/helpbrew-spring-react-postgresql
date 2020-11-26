@@ -1,63 +1,68 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
-
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 function Navbar({ onLogout }) {
   return (
+    <nav>
+      <h1>HelpBrew</h1>
 
-
-    <nav >
-      <a >
-        <h1>HelpBrew</h1>
-      </a>
-      <button
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarColor01"
-        aria-controls="navbarColor01"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <span ></span>
-      </button>
-
-      <div  id="navbarColor01">
-        <ul >
-          <li >
-            <NavLink exact to="/"  activeClassName="active-link">
+      <div className="navbar">
+        <ul>
+          <li>
+            <NavLink exact to="/" activeClassName="active-link">
               Home
             </NavLink>
           </li>
 
-          <li >
-            <NavLink exact to="/posts"  activeClassName="active-link">
-              Posts
+          <li>
+            <NavLink
+              exact
+              to="/posts/category/giveaways"
+              activeClassName="active-link"
+            >
+              Giveaways
             </NavLink>
           </li>
 
-          <li >
+          <li>
             <NavLink
               exact
-              to="/posts/new"
-              
-              activeClassName="active-link">
+              to="/posts/category/skills"
+              activeClassName="active-link"
+            >
+              Skills
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              exact
+              to="/posts/category/monetary-support"
+              activeClassName="active-link"
+            >
+              Monetary Support
+            </NavLink>
+          </li>
+
+          <li>
+            <NavLink exact to="/posts/new" activeClassName="active-link">
               New Post
             </NavLink>
           </li>
 
-          <li >
-            <NavLink exact to="/chat"  activeClassName="active-link">
+          {/* commented out the chat link for the moment /Elena */}
+          {/* <li>
+            <NavLink exact to="/chat" activeClassName="active-link">
               Chat
             </NavLink>
-          </li>
+          </li> */}
 
-          <li >
-            <button  onClick={onLogout}>
-              Logout
-            </button>
+          <li>
+            <button onClick={onLogout}>Logout</button>
           </li>
         </ul>
       </div>
-      <div ></div>
+      <div></div>
     </nav>
   );
 }
