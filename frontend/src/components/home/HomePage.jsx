@@ -39,7 +39,7 @@ function HomePage() {
             <div >
               <div  data-interval="400">
                 <img
-                  src={slide1}
+                  src="https://ak.picdn.net/shutterstock/videos/1030584008/thumb/6.jpg"
                   style={{ height: '650px' }}
                   alt="..."
                 />

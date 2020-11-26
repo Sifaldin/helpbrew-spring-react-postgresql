@@ -9,3 +9,16 @@ gradle
 .gradle
 
 .project
+
+.build
+
+.classes
+
+
+build
+
+classes
+
+.DS_Store
+
+DS_Store

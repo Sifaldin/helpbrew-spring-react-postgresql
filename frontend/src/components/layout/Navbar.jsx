@@ -4,8 +4,8 @@ import { NavLink } from 'react-router-dom';
 function Navbar({ onLogout }) {
   return (
     <nav >
-      <a  href="/">
-        <img  src="/images/harvest_logo.jpg" alt="logo" />
+      <a >
+        <h1>HelpBrew</h1>
       </a>
       <button
         type="button"
