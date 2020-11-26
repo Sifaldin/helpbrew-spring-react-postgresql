@@ -13,17 +13,17 @@ function Thread({ thread, setMessageBox }) {
   const lastDate = lastMessage === undefined ? null : lastMessage.date;
 
   return (
-    <div className="chat_people">
-      <div className="chat_img">
+    <div >
+      <div >
         {' '}
         <img src="/images/sender.jpeg" alt="name" />{' '}
       </div>
-      <div className="chat_ib">
+      <div >
         <h5>
           <Link to="/chat" onClick={clickHandler}>
             {receiverEmail}
           </Link>
-          <span className="chat_date">{lastDate}</span>
+          <span >{lastDate}</span>
         </h5>
         <p>{receiverMessage}</p>
       </div>

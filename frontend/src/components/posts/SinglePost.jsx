@@ -67,35 +67,25 @@ function SinglePost(onUpdateClick) {
         setIsUpdating={setIsUpdating}
       />
     ) : (
-      <div className="singlePost-card">
-        <div className="container-fliud">
-          <div className="wrapper row">
-            <div className="preview col-md-6">
-              <div className="preview-pic tab-content">
-                <div className="tab-pane active" id="pic-1">
+      <div >
+        <div >
+          <div >
+            <div >
+              <div >
+                <div  id="pic-1">
                   <img src={post.imageUrl} alt="Single post img" />
                 </div>
               </div>
             </div>
-            <div className="details col-md-6">
-              <h3 className="product-title">{post.title}</h3>
-              <div className="rating">
-                <div className="stars">
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star unchecked"></span>
-                  <span className="fa fa-star unchecked"></span>
-                </div>
-                <span className="review-no">41 reviews</span>
-              </div>
-              <p className="product-description">{post.body}</p>
+            <div >
+              <h3 >{post.title}</h3>
+              <p >{post.body}</p>
               <div>
-                <button className="comment-btn" onClick={() => deletePost()}>
+                <button  onClick={() => deletePost()}>
                   Delete
                 </button>
 
-                <button className="comment-btn" onClick={handleUpdateClick}>
+                <button onClick={handleUpdateClick}>
                   Update
                 </button>
               </div>

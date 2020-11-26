@@ -28,26 +28,26 @@ function ThreadPage() {
   ));
   return (
     <div>
-      <div className="messaging">
-        <div className="inbox_msg">
-          <div className="inbox_people">
-            <div className="headind_srch">
-              <div className="recent_heading">
+      <div >
+        <div >
+          <div >
+            <div >
+              <div >
                 <h4>Recent</h4>
               </div>
-              <div className="srch_bar">
-                <div className="stylish-input-group">
-                  <input type="text" className="search-bar" placeholder="Search" />
+              <div >
+                <div >
+                  <input type="text" placeholder="Search" />
                 </div>
               </div>
             </div>
-            <div className="inbox_chat scroll">
-              <div className="chat_list active_chat">
+            <div >
+              <div >
                 {threads === [] ? 'loading...' : listOfThreads}
               </div>
             </div>
           </div>
-          <div className="mesgs">
+          <div >
             {messageBox.thread === '' ? null : (
               <ChatPage id={messageBox.threadId} thread={messageBox.thread} />
             )}
