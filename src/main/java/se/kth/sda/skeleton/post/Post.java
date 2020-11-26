@@ -53,15 +53,15 @@ public class Post {
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE)
     private List<Comment> comments;
 
-    public Post(Reaction reaction) {
-        this.reaction = reaction;
+    public Post() {
+        this.reaction = new Reaction();
     }
 
-    public Post(Long id, String title, String body, String postType, Reaction reaction) {
+    public Post(Long id, String title, String body, String postType) {
         this.id = id;
         this.title = title;
         this.body = body;
-        this.reaction = reaction;
+        this.reaction = new Reaction();
         this.postType = postType;
     }
 

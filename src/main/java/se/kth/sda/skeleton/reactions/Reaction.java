@@ -13,8 +13,8 @@ public class Reaction {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int like;
-    private int dislike;
+    private int numlike;
+    private int numdislike;
 
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Post post;
@@ -31,16 +31,16 @@ public class Reaction {
     private Date date;
 
     public Reaction(){
-        like = 0;
-        dislike = 0;
+        numlike = 0;
+        numdislike = 0;
         usersLiked = new ArrayList<>();
         usersDisliked = new ArrayList<>();
     }
 
     public Reaction(Long id, Integer numLike, Integer numDislike) {
         this.id = id;
-        this.like = numLike;
-        this.dislike = numDislike;
+        this.numlike = numLike;
+        this.numdislike = numDislike;
     }
 
     public Long getId() {
@@ -52,19 +52,19 @@ public class Reaction {
     }
 
     public int getLike() {
-        return like;
+        return numlike;
     }
 
     public void setLike(int like) {
-        this.like = like;
+        this.numlike = like;
     }
 
     public int getDislike() {
-        return dislike;
+        return numdislike;
     }
 
     public void setDislike(int dislike) {
-        this.dislike = dislike;
+        this.numdislike = dislike;
     }
 
     public List<User> getUsersLiked() {
