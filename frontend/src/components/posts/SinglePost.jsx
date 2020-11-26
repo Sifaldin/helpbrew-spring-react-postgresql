@@ -1,29 +1,34 @@
-import React, { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
-import ErrorScreen from '../tempscreens/ErrorScreen';
-import PostsApi from '../../api/PostsApi';
-import ChatApi from '../../api/ChatApi';
-import CommentsPage from '../comments/CommentsPage';
+import React, { useState } from "react";
+import { useHistory, useLocation } from "react-router-dom";
+import ErrorScreen from "../tempscreens/ErrorScreen";
+import ChatApi from "../../api/ChatApi";
+import CommentsPage from "../comments/CommentsPage";
+import PostUpdateForm from "./PostUpdateForm";
+import Api from "../../api/Api";
 
-function SinglePost() {
-  const userEmail = window.sessionStorage.getItem('userEmail');
+function SinglePost(onUpdateClick) {
+  const userEmail = window.sessionStorage.getItem("userEmail");
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
   const [post, setPost] = useState(passedPost);
   const history = useHistory();
   const isPoster = userEmail === post.email;
+  const [isUpdating, setIsUpdating] = useState(false);
 
-  const handleClaim = () => {
-    const setClaimed = async () => {
-      try {
-        const response = await PostsApi.updatePost({ ...post, claimed: !post.claimed });
-        setPost(response.data);
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    setClaimed();
-  };
+  // const handleClaim = () => {
+  //   const setClaimed = async () => {
+  //     try {
+  //       const response = await PostsApi.updatePost({
+  //         ...post,
+  //         claimed: !post.claimed,
+  //       });
+  //       setPost(response.data);
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   setClaimed();
+  // };
 
   const messageHandler = () => {
     const createOrDirect = async () => {
@@ -37,8 +42,31 @@ function SinglePost() {
     };
     createOrDirect();
   };
+
+  const deletePost = (id) => {
+    if (window.confirm("Are you sure you want to delete this post?")) {
+      Api.delete("/posts/" + post.id).then((res) => {
+        history.push("/posts");
+      });
+    }
+  };
+
+  const updatePost = (updatedPost) => {
+    Api.put("/posts", updatedPost).then((res) => setPost(res.data));
+  };
+
+  const handleUpdateClick = () => {
+    setIsUpdating(true);
+  };
+
   try {
-    return (
+    return isUpdating ? (
+      <PostUpdateForm
+        oldPost={post}
+        onUpdateClick={updatePost}
+        setIsUpdating={setIsUpdating}
+      />
+    ) : (
       <div className="singlePost-card">
         <div className="container-fliud">
           <div className="wrapper row">
@@ -62,16 +90,26 @@ function SinglePost() {
                 <span className="review-no">41 reviews</span>
               </div>
               <p className="product-description">{post.body}</p>
+              <div>
+                <button className="comment-btn" onClick={() => deletePost()}>
+                  Delete
+                </button>
 
-              <CommentsPage />
+                <button className="comment-btn" onClick={handleUpdateClick}>
+                  Update
+                </button>
+              </div>
 
-              <div className="action">
+              <CommentsPage post={post} />
+
+              {/* <div className="action">
                 {isPoster ? (
                   <button
                     className="singlePost-btn btn btn-default"
                     onClick={handleClaim}
-                    type="button">
-                    {post.claimed ? 'Set Available' : 'Set Claimed'}
+                    type="button"
+                  >
+                    {post.claimed ? "Set Available" : "Set Claimed"}
                   </button>
                 ) : null}
 
@@ -79,7 +117,8 @@ function SinglePost() {
                   <button
                     className="singlePost-btn btn btn-default"
                     onClick={messageHandler}
-                    type="button">
+                    type="button"
+                  >
                     Message Poster
                   </button>
                 )}
@@ -87,7 +126,7 @@ function SinglePost() {
                 <button className="like btn btn-default" type="button">
                   <span className="fa fa-heart"></span>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>

@@ -1,22 +1,24 @@
 import React, { useState } from "react";
 
-function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
-  const [body, setBody] = useState(oldComment.body);
+export default function PostUpdateForm({
+  oldPost,
+  onUpdateClick,
+  setIsUpdating,
+}) {
+  const [body, setBody] = useState(oldPost.body);
 
   return (
     <div>
       <textarea
         className="form-control comment-text"
-        placeholder="type your comment here.."
+        placeholder="What else do you wanna add?"
         value={body}
         onChange={(event) => setBody(event.target.value)}
       />
       <button
         className="comment-btn"
         onClick={() => {
-          const updated = { ...oldComment, body };
-          console.log(updated);
-          onUpdateClick({ ...oldComment, body });
+          onUpdateClick({ ...oldPost, body });
           setIsUpdating(false);
         }}
       >
@@ -25,5 +27,3 @@ function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
     </div>
   );
 }
-
-export default CommentUpdateForm;

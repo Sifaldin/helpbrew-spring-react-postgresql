@@ -64,7 +64,7 @@ function PostCard({ post }) {
         </div>
       </div>
     </div>
-  );
+  ); 
 }
 
 export default PostCard;

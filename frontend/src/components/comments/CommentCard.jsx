@@ -28,10 +28,8 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   return isUpdating ? (
     <CommentUpdateForm
       oldComment={comment}
-      onUpdateClick={updateComment => {
-        setIsUpdating(false);
-        onUpdateClick = { updateComment };
-      }}
+      onUpdateClick={onUpdateClick}
+      setIsUpdating={setIsUpdating}
     />
   ) : (
     <div>
@@ -48,7 +46,10 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
       </div>
 
       <div>
-        <button className="comment-btn" onClick={() => onDeleteClick(comment.id)}>
+        <button
+          className="comment-btn"
+          onClick={() => onDeleteClick(comment.id)}
+        >
           Delete
         </button>
 
