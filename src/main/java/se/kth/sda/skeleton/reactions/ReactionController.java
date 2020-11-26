@@ -23,32 +23,63 @@ public class ReactionController {
     @Autowired
     UserService userService;
 
+    /**
+     * EndPoint that receives a request to get all the reaction.
+     * @return Invoke the getAll function in the reactionService class.
+     * List of all reactions.
+     */
     @GetMapping("")
     public List<Reaction> getAll() {
         return reactionService.getAll();
     }
 
+
+    /**
+     * EndPoint that receives a specific id and send it to the reactionService.
+     * @param id
+     * @return Invoke the getById function in the reactionService class.
+     * The reaction with specific id.
+     */
     @GetMapping("/{id}")
     public Reaction getById(@PathVariable long id) {
         return reactionService.getById(id)
                 .orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
     }
 
+
+    /**
+     * EndPoint that receives new reaction data and send them to the reactionService to increment the reaction.
+     * @param newReaction
+     * @return Invoke the create function in the reactionService class.
+     * The new count.
+     */
     @PostMapping("")
     public Reaction create(@RequestBody Reaction newReaction) {
         return reactionService.create(newReaction);
     }
 
+
+    /**
+     * EndPoint that receives the updated data and send them to the reactionService to update an existed reaction.
+     * @param updatedReaction
+     * @return Invoke the update function in the reactionService class.
+     * The updated reaction
+     */
     @PutMapping("")
     public Reaction update(@RequestBody Reaction updatedReaction) {
         return reactionService.update(updatedReaction);
     }
 
+    /**
+     * User can like or dislike a post/comment, not both.
+     * If the User click the same reaction again that's will cancel the previous reaction.
+     * if the User click on different reaction that's will cancel the previous reaction AND register new reaction type.
+     * @param id
+     * @param incrementTarget
+     * @return the updated reaction.
+     */
     @PutMapping("/{id}")
     public Reaction update(@PathVariable long id, @RequestParam(required = false) String incrementTarget) {
-        // User can like or dislike a post/comments, not both.
-        // User click the same reaction again will cancel the previous reaction.
-        // User click on different reaction will cancel the previous reaction AND register new reaction type.
 
         String email = authService.getLoggedInUserEmail();
         User loggedUser = userService.findUserByEmail(email);
@@ -117,6 +148,11 @@ public class ReactionController {
         return reactionService.create(reactionById);
     }
 
+
+    /**
+     * EndPoint that receives a specific id and invoke the delete function in reactionService.
+     * @param id
+     */
     @DeleteMapping("{id}")
     public void delete(@PathVariable Long id) {
         reactionService.delete(id);

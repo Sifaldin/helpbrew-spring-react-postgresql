@@ -1,0 +1,12 @@
+.footer {
+    background-color: #F2994A;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .footer a {
+      padding: 15px;
+      color: white;
+      font-weight: bold;
+      
+  }

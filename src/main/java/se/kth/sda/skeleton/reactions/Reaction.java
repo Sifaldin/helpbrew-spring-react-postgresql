@@ -7,40 +7,64 @@ import se.kth.sda.skeleton.user.User;
 import javax.persistence.*;
 import java.util.*;
 
+/**
+ * this class is taking care of creating the reaction table
+ * in postgresql dataBase using spring annotations.
+ */
+
 @Entity
 public class Reaction {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private int numlike;
-    private int numdislike;
+    private int numLike;
+    private int numDislike;
 
+
+    /**
+     * Determining the relation between reaction and post entities.
+     * one post can have one reaction from a specific user
+     */
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Post post;
 
+
+    /**
+     * Determining the relation between reaction and comment entities.
+     * one comment can have one reaction from a specific user
+     */
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     private Comment comment;
 
+
+    /**
+     * Determining the relation between reaction and user entities.
+     * Many users can add only one like reaction.
+     */
     @OneToMany
     private List<User> usersLiked;
 
+    /**
+     * Determining the relation between reaction and user entities.
+     * Many users can add only one disLike reaction.
+     */
     @OneToMany
     private List<User> usersDisliked;
 
     private Date date;
 
     public Reaction(){
-        numlike = 0;
-        numdislike = 0;
+        numLike = 0;
+        numDislike = 0;
         usersLiked = new ArrayList<>();
         usersDisliked = new ArrayList<>();
     }
 
     public Reaction(Long id, Integer numLike, Integer numDislike) {
         this.id = id;
-        this.numlike = numLike;
-        this.numdislike = numDislike;
+        this.numLike = numLike;
+        this.numDislike = numDislike;
     }
 
     public Long getId() {
@@ -52,19 +76,19 @@ public class Reaction {
     }
 
     public int getLike() {
-        return numlike;
+        return numLike;
     }
 
     public void setLike(int like) {
-        this.numlike = like;
+        this.numLike = like;
     }
 
     public int getDislike() {
-        return numdislike;
+        return numDislike;
     }
 
     public void setDislike(int dislike) {
-        this.numdislike = dislike;
+        this.numDislike = dislike;
     }
 
     public List<User> getUsersLiked() {

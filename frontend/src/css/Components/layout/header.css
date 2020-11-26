@@ -1,0 +1,20 @@
+.header {
+    border-top: 56px solid #f4e4c2;
+    padding: 64px 16px;
+    background-color: #F2994A;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* each fr is a equal space column. */
+    grid-column-gap: 12px;
+  }
+  
+  .header img {
+    max-width: 220px;
+    height: auto;
+    vertical-align: -webkit-baseline-middle;
+  }
+  
+  @media only screen and (min-width: 660px) {
+    .header {
+      grid-template-columns: 1fr 1fr 1fr; /* each fr is a equal space column. */
+    }
+  }
