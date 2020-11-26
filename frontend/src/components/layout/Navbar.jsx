@@ -5,7 +5,7 @@ function Navbar({ onLogout }) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <a className="navbar-brand" href="/">
-        <img className="logo-img" src="/images/harvest_logo.jpg" alt="logo" />
+        <h1>HelpBrew</h1>
       </a>
       <button
         className="navbar-toggler"
