@@ -80,7 +80,8 @@ function SinglePost(onUpdateClick) {
             <div >
               <h3 >{post.title}</h3>
               <p >{post.body}</p>
-              <div>
+
+              {(post.email === null) ? <div>
                 <button  onClick={() => deletePost()}>
                   Delete
                 </button>
@@ -88,7 +89,8 @@ function SinglePost(onUpdateClick) {
                 <button onClick={handleUpdateClick}>
                   Update
                 </button>
-              </div>
+              </div> : null}
+              
 
               <CommentsPage post={post} />
 
