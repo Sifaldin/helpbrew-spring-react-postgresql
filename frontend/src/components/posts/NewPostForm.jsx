@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Api from "../../api/Api";
 import ImageUploader from "./ImageUploader";
@@ -12,18 +12,7 @@ function NewPostForm() {
   const [details, setDetails] = useState("");
   const [postAs, setPostAs] = useState("");
   const [uploading, setUploading] = useState(true);
-
-  const [postCategory, setPostCategory] = useState("");
-
-  const [posts, setPosts] = useState([]);
-
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await Api.get("/posts");
-      setPosts(response.data);
-    };
-    fetchPosts();
-  }, []);
+  const [postCategory, setPostCategory] = useState("giveaways");
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -36,8 +25,9 @@ function NewPostForm() {
       poster: postAs,
       category: postCategory,
     };
-    Api.post("/posts", newPost).then((res) => setPosts([...posts, res.data]));
-    history.push(`/posts/category/${postCategory}`);
+    Api.post("/posts", newPost).then((res) => {
+      history.push(`/posts/category/${postCategory}`);
+    });
   };
 
   return (
@@ -71,9 +61,9 @@ function NewPostForm() {
             />
           </div>
           <div>
-            <label for="category">Choose a category:</label>
+            <label>Choose a category:</label>
             <select
-              id="category"
+              value="giveaways"
               name="category"
               onChange={(e) => setPostCategory(e.target.value)}
             >
