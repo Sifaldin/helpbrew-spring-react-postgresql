@@ -49,7 +49,7 @@ function PostCard({ post }) {
             <br />
           </div>
           <Link className="claim" to={{ pathname: `/posts/${post.id}`, state: { post } }}>
-            View Harvest
+            View Post
           </Link>
 
           <div className="reaction">

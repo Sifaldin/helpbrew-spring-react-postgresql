@@ -33,7 +33,7 @@ function HomePage() {
             <div className="carousel-inner">
               <div className="carousel-item active" data-interval="400">
                 <img
-                  src={slide1}
+                  src="https://ak.picdn.net/shutterstock/videos/1030584008/thumb/6.jpg"
                   style={{ height: '650px' }}
                   className="d-block w-100"
                   alt="..."

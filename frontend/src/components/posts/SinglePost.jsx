@@ -79,16 +79,7 @@ function SinglePost(onUpdateClick) {
             </div>
             <div className="details col-md-6">
               <h3 className="product-title">{post.title}</h3>
-              <div className="rating">
-                <div className="stars">
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star checked"></span>
-                  <span className="fa fa-star unchecked"></span>
-                  <span className="fa fa-star unchecked"></span>
-                </div>
-                <span className="review-no">41 reviews</span>
-              </div>
+              
               <p className="product-description">{post.body}</p>
               <div>
                 <button className="comment-btn" onClick={() => deletePost()}>
