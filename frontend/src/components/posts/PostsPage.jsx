@@ -27,3 +27,5 @@ export default function PostsPage() {
 
   return posts === [] ? "Loading...." : <div className="row">{postList}</div>;
 }
+
+

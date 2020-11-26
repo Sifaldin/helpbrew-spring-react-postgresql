@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import ErrorScreen from "../tempscreens/ErrorScreen";
 import ChatApi from "../../api/ChatApi";
@@ -14,6 +14,18 @@ function SinglePost(onUpdateClick) {
   const history = useHistory();
   const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
+
+  const [email, setEmail] = useState('');
+
+  useEffect(() => {
+    Api.get("/user/")
+      .then(response => {
+        const email = response.data
+        setEmail(email);
+      });
+  }, []);
+
+  
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {
@@ -80,17 +92,16 @@ function SinglePost(onUpdateClick) {
             <div >
               <h3 >{post.title}</h3>
               <p >{post.body}</p>
+              {(post.email === email) ? 
+    <div>
+      <button onClick={() => deletePost()}>
+        Delete
+      </button>
 
-              {(post.email === null) ? <div>
-                <button  onClick={() => deletePost()}>
-                  Delete
-                </button>
-
-                <button onClick={handleUpdateClick}>
-                  Update
-                </button>
-              </div> : null}
-              
+      <button onClick={handleUpdateClick}>
+        Update
+      </button>
+    </div> : null}
 
               <CommentsPage post={post} />
 
@@ -104,7 +115,6 @@ function SinglePost(onUpdateClick) {
                     {post.claimed ? "Set Available" : "Set Claimed"}
                   </button>
                 ) : null}
-
                 {isPoster ? null : (
                   <button
                     className="singlePost-btn btn btn-default"
@@ -114,7 +124,6 @@ function SinglePost(onUpdateClick) {
                     Message Poster
                   </button>
                 )}
-
                 <button className="like btn btn-default" type="button">
                   <span className="fa fa-heart"></span>
                 </button>
