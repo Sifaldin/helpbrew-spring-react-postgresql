@@ -26,33 +26,30 @@ function NewPostForm({ setPost }) {
   return (
     <form style={{ width: '100%' }} onSubmit={submitHandler}>
       <h1 style={{ textAlign: 'center', color: '#6C6C6C' }}>Upload Details</h1>
-      <div className="row">
-        <div className="col-md-6 col-sm-6">
-          <div className="form-group">
+      <div >
+        <div >
+          <div >
             <label htmlFor="formGroupExampleInput">Post as</label>
             <input
               type="text"
-              className="form-control"
               id="formGroupExampleInput"
               placeholder="Post as..."
               onChange={e => setPostAs(e.target.value)}
             />
           </div>
-          <div className="form-group">
+          <div >
             <label htmlFor="formGroupExampleInput">Donation Title</label>
             <input
               type="text"
-              className="form-control"
               id="formGroupExampleInput1"
               placeholder="What are you donating?"
               onChange={e => setPostType(e.target.value)}
             />
           </div>
-          <div className="form-group">
+          <div >
             <label htmlFor="formGroupExampleInput2">Details about donation:</label>
             <textarea
               type="text"
-              className="form-control"
               id="formGroupExampleInput3"
               placeholder="Details about the donation?...  expiry date, quantity, or anything else you would like to share."
               rows="3"
@@ -62,12 +59,12 @@ function NewPostForm({ setPost }) {
           <button
             disabled={uploading ? true : false}
             type="submit"
-            className="btn-newPost">
+            >
             {uploading ? '- - - - -' : 'Submit'}
           </button>
         </div>
 
-        <div className="col-md-6 col-sm-6">
+        <div >
           <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
         </div>
       </div>

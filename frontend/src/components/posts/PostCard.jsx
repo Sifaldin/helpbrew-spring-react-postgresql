@@ -19,9 +19,9 @@ function PostCard({ post }) {
   };
 
   return (
-    <div className="col-md-3 col-sm-6">
-      <div className="product-grid4">
-        <div className="product-image4">
+    <div >
+      <div >
+        <div >
           <a href={post.imageUrl}>
             <img
               className={post.claimed ? 'claimed pic-1' : 'pic-1'}
@@ -35,16 +35,16 @@ function PostCard({ post }) {
             />
           </a>
           {post.claimed ? (
-            <span className="product-new-label">Claimed</span>
+            <span >Claimed</span>
           ) : (
-            <span className="product-new-label">Available</span>
+            <span >Available</span>
           )}
         </div>
-        <div className="product-content">
-          <h3 className="title">
+        <div >
+          <h3 >
             <a href={post.title}>{post.title}</a>
           </h3>
-          <div className="info">
+          <div >
             <span>{post.date}</span>
             <br />
           </div>

@@ -44,24 +44,24 @@ function ChatPage({ id, thread }) {
       : messageArray.map(message => {
           if (message.senderEmail === loggedInUser) {
             return (
-              <div className="outgoing_msg" key={message.id}>
-                <div className="sent_msg">
+              <div  key={message.id}>
+                <div >
                   <p>{message.messageBody}</p>
-                  <span className="time_date"> {message.date}</span>{' '}
+                  <span > {message.date}</span>{' '}
                 </div>
               </div>
             );
           } else {
             return (
-              <div className="incoming_msg" key={message.id}>
-                <div className="incoming_msg_img">
+              <div  key={message.id}>
+                <div >
                   {' '}
                   <img src="/images/sender.jpeg" alt="name" />{' '}
                 </div>
-                <div className="received_msg">
-                  <div className="received_withd_msg">
+                <div >
+                  <div >
                     <p>{message.messageBody}</p>
-                    <span className="time_date"> {message.date}</span>
+                    <span > {message.date}</span>
                   </div>
                 </div>
               </div>
@@ -71,20 +71,18 @@ function ChatPage({ id, thread }) {
 
   return (
     <form>
-      <div className="msg_history">{messages}</div>
-      <div className="type_msg">
-        <div className="input_msg_write">
+      <div >{messages}</div>
+      <div >
+        <div >
           <input
             autoFocus
             value={messageText.text}
             id="chatInput"
             type="text"
-            className="write_msg"
             onChange={e => setMessageText({ text: e.target.value })}
             placeholder="Type a message"
           />
-          <button className="msg_send_btn" onClick={handleClick} type="submit">
-            <i className="fa fa-paper-plane" aria-hidden="true"></i>
+          <button onClick={handleClick} type="submit">
           </button>
         </div>
       </div>
