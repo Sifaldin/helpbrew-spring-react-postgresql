@@ -1,5 +1,3 @@
-import CommentsPage from "../../comments/templates/Comments";
-
 export default function SkillPost({
   post,
   handleUpdateClick,
