@@ -9,7 +9,12 @@ import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
 
+<<<<<<< HEAD:frontend/src/components/posts/SinglePost.jsx
+function SinglePost(onUpdateClick) {
+  
+=======
 function SinglePost() {
+>>>>>>> main:frontend/src/components/posts/templates/SinglePost.jsx
   const userEmail = window.sessionStorage.getItem("userEmail");
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
@@ -17,7 +22,6 @@ function SinglePost() {
   const history = useHistory();
   const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
-
   const [email, setEmail] = useState("");
 
   useEffect(() => {

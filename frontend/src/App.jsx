@@ -14,6 +14,9 @@ import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
+import CommentPage from "./components/comments/CommentsPage";
+import NewPostForm from "./components/posts/NewPostForm";
+import ProfilePage from "./components/profile/ProfilePage";
 import NewPostForm from "./components/posts/templates/NewPostForm";
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -22,12 +25,17 @@ function App() {
 
   const loggedInRouter = (
     <Router>
+    
       <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
         <Switch>
           <Route path="/posts/category/giveaways" exact>
             <PostsPage category={"giveaways"} />
+          </Route>
+
+          <Route path="/user" exact>
+            <ProfilePage/>
           </Route>
 
           <Route path="/posts/category/skills" exact>
