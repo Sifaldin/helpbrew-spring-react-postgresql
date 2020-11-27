@@ -1,13 +1,22 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
+
+import "../../css/Components/layout/layout.css"
 
 function Navbar({ onLogout }) {
   return (
-    <nav>
-      <h1>HelpBrew</h1>
+    <nav className = "navBar">
+    
 
       <div className="navbar">
+      
         <ul>
+
+        <Link to="/">
+          <h1>HelpBrew</h1>
+        </Link>
+        
+
           <li>
             <NavLink exact to="/" activeClassName="active-link">
               Home
@@ -48,6 +57,17 @@ function Navbar({ onLogout }) {
             <NavLink exact to="/posts/new" activeClassName="active-link">
               New Post
             </NavLink>
+          </li>
+
+          <li>
+            <NavLink
+              exact
+              to="/user"
+              activeClassName="active-link"
+            >
+              Profile Page
+            </NavLink>
+
           </li>
 
           {/* commented out the chat link for the moment /Elena */}

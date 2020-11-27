@@ -7,6 +7,7 @@ import PostUpdateForm from "./PostUpdateForm";
 import Api from "../../api/Api";
 
 function SinglePost(onUpdateClick) {
+  
   const userEmail = window.sessionStorage.getItem("userEmail");
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
@@ -14,7 +15,6 @@ function SinglePost(onUpdateClick) {
   const history = useHistory();
   const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
-
   const [email, setEmail] = useState("");
 
   useEffect(() => {
