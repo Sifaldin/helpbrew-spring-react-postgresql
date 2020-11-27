@@ -14,8 +14,7 @@ import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
-import CommentPage from "./components/comments/CommentsPage";
-import NewPostForm from "./components/posts/NewPostForm";
+
 import ProfilePage from "./components/profile/ProfilePage";
 import NewPostForm from "./components/posts/templates/NewPostForm";
 function App() {
