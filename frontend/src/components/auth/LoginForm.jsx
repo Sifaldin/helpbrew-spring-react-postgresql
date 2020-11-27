@@ -6,10 +6,8 @@ function LoginForm({ onSubmit }) {
 
   return (
     <div >
-      <div >
-        <label htmlFor="email" >
-          Email
-        </label>
+      <div className="signinform">
+      <div className="signin-1">
         <input
           id="email1"
           type="text"
@@ -19,10 +17,7 @@ function LoginForm({ onSubmit }) {
           placeholder="Enter your email"
         />
       </div>
-      <div >
-        <label htmlFor="pass" >
-          Password
-        </label>
+      <div className="signin2">
         <input
           id="pass2"
           type="password"
@@ -32,14 +27,18 @@ function LoginForm({ onSubmit }) {
           placeholder="Enter your password"
         />
       </div>
-      <div >
-        <input
-          type="submit"
+      <div className="signin3">
+        <button type="submit"
           onClick={() => onSubmit({ email, password })}
-          value="Sign In"
-        />
+          value="Sign In">
+          SIGN IN
+          </button>
+        
+      </div>
+      <h5>Not a member? </h5>
       </div>
     </div>
+    
   );
 }
 

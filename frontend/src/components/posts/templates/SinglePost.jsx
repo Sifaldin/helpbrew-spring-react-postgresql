@@ -1,13 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useLocation } from "react-router-dom";
-import ErrorScreen from "../tempscreens/ErrorScreen";
-import ChatApi from "../../api/ChatApi";
-import CommentsPage from "../comments/CommentsPage";
+import ErrorScreen from "../../tempscreens/ErrorScreen";
+import ChatApi from "../../../api/ChatApi";
+import Comments from "../../comments/templates/Comments";
 import PostUpdateForm from "./PostUpdateForm";
-import Api from "../../api/Api";
+import Api from "../../../api/Api";
+import SkillPost from "../organisms/SkillPost";
+import GiveawayPost from "../organisms/GiveawayPost";
+import MonetarySupportPost from "../organisms/MoneterySupportPost";
 
+<<<<<<< HEAD:frontend/src/components/posts/SinglePost.jsx
 function SinglePost(onUpdateClick) {
   
+=======
+function SinglePost() {
+>>>>>>> main:frontend/src/components/posts/templates/SinglePost.jsx
   const userEmail = window.sessionStorage.getItem("userEmail");
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
@@ -68,6 +75,27 @@ function SinglePost(onUpdateClick) {
     setIsUpdating(true);
   };
 
+  const getPost = () => {
+    switch (post.category) {
+      case "skills":
+        return (
+          <SkillPost
+            post={post}
+            handleUpdateClick={handleUpdateClick}
+            deletePost={deletePost}
+            email={email}
+          />
+        );
+      case "giveaways":
+        return <GiveawayPost />;
+      case "monetary-support":
+        return <MonetarySupportPost />;
+      default:
+        return null;
+    }
+  };
+
+  console.log(post.category === "skills");
   try {
     return isUpdating ? (
       <PostUpdateForm
@@ -77,54 +105,8 @@ function SinglePost(onUpdateClick) {
       />
     ) : (
       <div>
-        <div>
-          <div>
-            <div>
-              <div>
-                <div id="pic-1">
-                  <img src={post.imageUrl} alt="Single post img" />
-                </div>
-              </div>
-            </div>
-            <div>
-              <h3>{post.title}</h3>
-              <p>{post.body}</p>
-              {post.email === email ? (
-                <div>
-                  <button onClick={() => deletePost()}>Delete</button>
-
-                  <button onClick={handleUpdateClick}>Update</button>
-                </div>
-              ) : null}
-
-              <CommentsPage post={post} />
-
-              {/* <div className="action">
-                {isPoster ? (
-                  <button
-                    className="singlePost-btn btn btn-default"
-                    onClick={handleClaim}
-                    type="button"
-                  >
-                    {post.claimed ? "Set Available" : "Set Claimed"}
-                  </button>
-                ) : null}
-                {isPoster ? null : (
-                  <button
-                    className="singlePost-btn btn btn-default"
-                    onClick={messageHandler}
-                    type="button"
-                  >
-                    Message Poster
-                  </button>
-                )}
-                <button className="like btn btn-default" type="button">
-                  <span className="fa fa-heart"></span>
-                </button>
-              </div> */}
-            </div>
-          </div>
-        </div>
+        {getPost()}
+        <Comments post={post} />
       </div>
     );
   } catch (e) {

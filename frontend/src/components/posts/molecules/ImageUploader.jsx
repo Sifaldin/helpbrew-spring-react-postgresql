@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import ReactImageUploadComponent from 'react-images-upload';
+import React, { useEffect, useState } from "react";
+import ReactImageUploadComponent from "react-images-upload";
 /*
 Image Uploading Note:
 Ideally the API should be in the backend, however, with testing, sending the image to the backend and then uploading takes too long.
@@ -11,11 +11,11 @@ the time to figure it out. I'm sure with more time, we could do it.
 function ImageUploader({ setImgUrl, setUploading }) {
   const [payload, setPayload] = useState(null);
 
-  const updateImage = event => {
+  const updateImage = (event) => {
     var file = event[0];
     var data = new FormData();
-    data.append('file', file);
-    data.append('upload_preset', 'harvest');
+    data.append("file", file);
+    data.append("upload_preset", "harvest");
     setPayload(data);
   };
 
@@ -25,15 +25,15 @@ function ImageUploader({ setImgUrl, setUploading }) {
       try {
         if (payload !== null) {
           const response = await fetch(
-            'https://api.cloudinary.com/v1_1/dcbkjgr7c/image/upload', //We should probably put this in .env for now.
+            "https://api.cloudinary.com/v1_1/dcbkjgr7c/image/upload", //We should probably put this in .env for now.
             {
-              method: 'post',
+              method: "post",
               body: payload,
-              signal: abortFetch.signal
+              signal: abortFetch.signal,
             }
           );
           const jsonResponse = await response.json();
-          setImgUrl(jsonResponse['secure_url']);
+          setImgUrl(jsonResponse["secure_url"]);
           setUploading(false);
         }
       } catch (error) {

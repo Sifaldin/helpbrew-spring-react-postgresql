@@ -1,22 +1,18 @@
-import React, { useState, useEffect } from 'react';
-import CommentUpdateForm from './CommentUpdateForm';
-import Api from "../../api/Api";
+import React, { useState, useEffect } from "react";
+import CommentUpdateForm from "../organisms/CommentUpdateForm";
+import Api from "../../../api/Api";
 
 function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
-
   const [isUpdating, setIsUpdating] = useState(false);
   const [reaction, setReaction] = useState(comment.reaction);
   const [name, setName] = useState("");
 
   useEffect(() => {
-    Api.get("/user/")
-      .then(response => {
-        const name = response.data
-        setName(name);
-      });
+    Api.get("/user/").then((response) => {
+      const name = response.data;
+      setName(name);
+    });
   }, []);
-
-
 
   const handleUpdateClick = () => {
     setIsUpdating(true);
@@ -36,6 +32,8 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
     });
   };
 
+  console.log(name);
+
   return isUpdating ? (
     <CommentUpdateForm
       oldComment={comment}
@@ -43,33 +41,28 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
       setIsUpdating={setIsUpdating}
     />
   ) : (
+    <div>
+      <h5>{comment.authorName}</h5>
+      <h4>{comment.body}</h4>
+
       <div>
-        <h5>{comment.authorName}</h5>
-        <h4>{comment.body}</h4>
-
-        <div >
-          <button onClick={incrementLike}>
-            <i ></i> {reaction.like}
-          </button>
-          <button onClick={incrementDislike}>
-            <i ></i> {reaction.dislike}
-          </button>
-        </div>
-
-        {(comment.authorName === name) ?
-          <div>
-            <button onClick={() => onDeleteClick(comment.id)}>
-              Delete
-            </button>
-
-            <button onClick={handleUpdateClick}>
-              Update
-            </button>
-          </div>
-          : null}
-
+        <button onClick={incrementLike}>
+          <i></i> {reaction.like}
+        </button>
+        <button onClick={incrementDislike}>
+          <i></i> {reaction.dislike}
+        </button>
       </div>
-    );
+
+      {comment.authorName === name ? (
+        <div>
+          <button onClick={() => onDeleteClick(comment.id)}>Delete</button>
+
+          <button onClick={handleUpdateClick}>Update</button>
+        </div>
+      ) : null}
+    </div>
+  );
 }
 
 export default CommentCard;

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Api from "../../api/Api";
+import Api from "../../../api/Api";
 import { Link } from "react-router-dom";
 
 function PostCard({ post }) {

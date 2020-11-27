@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from "react";
-import NewCommentForm from "./NewCommentForm";
-import CommentCard from "./CommentCard";
-import Api from "../../api/Api";
-import CommentApi from "..//../api/CommentApi";
+import NewCommentForm from "../organisms/NewCommentForm";
+import CommentCard from "../molecules/CommentCard";
+import Api from "../../../api/Api";
+import CommentApi from "../../../api/CommentApi";
 
-function CommentsPage({ post }) {
+export default function Comments({ post }) {
   const [comments, setComments] = useState([]);
 
   const getAllByPost = () => {
@@ -46,5 +46,3 @@ function CommentsPage({ post }) {
     </div>
   );
 }
-
-export default CommentsPage;
