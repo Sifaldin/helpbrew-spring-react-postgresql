@@ -1,5 +1,8 @@
 import React from 'react';
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
 import Auth from '../../services/Auth';
+import Navbar from '../layout/Navbar';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
@@ -19,12 +22,13 @@ function LoginPage() {
   };
 
   return (
-    <div >
-      <div >
-        <div >
-          <div >
-            <div >
-              <input id="tab-1" type="radio" name="tab"  checked />
+    <div className="loginpage">
+          <div>
+            <div>
+            <Router>
+      <Navbar onLogout={() => Auth.logout()} />
+        </Router>
+              {/*<<input id="tab-1" type="radio" name="tab"  checked />
               <label htmlFor="tab-1" >
                 Login
               </label>
@@ -32,16 +36,12 @@ function LoginPage() {
               <label htmlFor="tab-2" >
                 Sign Up
               </label>
-              <div >
+  <div >*/}
                 <LoginForm onSubmit={login} />
-
                 <RegisterForm onSubmit={register} />
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
   );
 }
 

@@ -4,9 +4,8 @@ import { NavLink } from "react-router-dom";
 function Navbar({ onLogout }) {
   return (
     <nav>
-      <h1>HelpBrew</h1>
-
       <div className="navbar">
+      <h1>HelpBrew</h1>
         <ul>
           <li>
             <NavLink exact to="/" activeClassName="active-link">

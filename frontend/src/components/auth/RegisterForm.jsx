@@ -6,11 +6,8 @@ function RegisterForm({ onSubmit }) {
   const [password, setPassword] = useState('');
 
   return (
-    <div >
-      <div >
-        <label htmlFor="user" >
-          Username
-        </label>
+    <div className="signupform">
+      <div className="signup1">
         <input
           id="user"
           type="text"
@@ -19,10 +16,7 @@ function RegisterForm({ onSubmit }) {
           placeholder="Create your Username"
         />
       </div>
-      <div >
-        <label htmlFor="email">
-          Email Address
-        </label>
+      <div className="signup2">
         <input
           id="email2"
           type="text"
@@ -31,10 +25,7 @@ function RegisterForm({ onSubmit }) {
           placeholder="Enter your email address"
         />
       </div>
-      <div >
-        <label htmlFor="pass">
-          Password
-        </label>
+      <div className="signup3">
         <input
           id="pass1"
           type="password"
@@ -45,16 +36,11 @@ function RegisterForm({ onSubmit }) {
         />
       </div>
       <div >
-        <input
+        <button
           type="submit"
           onClick={e => onSubmit({ name, email, password })}
           value="Sign Up"
-        />
-      </div>
-      <div ></div>
-      <div >
-        {' '}
-        <label htmlFor="tab-1">Already Member?</label>{' '}
+        > SIGN UP</button>
       </div>
     </div>
   );
