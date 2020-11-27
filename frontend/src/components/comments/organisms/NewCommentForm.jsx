@@ -1,8 +1,16 @@
 import React, { useEffect, useState } from "react";
+import Api from "../../../api/Api";
 
 export default function NewCommentForm({ onSubmit, post }) {
-  const [authorName, setAuthorName] = useState(post.email);
+  const [authorName, setAuthorName] = useState("");
   const [body, setBody] = useState("");
+
+  useEffect(() => {
+    Api.get("/user/").then((response) => {
+      const email = response.data;
+      setAuthorName(email);
+    });
+  }, []);
 
   // Something still happing here?
   return (
@@ -20,10 +28,7 @@ export default function NewCommentForm({ onSubmit, post }) {
             value= {authorName}
        onChange = {event => setAuthorName(event.target.value)}/>*/}
 
-      <button
-        
-        onClick={() => onSubmit({ body, authorName, post })}
-      >
+      <button onClick={() => onSubmit({ body, authorName, post })}>
         Comment
       </button>
     </div>

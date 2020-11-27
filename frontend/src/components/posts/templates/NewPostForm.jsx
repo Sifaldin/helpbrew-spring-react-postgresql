@@ -1,8 +1,8 @@
 import { format } from "date-fns";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
-import Api from "../../api/Api";
-import ImageUploader from "./ImageUploader";
+import Api from "../../../api/Api";
+import ImageUploader from "../molecules/ImageUploader";
 
 function NewPostForm() {
   const history = useHistory();
@@ -25,6 +25,7 @@ function NewPostForm() {
       poster: postAs,
       category: postCategory,
     };
+    console.log(newPost.imageUrl);
     Api.post("/posts", newPost).then((res) => {
       history.push(`/posts/category/${postCategory}`);
     });
@@ -63,7 +64,6 @@ function NewPostForm() {
           <div>
             <label>Choose a category:</label>
             <select
-              value="giveaways"
               name="category"
               onChange={(e) => setPostCategory(e.target.value)}
             >

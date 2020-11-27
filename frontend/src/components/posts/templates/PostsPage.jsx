@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import PostCard from "./PostCard";
-import Api from "../../api/Api";
+import PostCard from "../molecules/PostCard";
+import Api from "../../../api/Api";
 
 export default function PostsPage({ category }) {
   const [posts, setPosts] = useState([]);
@@ -22,5 +22,3 @@ export default function PostsPage({ category }) {
     </div>
   );
 }
-
-

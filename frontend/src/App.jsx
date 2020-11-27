@@ -11,11 +11,10 @@ import Navbar from "./components/layout/Navbar";
 
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
-import PostsPage from "./components/posts/PostsPage";
-import SinglePost from "./components/posts/SinglePost";
+import PostsPage from "./components/posts/templates/PostsPage";
+import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
-import CommentPage from "./components/comments/CommentsPage";
-import NewPostForm from "./components/posts/NewPostForm";
+import NewPostForm from "./components/posts/templates/NewPostForm";
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
 
@@ -45,10 +44,6 @@ function App() {
 
           <Route path="/posts/:id">
             <SinglePost />
-          </Route>
-
-          <Route path="/comments">
-            <CommentPage />
           </Route>
 
           <Route path="/chat" exact>
