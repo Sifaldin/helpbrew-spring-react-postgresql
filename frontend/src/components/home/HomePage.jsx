@@ -1,14 +1,15 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import slide1 from "../../Images/slide1.png";
-import slide2 from "../../Images/slide2.jpg";
-import slide3 from "../../Images/slide3.jpg";
+
+// The page should show posts posted by the logged in user,
+// split into three main categories.
 
 function HomePage() {
   const history = useHistory();
   return (
     <div className="user-dashboard">
       <h1>User Dashboard</h1>
+
       <div className="user-giveaways">
         <p>Giveaway 1</p>
         <p>Giveaway 2</p>
