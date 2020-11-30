@@ -1,36 +1,52 @@
 import React, { useEffect, useState } from "react";
 import Api from "../../api/Api";
 import "../../css/Components/profilePage/profile.css";
+import Auth from "../../services/Auth"
 
 export default function ProfilePage() {
 
+
+    const onLogout = () => Auth.logout();
     const uploadedImage = React.useRef(null);
     const imageUploader = React.useRef(null);
+    const [user, setUser] = useState('');
+    const [imgUrl, setImgUrl] = useState('');
+
+
+     const updateUser = (updatedUser) => {
+                    Api.put("/user", updateUser).then((res) => setUser(res.data));
+                  };
 
     const handleImageUpload = e => {
         const [file] = e.target.files;
         if (file) {
             const reader = new FileReader();
             const { current } = uploadedImage;
+           
             current.file = file;
             reader.onload = e => {
                 current.src = e.target.result;
             };
+            reader.onload = e => {
+                current.src = e.target.result;
+                const imageURL = URL.createObjectURL(file);
+                setImgUrl(imageURL);
+                console.log(imageURL);
+            };
             reader.readAsDataURL(file);
+            updateUser();
+
         }
     };
-
-
-    const [user, setUser] = useState('');
-
 
     useEffect(() => {
         Api.get("/user/me").then((response) => {
             const user = response.data;
             setUser(user);
+
         });
     }, []);
-
+    console.log(user);
 
 
 
@@ -38,45 +54,46 @@ export default function ProfilePage() {
 
         <div className="profilePage">
 
+            <div className = "imgOuterContainer">
+                <div className="img-container" onClick={() => imageUploader.current.click()}  >
 
-            <div 
-                style={{
-                    height: "10rem",
-                    width: "10rem",
-                    border: "1px solid black",
-                    borderRadius: "50%"
-                }}
-                onClick={() => imageUploader.current.click()}
-            >
-                <img
-                    ref={uploadedImage}
-                    style={{
-                        width: "100%",
-                        height: "100%",
-                        position: "relative",
-                        borderRadius: "50%"
-
-                    }}
-                />
-                  <input
-                type="file"
-                accept="image/*"
-                onChange={handleImageUpload}
-                ref={imageUploader}
-                style={{
-                    display: "none"
-                }}
-            />
+                   
+                    <img className="profileImg" 
+                        ref={uploadedImage}
+                    />
 
             </div>
 
-           <div>
-           <h1>{user.name}</h1>
-            <h2>{user.email}</h2>
-           </div>
-           
-            
+                <input
+                        type="file"
+                        accept="image/*"
+                        onChange={handleImageUpload}
+                        ref={imageUploader}
+                        style={{  display: "none"  }}    />
+            </div>
 
+
+
+            <div>
+                <h1>{user.name}</h1>
+                <h2>{user.email}</h2>
+            </div>
+
+            <div className="profileTools">
+
+                <div><i class="fas fa-bell"></i></div>
+                <div><i class="fas fa-inbox"></i></div>
+                <div><i class="fas fa-calendar-alt"></i></div>
+
+            </div>
+
+
+
+
+
+
+
+            <button onClick={onLogout}>Logout</button>
 
 
 
