@@ -19,6 +19,7 @@ function SinglePost() {
   const [isUpdating, setIsUpdating] = useState(false);
   const [email, setEmail] = useState("");
 
+  //useEffect hook fetches the email of the logged in user and sets email state above to the fetched email adress.
   useEffect(() => {
     Api.get("/user/").then((response) => {
       const email = response.data;
@@ -41,18 +42,18 @@ function SinglePost() {
   //   setClaimed();
   // };
 
-  const messageHandler = () => {
-    const createOrDirect = async () => {
-      try {
-        const response = await ChatApi.createThread(post.email, {});
-        const thread = response.data;
-        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    createOrDirect();
-  };
+  // const messageHandler = () => {
+  //   const createOrDirect = async () => {
+  //     try {
+  //       const response = await ChatApi.createThread(post.email, {});
+  //       const thread = response.data;
+  //       history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   createOrDirect();
+  // };
 
   const deletePost = (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
@@ -70,6 +71,9 @@ function SinglePost() {
     setIsUpdating(true);
   };
 
+  //getPost() function reads post variable passed as props and checks its category.
+  //Depending on the category of the passed post a component relevant to that category is called.
+  //This process is handled by the switch statement below.
   const getPost = () => {
     switch (post.category) {
       case "skills":
@@ -90,8 +94,8 @@ function SinglePost() {
     }
   };
 
-  console.log(post.category === "skills");
   try {
+    //If user is updating text of the post, PostUpdateForm is displayed.
     return isUpdating ? (
       <PostUpdateForm
         oldPost={post}
@@ -99,6 +103,8 @@ function SinglePost() {
         setIsUpdating={setIsUpdating}
       />
     ) : (
+      //Otherwise details of the post passed as props are displayed(managed by getPost() function above)
+      //followed by comments to that post.
       <div>
         {getPost()}
         <Comments post={post} />

@@ -1,5 +1,7 @@
 import React from "react";
 
+//Displays post belonging to giveaway category. Attention when you write delete block
+//for the post. Check comment in SkillPost.
 export default function GiveawayPost() {
   return (
     <div>
