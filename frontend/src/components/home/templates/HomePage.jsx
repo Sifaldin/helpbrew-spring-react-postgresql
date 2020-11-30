@@ -13,7 +13,7 @@ export default function HomePage({ userPosts, email }) {
   );
 
   return (
-    <div>
+    <div className="dashboard">
       <CategoryBox category={"skills"} posts={skills} />
       <CategoryBox category={"giveaways"} posts={giveaways} />
       <CategoryBox category={"monetary-support"} posts={monetary} />

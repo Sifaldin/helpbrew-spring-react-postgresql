@@ -58,7 +58,7 @@ function App() {
       };
       fetchPosts();
     }
-  }, [loggedIn, email]);
+  }, [loggedIn, email, posts]);
 
   const loggedInRouter = (
     //React Router manages all the routes in the application

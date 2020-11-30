@@ -1,0 +1,19 @@
+.dashboard {
+  margin: 3rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-column-gap: 2rem;
+}
+
+.category-box {
+  background-color: aqua;
+  border-radius: 3rem;
+}
+
+.category-box .top {
+  background-size: 100%;
+  background-position-y: 50%;
+  background-repeat: no-repeat;
+  min-height: 15rem;
+  width: 100%;
+}
