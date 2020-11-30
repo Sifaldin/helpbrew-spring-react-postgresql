@@ -2,10 +2,11 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import Api from "../../../api/Api";
+import App from "../../../App";
 import ImageUploader from "../molecules/ImageUploader";
 
 //Displays the form for creation of a new post by user
-function NewPostForm() {
+function NewPostForm({ setPosts }) {
   const history = useHistory();
 
   const [imgUrl, setImgUrl] = useState("");
@@ -14,6 +15,12 @@ function NewPostForm() {
   const [postAs, setPostAs] = useState("");
   const [uploading, setUploading] = useState(true);
   const [postCategory, setPostCategory] = useState("giveaways");
+
+  const getAll = () => {
+    Api.get("/posts").then((res) => {
+      setPosts(res.data);
+    });
+  };
 
   const submitHandler = (event) => {
     event.preventDefault();
@@ -28,6 +35,7 @@ function NewPostForm() {
     };
     console.log(newPost.imageUrl);
     Api.post("/posts", newPost).then((res) => {
+      getAll();
       history.push(`/posts/category/${postCategory}`);
     });
   };
