@@ -22,7 +22,7 @@ import Api from "./api/Api";
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [posts, setPosts] = useState([]);
-  const [email, setEmail] = useState("");
+  const [user, setUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
@@ -38,12 +38,12 @@ function App() {
     }
   }, [loggedIn]);
 
-  //Fetches the email of the logged in user, to be used by App child components
+  //Fetches the logged in user(includes user picture, name and email), to be used by App child components
   useEffect(() => {
     if (loggedIn) {
-      Api.get("/user/").then((response) => {
-        const email = response.data;
-        setEmail(email);
+      Api.get("/user/me").then((response) => {
+        const user = response.data;
+        setUser(user);
       });
     }
   }, [loggedIn]);
@@ -53,12 +53,15 @@ function App() {
     if (loggedIn) {
       const fetchPosts = async () => {
         const posts = await Api.get(`/posts`).then((res) => res.data);
-        const userPosts = posts.filter((post) => post.email === email);
+        //Filters posts posted only by the logged in user
+        const userPosts = posts.filter((post) => post.email === user.email);
         setUserPosts(userPosts);
       };
       fetchPosts();
     }
-  }, [loggedIn, email, posts]);
+
+  }, [loggedIn, user]);
+
 
   const loggedInRouter = (
     //React Router manages all the routes in the application
@@ -69,7 +72,11 @@ function App() {
         <Switch>
           {/* The route displays the application's homepage */}
           <Route path="/" exact>
-            <HomePage userPosts={userPosts} email={email} />
+            <HomePage userPosts={userPosts} user={user} />
+          </Route>
+
+          <Route path="/user" exact>
+            <ProfilePage />
           </Route>
 
           {/* Givewaways, skills and monetary support categories are displayed by
@@ -78,19 +85,15 @@ function App() {
           display posts belonging to only of the three categories.
            */}
           <Route path="/posts/category/giveaways" exact>
-            <PostsPage category={"giveaways"} />
-          </Route>
-
-          <Route path="/user" exact>
-            <ProfilePage />
+            <PostsPage category={"giveaways"} posts={posts} />
           </Route>
 
           <Route path="/posts/category/skills" exact>
-            <PostsPage category={"skills"} />
+            <PostsPage category={"skills"} posts={posts} />
           </Route>
 
           <Route path="/posts/category/monetary-support" exact>
-            <PostsPage category={"monetary-support"} />
+            <PostsPage category={"monetary-support"} posts={posts} />
           </Route>
 
           {/* This route is used to create new posts when user clicks on new post button
