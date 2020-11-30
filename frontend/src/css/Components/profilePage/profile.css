@@ -1,0 +1,14 @@
+.profilePage{
+  margin: auto;
+  width: 60%;
+  border: 5px solid #e9b937;
+  padding: 10px;
+  text-align: center;
+  justify-content: center;
+}
+
+.profilePage img {
+  margin: auto;
+  padding: 10px;
+
+}

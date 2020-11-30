@@ -13,6 +13,8 @@ import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
+
+import ProfilePage from "./components/profile/ProfilePage";
 import NewPostForm from "./components/posts/templates/NewPostForm";
 
 function App() {
@@ -23,6 +25,7 @@ function App() {
   const loggedInRouter = (
     //React Router manages all the routes in the application
     <Router>
+    
       <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
@@ -39,6 +42,10 @@ function App() {
            */}
           <Route path="/posts/category/giveaways" exact>
             <PostsPage category={"giveaways"} />
+          </Route>
+
+          <Route path="/user" exact>
+            <ProfilePage/>
           </Route>
 
           <Route path="/posts/category/skills" exact>

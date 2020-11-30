@@ -1,3 +1,9 @@
+.navBar li, h1 {
+    display: inline;
+    padding: 2%;
+}
+
+
 .navbar{
     list-style: none;
     color: white;

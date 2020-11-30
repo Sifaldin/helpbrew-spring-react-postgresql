@@ -17,7 +17,6 @@ function SinglePost() {
   const history = useHistory();
   const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
-
   const [email, setEmail] = useState("");
 
   //useEffect hook fetches the email of the logged in user and sets email state above to the fetched email adress.
