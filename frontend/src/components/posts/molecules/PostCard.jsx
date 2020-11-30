@@ -2,6 +2,10 @@ import React, { useState } from "react";
 import Api from "../../../api/Api";
 import { Link } from "react-router-dom";
 
+//PostCard displays a post in a listing of posts on PostsPage.
+
+//The code below should be worked through. What information should be displayed on
+//PostCard? Shall tags "Available"/"Claimed" stay as they are or are we changing that?
 function PostCard({ post }) {
   const [reaction, setReaction] = useState(post.reaction);
   const incrementLike = () => {
@@ -40,6 +44,10 @@ function PostCard({ post }) {
             <span>{post.date}</span>
             <br />
           </div>
+
+          {/* Once View Post button is clicked by user, user is redirected to 
+          the SinglePost page where all the details about the post are specified.
+          */}
           <Link
             className="claim"
             to={{ pathname: `/posts/${post.id}`, state: { post } }}

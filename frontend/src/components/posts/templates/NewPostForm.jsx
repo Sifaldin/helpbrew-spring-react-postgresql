@@ -4,6 +4,7 @@ import { useHistory } from "react-router-dom";
 import Api from "../../../api/Api";
 import ImageUploader from "../molecules/ImageUploader";
 
+//Displays the form for creation of a new post by user
 function NewPostForm() {
   const history = useHistory();
 

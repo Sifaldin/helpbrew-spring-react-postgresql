@@ -1,3 +1,4 @@
+//Displays post belonging to skills category.
 export default function SkillPost({
   post,
   handleUpdateClick,
@@ -7,27 +8,30 @@ export default function SkillPost({
   console.log(post);
   return (
     <div>
+      <div id="pic-1">
+        <img src={post.imageUrl} alt="Single post img" />
+      </div>
+
       <div>
-        <div>
+        <h3>{post.title}</h3>
+        <p>{post.body}</p>
+
+        {/* The post is deleted only if the email of the logged in user and 
+        email of the user who wrote the post are the same */}
+
+        {/* !!NB: This block of code will be the same for GiveawayPost and MonetarySupoprtPost.
+        It would be good to refactor the block and put it one level above(for example, in 
+          delete function in SinglePost component) to avoid code duplication
+        */}
+        {post.email === email ? (
           <div>
-            <div>
-              <div id="pic-1">
-                <img src={post.imageUrl} alt="Single post img" />
-              </div>
-            </div>
+            <button onClick={() => deletePost()}>Delete</button>
+
+            <button onClick={handleUpdateClick}>Update</button>
           </div>
-          <div>
-            <h3>{post.title}</h3>
-            <p>{post.body}</p>
-            {post.email === email ? (
-              <div>
-                <button onClick={() => deletePost()}>Delete</button>
+        ) : null}
 
-                <button onClick={handleUpdateClick}>Update</button>
-              </div>
-            ) : null}
-
-            {/* <div className="action">
+        {/* <div className="action">
                 {isPoster ? (
                   <button
                     className="singlePost-btn btn btn-default"
@@ -50,8 +54,6 @@ export default function SkillPost({
                   <span className="fa fa-heart"></span>
                 </button>
               </div> */}
-          </div>
-        </div>
       </div>
     </div>
   );

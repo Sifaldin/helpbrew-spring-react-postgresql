@@ -8,24 +8,35 @@ import Auth from "./services/Auth";
 import Navbar from "./components/layout/Navbar";
 
 // Import pages
-
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
 import NewPostForm from "./components/posts/templates/NewPostForm";
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   const loggedInRouter = (
+    //React Router manages all the routes in the application
     <Router>
       <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
         <Switch>
+          {/* The route displays the application's homepage */}
+          <Route path="/">
+            <HomePage />
+          </Route>
+
+          {/* Givewaways, skills and monetary support categories are displayed by
+          the same component - PostsPage. PostsPage recieves one of the three category names
+          as props. The category name props is used by PostsPage in order to
+          display posts belonging to only of the three categories.
+           */}
           <Route path="/posts/category/giveaways" exact>
             <PostsPage category={"giveaways"} />
           </Route>
@@ -38,30 +49,34 @@ function App() {
             <PostsPage category={"monetary-support"} />
           </Route>
 
+          {/* This route is used to create new posts when user clicks on new post button
+          displayed in the NavBar */}
           <Route path="/posts/new">
             <NewPostForm />
           </Route>
 
+          {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
             <SinglePost />
           </Route>
 
-          <Route path="/chat" exact>
+          {/* The functionality for the routes below is not implemented yet.
+          Uncomment or remove if the routes are not needed.
+          */}
+
+          {/* <Route path="/chat" exact>
             <ThreadPage />
           </Route>
 
           <Route path="/chat/:id">
             <ThreadPage />
-          </Route>
-
-          <Route path="/">
-            <HomePage />
-          </Route>
+          </Route> */}
         </Switch>
       </div>
     </Router>
   );
 
+  // The first page displayed by the app is the login page.
   return loggedIn ? loggedInRouter : <LoginPage />;
 }
 
