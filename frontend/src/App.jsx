@@ -9,7 +9,7 @@ import Navbar from "./components/layout/Navbar";
 
 // Import pages
 import LoginPage from "./components/auth/LoginPage";
-import HomePage from "./components/home/HomePage";
+import HomePage from "./components/home/templates/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
@@ -25,13 +25,12 @@ function App() {
   const loggedInRouter = (
     //React Router manages all the routes in the application
     <Router>
-    
       <Navbar onLogout={() => Auth.logout()} />
 
       <div className="container mt-5">
         <Switch>
           {/* The route displays the application's homepage */}
-          <Route path="/">
+          <Route path="/" exact>
             <HomePage />
           </Route>
 
@@ -45,7 +44,7 @@ function App() {
           </Route>
 
           <Route path="/user" exact>
-            <ProfilePage/>
+            <ProfilePage />
           </Route>
 
           <Route path="/posts/category/skills" exact>
