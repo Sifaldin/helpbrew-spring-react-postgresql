@@ -1,14 +1,49 @@
-.profilePage{
+.profilePage {
   margin: auto;
   width: 60%;
   border: 5px solid #e9b937;
   padding: 10px;
   text-align: center;
   justify-content: center;
+  background-color: rgb(253, 240, 216);
+  justify-content: center;
+  text-align: center;
+  align-items: center;
+  box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
+  border-radius: 4px;
+  position: relative;
+  height: 100%;
+  border-radius: 25px;
 }
 
 .profilePage img {
   margin: auto;
   padding: 10px;
+}
 
+.imgOuterContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.img-container {
+  height: 10rem;
+  width: 10rem;
+  border: 1px solid black;
+  border-radius: 50%;
+}
+
+.profileImg {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.profileTools {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 20px;
+  margin: 2rem auto;
 }

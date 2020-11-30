@@ -3,6 +3,7 @@ package se.kth.sda.skeleton.user;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import se.kth.sda.skeleton.post.Post;
 
 @Service()
 public class UserService {
@@ -21,5 +22,9 @@ public class UserService {
         String encryptedPass = passwordEncoder.encode(user.getPassword());
         user.setPassword(encryptedPass);
         userRepository.save(user);
+    }
+
+    public User update(User updatedUser) {
+        return userRepository.save(updatedUser);
     }
 }
