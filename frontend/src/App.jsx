@@ -59,7 +59,9 @@ function App() {
       };
       fetchPosts();
     }
+
   }, [loggedIn, user]);
+
 
   const loggedInRouter = (
     //React Router manages all the routes in the application

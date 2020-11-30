@@ -1,75 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap');
-*{
-    margin: 0%;
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200&display=swap");
+* {
+  margin: 0%;
 }
-.loginpage{
-    background-image: url('..//..//../Images/austin-kehmeier-lyiKExA4zQA-unsplash\ 1.png');
-    background-repeat: no-repeat;    
-    background-position: 350px 0px;
- 
+.loginpage {
+  background-image: url("..//..//../assets/austin-kehmeier-lyiKExA4zQA-unsplash\ 1.png");
+  background-repeat: no-repeat;
+  background-position: 350px 0px;
 }
-.signinform{
-    text-align: end;
-    border-style: none;
-    margin-top: 10rem;
-    font-family: Source-Sans-Pro;
-}
-
-.signinform input{
-    padding: 1.3rem;
-    margin-right: 15rem;
-    border-style: solid 0.02rem;
-    height:4rem;
-    width: 25rem;
-    border: none;
-    border-radius: 1rem;
+.signinform {
+  text-align: end;
+  border-style: none;
+  margin-top: 10rem;
+  font-family: Source-Sans-Pro;
 }
 
-.signin-1, .signin2{
-margin: 1.5rem;
+.signinform input {
+  padding: 1.3rem;
+  margin-right: 15rem;
+  border-style: solid 0.02rem;
+  height: 4rem;
+  width: 25rem;
+  border: none;
+  border-radius: 1rem;
 }
 
-.signinform button{
-    background: none;
-    height: 4rem;
-    width: 25rem;
-    margin-right: 16.5rem;
-    background-color: orange;
-    border-style: none;
-    border-radius: 1rem;
-    color: white;
-    
+.signin-1,
+.signin2 {
+  margin: 1.5rem;
 }
 
-
-.signupform{
-    text-align: end;
-    border-style: none;
-    margin-top: 8rem;
-    font-family: Source-Sans-Pro;
+.signinform button {
+  background: none;
+  height: 4rem;
+  width: 25rem;
+  margin-right: 16.5rem;
+  background-color: orange;
+  border-style: none;
+  border-radius: 1rem;
+  color: white;
 }
 
-.signupform input{
-    padding: 1.3rem;
-    margin-right: 15rem;
-    border-style: solid 0.02rem;
-    height:4rem;
-    width: 25rem;
-    border: none;
-    border-radius: 1rem;
+.signupform {
+  text-align: end;
+  border-style: none;
+  margin-top: 8rem;
+  font-family: Source-Sans-Pro;
 }
 
-.signup1, .signup2, .signup3{
-margin: 1.5rem;
+.signupform input {
+  padding: 1.3rem;
+  margin-right: 15rem;
+  border-style: solid 0.02rem;
+  height: 4rem;
+  width: 25rem;
+  border: none;
+  border-radius: 1rem;
 }
 
-.signupform button{
-    background: none;
-    height: 4rem;
-    width: 25rem;
-    margin-right: 16.5rem;
-    background-color: orange;
-    border-style: none;
-    border-radius: 1rem;
-    color: white;
+.signup1,
+.signup2,
+.signup3 {
+  margin: 1.5rem;
+}
+
+.signupform button {
+  background: none;
+  height: 4rem;
+  width: 25rem;
+  margin-right: 16.5rem;
+  background-color: orange;
+  border-style: none;
+  border-radius: 1rem;
+  color: white;
 }
