@@ -1,31 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import CategoryBox from "../organisms/CategoryBox";
 
 // The page should show posts posted by the logged in user,
 // split into three main categories.
 
-function HomePage() {
-  const history = useHistory();
+export default function HomePage({ userPosts, email }) {
+  const skills = userPosts.filter((post) => post.category === "skills");
+  const giveaways = userPosts.filter((post) => post.category === "giveaways");
+  const monetary = userPosts.filter(
+    (post) => post.category === "monetary-support"
+  );
+
   return (
-    <div className="user-dashboard">
-      <h1>User Dashboard</h1>
-
-      <div className="user-giveaways">
-        <p>Giveaway 1</p>
-        <p>Giveaway 2</p>
-      </div>
-
-      <div className="user-skills">
-        <p>Skill 1</p>
-        <p>Skill 2</p>
-      </div>
-
-      <div className="user-monetary-support">
-        <p>Support 1</p>
-        <p>Support 2</p>
-      </div>
+    <div>
+      <CategoryBox category={"skills"} posts={skills} />
+      <CategoryBox category={"giveaways"} posts={giveaways} />
+      <CategoryBox category={"monetary-support"} posts={monetary} />
     </div>
   );
 }
-
-export default HomePage;
