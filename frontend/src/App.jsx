@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Import custom styles for our application
 import "./css/App.css";
 
-
 // Import pages
 
 import Auth from "./services/Auth";
@@ -19,8 +18,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";
-import Modal from './components/posts/templates/Modal'
-
+import Modal from "./components/posts/templates/Modal";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -62,9 +60,7 @@ function App() {
       };
       fetchPosts();
     }
-
-  }, [loggedIn, user]);
-
+  }, [loggedIn, user, posts]);
 
   const loggedInRouter = (
     //React Router manages all the routes in the application
@@ -75,11 +71,11 @@ function App() {
         <Switch>
           {/* The route displays the application's homepage */}
           <Route path="/" exact>
-            <HomePage userPosts={userPosts} user={user} />
+            <HomePage userPosts={userPosts} />
           </Route>
 
           <Route path="/user" exact>
-            <ProfilePage user = {user} setUser = {setUser}/>
+            <ProfilePage user={user} setUser={setUser} />
           </Route>
 
           {/* Givewaways, skills and monetary support categories are displayed by
@@ -102,18 +98,16 @@ function App() {
           {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
           <Route exact path="/posts/newGiverPost">
-            <NewGiverPost setPosts={setPosts} user={user}/>
+            <NewGiverPost setPosts={setPosts} user={user} />
           </Route>
 
           <Route exact path="/posts/newRequestPost">
-            <NewRequestPost setPosts={setPosts} user={user}/>
+            <NewRequestPost setPosts={setPosts} user={user} />
           </Route>
 
           <Route exact path="/posts/">
             <Modal />
           </Route>
-
-          
 
           {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
