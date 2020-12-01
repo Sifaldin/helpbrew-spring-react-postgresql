@@ -1,0 +1,17 @@
+.posts-page {
+  margin: 2rem auto;
+  display: grid;
+  justify-items: center;
+}
+
+.posts {
+  max-width: 90vw;
+  display: grid;
+  grid-row-gap: 3vh;
+}
+
+@media (min-width: 600px) {
+  .posts {
+    width: 30rem;
+  }
+}
