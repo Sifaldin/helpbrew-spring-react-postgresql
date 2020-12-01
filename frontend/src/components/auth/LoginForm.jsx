@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function LoginForm({ onSubmit }) {
+function LoginForm({ onSubmit, goRegister }) {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,15 +27,29 @@ function LoginForm({ onSubmit }) {
           placeholder="Enter your password"
         />
       </div>
+      <div>
+
+        <button 
+        className="smallButton"
+        onClick = {()=>alert("Think hard!")}>
+          Forgot password
+        </button>
+        <button 
+        className="gotoRegister"
+        onClick = {goRegister}>
+          Not a member
+        </button>
+      </div>
       <div className="signin3">
-        <button type="submit"
+        <button 
+          className="submitButton"
+          type="submit"
           onClick={() => onSubmit({ email, password })}
           value="Sign In">
           SIGN IN
           </button>
         
       </div>
-      <h5>Not a member? </h5>
       </div>
     </div>
     

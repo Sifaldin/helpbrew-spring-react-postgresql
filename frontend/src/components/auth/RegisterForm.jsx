@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function RegisterForm({ onSubmit }) {
+function RegisterForm({ onSubmit, goLogin}) {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -37,10 +37,17 @@ function RegisterForm({ onSubmit }) {
       </div>
       <div >
         <button
+          className="submitButton"
           type="submit"
           onClick={e => onSubmit({ name, email, password })}
           value="Sign Up"
         > SIGN UP</button>
+      <div>
+        <button 
+          className="smallButton"
+          onClick={goLogin}
+        > Already a Member</button>
+      </div>
       </div>
     </div>
   );
