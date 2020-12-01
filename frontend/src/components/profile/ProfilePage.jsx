@@ -29,16 +29,18 @@ export default function ProfilePage({ user, setUser }) {
     const handleImageUpload = () => {
 
     }
+    console.log(user);
 
     return (
 
         <div className="profilePage">
 
-            <div className={"imgOuterContainer"}>
+            { (user.imageUrl === null) ? null : 
+               <div className={"imgOuterContainer"}>
                 <div className="img-container" onClick={handleImageUpload}  >
                     <img className="profileImg" src={user.imageUrl} />
                 </div>
-            </div>
+               </div>   }
 
             <div>
                 <h1>{user.name}</h1>
@@ -52,10 +54,10 @@ export default function ProfilePage({ user, setUser }) {
                 <div><i class="fas fa-calendar-alt"></i></div>
             </div>
 
-            <div>
+            {(user.imageUrl === null) ? <div>
                 <ProfileImageUploader setImgUrl={setImgUrl} />
                 <button onClick={updateUser}>Share</button>
-            </div>
+            </div> : null}
 
             <button onClick={onLogout}>Logout</button>
 
