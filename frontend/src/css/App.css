@@ -8,5 +8,8 @@
 @import "./Components/auth/loginPage.css";
 @import "./Components//Home/Home.css";
 @import "./Components/layout/modal.css";
+
 @import "../css/Components/Post/PostCard.css";
 @import "../css/Components/Post/PostsPage.css";
+
+@import "./Components/profilePage/profile.css";

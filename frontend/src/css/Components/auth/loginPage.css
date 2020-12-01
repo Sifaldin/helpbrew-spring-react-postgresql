@@ -6,7 +6,11 @@
   background-image: url("..//..//../assets/austin-kehmeier-lyiKExA4zQA-unsplash\ 1.png");
   background-repeat: no-repeat;
   background-position: 350px 0px;
+  height: 100%;
+  min-height: 100vh;
+  overflow:hidden;
 }
+
 .signinform {
   text-align: end;
   border-style: none;
@@ -29,7 +33,7 @@
   margin: 1.5rem;
 }
 
-.signinform button {
+.signinform .submitButton {
   background: none;
   height: 4rem;
   width: 25rem;
@@ -38,6 +42,35 @@
   border-style: none;
   border-radius: 1rem;
   color: white;
+}
+
+.signinform .smallButton{
+  border: none;
+  outline:none;
+  background:none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+.signinform .smallButton{
+  border: none;
+  outline:none;
+  background:none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: 9rem;
+  font-size: 14px;
+  font-style: italic;
+}
+
+.signinform .gotoRegister{
+  border: none;
+  outline:none;
+  background:none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: 17rem;
+  font-size: 14px;
+  font-style: italic;
 }
 
 .signupform {
@@ -63,7 +96,7 @@
   margin: 1.5rem;
 }
 
-.signupform button {
+.signupform .submitButton {
   background: none;
   height: 4rem;
   width: 25rem;
@@ -72,4 +105,14 @@
   border-style: none;
   border-radius: 1rem;
   color: white;
+}
+
+.signupform .smallButton{
+  border: none;
+  outline:none;
+  background:none;
+  margin-top: 5px;
+  margin-bottom: 20px;
+  margin-right: 17rem;
+  font-style: italic;
 }
