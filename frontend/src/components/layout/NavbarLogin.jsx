@@ -16,9 +16,9 @@ function NavbarLogin() {
       
         <ul>
 
-        <Link to="/">
-          <h1>HelpBrew</h1>
-        </Link>
+          <Link to="/">
+            <h1>HelpBrew</h1>
+          </Link>
       
           <li>
             <NavLink exact to="/" activeClassName="active-link">
