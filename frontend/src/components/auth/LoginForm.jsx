@@ -27,12 +27,24 @@ function LoginForm({ onSubmit, goRegister }) {
           placeholder="Enter your password"
         />
       </div>
-      <div className ="container">
-        <button >Forget password</button>
-        <button onClick = {goRegister}>Not a member</button>
+      <div>
+
+        <button 
+        className="smallButton"
+        onClick = {()=>alert("Think hard!")}>
+          Forget password
+        </button>
+
+        <button 
+        className="gotoRegister"
+        onClick = {goRegister}>
+          Not a member
+        </button>
       </div>
       <div className="signin3">
-        <button type="submit"
+        <button 
+          className="submitButton"
+          type="submit"
           onClick={() => onSubmit({ email, password })}
           value="Sign In">
           SIGN IN

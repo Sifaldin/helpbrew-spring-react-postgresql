@@ -37,13 +37,17 @@ function RegisterForm({ onSubmit, goLogin}) {
       </div>
       <div >
         <button
+          className="submitButton"
           type="submit"
           onClick={e => onSubmit({ name, email, password })}
           value="Sign Up"
         > SIGN UP</button>
-        <button
+      <div>
+        <button 
+          className="smallButton"
           onClick={goLogin}
         > Already a Member</button>
+      </div>
       </div>
     </div>
   );
