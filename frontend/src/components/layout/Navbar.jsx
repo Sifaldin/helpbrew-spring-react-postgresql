@@ -1,9 +1,16 @@
-import React from "react";
+import React, {useRef} from "react";
 import { NavLink, Link } from "react-router-dom";
-
+import Modal from '../posts/templates/Modal';
 import "../../css/Components/layout/layout.css"
 
 function Navbar({ onLogout }) {
+
+  const modalRef = useRef()
+  const openModal = () => {
+    modalRef.current.openModal()
+  }
+
+
   return (
     <nav className = "navBar">
     
@@ -54,9 +61,12 @@ function Navbar({ onLogout }) {
           </li>
 
           <li>
-            <NavLink exact to="/posts/new" activeClassName="active-link">
+
+            <NavLink to="/Modal" onClick={openModal} activeClassName="active-link">
               New Post
             </NavLink>
+            <Modal ref={modalRef}/>
+            
           </li>
 
           <li>

@@ -6,7 +6,7 @@ import App from "../../../App";
 import ImageUploader from "../molecules/ImageUploader";
 
 //Displays the form for creation of a new post by user
-function NewPostForm({ setPosts }) {
+function NewGiverPost({ setPosts, user }) {
   const history = useHistory();
 
   const [imgUrl, setImgUrl] = useState("");
@@ -42,16 +42,11 @@ function NewPostForm({ setPosts }) {
 
   return (
     <form style={{ width: "100%" }} onSubmit={submitHandler}>
-      <h1 style={{ textAlign: "center", color: "#6C6C6C" }}>Upload Details</h1>
+      <h1 style={{ textAlign: "center", color: "#6C6C6C" }}>Offer help</h1>
       <div>
         <div>
           <div>
-            <label>Post as</label>
-            <input
-              type="text"
-              placeholder="Post as..."
-              onChange={(e) => setPostAs(e.target.value)}
-            />
+            <label>{user.name}</label>
           </div>
           <div>
             <label>Donation Title</label>
@@ -89,9 +84,12 @@ function NewPostForm({ setPosts }) {
         <div>
           <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
         </div>
+        <div>
+          <button onClick= "">Add to calender</button>
+        </div>
       </div>
     </form>
   );
 }
 
-export default NewPostForm;
+export default NewGiverPost;

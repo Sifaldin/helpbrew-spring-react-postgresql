@@ -4,10 +4,11 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // Import custom styles for our application
 import "./css/App.css";
 
-import Auth from "./services/Auth";
-import Navbar from "./components/layout/Navbar";
 
 // Import pages
+
+import Auth from "./services/Auth";
+import Navbar from "./components/layout/Navbar";
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/templates/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
@@ -15,9 +16,11 @@ import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
 
 import ProfilePage from "./components/profile/ProfilePage";
-import NewPostForm from "./components/posts/templates/NewPostForm";
-
+import NewGiverPost from "./components/posts/templates/NewGiverPost";
+import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";
+import Modal from './components/posts/templates/Modal'
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -98,9 +101,19 @@ function App() {
 
           {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
-          <Route path="/posts/new">
-            <NewPostForm setPosts={setPosts} />
+          <Route exact path="/posts/newGiverPost">
+            <NewGiverPost setPosts={setPosts} user={user}/>
           </Route>
+
+          <Route exact path="/posts/newRequestPost">
+            <NewRequestPost setPosts={setPosts} user={user}/>
+          </Route>
+
+          <Route exact path="/posts/">
+            <Modal />
+          </Route>
+
+          
 
           {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
