@@ -32,9 +32,8 @@ function LoginForm({ onSubmit, goRegister }) {
         <button 
         className="smallButton"
         onClick = {()=>alert("Think hard!")}>
-          Forget password
+          Forgot password
         </button>
-
         <button 
         className="gotoRegister"
         onClick = {goRegister}>

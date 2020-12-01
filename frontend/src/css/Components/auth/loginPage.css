@@ -6,6 +6,9 @@
   background-image: url("..//..//../assets/austin-kehmeier-lyiKExA4zQA-unsplash\ 1.png");
   background-repeat: no-repeat;
   background-position: 350px 0px;
+  height: 100%;
+  min-height: 100vh;
+  overflow:hidden;
 }
 
 .signinform {
