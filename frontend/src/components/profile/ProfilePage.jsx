@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Api from "../../api/Api";
-import "../../css/Components/profilePage/profile.css";
 import Auth from "../../services/Auth";
 import ProfileImageUploader from "./ProfileImageUploader";
 
