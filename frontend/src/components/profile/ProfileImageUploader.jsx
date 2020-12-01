@@ -27,7 +27,7 @@ export default function ImageUploader({ setImgUrl }) {
           );
           const jsonResponse = await response.json();
           setImgUrl(jsonResponse["secure_url"]);
-          setUploading(false);
+         
         }
       } catch (error) {
         console.log(error);
