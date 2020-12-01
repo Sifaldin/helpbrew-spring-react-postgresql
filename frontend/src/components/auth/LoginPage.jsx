@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Auth from '../../services/Auth';
@@ -21,6 +21,15 @@ function LoginPage() {
     }
   };
 
+  const [isMember, setIsMember] = useState(true);
+
+  const goRegister =() =>{
+    setIsMember(false);
+  }
+  const goLogin =() =>{
+    setIsMember(true);
+  }
+
   return (
     <div className="loginpage">
           <div>
@@ -37,8 +46,9 @@ function LoginPage() {
                 Sign Up
               </label>
   <div >*/}
-                <LoginForm onSubmit={login} />
-                <RegisterForm onSubmit={register} />
+                {isMember ? 
+              <LoginForm onSubmit={login} goRegister = {goRegister}/> 
+              : <RegisterForm onSubmit={register} goLogin = {goLogin}/>}
               </div>
             </div>
           </div>
