@@ -6,7 +6,6 @@ import ProfileImageUploader from "./ProfileImageUploader";
 
 export default function ProfilePage({ user, setUser }) {
 
-
     const onLogout = () => Auth.logout();
     const [imgUrl, setImgUrl] = useState("");
 
@@ -15,38 +14,21 @@ export default function ProfilePage({ user, setUser }) {
         Api.put("/user/me", img).then((res) => setUser(res.data));
     };
 
-    {/* 
-    const [user, setUser] = useState({});
-    useEffect(() => {
-        Api.get("/user/me").then((response) => {
-             console.log(response.data);
-            setUser(response.data);
-         });
-    }, []);
-     console.log(user);
-    */}
-
-    const handleImageUpload = () => {
-
-    }
-    console.log(user);
-
     return (
 
         <div className="profilePage">
 
             { (user.imageUrl === null) ? null : 
-               <div className={"imgOuterContainer"}>
-                <div className="img-container" onClick={handleImageUpload}  >
+              <div className={"imgOuterContainer"}>
+                <div className="img-container">
                     <img className="profileImg" src={user.imageUrl} />
                 </div>
-               </div>   }
+              </div>  }
 
             <div>
                 <h1>{user.name}</h1>
                 <h2>{user.email}</h2>
             </div>
-
 
             <div className="profileTools">
                 <div><i class="fas fa-bell"></i></div>
@@ -54,7 +36,8 @@ export default function ProfilePage({ user, setUser }) {
                 <div><i class="fas fa-calendar-alt"></i></div>
             </div>
 
-            {(user.imageUrl === null) ? <div>
+            {(user.imageUrl === null) ? 
+            <div>
                 <ProfileImageUploader setImgUrl={setImgUrl} />
                 <button onClick={updateUser}>Share</button>
             </div> : null}
