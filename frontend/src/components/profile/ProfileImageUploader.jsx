@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import ReactImageUploadComponent from "react-images-upload";
 
-
-function ImageUploader({ setImgUrl, setUploading }) {
+export default function ImageUploader({ setImgUrl }) {
   const [payload, setPayload] = useState(null);
 
   const updateImage = (event) => {
@@ -19,7 +18,7 @@ function ImageUploader({ setImgUrl, setUploading }) {
       try {
         if (payload !== null) {
           const response = await fetch(
-            "https://api.cloudinary.com/v1_1/dvmod9mrk/image/upload", 
+            "https://api.cloudinary.com/v1_1/dvmod9mrk/image/upload",
             {
               method: "post",
               body: payload,
@@ -36,7 +35,7 @@ function ImageUploader({ setImgUrl, setUploading }) {
     };
     sendImage();
     return () => abortFetch.abort();
-  }, [payload, setImgUrl, setUploading]);
+  }, [payload, setImgUrl]);
 
   return (
     <ReactImageUploadComponent
@@ -48,5 +47,3 @@ function ImageUploader({ setImgUrl, setUploading }) {
     />
   );
 }
-
-export default ImageUploader;
