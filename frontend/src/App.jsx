@@ -19,6 +19,7 @@ import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";
+import Modal from './components/posts/templates/Modal'
 
 
 function App() {
@@ -100,12 +101,16 @@ function App() {
 
           {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
-          <Route path="/posts/newGiverPost">
-            <NewGiverPost setPosts={setPosts} email={email}/>
+          <Route exact path="/posts/newGiverPost">
+            <NewGiverPost setPosts={setPosts} user={user}/>
           </Route>
 
-          <Route path="/posts/newRequestPost">
-            <NewRequestPost setPosts={setPosts} email={email}/>
+          <Route exact path="/posts/newRequestPost">
+            <NewRequestPost setPosts={setPosts} user={user}/>
+          </Route>
+
+          <Route exact path="/posts/">
+            <Modal />
           </Route>
 
           
