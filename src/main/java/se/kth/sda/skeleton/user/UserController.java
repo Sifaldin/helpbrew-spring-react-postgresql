@@ -27,7 +27,7 @@ public class UserController {
         return authService.getLoggedInUserEmail();
     }
 
-    @PutMapping("/user")
+    @PutMapping("/user/me")
     public User update(@RequestBody User updatedUser) {
         return userService.update(updatedUser);
     }

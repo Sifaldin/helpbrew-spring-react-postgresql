@@ -4,8 +4,6 @@ import { NavLink } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io';
 import Ask from '../../../Images/Ask-for-help.jpg'
 
-import modal from '../../../css/Components/layout/modal.css'
-
 
 const Modal = forwardRef( (props, ref) => {
     

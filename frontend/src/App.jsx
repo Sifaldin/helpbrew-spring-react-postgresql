@@ -79,7 +79,7 @@ function App() {
           </Route>
 
           <Route path="/user" exact>
-            <ProfilePage />
+            <ProfilePage user = {user} setUser = {setUser} />
           </Route>
 
           {/* Givewaways, skills and monetary support categories are displayed by
