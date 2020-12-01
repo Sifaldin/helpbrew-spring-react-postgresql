@@ -1,11 +1,11 @@
 .profilePage {
   margin: auto;
   width: 60%;
-  border: 5px solid #e9b937;
+
   padding: 10px;
   text-align: center;
   justify-content: center;
-  background-color: rgb(253, 240, 216);
+  background-color: #495464;
   justify-content: center;
   text-align: center;
   align-items: center;
@@ -14,11 +14,6 @@
   position: relative;
   height: 100%;
   border-radius: 25px;
-}
-
-.profilePage img {
-  margin: auto;
-  padding: 10px;
 }
 
 .imgOuterContainer {
@@ -33,6 +28,7 @@
   width: 10rem;
   border: 1px solid black;
   border-radius: 50%;
+ 
 }
 
 .profileImg {
