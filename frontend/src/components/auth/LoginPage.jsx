@@ -2,7 +2,7 @@ import {React, useState} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Auth from '../../services/Auth';
-import Navbar from '../layout/Navbar';
+import NavbarLogin from '../layout/NavbarLogin';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
@@ -32,10 +32,10 @@ function LoginPage() {
 
   return (
     <div className="loginpage">
-          <div>
-            <div>
-            <Router>
-      <Navbar onLogout={() => Auth.logout()} />
+      <div>
+        <div>
+          <Router>
+          <NavbarLogin />
         </Router>
               {/*<<input id="tab-1" type="radio" name="tab"  checked />
               <label htmlFor="tab-1" >
