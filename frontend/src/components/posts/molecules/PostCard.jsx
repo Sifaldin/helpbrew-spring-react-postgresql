@@ -59,10 +59,14 @@ function PostCard({ post }) {
           <div className="reaction">
             <button onClick={incrementLike}>
               <FaLongArrowAltUp className="up" />
+              <span>{reaction.like}</span>
+
               {/* <i className="fas fa-thumbs-up"></i> {reaction.like} */}
             </button>
             <button onClick={incrementDislike}>
               <FaLongArrowAltDown className="down" />
+              <span>{reaction.dislike}</span>
+
               {/* <i className="fas fa-thumbs-down"></i> {reaction.dislike} */}
             </button>
           </div>
