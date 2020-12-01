@@ -3,26 +3,51 @@ import Api from "../../api/Api";
 import "../../css/Components/profilePage/profile.css";
 import Auth from "../../services/Auth"
 
-export default function ProfilePage() {
+export default function ProfilePage({user, setUser}) {
 
 
     const onLogout = () => Auth.logout();
     const uploadedImage = React.useRef(null);
     const imageUploader = React.useRef(null);
-    const [user, setUser] = useState('');
-    const [imgUrl, setImgUrl] = useState('');
+    // const [user, setUser] = useState({});
+    const [imgUrl, setImgUrl] = useState("");
 
 
-     const updateUser = (updatedUser) => {
-                    Api.put("/user", updateUser).then((res) => setUser(res.data));
-                  };
+
+    const updateUser = () => {
+        const img = { ...user, imageUrl: imgUrl }
+        console.log(img);
+        Api.put("/user/me", img).then((res) => {
+
+            setUser(res.data);
+            console.log(res.data);
+        }
+           
+            );
+            
+
+    };
+
+
+    // const ourUser = response.data;
+
+
+    // useEffect(() => {
+    //     Api.get("/user/me").then((response) => {
+
+    //         console.log(response.data);
+    //         setUser(response.data);
+
+    //     });
+    // }, []);
+    // console.log(user);
 
     const handleImageUpload = e => {
         const [file] = e.target.files;
         if (file) {
             const reader = new FileReader();
             const { current } = uploadedImage;
-           
+
             current.file = file;
             reader.onload = e => {
                 current.src = e.target.result;
@@ -39,37 +64,27 @@ export default function ProfilePage() {
         }
     };
 
-    useEffect(() => {
-        Api.get("/user/me").then((response) => {
-            const user = response.data;
-            setUser(user);
-
-        });
-    }, []);
-    console.log(user);
-
-
-
     return (
 
         <div className="profilePage">
 
-            <div className = "imgOuterContainer">
+            <div className="imgOuterContainer">
                 <div className="img-container" onClick={() => imageUploader.current.click()}  >
 
-                   
-                    <img className="profileImg" 
+
+                    <img className="profileImg"
                         ref={uploadedImage}
+                        user = {user.imageURL}
                     />
 
-            </div>
+                </div>
 
                 <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleImageUpload}
-                        ref={imageUploader}
-                        style={{  display: "none"  }}    />
+                    type="file"
+                    accept="image/*"
+                    onChange={handleImageUpload}
+                    ref={imageUploader}
+                    style={{ display: "none" }} />
             </div>
 
 
