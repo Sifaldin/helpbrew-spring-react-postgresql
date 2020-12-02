@@ -1,20 +1,21 @@
 import { format } from "date-fns";
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import { useLocation } from "react-router";
 import Api from "../../../api/Api";
-import App from "../../../App";
 import ImageUploader from "../molecules/ImageUploader";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
   const history = useHistory();
-
+  const location = useLocation();
   const [imgUrl, setImgUrl] = useState("");
-  const [postType, setPostType] = useState("");
+  const [postTitle, setPostTitle] = useState("");
   const [details, setDetails] = useState("");
-  const [postAs, setPostAs] = useState("");
   const [uploading, setUploading] = useState(true);
   const [postCategory, setPostCategory] = useState("giveaways");
+ 
+  
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
@@ -28,12 +29,14 @@ function NewGiverPost({ setPosts, user }) {
       body: details,
       claimed: false,
       imageUrl: imgUrl,
-      postType: postType,
+      title: postTitle,
       date: format(new Date(), "dd-MMM-yyyy"),
-      poster: postAs,
       category: postCategory,
+      postType: location.state.type
+      
     };
-    console.log(newPost.imageUrl);
+    console.log(location)
+    
     Api.post("/posts", newPost).then((res) => {
       getAll();
       history.push(`/posts/category/${postCategory}`);
@@ -53,7 +56,7 @@ function NewGiverPost({ setPosts, user }) {
             <input
               type="text"
               placeholder="What are you donating?"
-              onChange={(e) => setPostType(e.target.value)}
+              onChange={(e) => setPostTitle(e.target.value)}
             />
           </div>
           <div>
@@ -76,7 +79,8 @@ function NewGiverPost({ setPosts, user }) {
               <option value="monetary-support">monetary-support</option>
             </select>
           </div>
-          <button disabled={uploading ? true : false} type="submit">
+          <button disabled={uploading ? true : false} type="submit" >
+            
             {uploading ? "- - - - -" : "Submit"}
           </button>
         </div>

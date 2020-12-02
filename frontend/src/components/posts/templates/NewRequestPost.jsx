@@ -1,17 +1,15 @@
 import { format } from "date-fns";
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import Api from "../../../api/Api";
-import App from "../../../App";
 import ImageUploader from "../molecules/ImageUploader";
 
 function NewRequestPost({ setPosts, user }) {
     const history = useHistory();
-
+    const location = useLocation();
     const [imgUrl, setImgUrl] = useState("");
-    const [postType, setPostType] = useState("");
+    const [postTitle, setPostTitle] = useState("");
     const [details, setDetails] = useState("");
-    const [postAs, setPostAs] = useState("");
     const [uploading, setUploading] = useState(true);
     const [postCategory, setPostCategory] = useState("giveaways");
 
@@ -27,10 +25,10 @@ function NewRequestPost({ setPosts, user }) {
             body: details,
             claimed: false,
             imageUrl: imgUrl,
-            postType: postType,
+            title: postTitle,
             date: format(new Date(), "dd-MMM-yyyy"),
-            poster: postAs,
             category: postCategory,
+            postType: location.state.type
         };
         
         Api.post("/posts", newPost).then((res) => {
@@ -53,7 +51,7 @@ function NewRequestPost({ setPosts, user }) {
                         <input
                             type="text"
                             placeholder="What are you donating?"
-                            onChange={(e) => setPostType(e.target.value)}
+                            onChange={(e) => setPostTitle(e.target.value)}
                         />
                     </div>
                     <div>
