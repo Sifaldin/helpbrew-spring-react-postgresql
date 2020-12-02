@@ -5,28 +5,42 @@ import ProfileImageUploader from "./ProfileImageUploader";
 
 export default function ProfilePage({ user, setUser }) {
 
+
+    //Callback function that will be called upon clicking on the Logout Button
     const onLogout = () => Auth.logout();
+
+
     const [imgUrl, setImgUrl] = useState("");
 
+    //Callback function that will send a user update call to the server
     const updateUser = () => {
         const img = { ...user, imageUrl: imgUrl }
         Api.put("/user/me", img).then((res) => setUser(res.data));
     };
 
+    //Callback function that will return the image uploader to change the image
+    const changeImage = () => {
+        setImgUrl(null);
+        updateUser();
+    }
+
+
     return (
 
         <div className="profilePage">
 
-            { (user.imageUrl === null) ? null : 
-              <div className={"imgOuterContainer"}>
-                <div className="img-container">
-                    <img className="profileImg" src={user.imageUrl} />
-                </div>
-              </div>  }
+            {/*A function that will hide the image container if non existed */}
+            { (user.imageUrl === null) ? null :
+                <div className={"imgOuterContainer"}>
+                    <div className="img-container">
+                        <img className="profileImg" src={user.imageUrl} />
+                        <button className="edit" onClick={changeImage}><i class="fas fa-camera"></i></button>
+                    </div>
+                </div>}
 
             <div>
-                <h1>{user.name}</h1>
-                <h2>{user.email}</h2>
+                <h1><i class="fas fa-user"></i> {user.name}</h1>
+                <h3><i class="fas fa-envelope-square"></i> {user.email}</h3>
             </div>
 
             <div className="profileTools">
@@ -34,12 +48,12 @@ export default function ProfilePage({ user, setUser }) {
                 <div><i class="fas fa-inbox"></i></div>
                 <div><i class="fas fa-calendar-alt"></i></div>
             </div>
-
-            {(user.imageUrl === null) ? 
-            <div>
-                <ProfileImageUploader setImgUrl={setImgUrl} />
-                <button onClick={updateUser}>Share</button>
-            </div> : null}
+            {/*A function that will hide the image uploader if image existed */}
+            {(user.imageUrl === null) ?
+                <div>
+                    <ProfileImageUploader setImgUrl={setImgUrl} />
+                    <button onClick={updateUser}>Share</button>
+                </div> : null}
 
             <button onClick={onLogout}>Logout</button>
 
