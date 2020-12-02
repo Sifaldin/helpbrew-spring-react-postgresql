@@ -1,0 +1,107 @@
+hr {
+  border-top: 0.5px;
+}
+.postcard {
+  width: 100%;
+  min-height: 35rem;
+  display: grid;
+  grid-template-rows: 20rem auto;
+  border-radius: 3rem;
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
+}
+
+.post-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 3rem 3rem 0 0;
+}
+
+.postcard .post-bottom {
+  padding: 1rem;
+}
+
+.postcard .post-bottom .header {
+  height: 3rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+}
+
+.postcard .post-bottom .header .type-tag {
+  color: green;
+}
+
+.postcard .post-bottom .header h3 {
+  margin: 0;
+  align-self: end;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+}
+
+.postcard .post-bottom .post-text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 1.2rem;
+}
+
+.postcard .post-bottom .signature {
+  height: 3rem;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+}
+.postcard .post-bottom .signature .post-date {
+  justify-self: end;
+  font-size: 0.8rem;
+}
+
+.postcard .post-bottom .signature .status {
+  background-color: green;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+}
+
+.postcard .post-bottom .react {
+  padding: 0.5rem 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+}
+
+.postcard .post-bottom .react .interested-button {
+  justify-self: end;
+  background-color: orange;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 2rem;
+}
+
+.reaction button {
+  background: none;
+  border: none;
+}
+
+.reaction button:hover {
+  cursor: pointer;
+}
+/* img .post-image
+div .post-bottom */
+
+/* .post-bottom
+    h3 .post-title
+    span .type-tag
+    p .post-text
+    span .post-date
+    a .interested-button
+    div .reaction
+        button
+        button */
+/* 
+@media (min-width: 600px) {
+  .postcard {
+    width: 100%;
+  }
+} */

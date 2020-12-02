@@ -1,31 +1,31 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
-import Modal from '../posts/templates/Modal';
-import "../../css/Components/layout/layout.css"
+import Modal from "../posts/templates/Modal";
+import "../../css/Components/layout/layout.css";
 
 function Navbar({ onLogout }) {
+  const skillsRef = useRef();
+  const monetRef = useRef();
+  const giveRef = useRef();
+  const newPostRef = useRef();
+  const homeRef = useRef();
+  const profileRef = useRef();
 
-  const modalRef = useRef()
+  const modalRef = useRef();
   const openModal = () => {
-    modalRef.current.openModal()
-  }
-
+    modalRef.current.openModal();
+  };
 
   return (
-    <nav className = "navBar">
-    
-
+    <nav className="navBar">
       <div className="navbar">
-      
         <ul>
-
-        <Link to="/">
-          <h1>HelpBrew</h1>
-        </Link>
-        
+          <Link to="/">
+            <h1>HelpBrew</h1>
+          </Link>
 
           <li>
-            <NavLink exact to="/" activeClassName="active-link">
+            <NavLink exact to="/" ref={homeRef}>
               Home
             </NavLink>
           </li>
@@ -34,7 +34,8 @@ function Navbar({ onLogout }) {
             <NavLink
               exact
               to="/posts/category/giveaways"
-              activeClassName="active-link"
+              className="post-link"
+              ref={giveRef}
             >
               Giveaways
             </NavLink>
@@ -44,7 +45,8 @@ function Navbar({ onLogout }) {
             <NavLink
               exact
               to="/posts/category/skills"
-              activeClassName="active-link"
+              className="post-link"
+              ref={skillsRef}
             >
               Skills
             </NavLink>
@@ -54,30 +56,25 @@ function Navbar({ onLogout }) {
             <NavLink
               exact
               to="/posts/category/monetary-support"
-              activeClassName="active-link"
+              className="post-link"
+              ref={monetRef}
+              // onClick={(e) => handleColorChange(e)}
             >
               Monetary Support
             </NavLink>
           </li>
 
           <li>
-
-            <NavLink to="/Modal" onClick={openModal} activeClassName="active-link">
+            <NavLink to="/Modal" onClick={openModal}>
               New Post
             </NavLink>
-            <Modal ref={modalRef}/>
-            
+            <Modal ref={modalRef} />
           </li>
 
           <li>
-            <NavLink
-              exact
-              to="/user"
-              activeClassName="active-link"
-            >
+            <NavLink exact to="/user" ref={profileRef}>
               Profile Page
             </NavLink>
-
           </li>
 
           {/* commented out the chat link for the moment /Elena */}
