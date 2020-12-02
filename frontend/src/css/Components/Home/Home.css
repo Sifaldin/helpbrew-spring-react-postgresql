@@ -24,14 +24,32 @@
 }
 
 .category-box h2,
-.category-box .top span {
+.category-box .top button {
   display: inline-block;
   margin: 1rem;
   align-self: end;
+  color: white;
+  background: none;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
 }
 
-.category-box .top span {
+.category-box h2 {
+  font-size: 1.8rem;
+}
+
+.category-box .top button svg {
+  font-size: 1.5rem;
+}
+
+.category-box .top button {
   align-self: start;
+}
+
+.category-box .top button:hover {
+  cursor: pointer;
 }
 
 .category-box .bottom {
@@ -50,15 +68,19 @@
 }
 
 .post-icon {
-  color: black;
+  width: 80%;
   display: grid;
   justify-items: center;
   justify-content: center;
-  max-height: 80px;
+  max-height: 100px;
   overflow: hidden;
+}
+.post-icon span {
+  color: black;
 }
 
 .post-icon img {
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   width: 60px;
   height: 60px;
   border-radius: 1rem;
