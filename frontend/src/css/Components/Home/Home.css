@@ -50,15 +50,19 @@
 }
 
 .post-icon {
-  color: black;
+  width: 80%;
   display: grid;
   justify-items: center;
   justify-content: center;
-  max-height: 80px;
+  max-height: 100px;
   overflow: hidden;
+}
+.post-icon span {
+  color: black;
 }
 
 .post-icon img {
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   width: 60px;
   height: 60px;
   border-radius: 1rem;

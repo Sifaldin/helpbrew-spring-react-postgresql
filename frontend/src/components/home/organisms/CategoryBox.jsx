@@ -53,14 +53,14 @@ export default function CategoryBox({ category, posts }) {
         <ul className="post-icons">
           {posts.map((post) => {
             return (
-              <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
-                <li className="post-icon" key={post.id}>
-                  <img src={post.imageUrl} alt="" />
-                  <span>Post title veryyyyyyy loooooooong</span>
-                  {/* uncomment line below when Hassan fixes title input */}
-                  {/* <span>{post.title}</span> */}
-                </li>
-              </Link>
+              <div className="post-icon">
+                <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
+                  <li key={post.id}>
+                    <img src={post.imageUrl} alt="" />
+                    <span>{post.title}</span>
+                  </li>
+                </Link>
+              </div>
             );
           })}
         </ul>
