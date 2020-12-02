@@ -27,35 +27,35 @@ export default function ProfilePage({ user, setUser }) {
 
     return (
 
-        <div className="profilePage">
+        <div className={"profilePage"}>
 
             {/*A function that will hide the image container if non existed */}
             { (user.imageUrl === null) ? null :
-                <div className={"imgOuterContainer"}>
-                    <div className="img-container">
-                        <img className="profileImg" src={user.imageUrl} />
-                        <button className="edit" onClick={changeImage}><i class="fas fa-camera"></i></button>
+               
+                    <div className={"img-container"}>
+                        <img className={"profileImg"} src={user.imageUrl} />
+                        <button className={"edit-btn"} onClick={changeImage}><i class="fas fa-camera"></i></button>
                     </div>
-                </div>}
+                }
 
-            <div>
+            <div className = "user-info">
                 <h1><i class="fas fa-user"></i> {user.name}</h1>
                 <h3><i class="fas fa-envelope-square"></i> {user.email}</h3>
             </div>
 
-            <div className="profileTools">
+            <div className={"profileTools"}>
                 <div><i class="fas fa-bell"></i></div>
                 <div><i class="fas fa-inbox"></i></div>
                 <div><i class="fas fa-calendar-alt"></i></div>
             </div>
             {/*A function that will hide the image uploader if image existed */}
             {(user.imageUrl === null) ?
-                <div>
+                <div className={"uploader"}>
                     <ProfileImageUploader setImgUrl={setImgUrl} />
-                    <button onClick={updateUser}>Share</button>
+                    <button className= "share-btn" onClick={updateUser}>Share</button>
                 </div> : null}
 
-            <button onClick={onLogout}>Logout</button>
+            <button className={"profileLogoutBtn"}onClick={onLogout}>Logout</button>
 
         </div>
     )
