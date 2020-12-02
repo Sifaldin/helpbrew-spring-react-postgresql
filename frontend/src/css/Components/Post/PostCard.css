@@ -71,12 +71,9 @@ hr {
   align-items: center;
 }
 
-.postcard .post-bottom .react .interested-button {
+.postcard .post-bottom .react .medium-button {
   justify-self: end;
-  background-color: orange;
-  color: white;
-  padding: 0.5rem;
-  border-radius: 2rem;
+  padding: 0.5rem 1rem;
 }
 
 .reaction button {

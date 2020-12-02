@@ -1,7 +1,18 @@
 .posts-page {
-  margin: 2rem auto;
   display: grid;
   justify-items: center;
+  padding: 3rem;
+}
+
+.no-posts {
+  display: grid;
+  justify-items: center;
+  margin-top: 8rem;
+  color: grey;
+}
+
+.no-posts svg {
+  font-size: 5rem;
 }
 
 .posts {
