@@ -25,24 +25,20 @@ function PostCard({ post }) {
 
   return (
     <div className="postcard">
-      <img
-        className="post-image"
-        // className={post.claimed ? "claimed pic-1" : "pic-1"}
-        src={post.imageUrl}
-        alt=""
-      />
-
-      {/* {post.claimed ? <span>Claimed</span> : <span>Available</span>} */}
+      <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
+        <img
+          className="post-image"
+          // className={post.claimed ? "claimed pic-1" : "pic-1"}
+          src={post.imageUrl}
+          alt=""
+        />
+      </Link>
 
       <div className="post-bottom">
         {/* Header includes post title and type(giving or requesting) */}
         <div className="header">
-          <h3 className="title">
-            Post title
-            {/* uncomment when Hassan fixes title for posts */}
-            {/* {post.title}*/}
-          </h3>
-          <span className="type-tag">giving</span>
+          <h3 className="title">{post.title}</h3>
+          <span className="type-tag">{post.postType}</span>
           {/* Uncomment when Hassan fixes type for posts */}
           {/* <span>{post.type}</span> */}
         </div>
@@ -50,7 +46,11 @@ function PostCard({ post }) {
         <p className="post-text">{post.body}</p>
         {/* Signature includes post status and date */}
         <div className="signature">
-          <span className="status">active</span>
+          {post.claimed ? (
+            <span className="small-button">Claimed</span>
+          ) : (
+            <span className="small-button">Available</span>
+          )}
           <span className="post-date">{post.date}</span>
         </div>
         <hr />
@@ -72,10 +72,10 @@ function PostCard({ post }) {
           </div>
 
           <Link
-            className="interested-button"
+            className="medium-button"
             to={{ pathname: `/posts/${post.id}`, state: { post } }}
           >
-            I'm interested
+            View post
           </Link>
         </div>
         <hr />
