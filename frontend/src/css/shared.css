@@ -29,3 +29,20 @@ span,
 h3 {
   display: inline-block;
 }
+
+/* Different types of buttons */
+
+.medium-button {
+  background-color: orange;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 2rem;
+}
+
+.small-button {
+  background-color: green;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 2rem;
+  font-size: 0.8rem;
+}
