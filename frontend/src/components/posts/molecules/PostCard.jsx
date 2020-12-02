@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Api from "../../../api/Api";
 import { Link } from "react-router-dom";
+import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 
 //PostCard displays a post in a listing of posts on PostsPage.
 
@@ -23,47 +24,64 @@ function PostCard({ post }) {
   };
 
   return (
-    <div>
-      <div>
-        <div>
-          <a href={post.imageUrl}>
-            <img
-              style={{ width: "100px" }}
-              className={post.claimed ? "claimed pic-1" : "pic-1"}
-              src={post.imageUrl}
-              alt=""
-            />
-          </a>
-          {post.claimed ? <span>Claimed</span> : <span>Available</span>}
-        </div>
-        <div>
-          <h3>
-            <a href={post.title}>{post.title}</a>
+    <div className="postcard">
+      <img
+        className="post-image"
+        // className={post.claimed ? "claimed pic-1" : "pic-1"}
+        src={post.imageUrl}
+        alt=""
+      />
+
+      {/* {post.claimed ? <span>Claimed</span> : <span>Available</span>} */}
+
+      <div className="post-bottom">
+        {/* Header includes post title and type(giving or requesting) */}
+        <div className="header">
+          <h3 className="title">
+            Post title
+            {/* uncomment when Hassan fixes title for posts */}
+            {/* {post.title}*/}
           </h3>
-          <div>
-            <span>{post.date}</span>
-            <br />
-          </div>
-
-          {/* Once View Post button is clicked by user, user is redirected to 
-          the SinglePost page where all the details about the post are specified.
-          */}
-          <Link
-            className="claim"
-            to={{ pathname: `/posts/${post.id}`, state: { post } }}
-          >
-            View Post
-          </Link>
-
+          <span className="type-tag">giving</span>
+          {/* Uncomment when Hassan fixes type for posts */}
+          {/* <span>{post.type}</span> */}
+        </div>
+        {/* Post body */}
+        <p className="post-text">{post.body}</p>
+        {/* Signature includes post status and date */}
+        <div className="signature">
+          <span className="status">active</span>
+          <span className="post-date">{post.date}</span>
+        </div>
+        <hr />
+        {/* React container includes reactions and link to the post details */}
+        <div className="react">
           <div className="reaction">
             <button onClick={incrementLike}>
-              <i className="fas fa-thumbs-up"></i> {reaction.like}
+              <FaLongArrowAltUp className="up" />
+              <span>{reaction.like}</span>
+
+              {/* <i className="fas fa-thumbs-up"></i> {reaction.like} */}
             </button>
             <button onClick={incrementDislike}>
-              <i className="fas fa-thumbs-down"></i> {reaction.dislike}
+              <FaLongArrowAltDown className="down" />
+              <span>{reaction.dislike}</span>
+
+              {/* <i className="fas fa-thumbs-down"></i> {reaction.dislike} */}
             </button>
           </div>
+
+          <Link
+            className="interested-button"
+            to={{ pathname: `/posts/${post.id}`, state: { post } }}
+          >
+            I'm interested
+          </Link>
         </div>
+        <hr />
+        {/* Once View Post button is clicked by user, user is redirected to 
+          the SinglePost page where all the details about the post are specified.
+          */}
       </div>
     </div>
   );

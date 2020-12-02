@@ -55,9 +55,7 @@ export default function CategoryBox({ category, posts }) {
             return (
               <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
                 <li className="post-icon" key={post.id}>
-                  <img src={skills} alt="" />
-                  {/* uncomment when image uploader is fixed */}
-                  {/* <img style={{ width: "50px" }} src={post.imageUrl} alt="" /> */}
+                  <img src={post.imageUrl} alt="" />
                   <span>Post title veryyyyyyy loooooooong</span>
                   {/* uncomment line below when Hassan fixes title input */}
                   {/* <span>{post.title}</span> */}
