@@ -5,16 +5,24 @@
 .loginpage {
   background-image: url("..//..//../assets/austin-kehmeier-lyiKExA4zQA-unsplash\ 1.png");
   background-repeat: no-repeat;
-  background-position: 350px 0px;
-  height: 100%;
+  background-position: right 35% ;
   min-height: 100vh;
   overflow:hidden;
+  background-color: rgb(223, 223, 216);
+}
+
+.logo{
+  position: fixed;
+  left: 17%;
+  top: 30%;
+  max-width: 200px;
+  text-align: center;
 }
 
 .signinform {
   text-align: end;
   border-style: none;
-  margin-top: 10rem;
+  margin-top: 15rem;
   font-family: Source-Sans-Pro;
 }
 
@@ -42,6 +50,7 @@
   border-style: none;
   border-radius: 1rem;
   color: white;
+  cursor: pointer;
 }
 
 .signinform .smallButton{
@@ -50,6 +59,7 @@
   background:none;
   margin-top: 5px;
   margin-bottom: 20px;
+  cursor: pointer;
 }
 .signinform .smallButton{
   border: none;
@@ -60,6 +70,7 @@
   margin-right: 9rem;
   font-size: 14px;
   font-style: italic;
+  cursor: pointer;
 }
 
 .signinform .gotoRegister{
@@ -71,6 +82,7 @@
   margin-right: 17rem;
   font-size: 14px;
   font-style: italic;
+  cursor: pointer;
 }
 
 .signupform {
@@ -105,6 +117,7 @@
   border-style: none;
   border-radius: 1rem;
   color: white;
+  cursor: pointer;
 }
 
 .signupform .smallButton{
@@ -115,4 +128,5 @@
   margin-bottom: 20px;
   margin-right: 17rem;
   font-style: italic;
+  cursor: pointer;
 }
