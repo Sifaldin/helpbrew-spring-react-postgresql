@@ -37,10 +37,6 @@ public class Post {
     @Column(name = "email")
     private String email;
 
-    @Column(name = "poster")
-    private String poster;
-
-    @NotNull(message = "Post type may not be null")
     private String postType;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -121,13 +117,6 @@ public class Post {
         this.email = email;
     }
 
-    public String getPoster() {
-        return poster;
-    }
-
-    public void setPoster(String poster) {
-        this.poster = poster;
-    }
 
     public String getPostType() {
         return postType;

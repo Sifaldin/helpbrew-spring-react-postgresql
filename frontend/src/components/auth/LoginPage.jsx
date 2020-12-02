@@ -2,7 +2,6 @@ import {React, useState} from 'react';
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Auth from '../../services/Auth';
-import NavbarLogin from '../layout/NavbarLogin';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
@@ -35,7 +34,10 @@ function LoginPage() {
       <div>
         <div>
           <Router>
-          <NavbarLogin />
+            <div className="logo">
+              <h2>HelpBrew</h2>
+              <h4>With HelpBrew, you can share and receive help with skill, spare stuff, monetary support, together we can make the change and a better world. </h4>
+            </div>
         </Router>
               {/*<<input id="tab-1" type="radio" name="tab"  checked />
               <label htmlFor="tab-1" >
