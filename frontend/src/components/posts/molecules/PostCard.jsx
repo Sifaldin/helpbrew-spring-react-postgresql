@@ -37,12 +37,8 @@ function PostCard({ post }) {
       <div className="post-bottom">
         {/* Header includes post title and type(giving or requesting) */}
         <div className="header">
-          <h3 className="title">
-            Post title
-            {/* uncomment when Hassan fixes title for posts */}
-            {/* {post.title}*/}
-          </h3>
-          <span className="type-tag">giving</span>
+          <h3 className="title">{post.title}</h3>
+          <span className="type-tag">{post.postType}</span>
           {/* Uncomment when Hassan fixes type for posts */}
           {/* <span>{post.type}</span> */}
         </div>
@@ -75,7 +71,7 @@ function PostCard({ post }) {
             className="interested-button"
             to={{ pathname: `/posts/${post.id}`, state: { post } }}
           >
-            I'm interested
+            View post
           </Link>
         </div>
         <hr />
