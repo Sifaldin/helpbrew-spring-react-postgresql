@@ -14,8 +14,8 @@ export default function NewCommentForm({ onSubmit, post }) {
 
   // Something still happing here?
   return (
-    <div>
-      <label>Comment</label>
+    <div className="comment-area">
+      
       <textarea
         placeholder="type your comment here.."
         value={body}

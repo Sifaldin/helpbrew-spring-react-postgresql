@@ -45,20 +45,23 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
       <h5>{comment.authorName}</h5>
       <h4>{comment.body}</h4>
 
-      <div>
+      {/*<div>
         <button onClick={incrementLike}>
           <i></i> {reaction.like}
         </button>
         <button onClick={incrementDislike}>
           <i></i> {reaction.dislike}
         </button>
-      </div>
+      </div>*/}
 
       {comment.authorName === name ? (
         <div>
+          
+            
           <button onClick={() => onDeleteClick(comment.id)}>Delete</button>
 
           <button onClick={handleUpdateClick}>Update</button>
+          
         </div>
       ) : null}
     </div>
