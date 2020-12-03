@@ -145,12 +145,9 @@
     width: 50rem;
     justify-self: center;
 
-
-    
 }
-.custom-field .card-input {
-    
 
+}
 
 
 @media (min-width: 750px) {
@@ -197,7 +194,7 @@
     font-size: large;
     font-weight: bold;
     width: 15rem;
-    justify-self: center;
+
     
 }
   .card-body {
