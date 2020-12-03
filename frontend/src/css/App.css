@@ -11,5 +11,7 @@
 
 @import "../css/Components/Post/PostCard.css";
 @import "../css/Components/Post/PostsPage.css";
+@import "./Components/Post/createPostPage.css";
 
 @import "./Components/profilePage/profile.css";
+@import "./shared.css";
