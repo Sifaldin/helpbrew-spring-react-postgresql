@@ -1,9 +1,19 @@
 import React, { useState } from "react";
 import Api from "../../api/Api";
 import Auth from "../../services/Auth";
+import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
 
+
 export default function ProfilePage({ user, setUser }) {
+
+    const dispatch = useNotification();
+    const handleNewNotification = () => {
+        dispatch({
+            type: "SUCCESS",
+            message: "Image Uploaded"
+        })
+    }
 
 
     //Callback function that will be called upon clicking on the Logout Button
@@ -16,6 +26,7 @@ export default function ProfilePage({ user, setUser }) {
     const updateUser = () => {
         const img = { ...user, imageUrl: imgUrl }
         Api.put("/user/me", img).then((res) => setUser(res.data));
+        handleNewNotification();
     };
 
     //Callback function that will return the image uploader to change the image
@@ -26,6 +37,8 @@ export default function ProfilePage({ user, setUser }) {
 
 
     return (
+
+        
 
         <div className={"profilePage"}>
 
@@ -57,6 +70,12 @@ export default function ProfilePage({ user, setUser }) {
 
             <button className={"profileLogoutBtn"}onClick={onLogout}>Logout</button>
 
+            <button className={"profileLogoutBtn"}onClick={handleNewNotification}>notifications</button>
+
+
+
+
         </div>
+
     )
 }
