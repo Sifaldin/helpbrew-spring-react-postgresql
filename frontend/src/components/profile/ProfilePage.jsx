@@ -15,6 +15,14 @@ export default function ProfilePage({ user, setUser }) {
         })
     }
 
+    const deleteImageNotification = () => {
+        dispatch({
+            type: "ERROR",
+            message: "Image Deleted"
+        })
+    }
+
+
     //Callback function that will be called upon clicking on the Logout Button
     const onLogout = () => Auth.logout();
 
@@ -24,12 +32,13 @@ export default function ProfilePage({ user, setUser }) {
     const updateUser = () => {
         const img = { ...user, imageUrl: imgUrl }
         Api.put("/user/me", img).then((res) => setUser(res.data));
-        handleNewNotification();
+    
     };
 
     //Callback function that will return the image uploader to change the image
     const changeImage = () => {
         setImgUrl(null);
+        deleteImageNotification();
         updateUser();
     }
 
@@ -63,7 +72,10 @@ export default function ProfilePage({ user, setUser }) {
             {(user.imageUrl === null) ?
                 <div className={"uploader"}>
                     <ProfileImageUploader setImgUrl={setImgUrl} />
-                    <button className="share-btn" onClick={updateUser}>Share</button>
+                    <button className="share-btn" onClick={() => {
+                        updateUser();
+                        handleNewNotification();
+                    }}>Share</button>
                 </div> : null}
 
             <button className={"profileLogoutBtn"} onClick={onLogout}>Logout</button>
