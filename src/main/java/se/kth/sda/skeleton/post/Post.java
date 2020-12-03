@@ -7,6 +7,8 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.comments.*;
 import se.kth.sda.skeleton.reactions.Reaction;
 
+import java.util.ArrayList;
+
 import java.util.List;
 
 @Table(name = "posts")
@@ -37,7 +39,12 @@ public class Post {
     @Column(name = "email")
     private String email;
 
+    @Column
     private String postType;
+
+    @Column
+    private String location;
+
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -141,4 +148,13 @@ public class Post {
     public void setReaction(Reaction articleReaction) {
         this.reaction = articleReaction;
     }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
 }

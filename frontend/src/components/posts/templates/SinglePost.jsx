@@ -86,9 +86,23 @@ function SinglePost() {
           />
         );
       case "giveaways":
-        return <GiveawayPost />;
+        return (
+          <GiveawayPost
+            post={post}
+            handleUpdateClick={handleUpdateClick}
+            deletePost={deletePost}
+            email={email}
+          />
+        );
       case "monetary-support":
-        return <MonetarySupportPost />;
+        return (
+          <MonetarySupportPost
+            post={post}
+            handleUpdateClick={handleUpdateClick}
+            deletePost={deletePost}
+            email={email}
+          />
+        );
       default:
         return null;
     }

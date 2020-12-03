@@ -45,13 +45,15 @@ function ImageUploader({ setImgUrl, setUploading }) {
   }, [payload, setImgUrl, setUploading]);
 
   return (
+    <div className="">
     <ReactImageUploadComponent
       singleImage={true}
       onChange={updateImage}
       buttonText="Choose Image"
-      className="imgUploader"
+      className=""
       withPreview={true}
     />
+    </div>
   );
 }
 

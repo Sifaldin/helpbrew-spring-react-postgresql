@@ -34,7 +34,6 @@ export default function Comments({ post }) {
 
   return (
     <div className="comment-card">
-      <NewCommentForm onSubmit={createComment} post={post} />
       {comments.map((comment) => (
         <CommentCard
           comment={comment}
@@ -43,6 +42,7 @@ export default function Comments({ post }) {
           onDeleteClick={deleteComment}
         />
       ))}
+      <NewCommentForm onSubmit={createComment} post={post} />
     </div>
   );
 }

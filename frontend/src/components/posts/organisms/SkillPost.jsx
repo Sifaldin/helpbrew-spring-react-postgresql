@@ -7,14 +7,14 @@ export default function SkillPost({
 }) {
   console.log(post);
   return (
-    <div>
-      <div id="pic-1">
-        <img src={post.imageUrl} alt="Single post img" />
+    <div className="single-post-card">
+      <div className="post-pic">
+        <img  src={post.imageUrl} alt="Single post img" />
       </div>
 
-      <div>
-        <h3>{post.title}</h3>
-        <p>{post.body}</p>
+      <div className="post-title">
+        <h3 >{post.title}</h3>
+        <p >{post.body}</p>
 
         {/* The post is deleted only if the email of the logged in user and 
         email of the user who wrote the post are the same */}
