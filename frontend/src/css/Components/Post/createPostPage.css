@@ -1,9 +1,7 @@
 .card-container .page-title {
-    
-    margin: 0 auto;
-    border-radius: 1rem;
-    box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-    
+  margin: 0 auto;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
 }
 
 /* .card-container {
@@ -11,20 +9,21 @@
     box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
     
 } */
- .page-title h1 {
-    justify-self: center;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 600;
-    font-size: 2rem;
-    margin-top: 15px;
+.page-title h1 {
+  justify-self: center;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  font-size: 2rem;
+  margin-top: 15px;
+  display: inline-block;
+  padding: 1rem 2rem;
 }
 .create-header label {
-    /* padding-top: 60px;
+  /* padding-top: 60px;
     padding-left: 20px; */
-    margin-top: 30px;
-    /* justify-self: center; */
-    justify-content: center;
-
+  margin-top: 30px;
+  /* justify-self: center; */
+  justify-content: center;
 }
 /* .card-container {
     border-radius: 1rm;
@@ -32,92 +31,86 @@
 } */
 
 .createcard {
-    
-    display: inline;
-    justify-content: center;
-    margin-top: 40px;
-    width: 80%;
-    min-height: 35rem;
-    border-radius: 3rem;
-    box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-   
+  display: inline;
+  justify-content: center;
+  margin-top: 40px;
+  width: 80%;
+  min-height: 35rem;
+  border-radius: 3rem;
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
 }
 
-
 .card-body {
-    display: grid;
-    padding: 0.2rem 0.5rem;
-    margin: 35px;
-    grid-gap: 10px;
+  display: grid;
+  padding: 0.2rem 0.5rem;
+  margin: 35px;
+  grid-gap: 10px;
 }
 
 .custom-field .card-input {
-    border: none;
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
-    appearance: none;
-    background: #f2f2f2;
-    padding: 12px;
-    border-radius: 30px;
-    width: 250px;
-    outline: none;
-    font-size: 14px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 600;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border-radius: 30px;
+  width: 250px;
+  outline: none;
+  font-size: 14px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
 }
 
 .custom-field {
-    position: relative;
-    font-size: 14px;
-    padding-top: 20px;
-    margin-bottom: 5px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 600;
+  position: relative;
+  font-size: 14px;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
 }
 
 .custom-field .placeholder {
-    position: absolute;
-    left: 12px;
-    top: calc(50% + 10px);
-    transform: translateY(-50%);
-    color:black;
-    transition: 
-        top 0.3s ease,
-        font-size 0.3s ease,
-        color 0.3s ease;
+  position: absolute;
+  left: 12px;
+  top: calc(50% + 10px);
+  transform: translateY(-50%);
+  color: black;
+  transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
 
 .custom-field input:valid + .placeholder,
 .custom-field input:focus + .placeholder {
-    top: 10px;
-    font-size: 10px;
-    color: #222;
+  top: 10px;
+  font-size: 10px;
+  color: #222;
 }
 
 .custom-field textarea:valid + .placeholder,
 .custom-field textarea:focus + .placeholder {
-    top: 10px;
-    font-size: 10px;
-    color: #222;
+  top: 10px;
+  font-size: 10px;
+  color: #222;
 }
 
+.map {
+  width: 600px;
+  height: 400px;
+  max-width: 90vw;
+  max-height: 60vh;
+}
 
-
-@media (min-width: 750px ) {
-   
-    .createcard {
-    
+@media (min-width: 750px) {
+  .createcard {
     height: 55rem;
     width: 50rem;
     justify-self: center;
-
-
-    
-}
-.custom-field .card-input {
+  }
+  .custom-field .card-input {
     border: none;
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
+    -webkit-appearance: none;
+    -moz-appearance: none;
     appearance: none;
     background: #f2f2f2;
     padding: 12px;
@@ -128,26 +121,23 @@
     font-size: 20px;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
-}
+  }
 
-.custom-field {
+  .custom-field {
     position: relative;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
     font-size: 20px;
     padding-top: 20px;
     margin-bottom: 5px;
-}
+  }
 
-.medium-button {
+  .card-body .medium-button {
     margin-top: 30px;
     justify-self: center;
     height: 5rem;
-    
-}
-.card-body {
+  }
+  .card-body {
     justify-items: center;
-}
-
-
+  }
 }
