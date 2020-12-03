@@ -19,6 +19,11 @@
 .comment-area{
     display: grid;
     justify-items: center;
+    margin-left: -22rem;
+}
+
+.comment-area button{
+    margin-left: -4rem;
 }
 
 .comment-area textarea{
@@ -45,8 +50,8 @@ margin-left: -20rem;}
     cursor: pointer;
 }
 
-.comment-card button{
-    margin-left: -6rem;
+.comment-card{
+    margin-left: 17rem;
 }
 
 
