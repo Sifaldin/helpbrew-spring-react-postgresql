@@ -1,5 +1,6 @@
 import { MapContainer, Marker, TileLayer, Popup } from "react-leaflet";
 import Geocoder from "./Geocoder";
+
 export default function Map({ address }) {
   const position = [53.35, 18.8];
   return (

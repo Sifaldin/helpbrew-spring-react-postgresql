@@ -10,5 +10,5 @@ export default function GiveawayPost({
   email,
   address,
 }) {
-  return <Map address={post.location} />;
+  return <Map address={"Moscow"} />; //should be post.location instead of hardcoded value
 }
