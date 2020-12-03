@@ -44,55 +44,63 @@ function NewGiverPost({ setPosts, user }) {
   };
 
   return (
-    <form style={{ width: "100%" }} onSubmit={submitHandler}>
-      <h1 style={{ textAlign: "center", color: "#6C6C6C" }}>Offer help</h1>
-      <div>
-        <div>
-          <div>
-            <label>{user.name}</label>
+    <div className="card-container">
+      
+    <form className="createcard" onSubmit={submitHandler}>
+        
+      
+      <div className="card-body">
+          <div className="page-title">
+            <h1>OFFER HELP</h1>
           </div>
-          <div>
-            <label>Donation Title</label>
+          <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+          <label className="custom-field">
+          <select
+            required
+            name="category"
+            className="card-input"
+            onChange={(e) => setPostCategory(e.target.value)}>
+
+              <option  disabled selected >Choose Category</option>
+              <option  value="giveaways">Giveaways</option>
+              <option  value="skills">Skills</option>
+              <option  value="monetary-support">Monetary support</option>
+              
+          </select>
+          </label>
+          
+            <label className="custom-field">
             <input
               type="text"
-              placeholder="What are you donating?"
+              required
+              className="card-input"
               onChange={(e) => setPostTitle(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Details about donation:</label>
+               />
+            <span className="placeholder">Enter Title </span>
+          </label>
+          <label className="custom-field">
             <textarea
               type="text"
-              placeholder="Details about the donation?...  expiry date, quantity, or anything else you would like to share."
+              required
+              className="card-input"
               rows="3"
               onChange={(e) => setDetails(e.target.value)}
-            />
-          </div>
-          <div>
-            <label>Choose a category:</label>
-            <select
-              name="category"
-              onChange={(e) => setPostCategory(e.target.value)}
-            >
-              <option value="giveaways">giveaways</option>
-              <option value="skills">skills</option>
-              <option value="monetary-support">monetary-support</option>
-            </select>
-          </div>
-          <button disabled={uploading ? true : false} type="submit" >
-            
-            {uploading ? "- - - - -" : "Submit"}
-          </button>
-        </div>
+              />
+          <span className="placeholder">Enter Details</span>
+          </label>
+          
+            <button className="medium-button" disabled={uploading ? true : false} type="submit" >
 
-        <div>
-          <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+              {uploading ? "Submit" : "Submit"}
+            </button>
+          
+          
         </div>
-        <div>
-          <button onClick= "">Add to calender</button>
-        </div>
-      </div>
+        
+          
     </form>
+      
+    </div>
   );
 }
 

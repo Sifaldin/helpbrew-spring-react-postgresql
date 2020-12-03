@@ -38,52 +38,57 @@ function NewRequestPost({ setPosts, user }) {
     };
 
     return (
-        <form style={{ width: "100%" }} onSubmit={submitHandler}>
-            <h1 style={{ textAlign: "center", color: "#6C6C6C" }}>Need help?</h1>
-            <div>
-                <div>
-                    <div>
-                        <label>{user.name}</label>
-                        
-                    </div>
-                    <div>
-                        <label> Title</label>
-                        <input
-                            type="text"
-                            placeholder="What are you donating?"
-                            onChange={(e) => setPostTitle(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Ask for help:</label>
-                        <textarea
-                            type="text"
-                            placeholder="Write your question here, so you get help..."
-                            rows="3"
-                            onChange={(e) => setDetails(e.target.value)}
-                        />
-                    </div>
-                    <div>
-                        <label>Choose a category:</label>
-                        <select
-                            name="category"
-                            onChange={(e) => setPostCategory(e.target.value)}
-                        >
-                            <option value="giveaways">giveaways</option>
-                            <option value="skills">skills</option>
-                            <option value="monetary-support">monetary-support</option>
-                        </select>
-                    </div>
-                    <button disabled={uploading ? true : false} type="submit">
-                        {uploading ? "- - - - -" : "Submit"}
-                    </button>
-                </div>
+        <div className="card-container" >
+            <form className="createcard" onSubmit={submitHandler}>
+                <div >
+                    <div className="card-body">
+                            
+                        <div className="page-title">
+                            <h1>Need help?</h1>
+                        </div>
+                                <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+                               
+                                    <label className="custom-field">
+                                        <select
+                                            required
+                                            name="category"
+                                            className="card-input"
+                                            onChange={(e) => setPostCategory(e.target.value)}>
+                                            <option disabled selected>Choose a category</option>
+                                            <option value="giveaways">Giveaways</option>
+                                            <option value="skills">Skills</option>
+                                            <option value="monetary-support">Monetary support</option>
+                                        </select>
+                                    </label>
+                                    <label className="custom-field">
+                                        <input
+                                            type="text"
+                                            required
+                                            className="card-input"
+                                            onChange={(e) => setPostTitle(e.target.value)}
+                                        />
+                                        <span className="placeholder">Enter Title</span>
+                                    </label>
+                                    <label className="custom-field">
+                                        <textarea
+                                            type="text"
+                                            required
+                                            className="card-input"
+                                            rows="3"
+                                            onChange={(e) => setDetails(e.target.value)}
+                                        />
+                                        <span className="placeholder">Ask for help</span>
+                                    </label>
+                                <button  className="medium-button" disabled={uploading ? true : false} type="submit">
+                                    {uploading ? "Submit" : "Submit"}
+                                </button>
+                        </div>
+                    
 
-                <div>
-                    <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
                 </div>
-            </div>
-        </form>
+            
+            </form>
+        </div>
     );
 }
 

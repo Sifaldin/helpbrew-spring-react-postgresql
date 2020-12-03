@@ -40,6 +40,11 @@ h3 {
   color: white;
   padding: 0.5rem;
   border-radius: 2rem;
+  font-size: large;
+  font-weight: bold;
+  width: 15rem;
+  justify-self: center;
+
 }
 
 .small-button {
