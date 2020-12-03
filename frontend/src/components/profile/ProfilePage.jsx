@@ -1,14 +1,22 @@
 import React, { useState } from "react";
 import Api from "../../api/Api";
 import Auth from "../../services/Auth";
+import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
+
 
 export default function ProfilePage({ user, setUser }) {
 
+    const dispatch = useNotification();
+    const handleNewNotification = () => {
+        dispatch({
+            type: "SUCCESS",
+            message: "Image Uploaded"
+        })
+    }
 
     //Callback function that will be called upon clicking on the Logout Button
     const onLogout = () => Auth.logout();
-
 
     const [imgUrl, setImgUrl] = useState("");
 
@@ -16,6 +24,7 @@ export default function ProfilePage({ user, setUser }) {
     const updateUser = () => {
         const img = { ...user, imageUrl: imgUrl }
         Api.put("/user/me", img).then((res) => setUser(res.data));
+        handleNewNotification();
     };
 
     //Callback function that will return the image uploader to change the image
@@ -27,18 +36,20 @@ export default function ProfilePage({ user, setUser }) {
 
     return (
 
+
+
         <div className={"profilePage"}>
 
             {/*A function that will hide the image container if non existed */}
             { (user.imageUrl === null) ? null :
-               
-                    <div className={"img-container"}>
-                        <img className={"profileImg"} src={user.imageUrl} />
-                        <button className={"edit-btn"} onClick={changeImage}><i class="fas fa-camera"></i></button>
-                    </div>
-                }
 
-            <div className = "user-info">
+                <div className={"img-container"}>
+                    <img className={"profileImg"} src={user.imageUrl} />
+                    <button className={"edit-btn"} onClick={changeImage}><i class="fas fa-camera"></i></button>
+                </div>
+            }
+
+            <div className="user-info">
                 <h1><i class="fas fa-user"></i> {user.name}</h1>
                 <h4><i class="fas fa-envelope-square"></i> {user.email}</h4>
             </div>
@@ -52,11 +63,12 @@ export default function ProfilePage({ user, setUser }) {
             {(user.imageUrl === null) ?
                 <div className={"uploader"}>
                     <ProfileImageUploader setImgUrl={setImgUrl} />
-                    <button className= "share-btn" onClick={updateUser}>Share</button>
+                    <button className="share-btn" onClick={updateUser}>Share</button>
                 </div> : null}
 
-            <button className={"profileLogoutBtn"}onClick={onLogout}>Logout</button>
+            <button className={"profileLogoutBtn"} onClick={onLogout}>Logout</button>
 
         </div>
+
     )
 }
