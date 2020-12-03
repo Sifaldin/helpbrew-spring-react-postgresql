@@ -40,7 +40,7 @@ export default function ProfilePage({ user, setUser }) {
 
             <div className = "user-info">
                 <h1><i class="fas fa-user"></i> {user.name}</h1>
-                <h3><i class="fas fa-envelope-square"></i> {user.email}</h3>
+                <h4><i class="fas fa-envelope-square"></i> {user.email}</h4>
             </div>
 
             <div className={"profileTools"}>
