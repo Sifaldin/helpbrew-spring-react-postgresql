@@ -1,25 +1,23 @@
-.edit{
-  position: absolute;
-  top: 5rem;
-  right: 8rem;
+@import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700');
+
+.edit-btn {
+  position: relative;
+  left: 12rem;
+  bottom: 3rem;
+  background-color: green;
+  color: white;
+  padding: 0.2rem 0.5rem;
+  border-radius: 0.5rem;
+ 
 }
 
 .profilePage {
-  margin: auto;
-  width: 60%;
-
-  padding: 10px;
-  text-align: center;
-  justify-content: center;
-  background-color: #495464;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  box-shadow: 0px 0px 12px 2px rgba(15, 15, 15, 0.2);
-  border-radius: 4px;
-  position: relative;
-  height: 100%;
-  border-radius: 25px;
+  width: 100%;
+  min-height: 35rem;
+  display: grid;
+  grid-template-rows: 20rem auto;
+  border-radius: 3rem;
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
 }
 
 .imgOuterContainer {
@@ -30,11 +28,13 @@
 }
 
 .img-container {
-  height: 10rem;
-  width: 10rem;
-  border: 1px solid black;
+  height: 15rem;
+  width: 15rem;
+  border: 1px solid rgb(172, 169, 169);
   border-radius: 50%;
- 
+  position: relative;
+  left: 4rem;
+  top: 1rem;
 }
 
 .profileImg {
@@ -46,6 +46,33 @@
 .profileTools {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 20px;
+  column-gap: 15rem;
   margin: 2rem auto;
+}
+
+.user-info {
+  position: absolute;
+  right: 10rem;
+  top: 10rem;
+}
+
+.share-btn {
+  background-color: orange;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  margin: 0 auto 4px;
+  display: block;
+}
+
+
+
+.profileLogoutBtn{
+  background-color: orange;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  margin: 0 auto 0.7rem;
+  width: 25rem;
+  
 }
