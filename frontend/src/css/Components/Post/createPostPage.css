@@ -6,11 +6,24 @@
     
 }
 
-/* .card-container {
+.medium-button {
+
+    background-color: orange;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    font-size: large;
+    font-weight: bold;
+    width: 15rem;
+    justify-self: center;
+    margin-bottom: 1rem;
+}
+
+.card-container {
      border-radius: 1rem;
     box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-    
-} */
+    margin: 2rem;
+}
  .page-title h1 {
     justify-self: center;
     font-family: "Source Sans Pro", sans-serif;
@@ -49,6 +62,9 @@
     padding: 0.2rem 0.5rem;
     margin: 35px;
     grid-gap: 10px;
+    justify-self: center;
+    justify-content: center;
+    justify-items: center;
 }
 
 .custom-field .card-input {
@@ -101,7 +117,18 @@
     color: #222;
 }
 
+@media (min-width: 450px) {
 
+.custom-field .card-input {
+    width: 300px;
+    height: 50px;
+    outline: none;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 600;
+}
+
+}
 
 @media (min-width: 750px ) {
    
@@ -115,13 +142,7 @@
     
 }
 .custom-field .card-input {
-    border: none;
-    -webkit-appearance: none; 
-    -moz-appearance: none; 
-    appearance: none;
-    background: #f2f2f2;
-    padding: 12px;
-    border-radius: 30px;
+    
     width: 550px;
     height: 90px;
     outline: none;
@@ -143,6 +164,14 @@
     margin-top: 30px;
     justify-self: center;
     height: 5rem;
+    background-color: orange;
+    color: white;
+    padding: 0.5rem;
+    border-radius: 2rem;
+    font-size: large;
+    font-weight: bold;
+    width: 15rem;
+    justify-self: center;
     
 }
 .card-body {

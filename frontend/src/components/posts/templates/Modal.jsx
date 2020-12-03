@@ -2,6 +2,8 @@ import React ,{forwardRef, useImperativeHandle, useState} from 'react'
 import ReactDom from 'react-dom'
 import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io';
+import { RiHandHeartFill } from 'react-icons/ri';
+import { FaHandsHelping } from 'react-icons/fa';
 
 const Modal = forwardRef( (props, ref) => {
     const [display, setDisplay] = useState(false);
@@ -29,9 +31,11 @@ const Modal = forwardRef( (props, ref) => {
                     
                 <div className={"modal-box"}>
                     <div className="modal-icon">
-                        <IoMdCloseCircle onClick={() => ref.current.close()} />
+                        <IoMdCloseCircle color="lightblue" onClick={() => ref.current.close()} />
                         </div>
                         <div className="modal-body">
+
+                            <h1>
                             <Link exact to=
                             {
                                 {
@@ -43,9 +47,10 @@ const Modal = forwardRef( (props, ref) => {
                                 }
                             }
                                 onClick={() => ref.current.close()}>
-                                Give
+                                    <div className="give_ask"><RiHandHeartFill size="60px"/>Give </div> 
                             </Link>
-                            --------------------
+                            </h1>
+                            <h1>
                             <Link exact to=
                             {
                                 {
@@ -58,8 +63,12 @@ const Modal = forwardRef( (props, ref) => {
 
                             }
                                 onClick={() => ref.current.close()}>
-                                request
+                                    <div className="give_ask"><FaHandsHelping size="60px"/>Ask For</div> 
                             </Link>
+                            </h1>
+                        </div>
+                        <div className="help">
+                        <h1>HELP</h1>
                         </div>
                 </div>
                 
