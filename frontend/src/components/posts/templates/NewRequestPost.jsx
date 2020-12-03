@@ -2,6 +2,7 @@ import { format } from "date-fns";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Api from "../../../api/Api";
+import { useNotification } from "../../notifications/NotificationProvider";
 import ImageUploader from "../molecules/ImageUploader";
 
 function NewRequestPost({ setPosts, user }) {
@@ -19,7 +20,16 @@ function NewRequestPost({ setPosts, user }) {
         });
     };
 
+    const dispatch = useNotification();
+  const handleNewNotification = () => {
+      dispatch({
+          type: "SUCCESS",
+          message: "Posted!"
+      })
+  } 
+
     const submitHandler = (event) => {
+        handleNewNotification();
         event.preventDefault();
         const newPost = {
             body: details,

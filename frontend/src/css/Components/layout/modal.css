@@ -4,7 +4,7 @@
     bottom: 0;
     left: 0;
     right: 0;
-
+    
 }
 
 .modal-backdrop {
@@ -22,19 +22,44 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 50%;
+    height: 35%;
     width: 50%;
-    background-color: lightgray;
+    background-color: lightyellow;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     z-index: 101;
     padding: 5px;
+    border-radius: 3rem;
 }
 
-.modal-body img {
-    margin-top: 50px;
-    margin-left: 20px;
-    height: 50%;
-    width: 50%;
+.modal-icon {
+    margin-left: 18px;
+    margin-top: 15px;
+    margin-bottom: 15px;
 
-    /* margin-left: 50px; */
+}
+
+.modal-body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 0px;
+    justify-items: center;
+
+}
+
+.modal-body h1 {
+    margin: 0px;
+}
+
+.give_ask {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+ .help h1 {
+    color: lightskyblue;
+    display: inline;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
 }

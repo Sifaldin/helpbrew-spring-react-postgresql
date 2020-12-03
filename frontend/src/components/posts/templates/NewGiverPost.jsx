@@ -5,6 +5,7 @@ import { useLocation } from "react-router";
 import Api from "../../../api/Api";
 import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -23,7 +24,17 @@ function NewGiverPost({ setPosts, user }) {
     });
   };
 
+
+  const dispatch = useNotification();
+  const handleNewNotification = () => {
+      dispatch({
+          type: "SUCCESS",
+          message: "Posted!"
+      })
+  } 
+
   const submitHandler = (event) => {
+    handleNewNotification();
     event.preventDefault();
     const newPost = {
       body: details,

@@ -36,14 +36,11 @@ h3 {
 /* Different types of buttons */
 
 .medium-button {
+
   background-color: orange;
   color: white;
   padding: 0.5rem;
   border-radius: 2rem;
-  font-size: large;
-  font-weight: bold;
-  width: 15rem;
-  justify-self: center;
 
 }
 
