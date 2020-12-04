@@ -23,6 +23,7 @@ function NewGiverPost({ setPosts, user }) {
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
+      console.log(res.data);
       setPosts(res.data);
     });
   };

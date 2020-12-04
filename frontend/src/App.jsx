@@ -55,7 +55,10 @@ function App() {
       const fetchPosts = async () => {
         const posts = await Api.get(`/posts`).then((res) => res.data);
         //Filters posts posted only by the logged in user
-        const userPosts = posts.filter((post) => post.email === user.email);
+        const userPosts = posts.filter(
+          (post) => post.user.email === user.email
+        );
+        console.log(userPosts);
         setUserPosts(userPosts);
       };
       fetchPosts();
