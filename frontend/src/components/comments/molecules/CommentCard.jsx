@@ -50,7 +50,7 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
     />
   ) : (
     <div className="comment-card">
-      <h5>{comment.authorName}</h5>
+      <h5>{comment.user.name}</h5>
       <p>{comment.body}</p>
 
       {/*<div>
@@ -63,15 +63,15 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
       </div>*/}
 
       {comment.user.name === user.name ? (
-        <div>
+        <div className="button-group">
           <button
-            className="small-button"
+            className="medium-button"
             onClick={() => onDeleteClick(comment.id)}
           >
             Delete
           </button>
 
-          <button className="small-button" onClick={handleUpdateClick}>
+          <button className="medium-button" onClick={handleUpdateClick}>
             Update
           </button>
         </div>
