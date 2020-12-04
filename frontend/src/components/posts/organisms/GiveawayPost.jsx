@@ -12,7 +12,7 @@ export default function GiveawayPost({
 }) {
   return (
     <div className="map-wrapper">
-      <Map address={post.location} />
+      <Map position={post.position} />
     </div>
   );
 }
