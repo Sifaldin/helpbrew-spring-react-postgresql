@@ -58,6 +58,7 @@ function NewGiverPost({ setPosts, user }) {
       postType: location.state.type,
       location: address,
       position: position,
+      user: user,
     };
 
     Api.post("/posts", newPost).then((res) => {

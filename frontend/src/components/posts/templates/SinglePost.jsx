@@ -8,24 +8,14 @@ import Api from "../../../api/Api";
 import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
+import { useNotification } from "../../notifications/NotificationProvider";
 
-function SinglePost() {
-  const userEmail = window.sessionStorage.getItem("userEmail");
+function SinglePost({ user }) {
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
   const [post, setPost] = useState(passedPost);
   const history = useHistory();
-  const isPoster = userEmail === post.email;
   const [isUpdating, setIsUpdating] = useState(false);
-  const [email, setEmail] = useState("");
-
-  //useEffect hook fetches the email of the logged in user and sets email state above to the fetched email adress.
-  useEffect(() => {
-    Api.get("/user/").then((response) => {
-      const email = response.data;
-      setEmail(email);
-    });
-  }, []);
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {
@@ -82,7 +72,7 @@ function SinglePost() {
             post={post}
             handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
-            email={email}
+            user={user}
           />
         );
       case "giveaways":
@@ -91,7 +81,7 @@ function SinglePost() {
             post={post}
             handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
-            email={email}
+            user={user}
           />
         );
       case "monetary-support":
@@ -100,7 +90,7 @@ function SinglePost() {
             post={post}
             handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
-            email={email}
+            user={user}
           />
         );
       default:
@@ -121,7 +111,7 @@ function SinglePost() {
       //followed by comments to that post.
       <div>
         {getPost()}
-        <Comments post={post} />
+        {/* <Comments post={post} /> */}
       </div>
     );
   } catch (e) {

@@ -98,12 +98,11 @@ function App() {
           {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
 
-          <Route exact path="/posts/give" >
-            <NewGiverPost setPosts={setPosts} user={user}/>
+          <Route exact path="/posts/give">
+            <NewGiverPost setPosts={setPosts} user={user} />
           </Route>
 
           <Route exact path="/posts/request">
-
             <NewRequestPost setPosts={setPosts} user={user} />
           </Route>
 
@@ -113,7 +112,7 @@ function App() {
 
           {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
-            <SinglePost />
+            <SinglePost user={user} />
           </Route>
 
           {/* The functionality for the routes below is not implemented yet.

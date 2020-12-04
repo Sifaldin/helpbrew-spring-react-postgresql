@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.comments.*;
 import se.kth.sda.skeleton.reactions.Reaction;
+import se.kth.sda.skeleton.user.User;
 
 import java.util.ArrayList;
 
@@ -36,8 +37,8 @@ public class Post {
     @Column(name = "date")
     private String date;
 
-    @Column(name = "email")
-    private String email;
+    @ManyToOne
+    private User user;
 
     @Column
     private String postType;
@@ -120,12 +121,12 @@ public class Post {
         this.date = date;
     }
 
-    public String getEmail() {
-        return email;
+    public User getUser() {
+        return user;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 

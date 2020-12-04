@@ -1,11 +1,22 @@
 import React, { useState } from "react";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 export default function PostUpdateForm({
   oldPost,
   onUpdateClick,
   setIsUpdating,
 }) {
+
   const [body, setBody] = useState(oldPost.body);
+
+  //Notification Creator
+  const dispatch = useNotification();
+  const handleUpdateNotification = () => {
+    dispatch({
+      type: "SUCCESS",
+      message: "Updating Post!",
+    });
+  };
 
   return (
     <div>
@@ -19,6 +30,7 @@ export default function PostUpdateForm({
         
         onClick={() => {
           onUpdateClick({ ...oldPost, body });
+          handleUpdateNotification();
           setIsUpdating(false);
         }}
       >
