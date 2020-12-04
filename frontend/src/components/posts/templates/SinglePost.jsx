@@ -121,7 +121,7 @@ function SinglePost() {
       //followed by comments to that post.
       <div>
         {getPost()}
-        <Comments post={post} />
+        {/* <Comments post={post} /> */}
       </div>
     );
   } catch (e) {

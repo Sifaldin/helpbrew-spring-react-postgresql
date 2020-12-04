@@ -1,0 +1,55 @@
+.single-post-card {
+  display: grid;
+  justify-content: center;
+  box-shadow: gray;
+}
+.single-post-card img {
+  display: grid;
+  justify-items: center;
+  margin-top: 8rem;
+  color: grey;
+  border-top-left-radius: 4rem;
+  border-top-right-radius: 4rem;
+  height: 23rem;
+  width: 35rem;
+}
+
+.comment-area {
+  display: grid;
+  justify-items: center;
+  margin-left: -22rem;
+}
+
+.comment-area button {
+  margin-left: -4rem;
+}
+
+.comment-area textarea {
+  width: 35rem;
+  height: 2rem;
+  margin-top: 3rem;
+  margin-left: 4rem;
+}
+
+.comment-card {
+  display: grid;
+  justify-items: center;
+  margin-left: -20rem;
+}
+
+.comment-card button,
+.single-post-card button {
+  background: none;
+  height: 3rem;
+  width: 9rem;
+  margin-right: 16.5rem;
+  background-color: orange;
+  border-style: none;
+  border-radius: 1rem;
+  color: white;
+  cursor: pointer;
+}
+
+.comment-card {
+  margin-left: 17rem;
+}
