@@ -19,19 +19,19 @@
   align-items: center;
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   border-radius: 4rem;
-  margin-top: 2rem;
   padding: 2rem;
 }
 
-.single-post-card .post-pic {
+.single-post .post-pic {
   display: grid;
   justify-items: center;
+  box-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.6);
 }
 
-.single-post-card .post-pic img {
-  width: 50%;
-  max-height: 25rem;
-  border-radius: 4rem;
+.single-post .post-pic img {
+  object-fit: cover;
+  width: 100%;
+  max-height: 80vh;
 }
 
 .single-post-card .signature {

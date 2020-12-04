@@ -48,7 +48,7 @@ public class Post {
 
     @Column
     @ElementCollection
-    private List<Long> position;
+    private List<Integer> position;
 
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -162,11 +162,11 @@ public class Post {
         this.location = location;
     }
 
-    public List<Long> getPosition() {
+    public List<Integer> getPosition() {
         return position;
     }
 
-    public void setPosition(List<Long> position) {
+    public void setPosition(List<Integer> position) {
         this.position = position;
     }
 }
