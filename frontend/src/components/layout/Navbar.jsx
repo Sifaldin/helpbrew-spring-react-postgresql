@@ -2,6 +2,7 @@ import React, { useRef } from "react";
 import { NavLink, Link } from "react-router-dom";
 import Modal from "../posts/templates/Modal";
 import "../../css/Components/layout/layout.css";
+import logo from "../../assets/logo_small.jpg";
 
 function Navbar({ onLogout }) {
   const skillsRef = useRef();
@@ -21,12 +22,13 @@ function Navbar({ onLogout }) {
       <div className="navbar">
         <ul>
           <Link to="/">
-            <h1>HelpBrew</h1>
+            
+            <img src={logo} alt= "HelpBrew Logo" />
           </Link>
 
           <li>
             <NavLink exact to="/" ref={homeRef}>
-              Home
+              HOME
             </NavLink>
           </li>
 
@@ -37,7 +39,7 @@ function Navbar({ onLogout }) {
               className="post-link"
               ref={giveRef}
             >
-              Giveaways
+              GIVEAWAYS
             </NavLink>
           </li>
 
@@ -48,7 +50,7 @@ function Navbar({ onLogout }) {
               className="post-link"
               ref={skillsRef}
             >
-              Skills
+              SKILLS
             </NavLink>
           </li>
 
@@ -60,20 +62,20 @@ function Navbar({ onLogout }) {
               ref={monetRef}
               // onClick={(e) => handleColorChange(e)}
             >
-              Monetary Support
+              MONETARY SUPPORT
             </NavLink>
           </li>
 
           <li>
             <NavLink to="/Modal" onClick={openModal}>
-              New Post
+              NEW POST
             </NavLink>
             <Modal ref={modalRef} />
           </li>
 
           <li>
             <NavLink exact to="/user" ref={profileRef}>
-              Profile Page
+              PROFILE
             </NavLink>
           </li>
 
