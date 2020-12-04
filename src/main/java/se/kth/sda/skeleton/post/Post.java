@@ -45,6 +45,10 @@ public class Post {
     @Column
     private String location;
 
+    @Column
+    @ElementCollection
+    private List<Long> position;
+
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -157,4 +161,11 @@ public class Post {
         this.location = location;
     }
 
+    public List<Long> getPosition() {
+        return position;
+    }
+
+    public void setPosition(List<Long> position) {
+        this.position = position;
+    }
 }
