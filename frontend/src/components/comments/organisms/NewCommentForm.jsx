@@ -3,11 +3,10 @@ import Api from "../../../api/Api";
 import { useNotification } from "../../notifications/NotificationProvider";
 
 export default function NewCommentForm({ onSubmit, post }) {
-  const [authorName, setAuthorName] = useState("");
+  const [user, setUser] = useState("");
   const [body, setBody] = useState("");
 
-
-  //Notification Creator 
+  //Notification Creator
   const dispatch = useNotification();
   const handlePostNotification = () => {
     dispatch({
@@ -17,16 +16,15 @@ export default function NewCommentForm({ onSubmit, post }) {
   };
 
   useEffect(() => {
-    Api.get("/user/").then((response) => {
-      const email = response.data;
-      setAuthorName(email);
+    Api.get("/user/me").then((response) => {
+      const user = response.data;
+      setUser(user);
     });
   }, []);
 
   // Something still happing here?
   return (
     <div className="comment-area">
-
       <textarea
         placeholder="type your comment here.."
         value={body}
@@ -39,10 +37,10 @@ export default function NewCommentForm({ onSubmit, post }) {
             value= {authorName}
        onChange = {event => setAuthorName(event.target.value)}/>*/}
 
-      <button onClick={() => {
-        onSubmit({ body, authorName, post });
-        handlePostNotification();
-      }}>
+      <button
+        className="medium-button"
+        onClick={() => onSubmit({ body, user, post })}
+      >
         Comment
       </button>
     </div>

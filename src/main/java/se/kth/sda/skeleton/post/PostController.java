@@ -72,7 +72,7 @@ public class PostController {
      */
     @PostMapping("")
     public Post create(@RequestBody Post newPost) {
-        newPost.setEmail(authService.getLoggedInUserEmail());
+//        newPost.setEmail(authService.getLoggedInUserEmail());
         return service.create(newPost);
     }
 
