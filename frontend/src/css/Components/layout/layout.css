@@ -8,6 +8,10 @@
     list-style: none;
     color: white;
 }
+.navbar img{
+    display:flex;
+    justify-content: flex-start;
+}
 
 .navbar ul{
     list-style: none;

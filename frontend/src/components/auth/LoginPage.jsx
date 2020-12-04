@@ -5,6 +5,8 @@ import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
 
+import logo from "../../assets/logo_small.jpg";
+
 function LoginPage() {
   const login = async loginData => {
     const loginSuccess = await Auth.login(loginData);
@@ -35,8 +37,8 @@ function LoginPage() {
         <div>
           <Router>
             <div className="logo">
-              <h2>HelpBrew</h2>
-              <h4>With HelpBrew, you can share and receive help with skill, spare stuff, monetary support, together we can make the change and a better world. </h4>
+              <img src={logo} alt= "HelpBrew Logo" />
+              <h5>With HelpBrew, you can share and receive help with skills, give away stuff, monetary support, together we can make a difference and create a better world. </h5>
             </div>
         </Router>
               {/*<<input id="tab-1" type="radio" name="tab"  checked />
