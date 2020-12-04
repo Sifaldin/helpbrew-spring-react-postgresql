@@ -38,8 +38,9 @@ export default function ProfilePage({ user, setUser }) {
     //Callback function that will return the image uploader to change the image
     const changeImage = () => {
         setImgUrl(null);
-        deleteImageNotification();
         updateUser();
+        deleteImageNotification();
+        
     }
 
 

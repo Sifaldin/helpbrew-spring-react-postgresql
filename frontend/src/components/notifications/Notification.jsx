@@ -15,7 +15,7 @@ export default function Notification(props) {
         clearInterval(id);
         return prev;
       });
-    }, 10);
+    }, 5);
 
     setIntervalID(id);
   };

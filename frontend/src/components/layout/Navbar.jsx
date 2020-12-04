@@ -85,7 +85,7 @@ function Navbar({ onLogout }) {
           </li> */}
 
           <li>
-            <button onClick={onLogout}>Logout</button>
+            <button className={"medium-button"} onClick={onLogout}>Logout</button>
           </li>
         </ul>
       </div>
