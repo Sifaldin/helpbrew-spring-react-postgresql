@@ -58,7 +58,6 @@ function App() {
         const userPosts = posts.filter(
           (post) => post.user.email === user.email
         );
-        console.log(userPosts);
         setUserPosts(userPosts);
       };
       fetchPosts();
