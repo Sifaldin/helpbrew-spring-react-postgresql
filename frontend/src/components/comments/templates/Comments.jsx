@@ -33,7 +33,8 @@ export default function Comments({ post }) {
   };
 
   return (
-    <div className="comment-card">
+    <div className="comments">
+      <h3>Comments</h3>
       {comments.map((comment) => (
         <CommentCard
           comment={comment}

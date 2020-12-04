@@ -1,6 +1,7 @@
 package se.kth.sda.skeleton.user;
 
 import org.hibernate.validator.constraints.Length;
+import se.kth.sda.skeleton.comments.Comment;
 import se.kth.sda.skeleton.post.Post;
 
 import javax.persistence.*;
@@ -36,6 +37,8 @@ public class User {
     @Column
     @OneToMany
     private List<Post> posts;
+
+    @OneToMany List<Comment> comments;
 
     // Hibernate needs a default constructor to function
     public User() {}
