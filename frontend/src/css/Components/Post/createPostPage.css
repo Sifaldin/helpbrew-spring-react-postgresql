@@ -96,7 +96,7 @@
 
 .custom-field .placeholder {
   position: absolute;
-  left: 12px;
+  left: 20px;
   top: calc(50% + 10px);
   transform: translateY(-50%);
   color: black;
@@ -189,3 +189,26 @@
 #visibility {
   display: none;
 } */
+.custom-field .small-button {
+  display: none;
+}
+
+.left {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr ;
+}
+
+.right {
+
+  margin-top: 450px;
+  margin-left: 20px;
+
+ 
+}
+
+.map {
+  margin-top: 20px;
+  border-radius: 3rem;
+  margin-right: 20px;
+}
+

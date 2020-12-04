@@ -7,6 +7,7 @@ import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
+import {GrMapLocation} from 'react-icons/gr';
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -16,7 +17,7 @@ function NewGiverPost({ setPosts, user }) {
   const [postTitle, setPostTitle] = useState("");
   const [details, setDetails] = useState("");
   const [uploading, setUploading] = useState(true);
-  const [postCategory, setPostCategory] = useState("giveaways");
+  const [postCategory, setPostCategory] = useState("");
   const [locationInput, setLocationInput] = useState("");
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
@@ -26,6 +27,15 @@ function NewGiverPost({ setPosts, user }) {
       setPosts(res.data);
     });
   };
+
+ 
+  const handleSubmit =(e)=> {
+
+    setAddress(locationInput)
+    e.preventDefault();
+
+  };
+  
 
   const dispatch = useNotification();
   const handleNewNotification = () => {
@@ -78,6 +88,8 @@ function NewGiverPost({ setPosts, user }) {
   }
 
   return (
+
+    <div className="left">
     <div className="card-container">
       <form className="createcard" onSubmit={submitHandler}>
         <div className="card-body">
@@ -130,6 +142,7 @@ function NewGiverPost({ setPosts, user }) {
               /* The field allows user to enter a pick-up location for giveaway posts and search for
               it on the map when the button Find location is pushed */
               <label className="custom-field">
+                
                 <input
                   type="text"
                   required
@@ -137,22 +150,23 @@ function NewGiverPost({ setPosts, user }) {
                   onChange={(e) => setLocationInput(e.target.value)}
                 />
                 <span className="placeholder">Enter Pick-Up Location</span>
+                
                 <button
-                  style={{ marginLeft: "10px" }}
-                  type="button"
+                  type="submit"
                   className="small-button"
-                  onClick={() => setAddress(locationInput)}
+                  // onClick={() => setAddress(locationInput)}
+                  onClick={handleSubmit}
                 >
                   Find location
                 </button>
+
               </label>
             ) : null}
-            <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+           
           </div>
 
-          {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
-          <div>{position.length > 0 ? <Map position={position} /> : null}</div>
-
+            
+          <div>
           <button
             className="medium-button"
             disabled={uploading ? true : false}
@@ -160,8 +174,20 @@ function NewGiverPost({ setPosts, user }) {
           >
             {uploading ? "Submit" : "Submit"}
           </button>
+            </div>
+            {/* closing of left */}
         </div>
       </form>
+      </div>
+      <div className="right">
+        <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+      </div>
+      
+      {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
+      <div className="map">{position.length > 0 ? <Map position={position} /> : null}</div>
+
+
+      
     </div>
   );
 }
