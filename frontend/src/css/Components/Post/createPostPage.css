@@ -4,7 +4,7 @@
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
 }
 
-.medium-button {
+.card-body .medium-button {
 
     background-color: orange;
     color: white;
@@ -202,3 +202,7 @@
     justify-items: center;
   }
 }
+/* 
+#visibility {
+  display: none;
+} */
