@@ -19,7 +19,6 @@
 .card-container {
   border-radius: 1rem;
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-
   margin: 2rem;
 }
 
@@ -186,3 +185,7 @@
     justify-items: center;
   }
 }
+/* 
+#visibility {
+  display: none;
+} */

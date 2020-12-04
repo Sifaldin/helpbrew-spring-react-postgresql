@@ -84,13 +84,15 @@ function NewGiverPost({ setPosts, user }) {
           <div className="page-title">
             <h1>OFFER HELP</h1>
           </div>
-          <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+
           <label className="custom-field">
             <select
               required
               name="category"
               className="card-input"
-              onChange={(e) => setPostCategory(e.target.value)}
+              onChange={(e) => {
+                setPostCategory(e.target.value);
+              }}
             >
               <option disabled selected>
                 Choose Category
@@ -121,28 +123,35 @@ function NewGiverPost({ setPosts, user }) {
             <span className="placeholder">Enter Details</span>
           </label>
 
-          {/* The field allows user to enter a pick-up location and search for
-          it on the map when the button Find location is pushed */}
-          <label className="custom-field">
-            <input
-              type="text"
-              required
-              className="card-input"
-              onChange={(e) => setLocationInput(e.target.value)}
-            />
-            <span className="placeholder">
-              Enter Pick-Up Location(street, area or city name){" "}
-            </span>
-            <br />
-            <button
-              style={{ marginLeft: "10px" }}
-              type="button"
-              className="small-button"
-              onClick={() => setAddress(locationInput)}
-            >
-              Find location
-            </button>
-          </label>
+          <div>
+            {/* Depending on the category chosen by user from drop-down menu,
+            a field for entering a pick-up location will be displayed or not */}
+            {postCategory === "giveaways" ? (
+              /* The field allows user to enter a pick-up location for giveaway posts and search for
+              it on the map when the button Find location is pushed */
+              <label className="custom-field">
+                <input
+                  type="text"
+                  required
+                  className="card-input"
+                  onChange={(e) => setLocationInput(e.target.value)}
+                />
+                <span className="placeholder">
+                  Enter Pick-Up Location(street, area or city name){" "}
+                </span>
+                <br />
+                <button
+                  style={{ marginLeft: "10px" }}
+                  type="button"
+                  className="small-button"
+                  onClick={() => setAddress(locationInput)}
+                >
+                  Find location
+                </button>
+              </label>
+            ) : null}
+            <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+          </div>
 
           {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
           <div>{position.length > 0 ? <Map position={position} /> : null}</div>
