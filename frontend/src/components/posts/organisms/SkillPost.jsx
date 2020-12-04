@@ -1,3 +1,5 @@
+import { useNotification } from "../../notifications/NotificationProvider";
+
 //Displays post belonging to skills category.
 export default function SkillPost({
   post,
@@ -5,6 +7,16 @@ export default function SkillPost({
   deletePost,
   email,
 }) {
+
+    //Notification Creator
+    const dispatch = useNotification();
+    const handleDeleteNotification = () => {
+      dispatch({
+        type: "ERROR",
+        message: "Deleting Post!",
+      });
+    };
+  
   console.log(post);
   return (
     <div className="single-post-card">
@@ -25,7 +37,10 @@ export default function SkillPost({
         */}
         {post.email === email ? (
           <div>
-            <button onClick={() => deletePost()}>Delete</button>
+            <button onClick={() =>  {
+              deletePost()
+              handleDeleteNotification();
+              }}>Delete</button>
 
             <button onClick={handleUpdateClick}>Update</button>
           </div>

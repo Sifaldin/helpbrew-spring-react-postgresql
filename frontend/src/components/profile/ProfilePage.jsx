@@ -7,6 +7,7 @@ import ProfileImageUploader from "./ProfileImageUploader";
 
 export default function ProfilePage({ user, setUser }) {
 
+    //Notification Creator
     const dispatch = useNotification();
     const handleNewNotification = () => {
         dispatch({
@@ -15,6 +16,7 @@ export default function ProfilePage({ user, setUser }) {
         })
     }
 
+    //Notification Creator
     const deleteImageNotification = () => {
         dispatch({
             type: "ERROR",
