@@ -21,9 +21,8 @@ function Navbar({ onLogout }) {
     <nav className="navBar">
       <div className="navbar">
         <ul>
-          <Link to="/">
-            
-            <img src={logo} alt= "HelpBrew Logo" />
+          <Link className="logo-link" to="/">
+            <img src={logo} alt="HelpBrew Logo" />
           </Link>
 
           <li>
@@ -87,7 +86,9 @@ function Navbar({ onLogout }) {
           </li> */}
 
           <li>
-            <button className={"medium-button"} onClick={onLogout}>Logout</button>
+            <button className={"medium-button"} onClick={onLogout}>
+              Logout
+            </button>
           </li>
         </ul>
       </div>
