@@ -136,10 +136,7 @@ function NewGiverPost({ setPosts, user }) {
                   className="card-input"
                   onChange={(e) => setLocationInput(e.target.value)}
                 />
-                <span className="placeholder">
-                  Enter Pick-Up Location(street, area or city name){" "}
-                </span>
-                <br />
+                <span className="placeholder">Enter Pick-Up Location</span>
                 <button
                   style={{ marginLeft: "10px" }}
                   type="button"
