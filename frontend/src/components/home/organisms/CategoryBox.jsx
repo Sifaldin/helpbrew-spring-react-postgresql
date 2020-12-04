@@ -8,7 +8,7 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 //CategoryBox is a box inside the dashboard. It displays posts within a certain category posted by
 //the logged in user.
 export default function CategoryBox({ category, posts }) {
-  const [type, setType] = useState("requested");
+  const [type, setType] = useState("given");
 
   //the variable stores only user's give posts
   const givePosts = posts.filter((post) => post.postType === "give");
@@ -16,7 +16,7 @@ export default function CategoryBox({ category, posts }) {
   const requestPosts = posts.filter((post) => post.postType === "request");
 
   //this state is used to have the right posts(requested or given) to map through in this component
-  const [postsByType, setPostsByType] = useState(requestPosts);
+  const [postsByType, setPostsByType] = useState(givePosts);
 
   //removes dashes and capitilizes the category. ex. from "monetary-support" to "Monetary support"
   const formatCategory = (category) => {
