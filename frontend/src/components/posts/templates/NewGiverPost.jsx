@@ -1,11 +1,12 @@
 import { format } from "date-fns";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { useLocation } from "react-router";
 import Api from "../../../api/Api";
 import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
+
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -15,15 +16,15 @@ function NewGiverPost({ setPosts, user }) {
   const [postTitle, setPostTitle] = useState("");
   const [details, setDetails] = useState("");
   const [uploading, setUploading] = useState(true);
-  const [postCategory, setPostCategory] = useState("giveaways");
+  const [postCategory, setPostCategory] = useState("");
   const [pickupLocation, setPickupLocation] = useState("");
+ 
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
       setPosts(res.data);
     });
   };
-
 
   const dispatch = useNotification();
   const handleNewNotification = () => {
@@ -61,17 +62,18 @@ function NewGiverPost({ setPosts, user }) {
           <div className="page-title">
             <h1>OFFER HELP</h1>
           </div>
-          <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+          
           <label className="custom-field">
             <select
               required
               name="category"
               className="card-input"
-              onChange={(e) => setPostCategory(e.target.value)}
+              onChange={(e) => {setPostCategory(e.target.value)
+              
+            }}
+              
             >
-              <option disabled selected>
-                Choose Category
-              </option>
+              <option disabled selected>Choose Category</option>
               <option value="giveaways">Giveaways</option>
               <option value="skills">Skills</option>
               <option value="monetary-support">Monetary support</option>
@@ -97,8 +99,12 @@ function NewGiverPost({ setPosts, user }) {
             />
             <span className="placeholder">Enter Details</span>
           </label>
+          <div>
+          {postCategory === "giveaways" ? 
 
-          <label className="custom-field">
+        
+          <label  className="custom-field">
+            
             <input
               type="text"
               required
@@ -107,6 +113,10 @@ function NewGiverPost({ setPosts, user }) {
             />
             <span className="placeholder">Enter Pick-Up Location </span>
           </label>
+          
+        :null}
+            <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+          </div>
 
           {pickupLocation ? <Map address={pickupLocation} /> : null}
 
