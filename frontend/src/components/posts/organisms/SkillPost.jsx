@@ -1,4 +1,5 @@
 import Comments from "../../comments/templates/Comments";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 //Displays post belonging to skills category.
 export default function SkillPost({
@@ -7,6 +8,15 @@ export default function SkillPost({
   deletePost,
   user,
 }) {
+  //Notification Creator
+  const dispatch = useNotification();
+  const handleDeleteNotification = () => {
+    dispatch({
+      type: "ERROR",
+      message: "Deleting Post!",
+    });
+  };
+
   console.log(post);
   return (
     <div className="single-post">

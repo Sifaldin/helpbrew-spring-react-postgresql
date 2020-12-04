@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
 import CommentUpdateForm from "../organisms/CommentUpdateForm";
 import Api from "../../../api/Api";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [reaction, setReaction] = useState(comment.reaction);
   const [user, setUser] = useState("");
+
+  //Notification Creator
+  const dispatch = useNotification();
+  const handleDeletenotification = () => {
+    dispatch({
+      type: "ERROR",
+      message: "Deleting Comment...",
+    });
+  };
 
   useEffect(() => {
     Api.get("/user/me").then((response) => {

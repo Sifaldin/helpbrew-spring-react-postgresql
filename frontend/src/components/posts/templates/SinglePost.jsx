@@ -8,6 +8,7 @@ import Api from "../../../api/Api";
 import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 function SinglePost({ user }) {
   const { state } = useLocation();
