@@ -39,7 +39,10 @@ export default function NewCommentForm({ onSubmit, post }) {
 
       <button
         className="medium-button"
-        onClick={() => onSubmit({ body, user, post })}
+        onClick={() => {
+          onSubmit({ body, user, post });
+          setBody("");
+        }}
       >
         Comment
       </button>
