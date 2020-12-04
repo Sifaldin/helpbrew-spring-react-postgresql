@@ -112,7 +112,7 @@ function App() {
 
           {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
-            <SinglePost />
+            <SinglePost user={user} />
           </Route>
 
           {/* The functionality for the routes below is not implemented yet.

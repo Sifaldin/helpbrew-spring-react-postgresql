@@ -8,7 +8,7 @@ export default function GiveawayPost({
   post,
   handleUpdateClick,
   deletePost,
-  email,
+  user,
   address,
 }) {
   return (
@@ -28,7 +28,7 @@ export default function GiveawayPost({
         It would be good to refactor the block and put it one level above(for example, in 
           delete function in SinglePost component) to avoid code duplication
         */}
-        {post.email === email ? (
+        {post.email === user.email ? (
           <div>
             <button onClick={() => deletePost()}>Delete</button>
 
