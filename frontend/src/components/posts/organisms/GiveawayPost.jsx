@@ -13,10 +13,10 @@ export default function GiveawayPost({
 }) {
   return (
     <div className="single-post">
+      <div className="post-pic">
+        <img src={post.imageUrl} alt="Single post img" />
+      </div>
       <div className="single-post-card">
-        <div className="post-pic">
-          <img src={post.imageUrl} alt="Single post img" />
-        </div>
         <div className="left">
           <div className="main">
             <div className="post-info">
