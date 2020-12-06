@@ -21,13 +21,15 @@ export default function Map({ position }) {
   }
 
   return (
-    <MapContainer className="map" zoom={12} center={position}>
-      <ChangeView center={position} zoom={12} />
-      <TileLayer
-        attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-        url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-      />
-      <Marker position={position} icon={myIcon} />
-    </MapContainer>
+    <div className="map-wrapper">
+      <MapContainer className="map" zoom={12} center={position}>
+        <ChangeView center={position} zoom={12} />
+        <TileLayer
+          attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position} icon={myIcon} />
+      </MapContainer>
+    </div>
   );
 }
