@@ -9,6 +9,8 @@ import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
 import { useNotification } from "../../notifications/NotificationProvider";
+import SharedSinglePost from "../organisms/SharedSinglePost";
+import Map from "../molecules/Map";
 
 function SinglePost({ user }) {
   const { state } = useLocation();
@@ -16,6 +18,15 @@ function SinglePost({ user }) {
   const [post, setPost] = useState(passedPost);
   const history = useHistory();
   const [isUpdating, setIsUpdating] = useState(false);
+
+  //Notification Creator
+  const dispatch = useNotification();
+  const handleDeleteNotification = () => {
+    dispatch({
+      type: "ERROR",
+      message: "Deleting Post!",
+    });
+  };
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {
@@ -99,6 +110,9 @@ function SinglePost({ user }) {
   };
 
   try {
+    //!!!This update form part needs to be refactored! We don't want a new page to open when
+    //updating a post
+
     //If user is updating text of the post, PostUpdateForm is displayed.
     return isUpdating ? (
       <PostUpdateForm
