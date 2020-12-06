@@ -5,7 +5,7 @@
 }
 
 .card-body .medium-button {
-  background-color: orange;
+  background-color: #F2994A;
   color: white;
   padding: 0.5rem;
   border-radius: 2rem;
@@ -173,7 +173,7 @@
     justify-self: center;
     height: 5rem;
 
-    background-color: orange;
+    background-color: #F2994A;
     color: white;
     padding: 0.5rem;
     border-radius: 2rem;
