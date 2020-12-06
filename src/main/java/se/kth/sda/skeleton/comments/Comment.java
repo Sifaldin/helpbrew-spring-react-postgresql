@@ -5,6 +5,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.post.Post;
 import se.kth.sda.skeleton.reactions.Reaction;
+import se.kth.sda.skeleton.user.User;
 
 @Table(name = "comments")
 @Entity
@@ -18,11 +19,11 @@ public class Comment {
     @Column(name = "body")
     private String body;
 
-    @Column(name = "author_name")
-    private String authorName;
-
     @ManyToOne
     private Post post;
+
+    @ManyToOne
+    private User user;
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -36,7 +37,6 @@ public class Comment {
     public Comment(Long id, String body, String authorName, Reaction reaction) {
         this.id = id;
         this.body = body;
-        this.authorName = authorName;
         this.reaction = reaction;
     }
 
@@ -56,14 +56,6 @@ public class Comment {
         this.body = body;
     }
 
-    public String getAuthorName() {
-        return authorName;
-    }
-
-    public void setAuthorName(String authorName) {
-        this.authorName = authorName;
-    }
-
     public Post getPost() {
         return post;
     }
@@ -78,5 +70,13 @@ public class Comment {
 
     public void setReaction(Reaction reaction) {
         this.reaction = reaction;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

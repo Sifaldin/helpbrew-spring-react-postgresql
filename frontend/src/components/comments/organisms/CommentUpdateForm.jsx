@@ -1,7 +1,17 @@
 import React, { useState } from "react";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
   const [body, setBody] = useState(oldComment.body);
+
+  //Notification Creator
+  const dispatch = useNotification();
+  const handleUpdateNotification = () => {
+    dispatch({
+      type: "SUCCESS",
+      message: "Updating Comment!",
+    });
+  };
 
   return (
     <div>
@@ -18,6 +28,7 @@ function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
           console.log(updated);
           onUpdateClick({ ...oldComment, body });
           setIsUpdating(false);
+          handleUpdateNotification();
         }}
       >
         Save

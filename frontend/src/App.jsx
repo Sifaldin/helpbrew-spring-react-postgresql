@@ -55,7 +55,9 @@ function App() {
       const fetchPosts = async () => {
         const posts = await Api.get(`/posts`).then((res) => res.data);
         //Filters posts posted only by the logged in user
-        const userPosts = posts.filter((post) => post.email === user.email);
+        const userPosts = posts.filter(
+          (post) => post.user.email === user.email
+        );
         setUserPosts(userPosts);
       };
       fetchPosts();
@@ -98,12 +100,11 @@ function App() {
           {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
 
-          <Route exact path="/posts/give" >
-            <NewGiverPost setPosts={setPosts} user={user}/>
+          <Route exact path="/posts/give">
+            <NewGiverPost setPosts={setPosts} user={user} />
           </Route>
 
           <Route exact path="/posts/request">
-
             <NewRequestPost setPosts={setPosts} user={user} />
           </Route>
 
@@ -113,7 +114,7 @@ function App() {
 
           {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
-            <SinglePost />
+            <SinglePost user={user} />
           </Route>
 
           {/* The functionality for the routes below is not implemented yet.

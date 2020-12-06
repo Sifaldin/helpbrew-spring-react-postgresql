@@ -33,15 +33,23 @@ export default function Comments({ post }) {
   };
 
   return (
-    <div className="comment-card">
-      {comments.map((comment) => (
-        <CommentCard
-          comment={comment}
-          key={comment.id}
-          onUpdateClick={updateComment}
-          onDeleteClick={deleteComment}
-        />
-      ))}
+    <div className="comments-wrapper">
+      <h3>Comments</h3>
+
+      {comments.length > 0 ? (
+        <div className="comments">
+          {comments.map((comment) => (
+            <CommentCard
+              comment={comment}
+              key={comment.id}
+              onUpdateClick={updateComment}
+              onDeleteClick={deleteComment}
+            />
+          ))}
+        </div>
+      ) : (
+        <p className="no-comments">No one commented this post yet</p>
+      )}
       <NewCommentForm onSubmit={createComment} post={post} />
     </div>
   );

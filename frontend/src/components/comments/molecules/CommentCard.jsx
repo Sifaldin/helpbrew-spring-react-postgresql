@@ -1,16 +1,26 @@
 import React, { useState, useEffect } from "react";
 import CommentUpdateForm from "../organisms/CommentUpdateForm";
 import Api from "../../../api/Api";
+import { useNotification } from "../../notifications/NotificationProvider";
 
 function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
   const [reaction, setReaction] = useState(comment.reaction);
-  const [name, setName] = useState("");
+  const [user, setUser] = useState("");
+
+  //Notification Creator
+  const dispatch = useNotification();
+  const handleDeletenotification = () => {
+    dispatch({
+      type: "ERROR",
+      message: "Deleting Comment...",
+    });
+  };
 
   useEffect(() => {
-    Api.get("/user/").then((response) => {
-      const name = response.data;
-      setName(name);
+    Api.get("/user/me").then((response) => {
+      const user = response.data;
+      setUser(user);
     });
   }, []);
 
@@ -18,21 +28,19 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
     setIsUpdating(true);
   };
 
-  const incrementLike = () => {
-    const url = "/reactions/" + reaction.id + "?incrementTarget=like";
-    Api.put(url, reaction).then((r) => {
-      setReaction(r.data);
-    });
-  };
+  // const incrementLike = () => {
+  //   const url = "/reactions/" + reaction.id + "?incrementTarget=like";
+  //   Api.put(url, reaction).then((r) => {
+  //     setReaction(r.data);
+  //   });
+  // };
 
-  const incrementDislike = () => {
-    const url = "/reactions/" + reaction.id + "?incrementTarget=dislike";
-    Api.put(url, reaction).then((r) => {
-      setReaction(r.data);
-    });
-  };
-
-  console.log(name);
+  // const incrementDislike = () => {
+  //   const url = "/reactions/" + reaction.id + "?incrementTarget=dislike";
+  //   Api.put(url, reaction).then((r) => {
+  //     setReaction(r.data);
+  //   });
+  // };
 
   return isUpdating ? (
     <CommentUpdateForm
@@ -41,9 +49,9 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
       setIsUpdating={setIsUpdating}
     />
   ) : (
-    <div>
-      <h5>{comment.authorName}</h5>
-      <h4>{comment.body}</h4>
+    <div className="comment-card">
+      <h5>{comment.user.name}</h5>
+      <p>{comment.body}</p>
 
       {/*<div>
         <button onClick={incrementLike}>
@@ -54,14 +62,18 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
         </button>
       </div>*/}
 
-      {comment.authorName === name ? (
-        <div>
-          
-            
-          <button onClick={() => onDeleteClick(comment.id)}>Delete</button>
+      {comment.user.name === user.name ? (
+        <div className="button-group">
+          <button
+            className="medium-button"
+            onClick={() => onDeleteClick(comment.id)}
+          >
+            Delete
+          </button>
 
-          <button onClick={handleUpdateClick}>Update</button>
-          
+          <button className="medium-button" onClick={handleUpdateClick}>
+            Update
+          </button>
         </div>
       ) : null}
     </div>

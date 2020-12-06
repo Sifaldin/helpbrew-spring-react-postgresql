@@ -4,27 +4,24 @@
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
 }
 
-.medium-button {
-
-    background-color: orange;
-    color: white;
-    padding: 0.5rem;
-    border-radius: 2rem;
-    font-size: large;
-    font-weight: bold;
-    width: 15rem;
-    justify-self: center;
-    margin-bottom: 1rem;
+.card-body .medium-button {
+  background-color: orange;
+  color: white;
+  padding: 0.5rem;
+  border-radius: 2rem;
+  font-size: large;
+  font-weight: bold;
+  width: 15rem;
+  justify-self: center;
+  margin-bottom: 1rem;
 }
 
 .card-container {
-     border-radius: 1rem;
-    box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-
-    margin: 2rem;
+  border-radius: 1rem;
+  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
+  margin: 2rem;
 }
 
-    
 .page-title h1 {
   justify-self: center;
   font-family: "Source Sans Pro", sans-serif;
@@ -33,7 +30,6 @@
   margin-top: 15px;
   display: inline-block;
   padding: 1rem 2rem;
-
 }
 .create-header label {
   /* padding-top: 60px;
@@ -48,7 +44,7 @@
 } */
 
 .map {
-  width: 600px;
+  width: 500px;
   height: 400px;
   max-width: 90vw;
   max-height: 60vh;
@@ -65,15 +61,13 @@
 }
 
 .card-body {
-
-    display: grid;
-    padding: 0.2rem 0.5rem;
-    margin: 35px;
-    grid-gap: 10px;
-    justify-self: center;
-    justify-content: center;
-    justify-items: center;
-
+  display: grid;
+  padding: 0.2rem 0.5rem;
+  margin: 35px;
+  grid-gap: 10px;
+  justify-self: center;
+  justify-content: center;
+  justify-items: center;
 }
 
 .custom-field .card-input {
@@ -102,7 +96,7 @@
 
 .custom-field .placeholder {
   position: absolute;
-  left: 12px;
+  left: 20px;
   top: calc(50% + 10px);
   transform: translateY(-50%);
   color: black;
@@ -123,32 +117,24 @@
   color: #222;
 }
 
-
 @media (min-width: 450px) {
-
-.custom-field .card-input {
+  .custom-field .card-input {
     width: 300px;
     height: 50px;
     outline: none;
     font-size: 20px;
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 600;
+  }
 }
 
-}
-
-@media (min-width: 750px ) {
-   
-    .createcard {
-    
+@media (min-width: 750px) {
+  .createcard {
     height: 55rem;
     width: 50rem;
     justify-self: center;
-
+  }
 }
-
-}
-
 
 @media (min-width: 750px) {
   .createcard {
@@ -194,11 +180,31 @@
     font-size: large;
     font-weight: bold;
     width: 15rem;
-
-    
-}
+  }
   .card-body {
-
     justify-items: center;
   }
+}
+/* 
+#visibility {
+  display: none;
+} */
+.custom-field .small-button {
+  display: none;
+}
+
+.left {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.right {
+  margin-top: 450px;
+  margin-left: 20px;
+}
+
+.card-container .map {
+  margin-top: 20px;
+  border-radius: 3rem;
+  margin-right: 20px;
 }

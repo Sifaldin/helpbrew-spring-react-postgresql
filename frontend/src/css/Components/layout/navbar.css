@@ -1,3 +1,30 @@
 .navbar .active {
   color: orange;
 }
+
+.navbar {
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.1);
+
+  list-style: none;
+  color: white;
+}
+
+.navbar img {
+  max-width: 220px;
+  height: auto;
+}
+
+.navbar ul {
+  list-style: none;
+  color: white;
+  display: grid;
+  grid-template-columns: 1fr repeat(7, auto);
+  justify-items: center;
+  align-items: center;
+  grid-column-gap: 1rem;
+  padding-right: 1rem;
+}
+
+.navbar ul .logo-link {
+  justify-self: start;
+}

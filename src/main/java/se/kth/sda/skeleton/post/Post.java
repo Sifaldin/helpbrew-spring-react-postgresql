@@ -6,6 +6,7 @@ import javax.validation.constraints.NotNull;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.comments.*;
 import se.kth.sda.skeleton.reactions.Reaction;
+import se.kth.sda.skeleton.user.User;
 
 import java.util.ArrayList;
 
@@ -36,14 +37,18 @@ public class Post {
     @Column(name = "date")
     private String date;
 
-    @Column(name = "email")
-    private String email;
+    @ManyToOne
+    private User user;
 
     @Column
     private String postType;
 
     @Column
     private String location;
+
+    @Column
+    @ElementCollection
+    private List<Double> position;
 
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -116,12 +121,12 @@ public class Post {
         this.date = date;
     }
 
-    public String getEmail() {
-        return email;
+    public User getUser() {
+        return user;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUser(User user) {
+        this.user = user;
     }
 
 
@@ -157,4 +162,11 @@ public class Post {
         this.location = location;
     }
 
+    public List<Double> getPosition() {
+        return position;
+    }
+
+    public void setPosition(List<Double> position) {
+        this.position = position;
+    }
 }

@@ -5,6 +5,7 @@ import { IoMdCloseCircle } from 'react-icons/io';
 import { RiHandHeartFill } from 'react-icons/ri';
 import { FaHandsHelping } from 'react-icons/fa';
 
+
 const Modal = forwardRef( (props, ref) => {
     const [display, setDisplay] = useState(false);
 
@@ -20,6 +21,7 @@ const Modal = forwardRef( (props, ref) => {
     }
     const close = () => {
         setDisplay(false)
+        
     }
 
     if (display) {
@@ -31,7 +33,9 @@ const Modal = forwardRef( (props, ref) => {
                     
                 <div className={"modal-box"}>
                     <div className="modal-icon">
-                        <IoMdCloseCircle color="lightblue" onClick={() => ref.current.close()} />
+                        <Link exact to="/">
+                        <IoMdCloseCircle color="lightblue" onClick={() => ref.current.close() } />
+                        </Link>
                         </div>
                         <div className="modal-body">
 

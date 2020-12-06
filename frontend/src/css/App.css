@@ -19,4 +19,5 @@
 
 @import "./Components/notification/notification.css";
 
-@import "../css/Components/Chat/ChatPage.css"
+@import "../css/Components/Chat/ChatPage.css";
+@import "./Components/Post/SinglePostPage.css";
