@@ -78,11 +78,11 @@ function Navbar({ onLogout }) {
           </li>
 
           {/* commented out the chat link for the moment /Elena */}
-          {/* <li>
+           <li>
             <NavLink exact to="/chat" activeClassName="active-link">
               Chat
             </NavLink>
-          </li> */}
+          </li> 
 
           <li>
             <button onClick={onLogout}>Logout</button>

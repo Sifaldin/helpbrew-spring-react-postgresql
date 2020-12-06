@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Api from "../../../api/Api";
+import { useHistory, useLocation } from 'react-router-dom';
+import ChatApi from '../../../api/ChatApi';
 import { Link } from "react-router-dom";
 import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 
@@ -9,6 +11,9 @@ import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 //PostCard? Shall tags "Available"/"Claimed" stay as they are or are we changing that?
 function PostCard({ post }) {
   const [reaction, setReaction] = useState(post.reaction);
+  const receiverEmail = window.sessionStorage.getItem('userEmail');
+  console.log(receiverEmail);
+  const history = useHistory();
   const incrementLike = () => {
     const url = "/reactions/" + reaction.id + "?incrementTarget=like";
     Api.put(url, reaction).then((r) => {
@@ -21,6 +26,20 @@ function PostCard({ post }) {
     Api.put(url, reaction).then((r) => {
       setReaction(r.data);
     });
+  };
+
+  const threadHandler = () => {
+    const createOrDirect = async () => {
+      try {
+        const response = await ChatApi.createThread(receiverEmail, {});
+        console.log(response);
+        const thread = response.data;
+        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    createOrDirect();
   };
 
   return (
@@ -77,6 +96,13 @@ function PostCard({ post }) {
           >
             View post
           </Link>
+
+          <div>
+          <button onClick={threadHandler} type="submit">
+            <i className="fa fa-paper-plane" aria-hidden="true"></i>
+          </button>
+           </div>
+
         </div>
         <hr />
         {/* Once View Post button is clicked by user, user is redirected to 

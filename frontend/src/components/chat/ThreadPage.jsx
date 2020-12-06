@@ -27,28 +27,28 @@ function ThreadPage() {
     <Thread key={thread.id} setMessageBox={setMessageBox} thread={thread} />
   ));
   return (
-    <div>
-      <div >
-        <div >
-          <div >
-            <div >
-              <div >
+   <div>
+      <div className="messaging">
+        <div className="inbox_msg">
+          <div className="inbox_people">
+            <div className="headind_srch">
+              <div className="recent_heading">
                 <h4>Recent</h4>
               </div>
-              <div >
-                <div >
-                  <input type="text" placeholder="Search" />
+              <div className="srch_bar">
+                <div className="stylish-input-group">
+                  <input type="text" className="search-bar" placeholder="Search" />
                 </div>
               </div>
             </div>
-            <div >
-              <div >
+            <div className="inbox_chat scroll">
+              <div className="chat_list active_chat">
                 {threads === [] ? 'loading...' : listOfThreads}
               </div>
             </div>
           </div>
-          <div >
-            {messageBox.thread === '' ? null : (
+          <div className="mesgs">
+            {messageBox.thread === '' ?  null : (
               <ChatPage id={messageBox.threadId} thread={messageBox.thread} />
             )}
           </div>
