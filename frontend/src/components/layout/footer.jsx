@@ -9,7 +9,7 @@ export default function Footer() {
         <footer className={"footer"} >
             <a href="mailto: contact@homebrew.com" 
             target="_blank">
-            @Email
+            @ContactUS
             </a>
             <a href="https://www.apple.com/legal/internet-services/itunes/us/terms.html" 
             target="_blank">

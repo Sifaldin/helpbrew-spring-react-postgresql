@@ -57,7 +57,7 @@
 }
 
 .share-btn {
-  background-color: orange;
+  background-color:#F2994A;
   color: white;
   padding: 0.5rem;
   border-radius: 1rem;
@@ -68,7 +68,7 @@
 
 
 .profileLogoutBtn{
-  background-color: orange;
+  background-color: #F2994A;
   color: white;
   padding: 0.5rem;
   border-radius: 2rem;

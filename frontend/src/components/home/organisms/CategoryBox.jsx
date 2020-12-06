@@ -90,6 +90,7 @@ export default function CategoryBox({ category, posts }) {
           })}
         </ul>
       </div>
+      
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import CategoryBox from "../organisms/CategoryBox";
+import Footer from '../../layout/footer';
 
 // The page should show posts posted by the logged in user,
 // split into three main categories.
@@ -18,6 +19,7 @@ export default function HomePage({ userPosts }) {
       <CategoryBox category={"skills"} posts={skills} />
       <CategoryBox category={"giveaways"} posts={giveaways} />
       <CategoryBox category={"monetary-support"} posts={monetary} />
+      <Footer />
     </div>
   );
 }
