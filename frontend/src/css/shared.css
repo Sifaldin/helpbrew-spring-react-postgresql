@@ -1,4 +1,6 @@
-* {
+body > *,
+*,
+body {
   box-sizing: border-box;
 }
 
@@ -37,7 +39,7 @@ h3 {
 
 .medium-button {
   border: none;
-  background-color: #F2994A;
+  background-color: #f2994a;
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 2rem;

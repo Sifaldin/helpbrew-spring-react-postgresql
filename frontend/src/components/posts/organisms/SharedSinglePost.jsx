@@ -10,7 +10,7 @@ export default function SharedSinglePost({
   user,
 }) {
   return (
-    <div>
+    <div className="main-wrapper">
       {/* consists of post area and comment area */}
       <div className="main">
         {/* consists of signature(photo, name, date), post block and comment block */}
