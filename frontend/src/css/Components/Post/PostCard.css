@@ -84,6 +84,29 @@ hr {
 .reaction button:hover {
   cursor: pointer;
 }
+
+.msg_send_btn {
+	background: #B52B65 none repeat scroll 0 0;
+	border:none;
+	border-radius: 50%;
+	color: #fff;
+	cursor: pointer;
+	font-size: 15px;
+	/*height: 33px;
+	position: absolute;
+	right: 0;
+	top: 11px;
+	width: 33px;*/
+}
+.input_msg_write input {
+	background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
+	border: medium none;
+	color: #4c4c4c;
+	font-size: 15px;
+	min-height: 48px;
+	width: 100%;
+	outline:none;
+}
 /* img .post-image
 div .post-bottom */
 

@@ -12,9 +12,10 @@ function Thread({ thread, setMessageBox }) {
   const lastMessage = thread.thread.slice(-1)[0];
   const lastDate = lastMessage === undefined ? null : lastMessage.date;
 
+
   return (
-    <div >
-      <div >
+    <div className="chat_people">
+      <div className="chat_img">
         {' '}
         <img src="/images/sender.jpeg" alt="name" />{' '}
       </div>

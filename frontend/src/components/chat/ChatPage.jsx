@@ -2,12 +2,20 @@ import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import ChatApi from '../../api/ChatApi';
 
+
 function ChatPage({ id, thread }) {
   const loggedInUser = window.sessionStorage.getItem('userEmail');
-  const receiverEmail = loggedInUser === thread.p1Email ? thread.p2Email : thread.p1Email;
-  const [messageText, setMessageText] = useState({ text: '' });
-  const [messageArray, setMessageArray] = useState(thread.thread);
+  var receiverEmail = loggedInUser;
+  if (id != 0) {
+      receiverEmail = loggedInUser === thread.p1Email ? thread.p2Email : thread.p1Email;
+  } else {
+      thread = {id : "0", p1Email:"", p2Email:"", thread:""};
+  }
 
+  var [messageText, setMessageText] = useState({ text: '' });
+  var [messageArray, setMessageArray] = useState(thread.thread);
+
+  //messageArray = null;
   const sendMessage = async () => {
     try {
       const response = await ChatApi.createMessage(id, receiverEmail, {
@@ -35,7 +43,25 @@ function ChatPage({ id, thread }) {
 
   const handleClick = e => {
     e.preventDefault();
-    sendMessage();
+    //sendMessage();
+  };
+
+  const messageHandler = () => {
+    const createOrDirect = async () => {
+      try {
+        const response_message = await ChatApi.createMessage(thread.id, receiverEmail, {
+          messageBody: messageText.text,
+          thread: { id: thread.id },
+          date: format(new Date(), 'dd-MMM-yyyy HH:MM')
+        });
+        setMessageArray([...messageArray, response_message.data]);
+        setMessageText({ text: '' });
+        /*history.push({ pathname: `/chat/${thread.id}`, state: { thread } });*/
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    createOrDirect();
   };
 
   const messages =
@@ -44,24 +70,24 @@ function ChatPage({ id, thread }) {
       : messageArray.map(message => {
           if (message.senderEmail === loggedInUser) {
             return (
-              <div  key={message.id}>
-                <div >
+              <div className="outgoing_msg" key={message.id}>
+                <div className="sent_msg">
                   <p>{message.messageBody}</p>
-                  <span > {message.date}</span>{' '}
+                  <span className="time_date"> {message.date}</span>{' '}
                 </div>
               </div>
             );
           } else {
             return (
-              <div  key={message.id}>
-                <div >
+              <div className="incoming_msg" key={message.id}>
+                <div className="incoming_msg_img">
                   {' '}
                   <img src="/images/sender.jpeg" alt="name" />{' '}
                 </div>
-                <div >
-                  <div >
+                <div className="received_msg">
+                  <div className="received_withd_msg">
                     <p>{message.messageBody}</p>
-                    <span > {message.date}</span>
+                    <span className="time_date"> {message.date}</span>
                   </div>
                 </div>
               </div>
@@ -71,23 +97,26 @@ function ChatPage({ id, thread }) {
 
   return (
     <form>
-      <div >{messages}</div>
-      <div >
-        <div >
+      <div className="msg_history">{messages}</div>
+      <div className="type_msg">
+        <div className="input_msg_write">
           <input
             autoFocus
             value={messageText.text}
             id="chatInput"
             type="text"
+            className="write_msg"
             onChange={e => setMessageText({ text: e.target.value })}
             placeholder="Type a message"
           />
-          <button onClick={handleClick} type="submit">
+          <button className="msg_send_btn" onClick={messageHandler} type="submit">
+            <i className="fa fa-paper-plane" aria-hidden="true"></i>
           </button>
         </div>
       </div>
     </form>
   );
 }
+
 
 export default ChatPage;

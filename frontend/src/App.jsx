@@ -121,13 +121,13 @@ function App() {
           Uncomment or remove if the routes are not needed.
           */}
 
-          {/* <Route path="/chat" exact>
+           <Route path="/chat" exact>
             <ThreadPage />
           </Route>
 
           <Route path="/chat/:id">
             <ThreadPage />
-          </Route> */}
+          </Route> 
         </Switch>
       </div>
     </Router>
