@@ -11,12 +11,13 @@ export default function GiveawayPost({
   return (
     // consists of hero image for post and single-post-card
     <div className="single-post">
+      {/* conssits of SharedSinglePost - component that displays post information
+            which is common to posts of all the three categories, and a map */}
+
       <div className="post-pic">
         <img src={post.imageUrl} alt="Single post img" />
       </div>
 
-      {/* conssits of SharedSinglePost - component that displays post information
-            which is common to posts of all the three categories, and a map */}
       <div className="single-post-card">
         <SharedSinglePost
           post={post}
