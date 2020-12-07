@@ -16,7 +16,7 @@ export default function CategoryBox({ category, posts }) {
   const requestPosts = posts.filter((post) => post.postType === "request");
 
   //this state is used to have the right posts(requested or given) to map through in this component
-  const [postsByType, setPostsByType] = useState(givePosts);
+  let postsByType = givePosts;
 
   //removes dashes and capitilizes the category. ex. from "monetary-support" to "Monetary support"
   const formatCategory = (category) => {
@@ -38,6 +38,15 @@ export default function CategoryBox({ category, posts }) {
     }
   };
 
+  //get posts depending on the post type selected by user: given or requested.
+  function getPosts() {
+    if (type === "requested") {
+      return requestPosts;
+    } else {
+      return givePosts;
+    }
+  }
+
   return (
     <div className="category-box">
       {/* the top of the box contains background image, category name and toggle button */}
@@ -51,16 +60,9 @@ export default function CategoryBox({ category, posts }) {
 
         {/* Toggling the button(requested/given) allows to see only posts requested or given by user */}
         <button
-          onClick={() => {
-            if (type === "requested") {
-              setType("given");
-              setPostsByType(givePosts);
-            } else {
-              //when type equals "given"
-              setType("requested");
-              setPostsByType(requestPosts);
-            }
-          }}
+          onClick={() =>
+            type === "requested" ? setType("given") : setType("requested")
+          }
         >
           {type} <RiArrowDropDownLine />
         </button>
@@ -69,14 +71,14 @@ export default function CategoryBox({ category, posts }) {
       {/* the bottom of the box contains category name with a number of posts and posts icons and titles */}
       <div className="bottom">
         <span className="category-name">
-          Your {formatCategory(category)}({postsByType.length})
+          Your {formatCategory(category)}({getPosts().length})
         </span>
 
         {/* !!! The posts below will be displayed in a different way depending on the category
         This stays to be done during next iteration!
         */}
         <ul className="post-icons">
-          {postsByType.map((post) => {
+          {getPosts().map((post) => {
             return (
               <div className="post-icon">
                 <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
@@ -90,7 +92,6 @@ export default function CategoryBox({ category, posts }) {
           })}
         </ul>
       </div>
-      
     </div>
   );
 }
