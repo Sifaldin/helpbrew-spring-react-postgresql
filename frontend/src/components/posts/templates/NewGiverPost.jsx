@@ -8,6 +8,7 @@ import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
 import {GrMapLocation} from 'react-icons/gr';
+import GiveIntroduction from "../molecules/GiveIntroduction";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -97,7 +98,10 @@ function NewGiverPost({ setPosts, user }) {
         <div className="card-body">
           <div className="page-title">
             <h1>OFFER HELP</h1>
-          </div>
+            
+            </div>
+            <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+
 
           <label className="custom-field">
             <select
@@ -108,10 +112,10 @@ function NewGiverPost({ setPosts, user }) {
                 setPostCategory(e.target.value);
               }}
             >
-              <option disabled selected>
+              <option className="option-placeholder" disabled selected>
                 Choose Category
               </option>
-              <option value="giveaways">Giveaways</option>
+                <option className="option-placeholder" value="giveaways">Giveaways</option>
               <option value="skills">Skills</option>
               <option value="monetary-support">Monetary support</option>
             </select>
@@ -126,18 +130,19 @@ function NewGiverPost({ setPosts, user }) {
             />
             <span className="placeholder">Enter Title </span>
           </label>
+          
           <label className="custom-field">
             <textarea
               type="text"
               required
-              className="card-input"
-              rows="3"
+              // className="card-input"
+              rows="5"
               onChange={(e) => setDetails(e.target.value)}
             />
             <span className="placeholder">Enter Details</span>
           </label>
 
-          <div>
+          
             {/* Depending on the category chosen by user from drop-down menu,
             a field for entering a pick-up location will be displayed or not */}
             {postCategory === "giveaways" ? (
@@ -165,7 +170,7 @@ function NewGiverPost({ setPosts, user }) {
               </label>
             ) : null}
            
-          </div>
+         
 
             
           <div>
@@ -177,17 +182,16 @@ function NewGiverPost({ setPosts, user }) {
             {uploading ? "Submit" : "Submit"}
           </button>
             </div>
-            {/* closing of left */}
+        
         </div>
       </form>
       </div>
-      <div className="right">
-        <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
-      </div>
+      
       
       {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
-      <div className="map">{position.length > 0 ? <Map position={position} /> : null}</div>
-
+      <div className="map">{position.length > 0 ? <Map position={position} /> :
+      <GiveIntroduction location={location}  /> } </div>
+         
 
       
     </div>
