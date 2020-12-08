@@ -7,8 +7,8 @@ import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
-import {GrMapLocation} from 'react-icons/gr';
 import GiveIntroduction from "../molecules/GiveIntroduction";
+import Error from "../../notifications/Error";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -22,6 +22,7 @@ function NewGiverPost({ setPosts, user }) {
   const [locationInput, setLocationInput] = useState("");
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
+  const [displayError, setDisplayError] = useState(false);
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
@@ -30,14 +31,10 @@ function NewGiverPost({ setPosts, user }) {
     });
   };
 
- 
-  const handleSubmit =(e)=> {
-
-    setAddress(locationInput)
+  const handleSubmit = (e) => {
+    setAddress(locationInput);
     e.preventDefault();
-
   };
-  
 
   const dispatch = useNotification();
   const handleNewNotification = () => {
@@ -55,7 +52,7 @@ function NewGiverPost({ setPosts, user }) {
       claimed: false,
       imageUrl: imgUrl,
       title: postTitle,
-      date: format(new Date(), "dd-MMM-yyyy"),
+      date: format(new Date(), "dd-MM-yyyy"),
       category: postCategory,
       postType: location.state.type,
       location: address,
@@ -81,75 +78,85 @@ function NewGiverPost({ setPosts, user }) {
   //The geocoder api positionstack allows to convert address string into lat, lng coordinates,
   //which can the be passed to Map component for map display.
   async function fetchPosition() {
-    const response = await axios.get(
-      `http://api.positionstack.com/v1/forward?access_key=26f92b100e63df8995a3669559ae5d78&query=${address}&limit=10&output=json`
-    );
-    setPosition([
-      response.data.data[0].latitude,
-      response.data.data[0].longitude,
-    ]);
+    let fetched = false;
+    while (!fetched) {
+      try {
+        const response = await axios.get(
+          `http://api.positionstack.com/v1/forward?access_key=26f92b100e63df8995a3669559ae5d78&query=${address}&limit=10&output=json`
+        );
+
+        setPosition([
+          response.data.data[0].latitude,
+          response.data.data[0].longitude,
+        ]);
+        fetched = true;
+        setDisplayError(false);
+        return;
+      } catch (err) {
+        setDisplayError(true);
+        setPosition([]);
+        return;
+      }
+    }
   }
 
   return (
-
     <div className="left">
-    <div className="card-container">
-      <form className="createcard" onSubmit={submitHandler}>
-        <div className="card-body">
-          <div className="page-title">
-            <h1>OFFER HELP</h1>
-            
+      <div className="card-container">
+        <form className="createcard" onSubmit={submitHandler}>
+          <div className="card-body">
+            <div className="page-title">
+              <h1>OFFER HELP</h1>
             </div>
             <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
 
+            <label className="custom-field">
+              <select
+                required
+                name="category"
+                className="card-input"
+                onChange={(e) => {
+                  setPostCategory(e.target.value);
+                }}
+              >
+                <option className="option-placeholder" disabled selected>
+                  Choose Category
+                </option>
+                <option className="option-placeholder" value="giveaways">
+                  Giveaways
+                </option>
+                <option value="skills">Skills</option>
+                <option value="monetary-support">Monetary support</option>
+              </select>
+            </label>
 
-          <label className="custom-field">
-            <select
-              required
-              name="category"
-              className="card-input"
-              onChange={(e) => {
-                setPostCategory(e.target.value);
-              }}
-            >
-              <option className="option-placeholder" disabled selected>
-                Choose Category
-              </option>
-                <option className="option-placeholder" value="giveaways">Giveaways</option>
-              <option value="skills">Skills</option>
-              <option value="monetary-support">Monetary support</option>
-            </select>
-          </label>
+            <label className="custom-field">
+              <input
+                type="text"
+                required
+                className="card-input"
+                onChange={(e) => setPostTitle(e.target.value)}
+              />
+              <span className="placeholder">Enter Title </span>
+            </label>
 
-          <label className="custom-field">
-            <input
-              type="text"
-              required
-              className="card-input"
-              onChange={(e) => setPostTitle(e.target.value)}
-            />
-            <span className="placeholder">Enter Title </span>
-          </label>
-          
-          <label className="custom-field">
-            <textarea
-              type="text"
-              required
-              // className="card-input"
-              rows="5"
-              onChange={(e) => setDetails(e.target.value)}
-            />
-            <span className="placeholder">Enter Details</span>
-          </label>
+            <label className="custom-field">
+              <textarea
+                type="text"
+                required
+                // className="card-input"
+                rows="5"
+                onChange={(e) => setDetails(e.target.value)}
+              />
+              <span className="placeholder">Enter Details</span>
+            </label>
 
-          
             {/* Depending on the category chosen by user from drop-down menu,
             a field for entering a pick-up location will be displayed or not */}
             {postCategory === "giveaways" ? (
               /* The field allows user to enter a pick-up location for giveaway posts and search for
               it on the map when the button Find location is pushed */
               <label className="custom-field">
-                
                 <input
                   type="text"
                   required
@@ -157,43 +164,50 @@ function NewGiverPost({ setPosts, user }) {
                   onChange={(e) => setLocationInput(e.target.value)}
                 />
                 <span className="placeholder">Enter Pick-Up Location</span>
-                
+
                 <button
                   type="submit"
                   className="small-button"
-                  // onClick={() => setAddress(locationInput)}
                   onClick={handleSubmit}
                 >
                   Find location
                 </button>
-
               </label>
             ) : null}
-           
-         
 
-            
-          <div>
-          <button
-            className="medium-button"
-            disabled={uploading ? true : false}
-            type="submit"
-          >
-            {uploading ? "Submit" : "Submit"}
-          </button>
+            <div>
+              <button
+                className="medium-button"
+                disabled={uploading ? true : false}
+                type="submit"
+              >
+                {uploading ? "Submit" : "Submit"}
+              </button>
             </div>
-        
-        </div>
-      </form>
-      </div>
-      
-      
-      {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
-      <div className="map">{position.length > 0 ? <Map position={position} /> :
-      <GiveIntroduction location={location}  /> } </div>
-         
 
-      
+            {/* Displays error if API could not fetch location coordinates or any other error happenned */}
+            {displayError ? (
+              <Error
+                message={
+                  "Something went wrong. Please check the entered location and try again."
+                }
+                setDisplayError={setDisplayError}
+              />
+            ) : null}
+          </div>
+        </form>
+      </div>
+
+      {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
+      <div className="map">
+        {position.length > 0 ? (
+          <Map position={position} />
+        ) : (
+          <div>
+            <GiveIntroduction location={location} />
+          </div>
+        )}
+      </div>
     </div>
   );
 }
