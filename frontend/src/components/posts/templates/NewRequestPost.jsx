@@ -4,6 +4,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import Api from "../../../api/Api";
 import { useNotification } from "../../notifications/NotificationProvider";
 import ImageUploader from "../molecules/ImageUploader";
+import RequestIntroduction from "../molecules/RequestIntroduction";
 
 function NewRequestPost({ setPosts, user }) {
     const history = useHistory();
@@ -48,9 +49,9 @@ function NewRequestPost({ setPosts, user }) {
     };
 
     return (
+        <div className="left">
         <div className="card-container" >
             <form className="createcard" onSubmit={submitHandler}>
-                <div >
                     <div className="card-body">
                             
                         <div className="page-title">
@@ -70,6 +71,7 @@ function NewRequestPost({ setPosts, user }) {
                                             <option value="monetary-support">Monetary support</option>
                                         </select>
                                     </label>
+
                                     <label className="custom-field">
                                         <input
                                             type="text"
@@ -79,6 +81,7 @@ function NewRequestPost({ setPosts, user }) {
                                         />
                                         <span className="placeholder">Enter Title</span>
                                     </label>
+
                                     <label className="custom-field">
                                         <textarea
                                             type="text"
@@ -89,15 +92,16 @@ function NewRequestPost({ setPosts, user }) {
                                         />
                                         <span className="placeholder">Ask for help</span>
                                     </label>
+                                    
                                 <button  className="medium-button" disabled={uploading ? true : false} type="submit">
                                     {uploading ? "Submit" : "Submit"}
                                 </button>
                         </div>
-                    
-
-                </div>
-            
             </form>
+        </div>
+        <div className="map">
+        <RequestIntroduction />
+            </div>
         </div>
     );
 }

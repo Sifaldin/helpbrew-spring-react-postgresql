@@ -123,7 +123,7 @@ function SinglePost({ user }) {
     ) : (
       //Otherwise details of the post passed as props are displayed(managed by getPost() function above)
       //followed by comments to that post.
-      <div>
+      <div className="post-wrapper">
         {getPost()}
         {/* <Comments post={post} /> */}
       </div>

@@ -4,8 +4,8 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-
-import logo from "../../assets/logo_small.jpg";
+import Footer from '../layout/footer';
+import logo from "../../assets/logo_transparent_background_small.png";
 
 function LoginPage() {
   const login = async loginData => {
@@ -38,7 +38,10 @@ function LoginPage() {
           <Router>
             <div className="logo">
               <img src={logo} alt= "HelpBrew Logo" />
-              <h5>With HelpBrew, you can share and receive help with skills, give away stuff, monetary support, together we can make a difference and create a better world. </h5>
+              <div className="loginpage-text">
+              <h5>With HelpBrew, you can share and receive help with skills, give away stuff, receive and give monetary support. HelpBrew gives us all the opportunity to make a difference and create a better world. </h5>
+              </div>
+              
             </div>
         </Router>
               {/*<<input id="tab-1" type="radio" name="tab"  checked />
@@ -54,8 +57,12 @@ function LoginPage() {
               <LoginForm onSubmit={login} goRegister = {goRegister}/> 
               : <RegisterForm onSubmit={register} goLogin = {goLogin}/>}
               </div>
+              
             </div>
+           <Footer />
+
           </div>
+          
   );
 }
 
