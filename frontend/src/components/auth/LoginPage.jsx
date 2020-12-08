@@ -59,7 +59,7 @@ function LoginPage() {
               </div>
               
             </div>
-           <Footer />
+           <Footer/>
 
           </div>
           
