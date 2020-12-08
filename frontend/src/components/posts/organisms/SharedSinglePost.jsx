@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import Comments from "../../comments/templates/Comments";
+import PostUpdateForm from "../templates/PostUpdateForm";
+import Api from "../../../api/Api";
 
 //Displays post belonging to giveaway category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
 export default function SharedSinglePost({
   post,
-  handleUpdateClick,
   deletePost,
   user,
 }) {
+  const [isUpdating, setIsUpdating] = useState(false);
+  const [curPost, setCurPost] = useState(post);
+
+  const updatePost = (updatedPost) => {
+    Api.put("/posts", updatedPost).then((res) => setCurPost(res.data));
+  };
+
   return (
     <div className="main-wrapper">
       {/* consists of post area and comment area */}
@@ -16,31 +24,40 @@ export default function SharedSinglePost({
         {/* consists of signature(photo, name, date), post block and comment block */}
         <div className="post-info">
           <div className="signature">
-            <img src={post.user.imageUrl} alt="Single post img" />
+            <img src={curPost.user.imageUrl} alt="Single post img" />
             <div>
-              <span className="user-name">{post.user.name}</span>
-              <span className="date">{post.date}</span>
+              <span className="user-name">{curPost.user.name}</span>
+              <span className="date">{curPost.date}</span>
             </div>
           </div>
 
-          <h3>{post.title}</h3>
-          <p className="post-body">{post.body}</p>
+          <h3>{curPost.title}</h3>
+          
+          {isUpdating? 
+          <PostUpdateForm 
+          oldPost={curPost}
+          onUpdateClick={updatePost}
+          setIsUpdating={setIsUpdating}
+
+          />
+          :<p className="post-body">{curPost.body}</p>}
+          
 
           {/* The post is deleted only if the email of the logged in user and 
               email of the user who wrote the post are the same */}
-          {post.user.email === user.email ? (
+          {curPost.user.email === user.email ? (
             <div className="button-group">
               <button className="medium-button" onClick={() => deletePost()}>
                 Delete
               </button>
 
-              <button className="medium-button" onClick={handleUpdateClick}>
+              <button className="medium-button" onClick={() => setIsUpdating(true)}>
                 Update
               </button>
             </div>
           ) : null}
         </div>
-        <Comments post={post} />
+        <Comments post={curPost} />
       </div>
     </div>
   );

@@ -19,7 +19,6 @@ export default function SkillPost({
       <div className="single-post-card">
         <SharedSinglePost
           post={post}
-          handleUpdateClick={handleUpdateClick}
           deletePost={deletePost}
           user={user}
         />
