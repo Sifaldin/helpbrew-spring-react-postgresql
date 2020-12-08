@@ -35,7 +35,7 @@
 }
 
 .recent_heading h4 {
-	color: #B52B65;
+	color: orange;
     font-size: 16px;
     margin: auto;
     line-height: 29px;
@@ -162,8 +162,8 @@
 }
 
 .sent_msg p {
-	background:#28a745;
-	border-radius: 12px 15px 15px 0;
+	background:#2FBCE9;
+	border-radius: 12px 15px 0px 12px;
 	font-size: 14px;
 	margin: 0;
 	color: #fff;
@@ -197,7 +197,7 @@
 }
 
 .msg_send_btn {
-	background: #B52B65 none repeat scroll 0 0;
+	background: #2FBCE9 none repeat scroll 0 0;
 	border:none;
 	border-radius: 50%;
 	color: #fff;

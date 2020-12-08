@@ -57,22 +57,26 @@
 }
 
 .share-btn {
-  background-color:#F2994A;
   color: white;
-  padding: 0.5rem;
-  border-radius: 1rem;
-  margin: 0 auto 4px;
+  border-radius: 2rem;
+  margin: 0 auto 0.7rem;
+  width: 10rem;
+  border: none;
+  background-color: #f2994a;
+  padding: 0.5rem 1rem;
   display: block;
 }
 
 
 
 .profileLogoutBtn{
-  background-color: #F2994A;
+  
   color: white;
-  padding: 0.5rem;
   border-radius: 2rem;
   margin: 0 auto 0.7rem;
-  width: 25rem;
-  
+  width: 10rem;
+  border: none;
+  background-color: #f2994a;
+  padding: 0.5rem 1rem;
+
 }

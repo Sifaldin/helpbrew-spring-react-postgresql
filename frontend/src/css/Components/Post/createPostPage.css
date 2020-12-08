@@ -18,7 +18,7 @@
   display: none;
 } */
 
- /* .left {
+/* .left {
   display: grid;
   grid-template-columns: 1fr 1fr;
   
@@ -30,13 +30,12 @@
   margin: 8px;
 }
 
- .page-title h1 {
+.page-title h1 {
   justify-self: center;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 16px;
   margin-top: 10px;
- 
 }
 
 .create-header label {
@@ -44,12 +43,10 @@
   justify-content: center;
 }
 
-
-
 .left .map {
   width: 250px;
   height: 200px;
-  margin-top:40px;
+  margin-top: 40px;
   border-radius: 8px;
   /* border-style: solid; */
   margin-left: 40px;
@@ -126,8 +123,6 @@
   font-family: "Source Sans Pro", sans-serif;
 }
 
-
-
 .custom-field .placeholder {
   position: absolute;
   left: 15px;
@@ -136,8 +131,6 @@
   color: black;
   transition: top 0.3s ease, font-size 0.3s ease, color 0.3s ease;
 }
-
-
 
 .custom-field input:valid + .placeholder,
 .custom-field input:focus + .placeholder {
@@ -164,39 +157,34 @@
   }
 
   .card-body .medium-button {
-  width: 10rem;
-  justify-self: center;
-  margin-top: 1rem;
-}
-.map {
-  width: 300px;
-  height: 300px;
-  margin: 3rem;
-  justify-self: center;
-}
-
-.custom-field textarea {
-  width: 320px;
-  outline: none;
-  font-size: 20px;
-  font-family: "Source Sans Pro", sans-serif;
-  border: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #f2f2f2;
-  padding: 12px;
-  border-radius: 10px;
-  outline: none;
-    
+    width: 10rem;
+    justify-self: center;
+    margin-top: 1rem;
+  }
+  .left .map {
+    width: 300px;
+    height: 300px;
+    margin: 3rem;
+    justify-self: center;
   }
 
-  
+  .custom-field textarea {
+    width: 320px;
+    outline: none;
+    font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #f2f2f2;
+    padding: 12px;
+    border-radius: 10px;
+    outline: none;
+  }
 }
 
-
 @media (min-width: 900px) {
-
   .card-container {
     width: 90%;
     margin-left: 15px;
@@ -213,10 +201,9 @@
     outline: none;
     font-size: 20px;
     font-family: "Source Sans Pro", sans-serif;
-   
   }
 
-    .custom-field textarea {
+  .custom-field textarea {
     width: 360px;
     outline: none;
     font-size: 20px;
@@ -229,7 +216,6 @@
     padding: 12px;
     border-radius: 10px;
     outline: none;
-    
   }
 
   .custom-field {
@@ -240,8 +226,6 @@
     padding-top: 20px;
     margin-bottom: 5px;
   }
-
- 
 
   .card-body .medium-button {
     margin-top: 30px;
@@ -256,25 +240,19 @@
     font-weight: bold;
     width: 15rem;
   }
-  
 
-   .left {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  
-} 
+  .left {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
 
-.map {
-  height: 400px;
-  width: 400px;
+  .left .map {
+    height: 400px;
+    width: 400px;
+  }
+  .giveWithLove {
+    height: 400px;
+    width: 400px;
+    border-radius: 8px;
+  }
 }
-.giveWithLove {
- height: 400px;
-  width: 400px;
-  border-radius: 8px;
-}
-}
-
-
-
-

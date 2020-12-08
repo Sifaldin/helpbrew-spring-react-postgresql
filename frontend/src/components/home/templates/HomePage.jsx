@@ -18,7 +18,7 @@ export default function HomePage({ userPosts }) {
       <CategoryBox category={"skills"} posts={skills} />
       <CategoryBox category={"giveaways"} posts={giveaways} />
       <CategoryBox category={"monetary-support"} posts={monetary} />
-      <Footer />
+      <Footer/>
     </div>
   );
 }

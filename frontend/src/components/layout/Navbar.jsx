@@ -81,7 +81,7 @@ function Navbar({ onLogout }) {
           {/* commented out the chat link for the moment /Elena */}
            <li>
             <NavLink exact to="/chat" activeClassName="active-link">
-              Chat
+              CHAT
             </NavLink>
           </li> 
 
