@@ -1,0 +1,23 @@
+.error-wrapper {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.error-wrapper .modal-box {
+  display: grid;
+  grid-template-rows: 1fr 2fr;
+}
+
+.error-wrapper .modal-box .error-body {
+  justify-self: center;
+}
+
+.error-wrapper .modal-box .error-body p {
+  display: inline-block;
+  padding: 0 2rem;
+  text-align: center;
+  font-size: 2rem;
+}
