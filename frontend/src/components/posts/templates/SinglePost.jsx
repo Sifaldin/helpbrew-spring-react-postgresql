@@ -17,7 +17,6 @@ function SinglePost({ user }) {
   const passedPost = state === undefined ? null : state.post;
   const [post, setPost] = useState(passedPost);
   const history = useHistory();
-  const [isUpdating, setIsUpdating] = useState(false);
 
   //Notification Creator
   const dispatch = useNotification();
@@ -64,14 +63,6 @@ function SinglePost({ user }) {
     }
   };
 
-  const updatePost = (updatedPost) => {
-    Api.put("/posts", updatedPost).then((res) => setPost(res.data));
-  };
-
-  const handleUpdateClick = () => {
-    setIsUpdating(true);
-  };
-
   //getPost() function reads post variable passed as props and checks its category.
   //Depending on the category of the passed post a component relevant to that category is called.
   //This process is handled by the switch statement below.
@@ -81,7 +72,6 @@ function SinglePost({ user }) {
         return (
           <SkillPost
             post={post}
-            handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
             user={user}
           />
@@ -90,7 +80,6 @@ function SinglePost({ user }) {
         return (
           <GiveawayPost
             post={post}
-            handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
             user={user}
           />
@@ -99,7 +88,6 @@ function SinglePost({ user }) {
         return (
           <MonetarySupportPost
             post={post}
-            handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
             user={user}
           />

@@ -4,7 +4,6 @@ import SharedSinglePost from "./SharedSinglePost";
 
 export default function GiveawayPost({
   post,
-  handleUpdateClick,
   deletePost,
   user,
 }) {

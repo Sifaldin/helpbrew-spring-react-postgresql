@@ -25,7 +25,7 @@ export default function PostUpdateForm({
     <textarea
       type="text"
       required
-      // className="card-input"
+      className="updateText"
       rows="5"
       value = {body}
       onChange={(e) => setBody(e.target.value)}
