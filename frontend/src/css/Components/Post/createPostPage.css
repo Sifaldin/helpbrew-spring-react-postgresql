@@ -1,5 +1,5 @@
 .card-body .medium-button {
-  background-color: #F2994A;
+  background-color: #f2994a;
   color: white;
   padding: 0.5rem;
   border-radius: 8px;
@@ -45,7 +45,8 @@
 }
 
 
-.map {
+
+.left .map {
   width: 250px;
   height: 200px;
   margin-top:40px;
@@ -234,7 +235,7 @@
     justify-self: center;
     height: 3rem;
 
-    background-color: #F2994A;
+    background-color: #f2994a;
     color: white;
     padding: 0.5rem;
     border-radius: 8px;
