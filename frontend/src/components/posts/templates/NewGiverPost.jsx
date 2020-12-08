@@ -7,8 +7,8 @@ import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
-import { GrMapLocation } from "react-icons/gr";
 import GiveIntroduction from "../molecules/GiveIntroduction";
+import Error from "../../notifications/Error";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -22,6 +22,7 @@ function NewGiverPost({ setPosts, user }) {
   const [locationInput, setLocationInput] = useState("");
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
+  const [displayError, setDisplayError] = useState(false);
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
@@ -51,7 +52,7 @@ function NewGiverPost({ setPosts, user }) {
       claimed: false,
       imageUrl: imgUrl,
       title: postTitle,
-      date: format(new Date(), "dd-MMM-yyyy"),
+      date: format(new Date(), "dd-MM-yyyy"),
       category: postCategory,
       postType: location.state.type,
       location: address,
@@ -89,9 +90,11 @@ function NewGiverPost({ setPosts, user }) {
           response.data.data[0].longitude,
         ]);
         fetched = true;
+        setDisplayError(false);
         return;
       } catch (err) {
-        window.alert("Something went wrong. Please try again.");
+        setDisplayError(true);
+        setPosition([]);
         return;
       }
     }
@@ -165,7 +168,6 @@ function NewGiverPost({ setPosts, user }) {
                 <button
                   type="submit"
                   className="small-button"
-                  // onClick={() => setAddress(locationInput)}
                   onClick={handleSubmit}
                 >
                   Find location
@@ -182,6 +184,16 @@ function NewGiverPost({ setPosts, user }) {
                 {uploading ? "Submit" : "Submit"}
               </button>
             </div>
+
+            {/* Displays error if API could not fetch location coordinates or any other error happenned */}
+            {displayError ? (
+              <Error
+                message={
+                  "Something went wrong. Please check the entered location and try again."
+                }
+                setDisplayError={setDisplayError}
+              />
+            ) : null}
           </div>
         </form>
       </div>
@@ -191,8 +203,10 @@ function NewGiverPost({ setPosts, user }) {
         {position.length > 0 ? (
           <Map position={position} />
         ) : (
-          <GiveIntroduction location={location} />
-        )}{" "}
+          <div>
+            <GiveIntroduction location={location} />
+          </div>
+        )}
       </div>
     </div>
   );
