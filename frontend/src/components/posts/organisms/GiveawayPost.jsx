@@ -9,7 +9,7 @@ export default function GiveawayPost({
   user,
 }) {
   const [mapVisible, setMapVisible] = useState(false);
-
+  
   const handleMapToggle = () => {
     mapVisible ? setMapVisible(false) : setMapVisible(true);
   };

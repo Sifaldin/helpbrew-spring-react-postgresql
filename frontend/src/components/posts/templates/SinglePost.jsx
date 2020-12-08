@@ -79,12 +79,20 @@ function SinglePost({ user }) {
     switch (post.category) {
       case "skills":
         return (
+          <>
           <SkillPost
             post={post}
             handleUpdateClick={handleUpdateClick}
             deletePost={deletePost}
             user={user}
           />
+          {isUpdating? 
+            <PostUpdateForm
+            oldPost={post}
+            onUpdateClick={updatePost}
+            setIsUpdating={setIsUpdating}
+          />: null}
+          </>
         );
       case "giveaways":
         return (
@@ -114,13 +122,7 @@ function SinglePost({ user }) {
     //updating a post
 
     //If user is updating text of the post, PostUpdateForm is displayed.
-    return isUpdating ? (
-      <PostUpdateForm
-        oldPost={post}
-        onUpdateClick={updatePost}
-        setIsUpdating={setIsUpdating}
-      />
-    ) : (
+    return  (
       //Otherwise details of the post passed as props are displayed(managed by getPost() function above)
       //followed by comments to that post.
       <div className="post-wrapper">
