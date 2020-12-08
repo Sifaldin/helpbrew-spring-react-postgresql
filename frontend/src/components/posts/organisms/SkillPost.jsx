@@ -1,3 +1,4 @@
+import { useState } from "react";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 import ReactCalendar from "../../Calendar/ReactCalendar";
 import SharedSinglePost from "./SharedSinglePost";
@@ -9,8 +10,11 @@ export default function SkillPost({
   deletePost,
   user,
 }) {
+  const [displayCalendar, setDisplayCalendar] = useState(true);
 
-  
+  const handleCalendarToggle = () => {
+    displayCalendar ? setDisplayCalendar(false) : setDisplayCalendar(true);
+  };
 
   return (
     // consists of hero image for post and single-post-card
@@ -18,6 +22,21 @@ export default function SkillPost({
       <div className="post-pic">
         <img src={post.imageUrl} alt="Single post img" />
       </div>
+
+      {/* !!! A calendar or any other piece of information unique
+        to SKillPost component shall be inserted into this div */}
+
+      <button
+        className="medium-button location-button"
+        onClick={handleCalendarToggle}
+      >
+        {displayCalendar ? "Hide calendar" : "Edit event time"}
+      </button>
+      {displayCalendar ? (
+        <div className="show-map map">
+          <MaterialUiCalendar />
+        </div>
+      ) : null}
 
       {/* conssits of SharedSinglePost - component that displays post information
             which is common to posts of all the three categories, and a map */}
@@ -28,11 +47,6 @@ export default function SkillPost({
           deletePost={deletePost}
           user={user}
         />
-        {/* !!! A calendar or any other piece of information unique
-        to SKillPost component shall be inserted into this div */}
-        <div>
-       <MaterialUiCalendar />
-        </div>
       </div>
     </div>
   );
