@@ -11,12 +11,13 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   display: grid;
   justify-items: center;
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-  border-radius: 8px;
+  border-radius: 32px;
   width: 90vw;
 }
 
 .single-post .post-pic {
   width: 100%;
+  height: 50vh;
   display: grid;
   justify-items: center;
   background-color: rgba(221, 221, 221, 0.3);
@@ -26,6 +27,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 .single-post .post-pic img {
   object-fit: cover;
   width: 100%;
+  height: 100%;
   /* max-height: 40vh; */
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   border-radius: 32px 32px 0 0;
@@ -37,6 +39,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   /* padding: 2rem; */
   min-height: 80vh;
   display: grid;
+  margin-top: 2rem;
   /* grid-template-columns: 1fr 1fr; */
   justify-items: center;
 }
@@ -145,7 +148,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 16px;
   width: 350px;
   height: 200px;
-  margin-bottom: 2rem;
+  margin-top: 2rem;
 }
 
 .single-post .show-map .map-wrapper .map {
@@ -156,7 +159,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 .single-post .location-button {
   display: block;
-  margin: 2rem;
+  margin-top: 2rem;
 }
 
 .separator {
@@ -167,7 +170,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   .single-post {
     max-width: 100%;
     width: 90vw;
-    grid-template-areas: "pic post" "pic post" "map post";
+    grid-template-areas: "pic post" "pic post" "unique-content post";
     grid-row-gap: 4rem;
     grid-column-gap: 6rem;
     padding: 2rem;
@@ -206,10 +209,14 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   }
 
   .single-post .map {
-    grid-area: map;
+    grid-area: unique-content;
     width: 450px;
     height: 250px;
     border-radius: 16px;
+  }
+
+  .single-post .calendar {
+    grid-area: unique-content;
   }
 
   .single-post .location-button {
