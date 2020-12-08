@@ -11,8 +11,8 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   display: grid;
   justify-items: center;
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-  border-radius: 4rem;
-  width: 80vw;
+  border-radius: 8px;
+  width: 90vw;
 }
 
 .single-post .post-pic {
@@ -20,20 +20,20 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   display: grid;
   justify-items: center;
   background-color: rgba(221, 221, 221, 0.3);
-  border-radius: 4rem 4rem 0 0;
+  border-radius: 32px 32px 0 0;
 }
 
 .single-post .post-pic img {
-  object-fit: contain;
+  object-fit: cover;
   width: 100%;
-  max-height: 40vh;
+  /* max-height: 40vh; */
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-  border-radius: 4rem 4rem 0 0;
+  border-radius: 32px 32px 0 0;
 }
 
 .single-post-card {
   width: 80vw;
-  max-width: 80vw;
+  /* max-width: 80vw; */
   /* padding: 2rem; */
   min-height: 80vh;
   display: grid;
@@ -78,16 +78,12 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 .single-post-card .main .post-info {
   background-color: rgba(219, 215, 215, 0.4);
   padding: 1rem;
-  border-radius: 2rem;
+  border-radius: 16px;
   margin-bottom: 2rem;
 }
 
 .post-info .post-body {
   font-size: 1.2rem;
-}
-
-.comments {
-  display: grid;
 }
 
 .no-comments {
@@ -146,14 +142,14 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 }
 
 .single-post .show-map {
-  border-radius: 2rem;
+  border-radius: 16px;
   width: 350px;
   height: 200px;
   margin-bottom: 2rem;
 }
 
 .single-post .show-map .map-wrapper .map {
-  border-radius: 2rem;
+  border-radius: 16px;
   width: 350px;
   height: 200px;
 }
@@ -163,46 +159,74 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   margin: 2rem;
 }
 
-@media (min-width: 600px) {
-  .single-post {
-    grid-template-areas: "pic pic" "post map" "post map";
-    grid-row-gap: 4rem;
-  }
+.separator {
+  display: none;
+}
 
-  .single-post .post-pic {
-    grid-area: pic;
+@media (min-width: 1000px) {
+  .single-post {
+    max-width: 100%;
+    width: 90vw;
+    grid-template-areas: "pic post" "pic post" "map post";
+    grid-row-gap: 4rem;
+    grid-column-gap: 6rem;
+    padding: 2rem;
   }
 
   .single-post-card {
     width: 100%;
+    grid-area: post;
   }
 
-  .single-post-card .main {
-    grid-area: post;
+  .single-post .main-wrapper {
+    width: 100%;
+  }
+
+  .single-post .main-wrapper .main {
+    width: 95%;
+  }
+
+  .comment-area textarea {
+    width: 23rem;
+  }
+
+  .single-post .post-pic {
+    grid-area: pic;
+    height: 50vh;
+    min-width: 35vw;
+    width: 40vw;
+    border-radius: 32px;
+    position: relative;
+  }
+
+  .single-post .post-pic img {
+    height: 100%;
+    width: 100%;
+    border-radius: 32px;
   }
 
   .single-post .map {
     grid-area: map;
+    width: 450px;
+    height: 250px;
+    border-radius: 16px;
   }
 
   .single-post .location-button {
     display: none;
   }
 
-  .single-post .map {
-    margin-right: 2rem;
-    width: 500px;
-    height: 300px;
-    border-radius: 2rem;
-  }
-
-  .single-post-card .main-wrapper {
+  /* .single-post-card .main-wrapper {
     width: 90%;
     margin-left: 2rem;
-  }
+  } */
 
-  .post-info,
-  .main {
-    width: 100%;
-  }
+  /* .separator {
+    display: block;
+    border-bottom: 2px solid rgb(177, 174, 174);
+    position: relative;
+    right: 28%;
+    top: 3rem;
+    width: 20%;
+  } */
 }
