@@ -1,3 +1,5 @@
+import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
+import ReactCalendar from "../../Calendar/ReactCalendar";
 import SharedSinglePost from "./SharedSinglePost";
 
 //Displays post belonging to skills category.
@@ -7,6 +9,9 @@ export default function SkillPost({
   deletePost,
   user,
 }) {
+
+  
+
   return (
     // consists of hero image for post and single-post-card
     <div className="single-post">
@@ -25,7 +30,9 @@ export default function SkillPost({
         />
         {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
-        <div></div>
+        <div>
+       <MaterialUiCalendar />
+        </div>
       </div>
     </div>
   );
