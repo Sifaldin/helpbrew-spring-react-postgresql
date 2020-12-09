@@ -52,7 +52,7 @@ function ImageUploader({ setImgUrl, setUploading }) {
       withPreview={true}
       withLabel={false}
       withIcon={false}
-        buttonStyles={{ background: "#F2994A" }}
+      buttonStyles={{ background: "#F2994A", borderRadius: "8px" }}
       buttonClassName="upload-button"
       
     />

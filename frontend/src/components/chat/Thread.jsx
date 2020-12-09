@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import DropDownMenu from '../profile/DropDownMenu';
 
 function Thread({ thread, setMessageBox }) {
   const senderMail = window.sessionStorage.getItem('userEmail');
@@ -28,6 +29,7 @@ function Thread({ thread, setMessageBox }) {
         </h5>
         <p>{receiverMessage}</p>
       </div>
+      
     </div>
   );
 }

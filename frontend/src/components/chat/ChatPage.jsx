@@ -1,9 +1,11 @@
 import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import ChatApi from '../../api/ChatApi';
-
+import { useHistory } from "react-router-dom";
+import DropDownItem from '../profile/DropDownItem';
 
 function ChatPage({ id, thread }) {
+  
   const loggedInUser = window.sessionStorage.getItem('userEmail');
   var receiverEmail = loggedInUser;
   if (id != 0) {
@@ -41,12 +43,13 @@ function ChatPage({ id, thread }) {
     return () => clearInterval(poll);
   }, [id]);
 
-  const handleClick = e => {
-    e.preventDefault();
-    //sendMessage();
-  };
+  // const handleClick = e => {
+  //   e.preventDefault();
+  //   //sendMessage();
+  // };
 
-  const messageHandler = () => {
+  const messageHandler = (e) => {
+    e.preventDefault();
     const createOrDirect = async () => {
       try {
         const response_message = await ChatApi.createMessage(thread.id, receiverEmail, {
@@ -96,7 +99,7 @@ function ChatPage({ id, thread }) {
         });
 
   return (
-    <form>
+    <form onSubmit={(e) => messageHandler(e)}>
       <div className="msg_history">{messages}</div>
       <div className="type_msg">
         <div className="input_msg_write">
@@ -109,7 +112,7 @@ function ChatPage({ id, thread }) {
             onChange={e => setMessageText({ text: e.target.value })}
             placeholder="Type a message"
           />
-          <button className="msg_send_btn" onClick={messageHandler} type="submit">
+          <button className="msg_send_btn"  type="submit">
             <i className="fa fa-paper-plane" aria-hidden="true"></i>
           </button>
         </div>
