@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Api from "../../../api/Api";
-import { useHistory, useLocation } from 'react-router-dom';
-import ChatApi from '../../../api/ChatApi';
+import { useHistory, useLocation } from "react-router-dom";
+import ChatApi from "../../../api/ChatApi";
 import { Link } from "react-router-dom";
 import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 
@@ -11,7 +11,7 @@ import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 //PostCard? Shall tags "Available"/"Claimed" stay as they are or are we changing that?
 function PostCard({ post }) {
   const [reaction, setReaction] = useState(post.reaction);
-  const receiverEmail = window.sessionStorage.getItem('userEmail');
+  const receiverEmail = window.sessionStorage.getItem("userEmail");
   console.log(receiverEmail);
   const history = useHistory();
   const incrementLike = () => {
@@ -98,11 +98,14 @@ function PostCard({ post }) {
           </Link>
 
           <div>
-          <button onClick={threadHandler} type="submit">
-            <i className="fa fa-paper-plane" aria-hidden="true"></i>
-          </button>
-           </div>
-
+            <button
+              className="mes-button"
+              onClick={threadHandler}
+              type="submit"
+            >
+              <i className="fa fa-paper-plane" aria-hidden="true"></i>
+            </button>
+          </div>
         </div>
         <hr />
         {/* Once View Post button is clicked by user, user is redirected to 

@@ -19,15 +19,25 @@ export default function PostUpdateForm({
   };
 
   return (
+
     <div>
-      <textarea
-        
-        placeholder="What else do you wanna add?"
-        value={body}
-        onChange={(event) => setBody(event.target.value)}
-      />
+    <label className="custom-field">
+    <textarea
+      type="text"
+      required
+      className="updateText"
+      rows="5"
+      value = {body}
+      onChange={(e) => setBody(e.target.value)}
+    />
+    <span className="placeholder"></span>
+  </label>
+
+    <div>
+
       <button
-        
+        type="submit"
+        className="medium-button"
         onClick={() => {
           onUpdateClick({ ...oldPost, body });
           handleUpdateNotification();
@@ -36,6 +46,7 @@ export default function PostUpdateForm({
       >
         Save
       </button>
+    </div>
     </div>
   );
 }

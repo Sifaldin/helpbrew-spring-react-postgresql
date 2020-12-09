@@ -3,6 +3,7 @@ import Api from "../../api/Api";
 import Auth from "../../services/Auth";
 import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
+import Footer from '../layout/footer';
 
 
 export default function ProfilePage({ user, setUser }) {
@@ -28,7 +29,7 @@ export default function ProfilePage({ user, setUser }) {
     //Callback function that will be called upon clicking on the Logout Button
     const onLogout = () => Auth.logout();
 
-    const [imgUrl, setImgUrl] = useState("");
+    const [imgUrl, setImgUrl] = useState("https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png");
 
     //Callback function that will send a user update call to the server
     const updateUser = () => {
@@ -53,13 +54,13 @@ export default function ProfilePage({ user, setUser }) {
         <div className={"profilePage"}>
 
             {/*A function that will hide the image container if non existed */}
-            { (user.imageUrl === null) ? null :
+         
 
                 <div className={"img-container"}>
-                    <img className={"profileImg"} src={user.imageUrl} />
+                    <img className={"profileImg"} src={imgUrl} />
                     <button className={"edit-btn"} onClick={changeImage}><i class="fas fa-camera"></i></button>
                 </div>
-            }
+ 
 
             <div className="user-info">
                 <h1><i class="fas fa-user"></i> {user.name}</h1>
@@ -74,7 +75,7 @@ export default function ProfilePage({ user, setUser }) {
             {/*A function that will hide the image uploader if image existed */}
             {(user.imageUrl === null) ?
                 <div className={"uploader"}>
-                    <ProfileImageUploader setImgUrl={setImgUrl} />
+                    <ProfileImageUploader setImgUrl={setImgUrl} updateUser={updateUser}/>
                     <button className="share-btn" onClick={() => {
                         updateUser();
                         handleNewNotification();
@@ -82,7 +83,7 @@ export default function ProfilePage({ user, setUser }) {
                 </div> : null}
 
             <button className={"profileLogoutBtn"} onClick={onLogout}>Logout</button>
-
+            <Footer/>
         </div>
 
     )
