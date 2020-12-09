@@ -29,15 +29,15 @@ function App() {
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   //Fetches all the posts, to be used and filtered depending on functionality by App child components
-  useEffect(() => {
-    if (loggedIn) {
-      const fetchPosts = async () => {
-        const response = await Api.get(`/posts`);
-        setPosts(response.data);
-      };
-      fetchPosts();
-    }
-  }, [loggedIn]);
+  // useEffect(() => {
+  //   if (loggedIn) {
+  //     const fetchPosts = async () => {
+  //       const response = await Api.get(`/posts`);
+  //       setPosts(response.data);
+  //     };
+  //     fetchPosts();
+  //   }
+  // }, [loggedIn]);
 
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
   useEffect(() => {
@@ -86,15 +86,15 @@ function App() {
           display posts belonging to only of the three categories.
            */}
           <Route path="/posts/category/giveaways" exact>
-            <PostsPage category={"giveaways"} posts={posts} />
+            <PostsPage category={"giveaways"} />
           </Route>
 
           <Route path="/posts/category/skills" exact>
-            <PostsPage category={"skills"} posts={posts} />
+            <PostsPage category={"skills"} />
           </Route>
 
           <Route path="/posts/category/monetary-support" exact>
-            <PostsPage category={"monetary-support"} posts={posts} />
+            <PostsPage category={"monetary-support"} />
           </Route>
 
           {/* This route is used to create new posts when user clicks on new post button
@@ -121,13 +121,13 @@ function App() {
           Uncomment or remove if the routes are not needed.
           */}
 
-           <Route path="/chat" exact>
+          <Route path="/chat" exact>
             <ThreadPage />
           </Route>
 
           <Route path="/chat/:id">
             <ThreadPage />
-          </Route> 
+          </Route>
         </Switch>
       </div>
     </Router>
