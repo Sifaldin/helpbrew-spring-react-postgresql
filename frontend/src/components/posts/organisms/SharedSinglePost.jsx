@@ -18,6 +18,7 @@ export default function SharedSinglePost({
 
   const updatePost = (updatedPost) => {
     Api.put("/posts", updatedPost).then((res) => setCurPost(res.data));
+  }
   const history = useHistory();
   const receiverEmail = window.sessionStorage.getItem("userEmail");
 
@@ -83,6 +84,7 @@ export default function SharedSinglePost({
               </button>
             </div>
           ) : null}
+          </div>
         </div>
         <Comments post={curPost} />
       </div>
