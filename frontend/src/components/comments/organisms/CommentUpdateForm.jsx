@@ -14,15 +14,14 @@ function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
   };
 
   return (
-    <div>
+    <div className="comment-area">
       <textarea
-        
         placeholder="type your comment here.."
         value={body}
         onChange={(event) => setBody(event.target.value)}
       />
       <button
-        
+        className="medium-button"
         onClick={() => {
           const updated = { ...oldComment, body };
           console.log(updated);
