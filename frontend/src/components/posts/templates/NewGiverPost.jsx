@@ -25,12 +25,12 @@ function NewGiverPost({ setPosts, user }) {
   const [displayError, setDisplayError] = useState(false);
 
   const canBeSubmitted = () => {
-    return (
-      imgUrl.length > 0 &&
-      address.length > 0 &&
-      postTitle.length > 0 &&
-      details.length > 0
-    );
+    return postCategory === "giveaways"
+      ? imgUrl.length > 0 &&
+          address.length > 0 &&
+          postTitle.length > 0 &&
+          details.length > 0
+      : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
   };
 
   const getAll = () => {

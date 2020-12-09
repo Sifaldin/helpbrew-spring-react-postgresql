@@ -12,7 +12,7 @@ import { useNotification } from "../../notifications/NotificationProvider";
 import SharedSinglePost from "../organisms/SharedSinglePost";
 import Map from "../molecules/Map";
 
-function SinglePost({ user }) {
+function SinglePost({ user, setPosts }) {
   const { state } = useLocation();
   const passedPost = state === undefined ? null : state.post;
   const [post, setPost] = useState(passedPost);
@@ -58,6 +58,7 @@ function SinglePost({ user }) {
   const deletePost = (id) => {
     if (window.confirm("Are you sure you want to delete this post?")) {
       Api.delete("/posts/" + post.id).then((res) => {
+        setPosts(res.data);
         history.push(`/posts/category/${post.category}`);
       });
     }
@@ -69,21 +70,9 @@ function SinglePost({ user }) {
   const getPost = () => {
     switch (post.category) {
       case "skills":
-        return (
-          <SkillPost
-            post={post}
-            deletePost={deletePost}
-            user={user}
-          />
-        );
+        return <SkillPost post={post} deletePost={deletePost} user={user} />;
       case "giveaways":
-        return (
-          <GiveawayPost
-            post={post}
-            deletePost={deletePost}
-            user={user}
-          />
-        );
+        return <GiveawayPost post={post} deletePost={deletePost} user={user} />;
       case "monetary-support":
         return (
           <MonetarySupportPost
@@ -98,7 +87,7 @@ function SinglePost({ user }) {
   };
 
   try {
-    return  (
+    return (
       //Otherwise details of the post passed as props are displayed(managed by getPost() function above)
       //followed by comments to that post.
       <div className="post-wrapper">
