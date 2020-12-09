@@ -45,6 +45,12 @@ h3 {
   border-radius: 2rem;
 }
 
+.medium-button:disabled,
+.medium-button[disabled="disabled"] {
+  background-color: #eba767 !important;
+  cursor: not-allowed;
+}
+
 .small-button {
   border: none;
   background-color: green;
