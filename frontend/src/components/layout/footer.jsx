@@ -7,7 +7,7 @@ export default function Footer() {
 
     return (
         <footer className={"footer"} >
-            <a href="mailto: contact@homebrew.com" 
+            <a href="mailto: contact@helpbrew.com" 
             target="_blank">
             @ContactUS
             </a>

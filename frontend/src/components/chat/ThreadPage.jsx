@@ -3,6 +3,8 @@ import { useLocation, useParams } from 'react-router-dom';
 import ChatApi from '../../api/ChatApi';
 import ChatPage from './ChatPage';
 import Thread from './Thread';
+import Footer from '../layout/footer';
+
 
 // Todo: We should still filter out message threads based on user.
 // Also, sometimes a second thread is generated even though one between the participants exist.
@@ -50,6 +52,7 @@ function ThreadPage() {
           </div>
         </div>
       </div>
+      <Footer/>
     </div>
   );
 }

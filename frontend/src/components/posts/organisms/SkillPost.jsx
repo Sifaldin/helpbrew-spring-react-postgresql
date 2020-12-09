@@ -6,7 +6,6 @@ import SharedSinglePost from "./SharedSinglePost";
 //Displays post belonging to skills category.
 export default function SkillPost({
   post,
-  handleUpdateClick,
   deletePost,
   user,
 }) {
@@ -23,6 +22,7 @@ export default function SkillPost({
         <img src={post.imageUrl} alt="Single post img" />
       </div>
 
+      {/* consists of SharedSinglePost - component that displays post information
       {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
 
@@ -43,7 +43,6 @@ export default function SkillPost({
       <div className="single-post-card">
         <SharedSinglePost
           post={post}
-          handleUpdateClick={handleUpdateClick}
           deletePost={deletePost}
           user={user}
         />

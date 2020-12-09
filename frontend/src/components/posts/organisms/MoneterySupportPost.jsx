@@ -5,7 +5,6 @@ import SharedSinglePost from "./SharedSinglePost";
 
 export default function GiveawayPost({
   post,
-  handleUpdateClick,
   deletePost,
   user,
 }) {
@@ -21,7 +20,6 @@ export default function GiveawayPost({
       <div className="single-post-card">
         <SharedSinglePost
           post={post}
-          handleUpdateClick={handleUpdateClick}
           deletePost={deletePost}
           user={user}
         />
