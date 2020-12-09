@@ -43,6 +43,14 @@ function App() {
   // }, [loggedIn]);
 
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
+  useEffect(() => {
+    if (loggedIn) {
+      Api.get("/user/me").then((response) => {
+        const user = response.data;
+        setUser(user);
+      });
+    }
+  }, [loggedIn]);
 
   //Fetches logged in user's posts, to be used and filtered depending on functionality by App child components
   useEffect(() => {
