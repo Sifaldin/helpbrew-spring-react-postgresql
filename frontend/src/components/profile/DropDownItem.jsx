@@ -7,9 +7,8 @@ function DropDownItem(props, status) {
   return (
     <li className="dropDown-item">
       <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
-        {<CgProfile />}
+        <CgProfile />
       </a>
-
       {open && props.children}
     </li>
   );

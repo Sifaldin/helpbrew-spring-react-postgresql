@@ -2,13 +2,9 @@ import React, { useRef, useState } from "react";
 import Map from "../molecules/Map";
 import SharedSinglePost from "./SharedSinglePost";
 
-export default function GiveawayPost({
-  post,
-  deletePost,
-  user,
-}) {
+export default function GiveawayPost({ post, setPosts, deletePost, user }) {
   const [mapVisible, setMapVisible] = useState(false);
-  
+
   const handleMapToggle = () => {
     mapVisible ? setMapVisible(false) : setMapVisible(true);
   };
@@ -43,6 +39,7 @@ export default function GiveawayPost({
       <div className="single-post-card">
         <SharedSinglePost
           post={post}
+          setPosts={setPosts}
           deletePost={deletePost}
           user={user}
         />

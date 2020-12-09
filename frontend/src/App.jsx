@@ -32,15 +32,15 @@ function App() {
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   //Fetches all the posts, to be used and filtered depending on functionality by App child components
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     const fetchPosts = async () => {
-  //       const response = await Api.get(`/posts`);
-  //       setPosts(response.data);
-  //     };
-  //     fetchPosts();
-  //   }
-  // }, [loggedIn]);
+  //  useEffect(() => {
+  //    if (loggedIn) {
+  //      const fetchPosts = async () => {
+  //        const response = await Api.get(`/posts`);
+  //        setPosts(response.data);
+  //      };
+  //      fetchPosts();
+  //    }
+  //  }, [loggedIn]);
 
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
   useEffect(() => {
@@ -70,7 +70,7 @@ function App() {
   const loggedInRouter = (
     //React Router manages all the routes in the application
     <Router>
-      <Navbar onLogout={() => Auth.logout()} user={user} />
+      <Navbar onLogout={() => Auth.logout()} user={user} setUser={setUser} />
 
       <div className="container mt-5">
         <Switch>
@@ -117,7 +117,7 @@ function App() {
 
           {/* This route is used to display details of a single post. */}
           <Route path="/posts/:id">
-            <SinglePost user={user} setPosts={setPosts} />
+            <SinglePost user={user} posts={posts} setPosts={setPosts} />
           </Route>
 
           {/* The functionality for the routes below is not implemented yet.
