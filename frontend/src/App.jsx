@@ -31,17 +31,6 @@ function App() {
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
-  //Fetches all the posts, to be used and filtered depending on functionality by App child components
-  //  useEffect(() => {
-  //    if (loggedIn) {
-  //      const fetchPosts = async () => {
-  //        const response = await Api.get(`/posts`);
-  //        setPosts(response.data);
-  //      };
-  //      fetchPosts();
-  //    }
-  //  }, [loggedIn]);
-
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
   useEffect(() => {
     if (loggedIn) {

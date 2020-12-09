@@ -18,7 +18,7 @@ export default function PostsPage({ category }) {
       setPostsByCategory(filteredByCategory);
     };
     fetchPosts();
-  }, []);
+  }, [category]);
 
   return (
     <div className="posts-page">
