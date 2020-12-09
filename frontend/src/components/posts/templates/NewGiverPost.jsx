@@ -24,6 +24,15 @@ function NewGiverPost({ setPosts, user }) {
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
 
+  const canBeSubmitted = () => {
+    return (
+      imgUrl.length > 0 &&
+      address.length > 0 &&
+      postTitle.length > 0 &&
+      details.length > 0
+    );
+  };
+
   const getAll = () => {
     Api.get("/posts").then((res) => {
       console.log(res.data);
@@ -178,10 +187,10 @@ function NewGiverPost({ setPosts, user }) {
             <div>
               <button
                 className="medium-button"
-                disabled={uploading ? true : false}
+                disabled={!canBeSubmitted() ? true : false}
                 type="submit"
               >
-                {uploading ? "Submit" : "Submit"}
+                Submit
               </button>
             </div>
 
@@ -200,7 +209,7 @@ function NewGiverPost({ setPosts, user }) {
 
       {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
       <div className="map">
-        {position.length > 0 ? (
+        {address.length > 0 && position.length > 0 ? (
           <Map position={position} />
         ) : (
           <div>
