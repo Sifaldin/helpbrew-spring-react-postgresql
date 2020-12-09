@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { useNotification } from "../../notifications/NotificationProvider";
 
-export default function PostUpdateForm({
-  oldPost,
-  onUpdateClick,
-  setIsUpdating,
-}) {
-
-  const [body, setBody] = useState(oldPost.body);
+export default function PostUpdateForm({ post, onUpdateClick, setIsUpdating }) {
+  const [body, setBody] = useState(post.body);
 
   //Notification Creator
   const dispatch = useNotification();
@@ -19,34 +14,32 @@ export default function PostUpdateForm({
   };
 
   return (
-
     <div>
-    <label className="custom-field">
-    <textarea
-      type="text"
-      required
-      className="updateText"
-      rows="5"
-      value = {body}
-      onChange={(e) => setBody(e.target.value)}
-    />
-    <span className="placeholder"></span>
-  </label>
+      <label className="custom-field">
+        <textarea
+          type="text"
+          required
+          className="updateText"
+          rows="5"
+          value={body}
+          onChange={(e) => setBody(e.target.value)}
+        />
+        <span className="placeholder"></span>
+      </label>
 
-    <div>
-
-      <button
-        type="submit"
-        className="medium-button"
-        onClick={() => {
-          onUpdateClick({ ...oldPost, body });
-          handleUpdateNotification();
-          setIsUpdating(false);
-        }}
-      >
-        Save
-      </button>
-    </div>
+      <div>
+        <button
+          type="submit"
+          className="medium-button"
+          onClick={() => {
+            onUpdateClick({ ...post, body });
+            handleUpdateNotification();
+            setIsUpdating(false);
+          }}
+        >
+          Save
+        </button>
+      </div>
     </div>
   );
 }

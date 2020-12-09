@@ -8,7 +8,7 @@ import DropDownProfile from "../profile/DropDownProfile";
 import DropDownItem from "../profile/DropDownItem";
 import DropDownMenu from "../profile/DropDownMenu";
 
-function Navbar({ onLogout, user }) {
+function Navbar({ onLogout, user, setUser }) {
   const skillsRef = useRef();
   const monetRef = useRef();
   const giveRef = useRef();
@@ -97,7 +97,7 @@ function Navbar({ onLogout, user }) {
 
           <DropDownProfile>
             <DropDownItem>
-              <DropDownMenu user={user} />
+              <DropDownMenu user={user} setUser={setUser} />
             </DropDownItem>
           </DropDownProfile>
         </ul>
