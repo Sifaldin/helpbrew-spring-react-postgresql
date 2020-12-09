@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { CgProfile } from 'react-icons/cg';
+
 
 // Import custom styles for our application
 import "./css/App.css";
@@ -13,12 +15,15 @@ import HomePage from "./components/home/templates/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
-
 import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
+import DropDownProfile from "./components/profile/DropDownProfile";
+import DropDownItem from "./components/profile/DropDownItem";
+import DropDownMenu from "./components/profile/DropDownMenu";
+import Thread from "./components/chat/Thread";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -40,14 +45,7 @@ function App() {
   // }, [loggedIn]);
 
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
-  useEffect(() => {
-    if (loggedIn) {
-      Api.get("/user/me").then((response) => {
-        const user = response.data;
-        setUser(user);
-      });
-    }
-  }, [loggedIn]);
+
 
   //Fetches logged in user's posts, to be used and filtered depending on functionality by App child components
   useEffect(() => {
@@ -67,8 +65,14 @@ function App() {
   const loggedInRouter = (
     //React Router manages all the routes in the application
     <Router>
-      <Navbar onLogout={() => Auth.logout()} />
+      {/* <Navbar onLogout={() => Auth.logout()} /> */}
+      <DropDownProfile  > 
+         
+        <DropDownItem icon={<CgProfile/>}>
+          <DropDownMenu user={user}/>
+        </DropDownItem> 
 
+      </DropDownProfile>
       <div className="container mt-5">
         <Switch>
           {/* The route displays the application's homepage */}

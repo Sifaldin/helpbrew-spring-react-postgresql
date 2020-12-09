@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import DropDownMenu from '../profile/DropDownMenu';
 
 import Api from "..//..//api/Api";
 
@@ -39,6 +40,7 @@ function Thread({ thread, setMessageBox }) {
         </h5>
         <p>{receiverMessage}</p>
       </div>
+      
     </div>
   );
 }

@@ -23,4 +23,8 @@
 @import "../css/Components/Chat/ChatPage.css";
 @import "./Components/Post/SinglePostPage.css";
 
+@import "./Components/profilePage/dropDownProfile.css";
+
+
 @import "../css/Components/notification/error.css";
+
