@@ -4,7 +4,11 @@ import Modal from "../posts/templates/Modal";
 import "../../css/Components/layout/layout.css";
 import logo from "../../assets/logo_small.jpg";
 
-function Navbar({ onLogout }) {
+import DropDownProfile from "../profile/DropDownProfile";
+import DropDownItem from "../profile/DropDownItem";
+import DropDownMenu from "../profile/DropDownMenu";
+
+function Navbar({ onLogout, user }) {
   const skillsRef = useRef();
   const monetRef = useRef();
   const giveRef = useRef();
@@ -72,24 +76,30 @@ function Navbar({ onLogout }) {
             <Modal ref={modalRef} />
           </li>
 
-          <li>
+          {/* <li>
             <NavLink exact to="/user" ref={profileRef}>
               PROFILE
             </NavLink>
-          </li>
+          </li> */}
 
           {/* commented out the chat link for the moment /Elena */}
-           <li>
+          {/* <li>
             <NavLink exact to="/chat" activeClassName="active-link">
               CHAT
             </NavLink>
-          </li> 
+          </li>
 
           <li>
             <button className={"medium-button"} onClick={onLogout}>
               Logout
             </button>
-          </li>
+          </li> */}
+
+          <DropDownProfile>
+            <DropDownItem>
+              <DropDownMenu user={user} />
+            </DropDownItem>
+          </DropDownProfile>
         </ul>
       </div>
       <div></div>

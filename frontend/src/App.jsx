@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { CgProfile } from 'react-icons/cg';
-
 
 // Import custom styles for our application
 import "./css/App.css";
@@ -46,7 +44,6 @@ function App() {
 
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
 
-
   //Fetches logged in user's posts, to be used and filtered depending on functionality by App child components
   useEffect(() => {
     if (loggedIn) {
@@ -65,14 +62,8 @@ function App() {
   const loggedInRouter = (
     //React Router manages all the routes in the application
     <Router>
-      {/* <Navbar onLogout={() => Auth.logout()} /> */}
-      <DropDownProfile  > 
-         
-        <DropDownItem icon={<CgProfile/>}>
-          <DropDownMenu user={user}/>
-        </DropDownItem> 
+      <Navbar onLogout={() => Auth.logout()} user={user} />
 
-      </DropDownProfile>
       <div className="container mt-5">
         <Switch>
           {/* The route displays the application's homepage */}
