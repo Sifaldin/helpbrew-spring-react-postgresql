@@ -1,3 +1,4 @@
+import { colors } from "@material-ui/core";
 import { format } from "date-fns";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
@@ -39,9 +40,10 @@ function NewRequestPost({ setPosts, user }) {
             title: postTitle,
             date: format(new Date(), "dd-MMM-yyyy"),
             category: postCategory,
-            postType: location.state.type
+            postType: location.state.type,
+            user: user
         };
-        
+       
         Api.post("/posts", newPost).then((res) => {
             getAll();
             history.push(`/posts/category/${postCategory}`);

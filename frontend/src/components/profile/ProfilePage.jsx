@@ -3,7 +3,7 @@ import Api from "../../api/Api";
 import Auth from "../../services/Auth";
 import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
-import Footer from '../layout/footer';
+
 
 
 export default function ProfilePage({ user, setUser }) {
@@ -57,7 +57,7 @@ export default function ProfilePage({ user, setUser }) {
          
 
                 <div className={"img-container"}>
-                    <img className={"profileImg"} src={imgUrl} />
+                    <img className={"profileImg"} src={imgUrl} alt=""/>
                     <button className={"edit-btn"} onClick={changeImage}><i class="fas fa-camera"></i></button>
                 </div>
  
@@ -83,7 +83,7 @@ export default function ProfilePage({ user, setUser }) {
                 </div> : null}
 
             <button className={"profileLogoutBtn"} onClick={onLogout}>Logout</button>
-            <Footer/>
+           
         </div>
 
     )

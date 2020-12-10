@@ -7,7 +7,6 @@ import "./css/App.css";
 // Import pages
 
 import Auth from "./services/Auth";
-import Navbar from "./components/layout/Navbar";
 import LoginPage from "./components/auth/LoginPage";
 import HomePage from "./components/home/templates/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
@@ -16,12 +15,10 @@ import ThreadPage from "./components/chat/ThreadPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
+import Footer from "./components/layout/Footer";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
-import DropDownProfile from "./components/profile/DropDownProfile";
-import DropDownItem from "./components/profile/DropDownItem";
-import DropDownMenu from "./components/profile/DropDownMenu";
-import Thread from "./components/chat/Thread";
+import Nav from "./components/layout/Nav";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -56,7 +53,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       const fetchPosts = async () => {
-        const posts = await Api.get(`/posts`).then((res) => res.data);
+        const posts = await Api.get('/posts').then((res) => res.data);
         //Filters posts posted only by the logged in user
         const userPosts = posts.filter(
           (post) => post.user.email === user.email
@@ -66,12 +63,14 @@ function App() {
       fetchPosts();
     }
   }, [loggedIn, user, posts]);
-
+ 
   const loggedInRouter = (
+   
     //React Router manages all the routes in the application
+    <>
     <Router>
-      <Navbar onLogout={() => Auth.logout()} user={user} />
-
+      {/* <Navbar onLogout={() => Auth.logout()} user={user} /> */}
+      <Nav />
       <div className="container mt-5">
         <Switch>
           {/* The route displays the application's homepage */}
@@ -134,6 +133,8 @@ function App() {
         </Switch>
       </div>
     </Router>
+    <Footer />
+    </>
   );
 
   // The first page displayed by the app is the login page.

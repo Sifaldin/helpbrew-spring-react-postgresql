@@ -35,7 +35,7 @@ function NewGiverPost({ setPosts, user }) {
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
-      console.log(res.data);
+    
       setPosts(res.data);
     });
   };
@@ -70,7 +70,6 @@ function NewGiverPost({ setPosts, user }) {
     };
 
     Api.post("/posts", newPost).then((res) => {
-      console.log(res.data);
       getAll();
       history.push(`/posts/category/${postCategory}`);
     });
