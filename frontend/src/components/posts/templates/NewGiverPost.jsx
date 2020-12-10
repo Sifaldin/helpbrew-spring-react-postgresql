@@ -9,6 +9,7 @@ import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
 import GiveIntroduction from "../molecules/GiveIntroduction";
 import Error from "../../notifications/Error";
+import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -183,6 +184,14 @@ function NewGiverPost({ setPosts, user }) {
                 </button>
               </label>
             ) : null}
+
+
+            {/* Depending on the category chosen by user from drop-down menu,
+            a field for entering a pick-up location will be displayed or not */}
+            {postCategory === "skills" ? (  
+              <div className="show-map map">
+                  <MaterialUiCalendar />
+              </div>) : null}
 
             <div>
               <button

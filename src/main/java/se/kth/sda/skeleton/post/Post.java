@@ -47,6 +47,13 @@ public class Post {
     private String location;
 
     @Column
+    private String meetingTime;
+
+    @Column
+    private String meetingDate;
+
+
+    @Column
     @ElementCollection
     private List<Double> position;
 
@@ -168,5 +175,21 @@ public class Post {
 
     public void setPosition(List<Double> position) {
         this.position = position;
+    }
+
+    public String getMeetingTime() {
+        return meetingTime;
+    }
+
+    public void setMeetingTime(String meetingTime) {
+        this.meetingTime = meetingTime;
+    }
+
+    public String getMeetingDate() {
+        return meetingDate;
+    }
+
+    public void setMeetingDate(String meetingDate) {
+        this.meetingDate = meetingDate;
     }
 }
