@@ -25,9 +25,8 @@ function NewGiverPost({ setPosts, user }) {
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
 
- {/* calendar related hooks and consts*/}
+ {/* calendar related hook */}
   const now = new Date();
-  console.log(now);
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
 
   const canBeSubmitted = () => {
