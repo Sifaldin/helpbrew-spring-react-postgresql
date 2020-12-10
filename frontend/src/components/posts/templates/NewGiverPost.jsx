@@ -40,12 +40,14 @@ function NewGiverPost({ posts, setPosts, user }) {
       : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
   };
 
-  // const getAll = () => {
-  //   Api.get("/posts").then((res) => {
-  //     console.log(res.data);
-  //     setPosts(res.data);
-  //   });
-  // };
+
+  const getAll = () => {
+    Api.get("/posts").then((res) => {
+    
+      setPosts(res.data);
+    });
+  };
+
 
   const handleSubmit = (e) => {
     setAddress(locationInput);
@@ -79,9 +81,11 @@ function NewGiverPost({ posts, setPosts, user }) {
 
     console.log(newPost);
     Api.post("/posts", newPost).then((res) => {
-      console.log(res.data);
+
+      getAll();
+
       setPosts([...posts, res.data]);
-      // getAll();
+
       history.push(`/posts/category/${postCategory}`);
     });
   };

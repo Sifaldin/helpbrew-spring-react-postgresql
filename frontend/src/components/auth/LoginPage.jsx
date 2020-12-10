@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import Footer from '../layout/footer';
 import logo from "../../assets/logo_transparent_background_small.png";
 
 function LoginPage() {
@@ -59,7 +58,7 @@ function LoginPage() {
               </div>
               
             </div>
-           <Footer/>
+           
 
           </div>
           

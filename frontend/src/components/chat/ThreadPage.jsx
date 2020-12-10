@@ -3,7 +3,7 @@ import { useLocation, useParams } from 'react-router-dom';
 import ChatApi from '../../api/ChatApi';
 import ChatPage from './ChatPage';
 import Thread from './Thread';
-import Footer from '../layout/footer';
+
 
 
 // Todo: We should still filter out message threads based on user.
@@ -52,7 +52,7 @@ function ThreadPage() {
           </div>
         </div>
       </div>
-      <Footer/>
+      
     </div>
   );
 }

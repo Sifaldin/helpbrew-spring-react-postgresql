@@ -2,7 +2,7 @@ import PostCard from "../molecules/PostCard";
 import { BiMessageSquareError } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import Api from "../../../api/Api";
-import Footer from "../../layout/footer";
+
 
 //The PostsPage displays a listing of posts belonging to the category(skills, giveaways or monetary support)
 // selected by the user
@@ -57,7 +57,7 @@ export default function PostsPage({ category, posts }) {
           ))}
         </div>
       )}
-      <Footer />
+      
     </div>
   );
 }
