@@ -18,10 +18,6 @@ import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
-import DropDownProfile from "./components/profile/DropDownProfile";
-import DropDownItem from "./components/profile/DropDownItem";
-import DropDownMenu from "./components/profile/DropDownMenu";
-import Thread from "./components/chat/Thread";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -35,8 +31,16 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       Api.get("/user/me").then((response) => {
-        const user = response.data;
-        setUser(user);
+        const fetchedUser = response.data;
+        const userToSet = fetchedUser.imageUrl
+          ? fetchedUser
+          : {
+              ...fetchedUser,
+              imageUrl:
+                "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png",
+            };
+        console.log(userToSet);
+        setUser(userToSet);
       });
     }
   }, [loggedIn]);

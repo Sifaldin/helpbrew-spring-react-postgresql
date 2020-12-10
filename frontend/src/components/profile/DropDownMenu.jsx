@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import Auth from "../../services/Auth";
 import ProfileImageUploader from "./ProfileImageUploader";
 import ImageEditMenu from "./ImageEditMenu";
+import { RiDashboardLine } from "react-icons/ri";
 
 function DropDownMenu({ user, setUser }) {
   const [threads, setThreads] = useState([]);
@@ -36,12 +37,11 @@ function DropDownMenu({ user, setUser }) {
 
   const onLogout = () => Auth.logout();
 
-  function DropdownItem(props) {
+  function DisplayItem(props) {
     return (
       <a href="#" className="menu-item">
         <span className="icon-botton">{props.leftIcon}</span>
         {props.children}
-        <span className="icon-right">{props.rightIcon}</span>
       </a>
     );
   }
@@ -58,34 +58,55 @@ function DropDownMenu({ user, setUser }) {
               classNames="menu-primary"
             >
               <div className="menu">
-                <a href="#" onClick={() => setShowImageEdit(true)}>
-                  <img
-                    style={{ height: "70px", width: "70px" }}
-                    className={"profileImg"}
-                    src={user.imageUrl}
-                  />
-                  Change profile image
-                </a>
+                <Link
+                  className="link-display"
+                  to="#"
+                  onClick={() => setShowImageEdit(true)}
+                >
+                  <DisplayItem
+                    leftIcon={
+                      <img
+                        src={user.imageUrl}
+                        alt="profile-pic"
+                        style={{
+                          height: "35px",
+                          width: "35px",
+                          borderRadius: "20px",
+                          marginRight: "5px",
+                        }}
+                      />
+                    }
+                  >
+                    Change profile picture
+                  </DisplayItem>
+                </Link>
 
                 <Link
                   className="link-display"
-                  to="/user"
+                  to="/"
                   onClick={() => setOpen(!open)}
                 >
-                  <DropdownItem>My Profile</DropdownItem>
+                  <DisplayItem leftIcon={<RiDashboardLine size="40px" />}>
+                    Dashboard
+                  </DisplayItem>
                 </Link>
+
                 <Link
                   className="link-display"
                   to="/chat"
                   onClick={() => setOpen(!open)}
                 >
-                  <DropdownItem>Messages</DropdownItem>
+                  <DisplayItem leftIcon={<BiMessageSquareDetail size="40px" />}>
+                    Messages
+                  </DisplayItem>
                 </Link>
                 <Link className="link-display" onClick={onLogout}>
-                  <DropdownItem>Log Out</DropdownItem>
+                  <DisplayItem leftIcon={<RiDoorOpenLine size="40px" />}>
+                    Log Out
+                  </DisplayItem>
                 </Link>
 
-                {/* <DropdownItem leftIcon={<CgProfile/>}></DropdownItem> */}
+                {/* <DisplayItem leftIcon={<CgProfile/>}></DisplayItem> */}
               </div>
             </CSSTransition>
 

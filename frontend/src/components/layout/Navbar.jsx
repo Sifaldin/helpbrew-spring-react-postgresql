@@ -7,6 +7,7 @@ import logo from "../../assets/logo_small.jpg";
 import DropDownProfile from "../profile/DropDownProfile";
 import DropDownItem from "../profile/DropDownItem";
 import DropDownMenu from "../profile/DropDownMenu";
+import { CgProfile } from "react-icons/cg";
 
 function Navbar({ onLogout, user, setUser }) {
   const skillsRef = useRef();
@@ -28,12 +29,6 @@ function Navbar({ onLogout, user, setUser }) {
           <Link className="logo-link" to="/">
             <img src={logo} alt="HelpBrew Logo" />
           </Link>
-
-          <li>
-            <NavLink exact to="/" ref={homeRef}>
-              HOME
-            </NavLink>
-          </li>
 
           <li>
             <NavLink
@@ -95,11 +90,24 @@ function Navbar({ onLogout, user, setUser }) {
             </button>
           </li> */}
 
-          <DropDownProfile>
-            <DropDownItem>
-              <DropDownMenu user={user} setUser={setUser} />
-            </DropDownItem>
-          </DropDownProfile>
+          {/* <DropDownProfile> */}
+          <DropDownItem
+            icon={
+              <img
+                src={user.imageUrl}
+                alt="profile-pic"
+                style={{
+                  height: "35px",
+                  width: "35px",
+                  borderRadius: "20px",
+                  marginRight: "5px",
+                }}
+              />
+            }
+          >
+            <DropDownMenu user={user} setUser={setUser} />
+          </DropDownItem>
+          {/* </DropDownProfile> */}
         </ul>
       </div>
       <div></div>
