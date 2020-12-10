@@ -42,18 +42,20 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   //   });
   // };
 
-  return isUpdating ? (
-    <CommentUpdateForm
-      oldComment={comment}
-      onUpdateClick={onUpdateClick}
-      setIsUpdating={setIsUpdating}
-    />
-  ) : (
+  return (
     <div className="comment-card">
-      <h5>{comment.user.name}</h5>
-      <p>{comment.body}</p>
+      {isUpdating ? (
+        <CommentUpdateForm
+          oldComment={comment}
+          onUpdateClick={onUpdateClick}
+          setIsUpdating={setIsUpdating}
+        />
+      ) : (
+        <div>
+          <h5>{comment.authorName}</h5>
+          <p>{comment.body}</p>
 
-      {/*<div>
+          {/*<div>
         <button onClick={incrementLike}>
           <i></i> {reaction.like}
         </button>
@@ -62,20 +64,22 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
         </button>
       </div>*/}
 
-      {comment.user.name === user.name ? (
-        <div className="button-group">
-          <button
-            className="medium-button"
-            onClick={() => onDeleteClick(comment.id)}
-          >
-            Delete
-          </button>
+          {comment.user.name === user.name ? (
+            <div className="button-group">
+              <button
+                className="medium-button"
+                onClick={() => onDeleteClick(comment.id)}
+              >
+                Delete
+              </button>
 
-          <button className="medium-button" onClick={handleUpdateClick}>
-            Update
-          </button>
+              <button className="medium-button" onClick={handleUpdateClick}>
+                Update
+              </button>
+            </div>
+          ) : null}
         </div>
-      ) : null}
+      )}
     </div>
   );
 }

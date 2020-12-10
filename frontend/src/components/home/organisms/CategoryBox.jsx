@@ -81,7 +81,7 @@ export default function CategoryBox({ category, posts }) {
           {getPosts().map((post) => {
             return (
               <div className="post-icon">
-                <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
+                <Link to={`/posts/${post.id}`}>
                   <li key={post.id}>
                     <img src={post.imageUrl} alt="" />
                     <span>{post.title}</span>
