@@ -96,16 +96,16 @@ export default function SharedSinglePost({ post, setPosts, user }) {
               <div className="button-group">
                 <button
                   className="medium-button"
-                  onClick={() => deletePost(curPost.id)}
+                  onClick={() => setIsUpdating(true)}
                 >
-                  Delete
+                  Update
                 </button>
 
                 <button
                   className="medium-button"
-                  onClick={() => setIsUpdating(true)}
+                  onClick={() => deletePost(curPost.id)}
                 >
-                  Update
+                  Delete
                 </button>
               </div>
             ) : null}

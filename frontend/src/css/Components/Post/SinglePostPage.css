@@ -79,6 +79,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 }
 
 .single-post-card .main .post-info {
+  width: 40rem;
   background-color: rgba(219, 215, 215, 0.4);
   padding: 1rem;
   border-radius: 16px;
@@ -132,13 +133,17 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   margin-bottom: 1rem;
 }
 
-.main .button-group {
+.button-group button:first-child {
+  background-color: #1e6fbf;
+}
+
+.post-info .button-group {
   display: grid;
   grid-template-columns: 1fr auto;
 }
 
 .button-group .medium-button {
-  background-color: #1e6fbf;
+  background-color: orange;
 }
 
 .button-group button:first-child {
@@ -150,10 +155,10 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   align-self: center;
   height: 25px;
   width: 25px;
-  background-color: orange;
+  background-color: #1e6fbf;
   border: none;
   border-radius: 2px;
-  color: #1e6fbf;
+  color: rgb(255, 255, 255);
 }
 
 .single-post .show-map {

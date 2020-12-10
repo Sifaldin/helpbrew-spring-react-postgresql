@@ -12,7 +12,7 @@ import Error from "../../notifications/Error";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 
 //Displays the form for creation of a new post by user
-function NewGiverPost({ setPosts, user }) {
+function NewGiverPost({ posts, setPosts, user }) {
   const history = useHistory();
   const location = useLocation();
   const [imgUrl, setImgUrl] = useState("");
@@ -25,9 +25,9 @@ function NewGiverPost({ setPosts, user }) {
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
 
-  {
-    /* calendar related hook */
-  }
+  console.log(user);
+  /* calendar related hook */
+
   const now = new Date();
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
 
@@ -40,12 +40,12 @@ function NewGiverPost({ setPosts, user }) {
       : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
   };
 
-  const getAll = () => {
-    Api.get("/posts").then((res) => {
-      console.log(res.data);
-      setPosts(res.data);
-    });
-  };
+  // const getAll = () => {
+  //   Api.get("/posts").then((res) => {
+  //     console.log(res.data);
+  //     setPosts(res.data);
+  //   });
+  // };
 
   const handleSubmit = (e) => {
     setAddress(locationInput);
@@ -77,9 +77,11 @@ function NewGiverPost({ setPosts, user }) {
       meetingTimeAndDate: selectedDateAndTime,
     };
 
+    console.log(newPost);
     Api.post("/posts", newPost).then((res) => {
       console.log(res.data);
-      getAll();
+      setPosts([...posts, res.data]);
+      // getAll();
       history.push(`/posts/category/${postCategory}`);
     });
   };

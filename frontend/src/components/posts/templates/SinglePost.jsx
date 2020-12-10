@@ -1,14 +1,23 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import ErrorScreen from "../../tempscreens/ErrorScreen";
 import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
+import Api from "../../../api/Api";
 
-function SinglePost({ user, setPosts, posts }) {
-  const { state } = useLocation();
-  const passedPost = state === undefined ? null : state.post;
-  const [post, setPost] = useState(passedPost);
+function SinglePost({ id, setPosts, user, posts }) {
+  // console.log(posts);
+  // const post = posts.filter((p) => p.id === parseInt(id))[0];
+
+  const [post, setPost] = useState({});
+  useEffect(() => {
+    const fetchPost = async () => {
+      const response = await Api.get(`/posts/${id}`);
+      setPost(response.data);
+    };
+    fetchPost();
+  }, [id]);
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {

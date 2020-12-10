@@ -90,10 +90,7 @@ function PostCard({ post }) {
             </button>
           </div>
 
-          <Link
-            className="medium-button"
-            to={{ pathname: `/posts/${post.id}`, state: { post } }}
-          >
+          <Link className="medium-button" to={`/posts/${post.id}`}>
             View post
           </Link>
 
