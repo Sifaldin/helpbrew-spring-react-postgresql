@@ -25,7 +25,9 @@ function NewGiverPost({ setPosts, user }) {
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
 
- {/* calendar related hooks and consts*/}
+  {
+    /* calendar related hooks and consts*/
+  }
   const now = new Date();
   console.log(now);
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
@@ -73,7 +75,7 @@ function NewGiverPost({ setPosts, user }) {
       location: address,
       position: position,
       user: user,
-      meetingTimeAndDate: selectedDateAndTime
+      meetingTimeAndDate: selectedDateAndTime,
     };
 
     Api.post("/posts", newPost).then((res) => {
@@ -191,16 +193,16 @@ function NewGiverPost({ setPosts, user }) {
               </label>
             ) : null}
 
-
             {/* Depending on the category chosen by user from drop-down menu,
             a field for entering a pick-up location will be displayed or not */}
-            {postCategory === "skills" ? (  
-              <div >
-                  <MaterialUiCalendar 
-                  selectedDateAndTime = {selectedDateAndTime}
-                  setSelectedDateAndTime = {setSelectedDateAndTime}
-                  />
-              </div>) : null}
+            {postCategory === "skills" ? (
+              <div>
+                <MaterialUiCalendar
+                  selectedDateAndTime={selectedDateAndTime}
+                  setSelectedDateAndTime={setSelectedDateAndTime}
+                />
+              </div>
+            ) : null}
 
             <div>
               <button

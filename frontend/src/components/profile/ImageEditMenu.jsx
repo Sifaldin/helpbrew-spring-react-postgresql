@@ -6,9 +6,7 @@ import ProfileImageUploader from "./ProfileImageUploader";
 import { IoMdCloseCircle } from "react-icons/io";
 
 export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
-  const [imgUrl, setImgUrl] = useState(
-    (user.imageUrl: "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png")
-  );
+  const [imgUrl, setImgUrl] = useState(user.imageUrl);
 
   //Notification Creator
   const dispatch = useNotification();
