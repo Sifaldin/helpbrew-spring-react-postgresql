@@ -9,6 +9,7 @@ import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
 import GiveIntroduction from "../molecules/GiveIntroduction";
 import Error from "../../notifications/Error";
+import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ setPosts, user }) {
@@ -23,6 +24,11 @@ function NewGiverPost({ setPosts, user }) {
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
+
+ {/* calendar related hooks and consts*/}
+  const now = new Date();
+  console.log(now);
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
@@ -67,6 +73,7 @@ function NewGiverPost({ setPosts, user }) {
       location: address,
       position: position,
       user: user,
+      meetingTimeAndDate: selectedDateAndTime
     };
 
     Api.post("/posts", newPost).then((res) => {
@@ -183,6 +190,17 @@ function NewGiverPost({ setPosts, user }) {
                 </button>
               </label>
             ) : null}
+
+
+            {/* Depending on the category chosen by user from drop-down menu,
+            a field for entering a pick-up location will be displayed or not */}
+            {postCategory === "skills" ? (  
+              <div >
+                  <MaterialUiCalendar 
+                  selectedDateAndTime = {selectedDateAndTime}
+                  setSelectedDateAndTime = {setSelectedDateAndTime}
+                  />
+              </div>) : null}
 
             <div>
               <button

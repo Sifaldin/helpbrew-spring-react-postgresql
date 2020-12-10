@@ -1,14 +1,11 @@
 package se.kth.sda.skeleton.post;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import se.kth.sda.skeleton.comments.*;
 import se.kth.sda.skeleton.reactions.Reaction;
 import se.kth.sda.skeleton.user.User;
-
-import java.util.ArrayList;
 
 import java.util.List;
 
@@ -45,6 +42,9 @@ public class Post {
 
     @Column
     private String location;
+
+    @Column
+    private String meetingTimeAndDate;
 
     @Column
     @ElementCollection
@@ -169,4 +169,14 @@ public class Post {
     public void setPosition(List<Double> position) {
         this.position = position;
     }
+
+    public String getMeetingTimeAndDate() {
+        return meetingTimeAndDate;
+    }
+
+    public void setMeetingTimeAndDate(String meetingTime) {
+        this.meetingTimeAndDate = meetingTime;
+    }
+
+
 }
