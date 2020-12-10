@@ -36,14 +36,14 @@ export default function GiveawayPost({ post, setPosts, deletePost, user }) {
         </div>
       )}
 
-      <div className="single-post-card">
-        <SharedSinglePost
-          post={post}
-          setPosts={setPosts}
-          deletePost={deletePost}
-          user={user}
-        />
-      </div>
+      {/* <div className="single-post-card"> */}
+      <SharedSinglePost
+        post={post}
+        setPosts={setPosts}
+        deletePost={deletePost}
+        user={user}
+      />
+      {/* </div> */}
     </div>
   );
 }

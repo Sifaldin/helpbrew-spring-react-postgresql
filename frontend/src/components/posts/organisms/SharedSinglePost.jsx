@@ -56,63 +56,63 @@ export default function SharedSinglePost({ post, setPosts, user }) {
   };
 
   return (
-    <div className="main-wrapper">
+    <div className="single-post-card">
       {/* consists of post area and comment area */}
-      <div className="main">
-        {/* consists of signature(photo, name, date), post block and comment block */}
-        <div className="post-info">
-          <div className="signature">
-            <img src={post.user.imageUrl} alt="Single post img" />
-            <div>
-              <span className="user-name">{post.user.name}</span>
-              <span className="date">{post.date}</span>
-            </div>
-          </div>
-
-          <h3>{post.title}</h3>
-
-          {isUpdating ? (
-            <PostUpdateForm
-              post={curPost}
-              onUpdateClick={updatePost}
-              setIsUpdating={setIsUpdating}
-            />
-          ) : (
-            <p className="post-body">{curPost.body}</p>
-          )}
-
-          <div className="button-group">
-            <button
-              className="mes-button"
-              onClick={threadHandler}
-              type="submit"
-            >
-              <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            </button>
-
-            {/* The post is deleted only if the email of the logged in user and 
-              email of the user who wrote the post are the same */}
-            {curPost.user.email === user.email ? (
-              <div className="button-group">
-                <button
-                  className="medium-button"
-                  onClick={() => setIsUpdating(true)}
-                >
-                  Update
-                </button>
-
-                <button
-                  className="medium-button"
-                  onClick={() => deletePost(curPost.id)}
-                >
-                  Delete
-                </button>
-              </div>
-            ) : null}
+      {/* <div className="main"> */}
+      {/* consists of signature(photo, name, date), post block and comment block */}
+      <div className="post-info">
+        <div className="signature">
+          <img
+            className="post-user"
+            src={post.user.imageUrl}
+            alt="Single post img"
+          />
+          <div>
+            <span className="user-name">{post.user.name}</span>
+            <span className="date">{post.date}</span>
           </div>
         </div>
-        <Comments post={post} />
+
+        <h3>{post.title}</h3>
+
+        {isUpdating ? (
+          <PostUpdateForm
+            post={curPost}
+            onUpdateClick={updatePost}
+            setIsUpdating={setIsUpdating}
+          />
+        ) : (
+          <p className="post-body">{curPost.body}</p>
+        )}
+
+        <div className="button-group">
+          <button className="mes-button" onClick={threadHandler} type="submit">
+            <i className="fa fa-paper-plane" aria-hidden="true"></i>
+          </button>
+
+          {/* The post is deleted only if the email of the logged in user and 
+              email of the user who wrote the post are the same */}
+          {curPost.user.email === user.email ? (
+            <div className="button-group">
+              <button
+                className="medium-button"
+                onClick={() => setIsUpdating(true)}
+              >
+                Update
+              </button>
+
+              <button
+                className="medium-button"
+                onClick={() => deletePost(curPost.id)}
+              >
+                Delete
+              </button>
+            </div>
+          ) : null}
+        </div>
       </div>
+      <Comments post={post} />
+      {/* </div> */}
     </div>
   );
 }

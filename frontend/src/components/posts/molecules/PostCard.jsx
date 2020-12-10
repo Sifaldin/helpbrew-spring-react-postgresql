@@ -54,6 +54,17 @@ function PostCard({ post }) {
       </Link>
 
       <div className="post-bottom">
+        <div className="signature">
+          <img
+            className="comment-user"
+            src={post.user.imageUrl}
+            alt="Single post img"
+          />
+          <div className="spans">
+            <span className="user-name">Posted by {post.user.name}</span>
+            <span className="date">{post.date}</span>
+          </div>
+        </div>
         {/* Header includes post title and type(giving or requesting) */}
         <div className="header">
           <h3 className="title">{post.title}</h3>
@@ -70,7 +81,7 @@ function PostCard({ post }) {
           ) : (
             <span className="small-button">Available</span>
           )}
-          <span className="post-date">{post.date}</span>
+          {/* <span className="post-date">{post.date}</span> */}
         </div>
         <hr />
         {/* React container includes reactions and link to the post details */}
