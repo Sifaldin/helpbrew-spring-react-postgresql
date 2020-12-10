@@ -18,7 +18,16 @@
   top: 22%;
   max-width: 300px;
   text-align: left;
-  
+}
+
+@media screen and (max-width:1000px) {
+  .logo {
+    position: fixed;
+    left: 5%;
+    top: 5%;
+    max-width: 300px;
+    text-align: left;
+  }
 }
 
 
