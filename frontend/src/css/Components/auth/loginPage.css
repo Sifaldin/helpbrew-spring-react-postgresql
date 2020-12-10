@@ -71,14 +71,6 @@
   background:none;
   margin-top: 5px;
   margin-bottom: 20px;
-  cursor: pointer;
-}
-.signinform .smallButton{
-  border: none;
-  outline:none;
-  background:none;
-  margin-top: 5px;
-  margin-bottom: 20px;
   margin-right: 9rem;
   font-size: 14px;
   font-style: italic;
