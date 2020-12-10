@@ -9,20 +9,13 @@ import {
 } from "@material-ui/pickers";
 import { date } from "date-fns/locale/af";
 
-export default function MaterialUiCalendar() {
-  const now = new Date();
-
-  console.log(now);
-
-  const [selectedDate, setSelectedDate] = useState(now);
-  const [selectedTime, setSelectedTime] = useState(now);
-
+export default function MaterialUiCalendar({
+  selectedDateAndTime,
+  setSelectedDateAndTime
+}) {
+  
   const handleDateUpdate = (date) => {
-    setSelectedDate(date);
-  };
-
-  const handleTimeUpdate = (time) => {
-    setSelectedTime(time);
+    setSelectedDateAndTime(date);
   };
 
   return (
@@ -35,7 +28,7 @@ export default function MaterialUiCalendar() {
             margin="normal"
             id="date-picker"
             label="Date Picker"
-            value={selectedDate}
+            value={selectedDateAndTime}
             onChange={handleDateUpdate}
             KeyboardButtonProps={{
               "aria-label": "change date",
@@ -46,8 +39,8 @@ export default function MaterialUiCalendar() {
             margin="normal"
             id="time-picker"
             label="24 hours"
-            value={selectedTime}
-            onChange={handleTimeUpdate}
+            value={selectedDateAndTime}
+            onChange={handleDateUpdate}
             KeyboardButtonProps={{
               "aria-label": "change date",
             }}

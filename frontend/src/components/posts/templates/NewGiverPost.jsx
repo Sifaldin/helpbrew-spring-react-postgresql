@@ -25,6 +25,11 @@ function NewGiverPost({ setPosts, user }) {
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
 
+ {/* calendar related hooks and consts*/}
+  const now = new Date();
+  console.log(now);
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
+
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
       ? imgUrl.length > 0 &&
@@ -68,6 +73,7 @@ function NewGiverPost({ setPosts, user }) {
       location: address,
       position: position,
       user: user,
+      meetingTimeAndDate: selectedDateAndTime
     };
 
     Api.post("/posts", newPost).then((res) => {
@@ -189,8 +195,11 @@ function NewGiverPost({ setPosts, user }) {
             {/* Depending on the category chosen by user from drop-down menu,
             a field for entering a pick-up location will be displayed or not */}
             {postCategory === "skills" ? (  
-              <div className="show-map map">
-                  <MaterialUiCalendar />
+              <div >
+                  <MaterialUiCalendar 
+                  selectedDateAndTime = {selectedDateAndTime}
+                  setSelectedDateAndTime = {setSelectedDateAndTime}
+                  />
               </div>) : null}
 
             <div>
