@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Api from "../../../api/Api";
 import { useNotification } from "../../notifications/NotificationProvider";
+import { format } from "date-fns";
 
 export default function NewCommentForm({ onSubmit, post }) {
   const [user, setUser] = useState("");
@@ -40,7 +41,12 @@ export default function NewCommentForm({ onSubmit, post }) {
       <button
         className="medium-button"
         onClick={() => {
-          onSubmit({ body, user, post });
+          onSubmit({
+            body,
+            user,
+            post,
+            date: format(new Date(), "dd-MM-yyyy"),
+          });
           setBody("");
         }}
       >

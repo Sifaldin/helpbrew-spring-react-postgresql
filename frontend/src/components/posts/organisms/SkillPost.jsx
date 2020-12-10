@@ -25,7 +25,7 @@ export default function SkillPost({ post, setPosts, user }) {
 
       {/* consists of SharedSinglePost - component that displays post information
       {/* !!! A calendar or any other piece of information unique
-        to SKillPost component shall be inserted into this div */}      
+        to SKillPost component shall be inserted into this div */}
 
       <button
         className="medium-button location-button"
@@ -33,25 +33,20 @@ export default function SkillPost({ post, setPosts, user }) {
       >
         {displayCalendar ? "Hide calendar" : "Edit event time"}
       </button>
-      
-      <div className= "show-map map">
-      <h1>{` Meeting date: ${dateDisplay}`}</h1>
+
+      <div className="show-map map">
+        <h1>{` Meeting date: ${dateDisplay}`}</h1>
         <h1>{` Meeting Time: ${timeDisplay}`}</h1>
-      {displayCalendar ? (
-        <div> 
-        
-          <MaterialUiCalendar />
-       </div>
-        
-      ) : null}
+        {displayCalendar ? (
+          <div>
+            <MaterialUiCalendar />
+          </div>
+        ) : null}
       </div>
 
       {/* conssits of SharedSinglePost - component that displays post information
             which is common to posts of all the three categories, and a map */}
-            <h1></h1>
-      <div className="single-post-card">
-        <SharedSinglePost post={post} setPosts={setPosts} user={user} />
-      </div>
+      <SharedSinglePost post={post} setPosts={setPosts} user={user} />
     </div>
   );
 }
