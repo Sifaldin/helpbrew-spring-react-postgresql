@@ -6,19 +6,39 @@ import Api from "../../../api/Api";
 
 //The PostsPage displays a listing of posts belonging to the category(skills, giveaways or monetary support)
 // selected by the user
-export default function PostsPage({ category }) {
+export default function PostsPage({ category, posts }) {
+  console.log(posts);
   const [postsByCategory, setPostsByCategory] = useState([]);
 
+  //The component fetches posts belonging to the category passed as props.
+  //The category string is inserted into the endpoint ensuring that
+  //the posts from the right category are fetched.
   useEffect(() => {
     const fetchPosts = async () => {
-      const response = await Api.get(`/posts`);
-      const filteredByCategory = response.data.filter(
-        (post) => post.category === category
-      );
-      setPostsByCategory(filteredByCategory);
+      const response = await Api.get(`/posts/category/${category}`);
+      setPostsByCategory(response.data);
     };
     fetchPosts();
-  }, [category]);
+    console.log(postsByCategory);
+  }, [category, posts]); //refetches posts every time category changes
+
+  // const [postsByCategory, setPostsByCategory] = useState([]);
+
+  // useEffect(() => {
+  //   const filtered = posts.filter((post) => post.category === category);
+  //   setPostsByCategory();
+  // }, [category, posts]);
+
+  // useEffect(() => {
+  //   const fetchPosts = async () => {
+  //     const response = await Api.get(`/posts`);
+  //     const filteredByCategory = response.data.filter(
+  //       (post) => post.category === category
+  //     );
+  //     setPostsByCategory(filteredByCategory);
+  //   };
+  //   fetchPosts();
+  // }, [category]);
 
   return (
     <div className="posts-page">

@@ -4,6 +4,7 @@
 // import "../../css/Components/layout/layout.css";
 // import logo from "../../assets/logo_small.jpg";
 
+
 // import DropDownProfile from "../profile/DropDownProfile";
 // import DropDownItem from "../profile/DropDownItem";
 // import DropDownMenu from "../profile/DropDownMenu";
@@ -15,6 +16,8 @@
 //   const newPostRef = useRef();
 //   const homeRef = useRef();
 //   const profileRef = useRef();
+
+
 
 //   const modalRef = useRef();
 //   const openModal = () => {
@@ -28,6 +31,7 @@
 //           <Link className="logo-link" to="/">
 //             <img src={logo} alt="HelpBrew Logo" />
 //           </Link>
+
 
 //           <li>
 //             <NavLink exact to="/" ref={homeRef}>
@@ -45,6 +49,8 @@
 //               GIVEAWAYS
 //             </NavLink>
 //           </li>
+
+
 
 //           <li>
 //             <NavLink
@@ -95,6 +101,7 @@
 //             </button>
 //           </li> */}
 
+
 //           <DropDownProfile>
 //             <DropDownItem>
 //               <DropDownMenu user={user} />
@@ -106,5 +113,31 @@
 //     </nav>
 //   );
 // }
+
+          {/* <DropDownProfile> */}
+          <DropDownItem
+            icon={
+              <img
+                src={user.imageUrl}
+                alt="profile-pic"
+                style={{
+                  height: "35px",
+                  width: "35px",
+                  borderRadius: "20px",
+                  marginRight: "5px",
+                }}
+              />
+            }
+          >
+            <DropDownMenu user={user} setUser={setUser} />
+          </DropDownItem>
+          {/* </DropDownProfile> */}
+        </ul>
+      </div>
+      <div></div>
+    </nav>
+  );
+}
+
 
 // export default Navbar;

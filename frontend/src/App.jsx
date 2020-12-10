@@ -20,31 +20,42 @@ import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
 
+
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
+  const [category, useCategory] = useState([]);
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
   //Fetches all the posts, to be used and filtered depending on functionality by App child components
-  // useEffect(() => {
-  //   if (loggedIn) {
-  //     const fetchPosts = async () => {
-  //       const response = await Api.get(`/posts`);
-  //       setPosts(response.data);
-  //     };
-  //     fetchPosts();
-  //   }
-  // }, [loggedIn]);
+  useEffect(() => {
+    if (loggedIn) {
+      const fetchPosts = async () => {
+        const response = await Api.get(`/posts`);
+        setPosts(response.data);
+      };
+      fetchPosts();
+    }
+  }, [loggedIn]);
 
   //Fetches the logged in user(includes user picture, name and email), to be used by App child components
   useEffect(() => {
     if (loggedIn) {
       Api.get("/user/me").then((response) => {
-        const user = response.data;
-        setUser(user);
+        const fetchedUser = response.data;
+        const userToSet = fetchedUser.imageUrl
+          ? fetchedUser
+          : {
+              ...fetchedUser,
+              imageUrl:
+                "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png",
+            };
+        Api.put("/user/me", userToSet).then((response) => {
+          setUser(response.data);
+        });
       });
     }
   }, [loggedIn]);
@@ -69,17 +80,15 @@ function App() {
     //React Router manages all the routes in the application
     <>
     <Router>
+
       {/* <Navbar onLogout={() => Auth.logout()} user={user} /> */}
       <Nav />
+
       <div className="container mt-5">
         <Switch>
           {/* The route displays the application's homepage */}
           <Route path="/" exact>
             <HomePage userPosts={userPosts} />
-          </Route>
-
-          <Route path="/user" exact>
-            <ProfilePage user={user} setUser={setUser} />
           </Route>
 
           {/* Givewaways, skills and monetary support categories are displayed by
@@ -88,22 +97,22 @@ function App() {
           display posts belonging to only of the three categories.
            */}
           <Route path="/posts/category/giveaways" exact>
-            <PostsPage category={"giveaways"} />
+            <PostsPage category={"giveaways"} posts={posts} />
           </Route>
 
           <Route path="/posts/category/skills" exact>
-            <PostsPage category={"skills"} />
+            <PostsPage category={"skills"} posts={posts} />
           </Route>
 
           <Route path="/posts/category/monetary-support" exact>
-            <PostsPage category={"monetary-support"} />
+            <PostsPage category={"monetary-support"} posts={posts} />
           </Route>
 
           {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
 
           <Route exact path="/posts/give">
-            <NewGiverPost setPosts={setPosts} user={user} />
+            <NewGiverPost setPosts={setPosts} user={user} posts={posts} />
           </Route>
 
           <Route exact path="/posts/request">
@@ -115,9 +124,17 @@ function App() {
           </Route>
 
           {/* This route is used to display details of a single post. */}
-          <Route path="/posts/:id">
-            <SinglePost user={user} setPosts={setPosts} />
-          </Route>
+          <Route
+            path="/posts/:id"
+            render={({ match }) => (
+              <SinglePost
+                id={match.params.id}
+                setPosts={setPosts}
+                user={user}
+                posts={posts}
+              />
+            )}
+          />
 
           {/* The functionality for the routes below is not implemented yet.
           Uncomment or remove if the routes are not needed.

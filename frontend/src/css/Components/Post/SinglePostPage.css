@@ -28,27 +28,20 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   object-fit: cover;
   width: 100%;
   height: 100%;
-  /* max-height: 40vh; */
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   border-radius: 32px 32px 0 0;
 }
 
 .single-post-card {
   width: 80vw;
-  /* max-width: 80vw; */
-  /* padding: 2rem; */
-  min-height: 80vh;
+
+  min-height: 100vh;
   display: grid;
   margin-top: 2rem;
-  /* grid-template-columns: 1fr 1fr; */
   justify-items: center;
 }
 
-.single-post-card .main-wrapper {
-  width: 75%;
-}
-
-.single-post-card .signature {
+.signature {
   margin-top: 1rem;
   display: grid;
   grid-template-columns: auto 1fr;
@@ -56,29 +49,31 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   justify-items: start;
 }
 
-.single-post-card .signature img {
+.signature .post-user {
   width: 4rem;
   height: 4rem;
   border-radius: 2rem;
   margin-right: 1rem;
 }
 
-.single-post-card .signature span {
+.signature span {
   display: block;
 }
 
-.single-post-card .signature div {
+.signature div {
   height: 100%;
   display: grid;
   grid-row-gap: 0.3rem;
   align-items: center;
 }
 
-.single-post-card .signature .user-name {
+.signature .user-name {
   font-size: 1.5rem;
 }
 
-.single-post-card .main .post-info {
+.single-post-card .post-info,
+.comment-card {
+  width: 80vw;
   background-color: rgba(219, 215, 215, 0.4);
   padding: 1rem;
   border-radius: 16px;
@@ -106,7 +101,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border: 1px solid rgb(190, 188, 188);
   border-radius: 1rem;
   width: 30rem;
-  max-width: 75%;
+  max-width: 75vw;
   height: 8rem;
   padding: 0.5rem;
   margin: 1rem 0;
@@ -117,13 +112,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   grid-row-gap: 1rem;
 }
 
-.comment-card {
-  background-color: rgba(219, 215, 215, 0.4);
-  border-radius: 2rem;
-  display: grid;
-  padding: 1rem;
-}
-
 .comment-card p {
   font-size: 1.1rem;
 }
@@ -132,13 +120,24 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   margin-bottom: 1rem;
 }
 
-.main .button-group {
+.comment-user {
+  height: 40px;
+  width: 40px;
+  border-radius: 2rem;
+  margin-right: 1rem;
+}
+
+.button-group button:first-child {
+  background-color: #1e6fbf;
+}
+
+.post-info .button-group {
   display: grid;
   grid-template-columns: 1fr auto;
 }
 
 .button-group .medium-button {
-  background-color: #1e6fbf;
+  background-color: orange;
 }
 
 .button-group button:first-child {
@@ -150,10 +149,10 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   align-self: center;
   height: 25px;
   width: 25px;
-  background-color: orange;
+  background-color: #1e6fbf;
   border: none;
   border-radius: 2px;
-  color: #1e6fbf;
+  color: rgb(255, 255, 255);
 }
 
 .single-post .show-map {
@@ -161,6 +160,11 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   width: 350px;
   height: 200px;
   margin-top: 2rem;
+}
+
+.single-post .show-map .map-wrapper {
+  display: grid;
+  justify-items: center;
 }
 
 .single-post .show-map .map-wrapper .map {
@@ -180,25 +184,43 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 @media (min-width: 1000px) {
   .single-post {
-    max-width: 100%;
     width: 90vw;
-    grid-template-areas: "pic post" "pic post" "unique-content post";
-    grid-row-gap: 4rem;
-    grid-column-gap: 6rem;
+    grid-template-areas: "pic post" "unique-content post" "unique-content post";
+    grid-row-gap: 2rem;
+    grid-column-gap: 4rem;
     padding: 2rem;
+    align-items: start;
   }
 
   .single-post-card {
     width: 100%;
+    /* max-width: 90%; */
     grid-area: post;
+    justify-items: start;
+    align-items: start;
   }
 
-  .single-post .main-wrapper {
-    width: 100%;
+  .single-post-card .post-info,
+  .comment-card {
+    width: 22rem;
   }
 
-  .single-post .main-wrapper .main {
-    width: 95%;
+  .single-post-card .post-info {
+    grid-row-gap: 16px;
+    font-size: 14px;
+  }
+
+  .comment-card {
+    grid-row-gap: 8px;
+    font-size: 12px;
+  }
+
+  .comment-card .signature .user-name {
+    font-size: 16px;
+  }
+
+  .comment-card p {
+    font-size: 14px;
   }
 
   .comment-area textarea {
@@ -207,7 +229,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
   .single-post .post-pic {
     grid-area: pic;
-    height: 50vh;
+    height: 60vh;
     min-width: 35vw;
     width: 40vw;
     border-radius: 32px;
@@ -234,18 +256,11 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   .single-post .location-button {
     display: none;
   }
+}
 
-  /* .single-post-card .main-wrapper {
-    width: 90%;
-    margin-left: 2rem;
-  } */
-
-  /* .separator {
-    display: block;
-    border-bottom: 2px solid rgb(177, 174, 174);
-    position: relative;
-    right: 28%;
-    top: 3rem;
-    width: 20%;
-  } */
+@media (min-width: 1300px) {
+  .single-post-card .post-info,
+  .comment-card {
+    width: 30rem;
+  }
 }

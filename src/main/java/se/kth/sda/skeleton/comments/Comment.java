@@ -19,6 +19,9 @@ public class Comment {
     @Column(name = "body")
     private String body;
 
+    @Column
+    private String date;
+
     @ManyToOne
     private Post post;
 
@@ -78,5 +81,13 @@ public class Comment {
 
     public void setUser(User user) {
         this.user = user;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

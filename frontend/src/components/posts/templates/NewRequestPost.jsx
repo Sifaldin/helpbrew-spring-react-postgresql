@@ -15,6 +15,7 @@ function NewRequestPost({ setPosts, user }) {
     const [details, setDetails] = useState("");
     const [uploading, setUploading] = useState(true);
     const [postCategory, setPostCategory] = useState("giveaways");
+    
 
     const getAll = () => {
         Api.get("/posts").then((res) => {

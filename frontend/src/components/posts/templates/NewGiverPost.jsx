@@ -9,9 +9,10 @@ import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
 import GiveIntroduction from "../molecules/GiveIntroduction";
 import Error from "../../notifications/Error";
+import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 
 //Displays the form for creation of a new post by user
-function NewGiverPost({ setPosts, user }) {
+function NewGiverPost({ posts, setPosts, user }) {
   const history = useHistory();
   const location = useLocation();
   const [imgUrl, setImgUrl] = useState("");
@@ -24,6 +25,12 @@ function NewGiverPost({ setPosts, user }) {
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
 
+  console.log(user);
+  /* calendar related hook */
+
+  const now = new Date();
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
+
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
       ? imgUrl.length > 0 &&
@@ -33,12 +40,14 @@ function NewGiverPost({ setPosts, user }) {
       : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
   };
 
+
   const getAll = () => {
     Api.get("/posts").then((res) => {
     
       setPosts(res.data);
     });
   };
+
 
   const handleSubmit = (e) => {
     setAddress(locationInput);
@@ -67,10 +76,16 @@ function NewGiverPost({ setPosts, user }) {
       location: address,
       position: position,
       user: user,
+      meetingTimeAndDate: selectedDateAndTime,
     };
 
+    console.log(newPost);
     Api.post("/posts", newPost).then((res) => {
+
       getAll();
+
+      setPosts([...posts, res.data]);
+
       history.push(`/posts/category/${postCategory}`);
     });
   };
@@ -181,6 +196,17 @@ function NewGiverPost({ setPosts, user }) {
                   Find location
                 </button>
               </label>
+            ) : null}
+
+            {/* Depending on the category chosen by user from drop-down menu,
+            a field for entering a pick-up location will be displayed or not */}
+            {postCategory === "skills" ? (
+              <div>
+                <MaterialUiCalendar
+                  selectedDateAndTime={selectedDateAndTime}
+                  setSelectedDateAndTime={setSelectedDateAndTime}
+                />
+              </div>
             ) : null}
 
             <div>

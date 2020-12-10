@@ -2,18 +2,19 @@
     background: linear-gradient(90deg, #eb8c38 0%,lightyellow 100%);
     display: flex;
     justify-content: space-around;
+
     position: relative;
     /* left:0;
     bottom:0;
     right:0; */
     width: 100%;
+
   }
 
   .footer a {
       padding: 25px;
       color: white;
       font-weight: bold;
-      
   }
 
   

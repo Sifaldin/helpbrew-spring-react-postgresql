@@ -1,89 +1,113 @@
-import React, { useState, useEffect } from 'react'
-import { CgProfile } from 'react-icons/cg';
-import { BiMessageSquareDetail } from 'react-icons/bi';
-import { CSSTransition } from 'react-transition-group';
-import { RiDoorOpenLine } from 'react-icons/ri';
-import MessageNotification from './MessageNotification';
-import ChatApi from '../../api/ChatApi';
-import Api from '../../api/Api';
-import { Link } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { CgProfile } from "react-icons/cg";
+import { BiMessageSquareDetail } from "react-icons/bi";
+import { CSSTransition } from "react-transition-group";
+import { RiDoorOpenLine } from "react-icons/ri";
+import MessageNotification from "./MessageNotification";
+import ChatApi from "../../api/ChatApi";
+import Api from "../../api/Api";
+import { Link } from "react-router-dom";
 import Auth from "../../services/Auth";
-import ProfileImageUploader from './ProfileImageUploader';
+import ProfileImageUploader from "./ProfileImageUploader";
+import ImageEditMenu from "./ImageEditMenu";
+import { RiDashboardLine } from "react-icons/ri";
 
-function DropDownMenu({user, setUser}) {
-    
-    const [threads, setThreads] = useState([])
-    const [open, setOpen] = useState(true);
-    const [activeMenu, setactiveMenu] = useState('main')
+function DropDownMenu({ user, setUser }) {
+  const [threads, setThreads] = useState([]);
+  const [open, setOpen] = useState(true);
+  const [activeMenu, setactiveMenu] = useState("main");
 
+  const [imgUrl, setImgUrl] = useState("");
 
+  const [showImageEdit, setShowImageEdit] = useState(false);
 
-    const [imgUrl, setImgUrl] = useState("");
+  //Callback function that will send a user update call to the server
+  const updateUser = () => {
+    const img = { ...user, imageUrl: imgUrl };
+    Api.put("/user/me", img).then((res) => setUser(res.data));
+  };
 
-    //Callback function that will send a user update call to the server
-    const updateUser = () => {
-        const img = { ...user, imageUrl: imgUrl }
-        Api.put("/user/me", img).then((res) => setUser(res.data));
-
+  useEffect(() => {
+    const getThreads = async () => {
+      const response = await ChatApi.getAllThread();
+      setThreads(response.data);
     };
+    getThreads();
+  }, []);
 
+  const onLogout = () => Auth.logout();
 
-    useEffect(() => {
-        const getThreads = async () => {
-            const response = await ChatApi.getAllThread();
-            setThreads(response.data);
-        };
-        getThreads();
-    }, []);
+  function DisplayItem(props) {
+    return (
+      <a href="#" className="menu-item">
+        <span className="icon-botton">{props.leftIcon}</span>
+        {props.children}
+      </a>
+    );
+  }
 
-    const onLogout = () => Auth.logout();
-    
-    
-    function DropdownItem(props){
-        
-        return (
-
-            <a href="#" className="menu-item"  >
-                <span className="icon-botton">{props.leftIcon}</span>
-                {props.children}
-                <span className="icon-right">{props.rightIcon}</span>
-            </a>
-            
-        );
-    }
-    
-    
-    return  open ? (
-        
-        <div className="dropdown">
-            <CSSTransition 
-                in={activeMenu === 'main'} 
-                unmountOnExit 
-                timeout={500}
-                classNames="menu-primary"
+  return (
+    <div>
+      <div>
+        {open ? (
+          <div className="dropdown">
+            <CSSTransition
+              in={activeMenu === "main"}
+              unmountOnExit
+              timeout={500}
+              classNames="menu-primary"
+            >
+              <div className="menu">
+                <Link
+                  className="link-display"
+                  to="#"
+                  onClick={() => setShowImageEdit(true)}
                 >
-                    
+                  <DisplayItem
+                    leftIcon={
+                      <img
+                        src={user.imageUrl}
+                        alt="profile-pic"
+                        style={{
+                          height: "35px",
+                          width: "35px",
+                          borderRadius: "20px",
+                          marginRight: "5px",
+                        }}
+                      />
+                    }
+                  >
+                    Change profile picture
+                  </DisplayItem>
+                </Link>
 
-                    <div className="menu" >
-                    <DropdownItem leftIcon={<CgProfile size="40px" />}><img className={"profileImg"} src={user.imageUrl}  />
-                        <ProfileImageUploader setImgUrl={setImgUrl} />
-                        <button onClick={updateUser}>update</button>
-                   </DropdownItem>
+                <Link
+                  className="link-display"
+                  to="/"
+                  onClick={() => setOpen(!open)}
+                >
+                  <DisplayItem leftIcon={<RiDashboardLine size="40px" />}>
+                    Dashboard
+                  </DisplayItem>
+                </Link>
 
-                        <Link className="link-display" to="/user" onClick={() => setOpen(!open)}>
-                            <DropdownItem leftIcon={<CgProfile size="40px" />}>My Profile</DropdownItem>
-                        </Link>
-                        <Link className="link-display" to="/chat" onClick={() => setOpen(!open)}>
-                            <DropdownItem leftIcon={<BiMessageSquareDetail size="40px" />} >Messages</DropdownItem>
-                        </Link>
-                        <Link className="link-display" onClick={onLogout}>
-                            <DropdownItem leftIcon={<RiDoorOpenLine size="40px" />} >Log Out</DropdownItem>
-                        </Link>
-                        
-                        {/* <DropdownItem leftIcon={<CgProfile/>}></DropdownItem> */}
-                    </div>
-                    
-                    
+                <Link
+                  className="link-display"
+                  to="/chat"
+                  onClick={() => setOpen(!open)}
+                >
+                  <DisplayItem leftIcon={<BiMessageSquareDetail size="40px" />}>
+                    Messages
+                  </DisplayItem>
+                </Link>
+                <Link className="link-display" onClick={onLogout}>
+                  <DisplayItem leftIcon={<RiDoorOpenLine size="40px" />}>
+                    Log Out
+                  </DisplayItem>
+                </Link>
+
+                {/* <DisplayItem leftIcon={<CgProfile/>}></DisplayItem> */}
+              </div>
             </CSSTransition>
 
             {/* <CSSTransition
@@ -105,10 +129,20 @@ function DropDownMenu({user, setUser}) {
                     }
                      </div>
             </CSSTransition> */}
-            
-        </div >
-        
-    ):null
+          </div>
+        ) : null}
+      </div>
+      <div>
+        {showImageEdit ? (
+          <ImageEditMenu
+            user={user}
+            setUser={setUser}
+            setShowImageEdit={setShowImageEdit}
+          />
+        ) : null}
+      </div>
+    </div>
+  );
 }
 
-export default DropDownMenu
+export default DropDownMenu;

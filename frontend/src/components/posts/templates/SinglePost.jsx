@@ -1,31 +1,23 @@
 import React, { useState, useEffect } from "react";
-import { useHistory, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import ErrorScreen from "../../tempscreens/ErrorScreen";
-import ChatApi from "../../../api/ChatApi";
-import Comments from "../../comments/templates/Comments";
-import PostUpdateForm from "./PostUpdateForm";
-import Api from "../../../api/Api";
 import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
-import { useNotification } from "../../notifications/NotificationProvider";
-import SharedSinglePost from "../organisms/SharedSinglePost";
-import Map from "../molecules/Map";
+import Api from "../../../api/Api";
 
-function SinglePost({ user, setPosts }) {
-  const { state } = useLocation();
-  const passedPost = state === undefined ? null : state.post;
-  const [post, setPost] = useState(passedPost);
-  const history = useHistory();
+function SinglePost({ id, setPosts, user, posts }) {
+  // console.log(posts);
+  // const post = posts.filter((p) => p.id === parseInt(id))[0];
 
-  //Notification Creator
-  const dispatch = useNotification();
-  const handleDeleteNotification = () => {
-    dispatch({
-      type: "ERROR",
-      message: "Deleting Post!",
-    });
-  };
+  const [post, setPost] = useState({});
+  useEffect(() => {
+    const fetchPost = async () => {
+      const response = await Api.get(`/posts/${id}`);
+      setPost(response.data);
+    };
+    fetchPost();
+  }, [id]);
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {
@@ -42,44 +34,18 @@ function SinglePost({ user, setPosts }) {
   //   setClaimed();
   // };
 
-  // const messageHandler = () => {
-  //   const createOrDirect = async () => {
-  //     try {
-  //       const response = await ChatApi.createThread(post.email, {});
-  //       const thread = response.data;
-  //       history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
-  //     } catch (e) {
-  //       console.log(e);
-  //     }
-  //   };
-  //   createOrDirect();
-  // };
-
-  const deletePost = (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
-      Api.delete("/posts/" + post.id).then((res) => {
-        setPosts(res.data);
-        history.push(`/posts/category/${post.category}`);
-      });
-    }
-  };
-
   //getPost() function reads post variable passed as props and checks its category.
   //Depending on the category of the passed post a component relevant to that category is called.
   //This process is handled by the switch statement below.
   const getPost = () => {
     switch (post.category) {
       case "skills":
-        return <SkillPost post={post} deletePost={deletePost} user={user} />;
+        return <SkillPost post={post} setPosts={setPosts} user={user} />;
       case "giveaways":
-        return <GiveawayPost post={post} deletePost={deletePost} user={user} />;
+        return <GiveawayPost post={post} setPosts={setPosts} user={user} />;
       case "monetary-support":
         return (
-          <MonetarySupportPost
-            post={post}
-            deletePost={deletePost}
-            user={user}
-          />
+          <MonetarySupportPost post={post} setPosts={setPosts} user={user} />
         );
       default:
         return null;

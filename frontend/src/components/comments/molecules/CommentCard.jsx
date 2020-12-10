@@ -8,6 +8,7 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   const [reaction, setReaction] = useState(comment.reaction);
   const [user, setUser] = useState("");
 
+  console.log(comment);
   //Notification Creator
   const dispatch = useNotification();
   const handleDeletenotification = () => {
@@ -42,40 +43,55 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   //   });
   // };
 
-  return isUpdating ? (
-    <CommentUpdateForm
-      oldComment={comment}
-      onUpdateClick={onUpdateClick}
-      setIsUpdating={setIsUpdating}
-    />
-  ) : (
+  return (
     <div className="comment-card">
-      <h5>{comment.user.name}</h5>
-      <p>{comment.body}</p>
+      <div className="signature">
+        <img
+          className="comment-user"
+          src={comment.user.imageUrl}
+          alt="Comment author img"
+        />
+        <div>
+          <span className="user-name">{comment.user.name}</span>
+          <span className="date">{comment.date}</span>
+        </div>
+      </div>
 
-      {/*<div>
+      {isUpdating ? (
+        <CommentUpdateForm
+          oldComment={comment}
+          onUpdateClick={onUpdateClick}
+          setIsUpdating={setIsUpdating}
+        />
+      ) : (
+        <p>{comment.body}</p>
+      )}
+
+      {/* <div>
         <button onClick={incrementLike}>
           <i></i> {reaction.like}
         </button>
         <button onClick={incrementDislike}>
           <i></i> {reaction.dislike}
         </button>
-      </div>*/}
+      </div> */}
 
-      {comment.user.name === user.name ? (
-        <div className="button-group">
-          <button
-            className="medium-button"
-            onClick={() => onDeleteClick(comment.id)}
-          >
-            Delete
-          </button>
+      <div className="button-group">
+        {comment.user.name === user.name ? (
+          <div>
+            <button
+              className="medium-button"
+              onClick={() => onDeleteClick(comment.id)}
+            >
+              Delete
+            </button>
 
-          <button className="medium-button" onClick={handleUpdateClick}>
-            Update
-          </button>
-        </div>
-      ) : null}
+            <button className="medium-button" onClick={handleUpdateClick}>
+              Update
+            </button>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 }
