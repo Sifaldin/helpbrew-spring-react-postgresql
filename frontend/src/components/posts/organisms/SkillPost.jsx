@@ -56,13 +56,13 @@ export default function SkillPost({ post, setPosts, user }) {
       {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
 
-      <div className="show-map map">
+      <div className="show-map">
 
         <h1>{` Meeting date: ${dateDisplay()}`}</h1>
         <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
         {post.user.id === user.id ? <div>
           <MaterialUiCalendar selectedDateAndTime={selectedDateAndTime} setSelectedDateAndTime={setSelectedDateAndTime} />
-          <button className="medium-button" onClick={(e) => { updatePost() }}>edit date</button>
+          <button className="medium-button edit" onClick={(e) => { updatePost() }}>edit date</button>
         </div> : null}
 
       </div>
