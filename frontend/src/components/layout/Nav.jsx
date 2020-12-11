@@ -79,27 +79,29 @@ function Nav({onLogout, user, setUser}) {
             </Link>
                         <Modal ref={modalRef} />
                     </li>
-                    <li>
+                    <li className='nav-item'>
                         {/* <DropDownProfile> */}
-                        <DropDownItem
-                            icon={
-                                <img
-                                    src={user.imageUrl}
-                                    alt="profile-pic"
-                                    style={{
-                                        height: "35px",
-                                        width: "35px",
-                                        borderRadius: "20px",
-                                        marginRight: "5px",
-                                    }}
-                                />
-                            }
-                        >
-                            <DropDownMenu user={user} setUser={setUser} />
-                        </DropDownItem>
+                        
                     </li>
                 </ul>
-               
+                <div className="profile-icon">
+                <DropDownItem
+                    icon={
+                        <img
+                            src={user.imageUrl}
+                            alt="profile-pic"
+                            style={{
+                                height: "35px",
+                                width: "35px",
+                                borderRadius: "20px",
+                                marginRight: "5px",
+                            }}
+                        />
+                    }
+                >
+                    <DropDownMenu user={user} setUser={setUser} />
+                </DropDownItem>
+                </div>
             </nav>
         </>
     );

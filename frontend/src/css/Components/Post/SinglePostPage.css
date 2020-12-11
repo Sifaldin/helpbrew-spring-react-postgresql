@@ -35,7 +35,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 .single-post-card {
   width: 80vw;
-
   min-height: 100vh;
   display: grid;
   margin-top: 2rem;
@@ -73,8 +72,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   font-size: 1.5rem;
 }
 
-.single-post-card .post-info,
-.comment-card {
+.single-post-card .post-info, .comment-card {
   width: 80vw;
   background-color: rgba(219, 215, 215, 0.4);
   padding: 1rem;
@@ -84,8 +82,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   grid-row-gap: 16px;
 }
 
-.post-info .date,
-.comment-card .date {
+.post-info .date, .comment-card .date {
   font-size: 14px;
   color: grey;
 }
@@ -205,6 +202,12 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   margin-top: 2rem;
 }
 
+.edit {
+  float: right;
+  margin-right: 2.4rem;
+  margin-top: -2.4rem;
+}
+
 @media (min-width: 1000px) {
   .single-post {
     width: 90vw;
@@ -214,7 +217,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
     padding: 2rem;
     align-items: start;
   }
-
   .single-post-card {
     width: 100%;
     /* max-width: 90%; */
@@ -222,25 +224,19 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
     justify-items: start;
     align-items: start;
   }
-
-  .single-post-card .post-info,
-  .comment-card {
+  .single-post-card .post-info, .comment-card {
     width: 22rem;
   }
-
   .single-post-card .post-info {
     font-size: 14px;
   }
-
   /* .comment-card {
     grid-row-gap: 8px;
     font-size: 12px;
   } */
-
   /* .comment-area textarea {
     width: 23rem;
   } */
-
   .single-post .post-pic {
     grid-area: pic;
     height: 60vh;
@@ -249,35 +245,29 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
     border-radius: 32px;
     position: relative;
   }
-
   .single-post .post-pic img {
     height: 100%;
     width: 100%;
     border-radius: 32px;
   }
-
   .single-post .map {
     grid-area: unique-content;
     border-radius: 16px;
   }
-
   .single-post .map .map-wrapper .map {
     width: 450px;
     height: 250px;
   }
-
   .single-post .calendar {
     grid-area: unique-content;
   }
-
   .single-post .location-button {
     display: none;
   }
 }
 
 @media (min-width: 1300px) {
-  .single-post-card .post-info,
-  .comment-card {
+  .single-post-card .post-info, .comment-card {
     width: 30rem;
   }
 }
