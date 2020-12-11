@@ -1,20 +1,23 @@
-import Api from './Api';
+import Api from "./Api";
 
 class ChatApi {
   getAllThread() {
-    return Api.get('/chat');
+    return Api.get("/chat");
   }
 
   getThreadById(threadId) {
     return Api.get(`/chat/${threadId}`);
   }
 
-  createThread(receiverEmail, thread) {
-    return Api.post(`/chat?receiverEmail=${receiverEmail}`, thread);
+  createThread(receiver, thread) {
+    return Api.post(`/chat?receiverEmail=${receiver.email}`, thread);
   }
 
-  createMessage(threadId, receiverEmail, message) {
-    return Api.post(`/chat/${threadId}?receiverEmail=${receiverEmail}`, message);
+  createMessage(threadId, receiver, message) {
+    return Api.post(
+      `/chat/${threadId}?receiverEmail=${receiver.email}`,
+      message
+    );
   }
 }
 

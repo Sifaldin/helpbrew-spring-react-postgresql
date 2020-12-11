@@ -17,10 +17,14 @@ export default function SkillPost({ post, setPosts, user }) {
     });
   };
 
-  const dateDisplay = post.meetingTimeAndDate.slice(0, 10);
-  const timeDisplay = post.meetingTimeAndDate.slice(16, 21);
+  const dateDisplay = () => {
+    return post.meetingTimeAndDate.slice(0, 10);
+  };
+  const timeDisplay = () => {
+    return post.meetingTimeAndDate.slice(16, 21);
+  };
 
-    {/* 
+  {/* 
                HIDING CALENDAR CODE
 
        const [displayCalendar, setDisplayCalendar] = useState(true);
@@ -43,20 +47,19 @@ export default function SkillPost({ post, setPosts, user }) {
   return (
 
     // consists of hero image for post and single-post-card
-   <div className="single-post">
+    <div className="single-post">
 
       <div className="post-pic">
         <img src={post.imageUrl} alt="Single post img" />
       </div>
-
       {/* consists of SharedSinglePost - component that displays post information
       {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
 
       <div className="show-map map">
 
-        <h1>{` Meeting date: ${dateDisplay}`}</h1>
-        <h1>{` Meeting Time: ${timeDisplay}`}</h1>
+        <h1>{` Meeting date: ${dateDisplay()}`}</h1>
+        <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
         {post.user.id === user.id ? <div>
           <MaterialUiCalendar selectedDateAndTime={selectedDateAndTime} setSelectedDateAndTime={setSelectedDateAndTime} />
           <button className="medium-button" onClick={(e) => { updatePost() }}>edit date</button>

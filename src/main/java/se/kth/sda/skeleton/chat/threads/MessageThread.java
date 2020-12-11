@@ -2,6 +2,7 @@ package se.kth.sda.skeleton.chat.threads;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import se.kth.sda.skeleton.chat.messages.Message;
+import se.kth.sda.skeleton.user.User;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,11 +23,11 @@ public class MessageThread {
     @OneToMany(mappedBy = "thread")
     private List<Message> thread;
 
-    @Column(name = "p1_email")
-    private String p1Email;
+    @ManyToOne
+    private User user1;
 
-    @Column(name = "p2_email")
-    private String p2Email;
+    @ManyToOne
+    private User user2;
 
     public Long getId() {
         return id;
@@ -41,19 +42,19 @@ public class MessageThread {
         return thread;
     }
 
-    public String getP1Email() {
-        return p1Email;
+    public User getUser1() {
+        return user1;
     }
 
-    public void setP1Email(String p1Email) {
-        this.p1Email = p1Email;
+    public void setUser1(User user1) {
+        this.user1 = user1;
     }
 
-    public String getP2Email() {
-        return p2Email;
+    public User getUser2() {
+        return user2;
     }
 
-    public void setP2Email(String p2Email) {
-        this.p2Email = p2Email;
+    public void setUser2(User user2) {
+        this.user2 = user2;
     }
 }

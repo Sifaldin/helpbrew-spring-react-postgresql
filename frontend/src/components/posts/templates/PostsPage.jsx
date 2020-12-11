@@ -3,10 +3,9 @@ import { BiMessageSquareError } from "react-icons/bi";
 import { useEffect, useState } from "react";
 import Api from "../../../api/Api";
 
-
 //The PostsPage displays a listing of posts belonging to the category(skills, giveaways or monetary support)
 // selected by the user
-export default function PostsPage({ category, posts }) {
+export default function PostsPage({ category, posts, loggedInUser }) {
   console.log(posts);
   const [postsByCategory, setPostsByCategory] = useState([]);
 
@@ -53,11 +52,10 @@ export default function PostsPage({ category, posts }) {
       ) : (
         <div className="posts">
           {postsByCategory.map((post) => (
-            <PostCard key={post.id} post={post} />
+            <PostCard key={post.id} post={post} loggedInUser={loggedInUser} />
           ))}
         </div>
       )}
-      
     </div>
   );
 }

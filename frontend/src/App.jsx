@@ -15,11 +15,9 @@ import ThreadPage from "./components/chat/ThreadPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
-import Footer from "./components/layout/Footer";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
-
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -64,7 +62,7 @@ function App() {
   useEffect(() => {
     if (loggedIn) {
       const fetchPosts = async () => {
-        const posts = await Api.get('/posts').then((res) => res.data);
+        const posts = await Api.get("/posts").then((res) => res.data);
         //Filters posts posted only by the logged in user
         const userPosts = posts.filter(
           (post) => post.user.email === user.email
@@ -74,84 +72,93 @@ function App() {
       fetchPosts();
     }
   }, [loggedIn, user, posts]);
- 
+
   const loggedInRouter = (
-   
     //React Router manages all the routes in the application
     <>
-    <Router>
+      <Router>
+        {/* <Navbar onLogout={() => Auth.logout()} user={user} /> */}
+        <Nav onLogout={() => Auth.logout()} user={user} setUser={setUser} />
 
-      {/* <Navbar onLogout={() => Auth.logout()} user={user} /> */}
-      <Nav onLogout={() => Auth.logout()} user={user} setUser={setUser} />
+        <div className="body-container">
+          <Switch>
+            {/* The route displays the application's homepage */}
+            <Route path="/" exact>
+              <HomePage userPosts={userPosts} />
+            </Route>
 
-      <div className="container mt-5">
-        <Switch>
-          {/* The route displays the application's homepage */}
-          <Route path="/" exact>
-            <HomePage userPosts={userPosts} />
-          </Route>
-
-          {/* Givewaways, skills and monetary support categories are displayed by
+            {/* Givewaways, skills and monetary support categories are displayed by
           the same component - PostsPage. PostsPage recieves one of the three category names
           as props. The category name props is used by PostsPage in order to
           display posts belonging to only of the three categories.
            */}
-          <Route path="/posts/category/giveaways" exact>
-            <PostsPage category={"giveaways"} posts={posts} />
-          </Route>
+            <Route path="/posts/category/giveaways" exact>
+              <PostsPage
+                category={"giveaways"}
+                posts={posts}
+                loggedInUser={user}
+              />
+            </Route>
 
-          <Route path="/posts/category/skills" exact>
-            <PostsPage category={"skills"} posts={posts} />
-          </Route>
+            <Route path="/posts/category/skills" exact>
+              <PostsPage
+                category={"skills"}
+                posts={posts}
+                loggedInUser={user}
+              />
+            </Route>
 
-          <Route path="/posts/category/monetary-support" exact>
-            <PostsPage category={"monetary-support"} posts={posts} />
-          </Route>
+            <Route path="/posts/category/monetary-support" exact>
+              <PostsPage
+                category={"monetary-support"}
+                posts={posts}
+                loggedInUser={user}
+              />
+            </Route>
 
-          {/* This route is used to create new posts when user clicks on new post button
+            {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
 
-          <Route exact path="/posts/give">
-            <NewGiverPost setPosts={setPosts} user={user} posts={posts} />
-          </Route>
+            <Route exact path="/posts/give">
+              <NewGiverPost setPosts={setPosts} user={user} posts={posts} />
+            </Route>
 
-          <Route exact path="/posts/request">
-            <NewRequestPost setPosts={setPosts} user={user} />
-          </Route>
+            <Route exact path="/posts/request">
+              <NewRequestPost setPosts={setPosts} user={user} />
+            </Route>
 
-          <Route exact path="/posts/">
-            <Modal />
-          </Route>
+            <Route exact path="/posts/">
+              <Modal />
+            </Route>
 
-          {/* This route is used to display details of a single post. */}
-          <Route
-            path="/posts/:id"
-            render={({ match }) => (
-              <SinglePost
-                id={match.params.id}
-                setPosts={setPosts}
-                user={user}
-                posts={posts}
-              />
-            )}
-          />
+            {/* This route is used to display details of a single post. */}
+            <Route
+              path="/posts/:id"
+              render={({ match }) => (
+                <SinglePost
+                  id={match.params.id}
+                  setPosts={setPosts}
+                  user={user}
+                  posts={posts}
+                />
+              )}
+            />
 
-          {/* The functionality for the routes below is not implemented yet.
+            {/* The functionality for the routes below is not implemented yet.
           Uncomment or remove if the routes are not needed.
           */}
 
-          <Route path="/chat" exact>
-            <ThreadPage />
-          </Route>
+            <Route path="/chat" exact>
+              <ThreadPage loggedInUser={user} />
+            </Route>
 
-          <Route path="/chat/:id">
-            <ThreadPage />
-          </Route>
-        </Switch>
-      </div>
-      <Footer />
-    </Router>
-   
+            <Route path="/chat/:id">
+              <ThreadPage loggedInUser={user} />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    
     </>
   );
 

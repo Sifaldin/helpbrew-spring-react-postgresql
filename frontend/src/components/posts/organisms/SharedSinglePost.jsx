@@ -73,7 +73,7 @@ export default function SharedSinglePost({ post, setPosts, user }) {
           </div>
         </div>
 
-        <h3>{post.title}</h3>
+        <h3 className="post-title">{post.title}</h3>
 
         {isUpdating ? (
           <PostUpdateForm
