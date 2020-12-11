@@ -13,6 +13,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   border-radius: 32px;
   width: 90vw;
+  padding-bottom: 1rem;
 }
 
 .single-post .post-pic {
@@ -39,6 +40,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   display: grid;
   margin-top: 2rem;
   justify-items: center;
+  align-items: start;
 }
 
 .signature {
@@ -79,10 +81,16 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 16px;
   margin-bottom: 2rem;
   display: grid;
+  grid-row-gap: 16px;
 }
 
 .post-info .post-body {
   font-size: 1.2rem;
+}
+
+.post-info .post-title {
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
 .no-comments {
@@ -100,11 +108,16 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 .comment-area textarea {
   border: 1px solid rgb(190, 188, 188);
   border-radius: 1rem;
-  width: 30rem;
-  max-width: 75vw;
+  width: 20rem;
+  max-width: 70vw;
   height: 8rem;
   padding: 0.5rem;
   margin: 1rem 0;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+.updateText {
+  margin-bottom: 1rem;
 }
 
 .comments {
@@ -125,6 +138,14 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   width: 40px;
   border-radius: 2rem;
   margin-right: 1rem;
+}
+
+.comment-card .signature .user-name {
+  font-size: 16px;
+}
+
+.comment-card p {
+  font-size: 14px;
 }
 
 .button-group button:first-child {
@@ -178,10 +199,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   margin-top: 2rem;
 }
 
-.separator {
-  display: none;
-}
-
 @media (min-width: 1000px) {
   .single-post {
     width: 90vw;
@@ -206,26 +223,17 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   }
 
   .single-post-card .post-info {
-    grid-row-gap: 16px;
     font-size: 14px;
   }
 
-  .comment-card {
+  /* .comment-card {
     grid-row-gap: 8px;
     font-size: 12px;
-  }
+  } */
 
-  .comment-card .signature .user-name {
-    font-size: 16px;
-  }
-
-  .comment-card p {
-    font-size: 14px;
-  }
-
-  .comment-area textarea {
+  /* .comment-area textarea {
     width: 23rem;
-  }
+  } */
 
   .single-post .post-pic {
     grid-area: pic;
@@ -244,9 +252,12 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
   .single-post .map {
     grid-area: unique-content;
+    border-radius: 16px;
+  }
+
+  .single-post .map .map-wrapper .map {
     width: 450px;
     height: 250px;
-    border-radius: 16px;
   }
 
   .single-post .calendar {
