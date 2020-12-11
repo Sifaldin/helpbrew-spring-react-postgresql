@@ -1,44 +1,29 @@
-import React, { useState } from "react";
-import "date-fns";
-import Grid from "@material-ui/core/Grid";
+import React from "react";
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
+  KeyboardDateTimePicker
 } from "@material-ui/pickers";
-import { date } from "date-fns/locale/af";
 
 export default function MaterialUiCalendar({
   selectedDateAndTime,
   setSelectedDateAndTime
 }) {
-  
+
   const handleDateUpdate = (date) => {
-    setSelectedDateAndTime(date);
+    const dateFormat = date.toString();
+    setSelectedDateAndTime(dateFormat);
   };
 
   return (
     <div className="calendar-wrapper">
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <Grid container justify="space-around">
-          <KeyboardDatePicker
+          <KeyboardDateTimePicker
             variant="inline"
             format="yyyy/MM/dd"
             margin="normal"
             id="date-picker"
-            label="Date Picker"
-            value={selectedDateAndTime}
-            onChange={handleDateUpdate}
-            KeyboardButtonProps={{
-              "aria-label": "change date",
-            }}
-          />
-
-          <KeyboardTimePicker
-            margin="normal"
-            id="time-picker"
-            label="24 hours"
+            label="Date Time Picker"
             value={selectedDateAndTime}
             onChange={handleDateUpdate}
             KeyboardButtonProps={{
@@ -46,7 +31,6 @@ export default function MaterialUiCalendar({
             }}
             ampm={false}
           />
-        </Grid>
       </MuiPickersUtilsProvider>
     </div>
   );

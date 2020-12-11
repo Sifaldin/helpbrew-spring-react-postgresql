@@ -27,27 +27,23 @@ function NewGiverPost({ posts, setPosts, user }) {
 
   console.log(user);
   /* calendar related hook */
-
-  const now = new Date();
-  const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(new Date('2020-01-01T12:00:00'));
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
       ? imgUrl.length > 0 &&
-          address.length > 0 &&
-          postTitle.length > 0 &&
-          details.length > 0
+      address.length > 0 &&
+      postTitle.length > 0 &&
+      details.length > 0
       : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
   };
 
-
   const getAll = () => {
     Api.get("/posts").then((res) => {
-    
+
       setPosts(res.data);
     });
   };
-
 
   const handleSubmit = (e) => {
     setAddress(locationInput);
@@ -122,6 +118,8 @@ function NewGiverPost({ posts, setPosts, user }) {
       }
     }
   }
+
+  console.log(selectedDateAndTime);
 
   return (
     <div className="left">
@@ -237,10 +235,10 @@ function NewGiverPost({ posts, setPosts, user }) {
         {address.length > 0 && position.length > 0 ? (
           <Map position={position} />
         ) : (
-          <div>
-            <GiveIntroduction location={location} />
-          </div>
-        )}
+            <div>
+              <GiveIntroduction location={location} />
+            </div>
+          )}
       </div>
     </div>
   );
