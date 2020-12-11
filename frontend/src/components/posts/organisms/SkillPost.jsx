@@ -18,14 +18,14 @@ export default function SkillPost({ post, setPosts, user }) {
   };
 
   const dateDisplay = () => {
-    if(post.meetingTimeAndDate !== null){
+    if (post.meetingTimeAndDate !== null) {
       return post.meetingTimeAndDate.slice(0, 10);
     }
-    
+
   };
   const timeDisplay = () => {
-    if(post.meetingTimeAndDate !== null){
-    return post.meetingTimeAndDate.slice(16, 21);
+    if (post.meetingTimeAndDate !== null) {
+      return post.meetingTimeAndDate.slice(16, 21);
     }
   };
 
@@ -63,12 +63,13 @@ export default function SkillPost({ post, setPosts, user }) {
 
       <div className="show-map">
 
-        <h1>{` Meeting date: ${dateDisplay()}`}</h1>
-        <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
-        {post.user.id === user.id ? <div>
+        {(post.user.id === user.id && post.meetingTimeAndDate !== null) ? <div>
+          <h1>{` Meeting date: ${dateDisplay()}`}</h1>
+          <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
           <MaterialUiCalendar selectedDateAndTime={selectedDateAndTime} setSelectedDateAndTime={setSelectedDateAndTime} />
           <button className="medium-button edit" onClick={(e) => { updatePost() }}>edit date</button>
         </div> : null}
+
 
       </div>
 
