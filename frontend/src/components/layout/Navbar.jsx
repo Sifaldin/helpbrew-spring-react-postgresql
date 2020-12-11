@@ -115,29 +115,29 @@
 // }
 
           {/* <DropDownProfile> */}
-          <DropDownItem
-            icon={
-              <img
-                src={user.imageUrl}
-                alt="profile-pic"
-                style={{
-                  height: "35px",
-                  width: "35px",
-                  borderRadius: "20px",
-                  marginRight: "5px",
-                }}
-              />
-            }
-          >
-            <DropDownMenu user={user} setUser={setUser} />
-          </DropDownItem>
+          // <DropDownItem
+          //   icon={
+          //     <img
+          //       src={user.imageUrl}
+          //       alt="profile-pic"
+          //       style={{
+          //         height: "35px",
+          //         width: "35px",
+          //         borderRadius: "20px",
+          //         marginRight: "5px",
+          //       }}
+          //     />
+          //   }
+          // >
+          //   <DropDownMenu user={user} setUser={setUser} />
+          // </DropDownItem>
           {/* </DropDownProfile> */}
-        </ul>
-      </div>
-      <div></div>
-    </nav>
-  );
-}
+//         </ul>
+//       </div>
+//       <div></div>
+//     </nav>
+//   );
+// }
 
 
 // export default Navbar;

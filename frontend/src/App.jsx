@@ -82,7 +82,7 @@ function App() {
     <Router>
 
       {/* <Navbar onLogout={() => Auth.logout()} user={user} /> */}
-      <Nav />
+      <Nav onLogout={() => Auth.logout()} user={user} setUser={setUser} />
 
       <div className="container mt-5">
         <Switch>
