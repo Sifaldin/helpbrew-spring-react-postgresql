@@ -63,12 +63,17 @@ export default function SkillPost({ post, setPosts, user }) {
 
       <div className="show-map">
 
-        {(post.user.id === user.id && post.meetingTimeAndDate !== null) ? <div>
-          <h1>{` Meeting date: ${dateDisplay()}`}</h1>
-          <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
-          <MaterialUiCalendar selectedDateAndTime={selectedDateAndTime} setSelectedDateAndTime={setSelectedDateAndTime} />
-          <button className="medium-button edit" onClick={(e) => { updatePost() }}>edit date</button>
-        </div> : null}
+        {(post.meetingTimeAndDate !== null) ?
+          <div>
+            <h1>{` Meeting date: ${dateDisplay()}`}</h1>
+            <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
+          </div> : null}
+
+        {(post.user.id === user.id && post.meetingTimeAndDate !== null) ?
+          <div>
+            <MaterialUiCalendar selectedDateAndTime={selectedDateAndTime} setSelectedDateAndTime={setSelectedDateAndTime} />
+            <button className="medium-button edit" onClick={(e) => { updatePost() }}>edit date</button>
+          </div> : null}
 
 
       </div>
