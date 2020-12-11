@@ -15,7 +15,6 @@ import ThreadPage from "./components/chat/ThreadPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
-import Footer from "./components/layout/Footer";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
@@ -81,7 +80,7 @@ function App() {
         {/* <Navbar onLogout={() => Auth.logout()} user={user} /> */}
         <Nav onLogout={() => Auth.logout()} user={user} setUser={setUser} />
 
-        <div className="container mt-5">
+        <div className="body-container">
           <Switch>
             {/* The route displays the application's homepage */}
             <Route path="/" exact>
@@ -159,7 +158,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-      <Footer />
+    
     </>
   );
 
