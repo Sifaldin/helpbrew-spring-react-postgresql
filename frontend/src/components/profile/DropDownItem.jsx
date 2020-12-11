@@ -6,9 +6,12 @@ function DropDownItem(props) {
 
   return (
     <li className="dropDown-item">
-      <a href="#" className="icon-button" onClick={() => setOpen(!open)}>
+      {/* <a href="/profile" className="icon-button" onClick={() => setOpen(!open)}>
         {props.icon}
-      </a>
+      </a> */}
+      <p  className="icon-button" onClick={() => setOpen(!open)}>
+        {props.icon}
+      </p>
       {open && props.children}
     </li>
   );
