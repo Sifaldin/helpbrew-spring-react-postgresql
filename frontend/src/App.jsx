@@ -12,7 +12,6 @@ import HomePage from "./components/home/templates/HomePage";
 import PostsPage from "./components/posts/templates/PostsPage";
 import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
-import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";

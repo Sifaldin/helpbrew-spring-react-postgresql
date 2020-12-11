@@ -21,6 +21,13 @@ function DropDownMenu({ user, setUser }) {
 
   const [showImageEdit, setShowImageEdit] = useState(false);
 
+  const showModalAndCloseMenu = () => {
+    setShowImageEdit(true)
+    setOpen(!open)
+
+  }
+
+
   //Callback function that will send a user update call to the server
   const updateUser = () => {
     const img = { ...user, imageUrl: imgUrl };
@@ -60,8 +67,9 @@ function DropDownMenu({ user, setUser }) {
               <div className="menu">
                 <Link
                   className="link-display"
-                  to="#"
-                  onClick={() => setShowImageEdit(true)}
+                  to="/"
+                  // onClick={() => setShowImageEdit(true)}
+                  onClick={showModalAndCloseMenu}
                 >
                   <DisplayItem
                     leftIcon={
@@ -77,7 +85,7 @@ function DropDownMenu({ user, setUser }) {
                       />
                     }
                   >
-                    Change profile picture
+                    Change profile
                   </DisplayItem>
                 </Link>
 
