@@ -20,15 +20,7 @@
   text-align: left;
 }
 
-@media screen and (max-width:1000px) {
-  .logo {
-    position: fixed;
-    left: 5%;
-    top: 5%;
-    max-width: 300px;
-    text-align: left;
-  }
-}
+
 
 
 .signinform {
@@ -70,23 +62,28 @@
   outline:none;
   background:none;
   margin-top: 5px;
-  margin-bottom: 20px;
-  margin-right: 13rem;
+
+  margin-bottom: 1rem;
+  margin-right: 27rem;
+
+
   font-size: 14px;
   font-style: italic;
   cursor: pointer;
+  color: white;
 }
 
 .signinform .gotoRegister{
   border: none;
   outline:none;
   background:none;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  margin-right: 17rem;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  margin-right: 27rem;
   font-size: 14px;
   font-style: italic;
   cursor: pointer;
+  color: white;
 }
 
 .signupform {
@@ -133,4 +130,93 @@
   margin-right: 17rem;
   font-style: italic;
   cursor: pointer;
+}
+
+@media (min-width: 310px){
+  .logo {
+    position: fixed;
+    left: 13%;
+    top: 0%;
+    max-width: 300px;
+    text-align: left;
+  }
+
+  .signinform input {
+    padding: 1.3rem;
+    margin-right: 5rem;
+    border-style: solid 0.02rem;
+    height: 3rem;
+    width: 18rem;
+    border: none;
+    border-radius: 1rem;
+  }
+
+  .signinform .submitButton {
+    background: none;
+    height: 3rem;
+    width: 18rem;
+    margin-right: 9px;
+    background-color: #F2994A;
+    border-style: none;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  .signinform .smallButton{
+    border: none;
+    outline:none;
+    background:none;
+    margin-top: 5px;
+    margin-bottom: 1rem;
+    margin-right: 7rem;
+    font-size: 14px;
+    font-style: italic;
+    cursor: pointer;
+    color: white;
+  }
+  .signinform .gotoRegister{
+    border: none;
+    outline:none;
+    background:none;
+    margin-top: 16px;
+    margin-bottom: 5px;
+    margin-right: 8rem;
+    font-size: 14px;
+    font-style: italic;
+    cursor: pointer;
+    color: white;
+  }
+
+  .signupform input {
+    padding: 1.3rem;
+    margin-right: 15rem;
+    border-style: solid 0.02rem;
+    height: 3rem;
+    width: 18rem;
+    border: none;
+    border-radius: 1rem;
+  }
+  .signupform .submitButton {
+    background: none;
+    height: 3rem;
+    width: 18rem;
+    margin-right: 6px;
+    background-color:#F2994A;
+    border-style: none;
+    border-radius: 1rem;
+    color: white;
+    cursor: pointer;
+  }
+  .signupform .smallButton{
+    border: none;
+    outline:none;
+    background:none;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-right: 7rem;
+    font-style: italic;
+    cursor: pointer;
+  }
+
 }
