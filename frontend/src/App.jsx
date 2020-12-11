@@ -94,15 +94,27 @@ function App() {
           display posts belonging to only of the three categories.
            */}
             <Route path="/posts/category/giveaways" exact>
-              <PostsPage category={"giveaways"} posts={posts} />
+              <PostsPage
+                category={"giveaways"}
+                posts={posts}
+                loggedInUser={user}
+              />
             </Route>
 
             <Route path="/posts/category/skills" exact>
-              <PostsPage category={"skills"} posts={posts} />
+              <PostsPage
+                category={"skills"}
+                posts={posts}
+                loggedInUser={user}
+              />
             </Route>
 
             <Route path="/posts/category/monetary-support" exact>
-              <PostsPage category={"monetary-support"} posts={posts} />
+              <PostsPage
+                category={"monetary-support"}
+                posts={posts}
+                loggedInUser={user}
+              />
             </Route>
 
             {/* This route is used to create new posts when user clicks on new post button
@@ -138,11 +150,11 @@ function App() {
           */}
 
             <Route path="/chat" exact>
-              <ThreadPage />
+              <ThreadPage loggedInUser={user} />
             </Route>
 
             <Route path="/chat/:id">
-              <ThreadPage />
+              <ThreadPage loggedInUser={user} />
             </Route>
           </Switch>
         </div>

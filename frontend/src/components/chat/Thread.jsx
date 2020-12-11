@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
-import DropDownMenu from '../profile/DropDownMenu';
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import DropDownMenu from "../profile/DropDownMenu";
 
 import Api from "..//..//api/Api";
 
-
-function Thread({ thread, setMessageBox }) {
-  const senderMail = window.sessionStorage.getItem('userEmail');
-  const receiverEmail = senderMail === thread.p1Email ? thread.p2Email : thread.p1Email;
+function Thread({ thread, setMessageBox, loggedInUser }) {
+  // const senderMail = window.sessionStorage.getItem("userEmail");
+  const receiver =
+    loggedInUser.email === thread.user1.email ? thread.user2 : thread.user1;
   const receiverMessage = thread.receiverMessage;
   const [user, setUser] = useState("");
 
@@ -24,23 +24,21 @@ function Thread({ thread, setMessageBox }) {
     });
   }, []);
 
-
   return (
     <div className="chat_people">
       <div className="chat_img">
-        {' '}
-        <img src="/images/sender.jpeg" alt="name" />{' '}
+        {" "}
+        <img src={receiver.imageUrl} alt="name" />{" "}
       </div>
-      <div >
-        <h5>
-          <Link to="/chat" onClick={clickHandler}>
-           {user.name}
-          </Link>
-          <span >{lastDate}</span>
-        </h5>
-        <p>{receiverMessage}</p>
-      </div>
-      
+      {/* <div> */}
+      <h5 className="chat-user-name">
+        <Link to="/chat" onClick={clickHandler}>
+          {receiver.name}
+        </Link>
+        {/* <span>{lastDate}</span> */}
+      </h5>
+      {/* <p>{receiverMessage}</p> */}
+      {/* </div> */}
     </div>
   );
 }

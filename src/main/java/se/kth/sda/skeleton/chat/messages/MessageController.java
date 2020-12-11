@@ -7,6 +7,8 @@ import org.springframework.web.server.ResponseStatusException;
 import se.kth.sda.skeleton.auth.AuthService;
 import se.kth.sda.skeleton.chat.threads.MessageThread;
 import se.kth.sda.skeleton.chat.threads.MessageThreadService;
+import se.kth.sda.skeleton.user.User;
+import se.kth.sda.skeleton.user.UserService;
 
 import java.util.List;
 
@@ -17,13 +19,14 @@ public class MessageController {
     private final MessageService messageService;
     private final MessageThreadService threadService;
     private final AuthService authService;
+    private final UserService userService;
 
     @Autowired
-    public MessageController(MessageService messageService, MessageThreadService threadService, AuthService authService) {
+    public MessageController(MessageService messageService, MessageThreadService threadService, AuthService authService, UserService userService) {
         this.messageService = messageService;
         this.threadService = threadService;
         this.authService = authService;
-
+        this.userService = userService;
     }
 
     @GetMapping("")
@@ -39,11 +42,12 @@ public class MessageController {
     // Refer to comment in MessageThreadRepository
     @PostMapping("")
     public MessageThread createThread(MessageThread newThread, @RequestParam(required = true) String receiverEmail) {
-        String senderEmail = authService.getLoggedInUserEmail();
-        MessageThread existing = threadService.findByEmails(senderEmail, receiverEmail);
+        User sender = userService.findUserByEmail(authService.getLoggedInUserEmail());
+        User receiver = userService.findUserByEmail(receiverEmail);
+        MessageThread existing = threadService.findByEmails(sender, receiver);
         if (existing != null) return existing;
-        newThread.setP1Email(senderEmail);
-        newThread.setP2Email(receiverEmail);
+        newThread.setUser1(sender);
+        newThread.setUser2(receiver);
         return threadService.create(newThread);
     }
 

@@ -2,6 +2,7 @@ package se.kth.sda.skeleton.chat.threads;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import se.kth.sda.skeleton.user.User;
 
 import java.util.List;
 import java.util.Optional;
@@ -25,8 +26,9 @@ public class MessageThreadService {
     }
 
     // Refer to comment in MessageThreadRepository
-    public MessageThread findByEmails(String p1Mail, String p2Mail) {
-        return repository.findByP1EmailAndP2Email(p1Mail, p2Mail);
+    public MessageThread findByEmails(User user1, User user2) {
+
+        return repository.findByUser1EmailAndUser2Email(user1.getEmail(), user2.getEmail());
     }
 
     public MessageThread create(MessageThread newThread) {

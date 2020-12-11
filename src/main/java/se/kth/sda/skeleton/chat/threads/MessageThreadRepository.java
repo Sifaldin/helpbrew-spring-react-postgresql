@@ -9,5 +9,5 @@ public interface MessageThreadRepository extends JpaRepository<MessageThread, Lo
     // Either this or the controller/service call to this is not behaving as expected.
     // A new thread is sometimes created instead of returning the existing one.
     // We'll figure it out later.
-    MessageThread findByP1EmailAndP2Email(String p1Email, String p2Email);
+    MessageThread findByUser1EmailAndUser2Email(String p1Email, String p2Email);
 }
