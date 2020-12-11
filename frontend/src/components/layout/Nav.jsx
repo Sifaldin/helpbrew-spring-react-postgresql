@@ -5,8 +5,17 @@ import Drop from './Drop';
 import Modal from "../posts/templates/Modal";
 import logo from "../../assets/logo_transparent_background_small.png";
 import { RiArrowDropDownLine } from 'react-icons/ri';
+import DropDownProfile from "../profile/DropDownProfile";
+import DropDownItem from "../profile/DropDownItem";
+import DropDownMenu from "../profile/DropDownMenu";
 
-function Nav() {
+function Nav({onLogout, user, setUser}) {
+    const skillsRef = useRef();
+    const monetRef = useRef();
+    const giveRef = useRef();
+    const newPostRef = useRef();
+    const homeRef = useRef();
+    const profileRef = useRef();
     const [click, setClick] = useState(false);
     const [dropdown, setDropdown] = useState(false);
 
@@ -70,7 +79,25 @@ function Nav() {
             </Link>
                         <Modal ref={modalRef} />
                     </li>
-                    
+                    <li>
+                        {/* <DropDownProfile> */}
+                        <DropDownItem
+                            icon={
+                                <img
+                                    src={user.imageUrl}
+                                    alt="profile-pic"
+                                    style={{
+                                        height: "35px",
+                                        width: "35px",
+                                        borderRadius: "20px",
+                                        marginRight: "5px",
+                                    }}
+                                />
+                            }
+                        >
+                            <DropDownMenu user={user} setUser={setUser} />
+                        </DropDownItem>
+                    </li>
                 </ul>
                
             </nav>
