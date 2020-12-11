@@ -9,10 +9,9 @@ import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 
 //The code below should be worked through. What information should be displayed on
 //PostCard? Shall tags "Available"/"Claimed" stay as they are or are we changing that?
-function PostCard({ post }) {
+function PostCard({ post, loggedInUser }) {
+  console.log(loggedInUser);
   const [reaction, setReaction] = useState(post.reaction);
-  const receiverEmail = window.sessionStorage.getItem("userEmail");
-  console.log(receiverEmail);
   const history = useHistory();
   const incrementLike = () => {
     const url = "/reactions/" + reaction.id + "?incrementTarget=like";
@@ -31,9 +30,10 @@ function PostCard({ post }) {
   const threadHandler = () => {
     const createOrDirect = async () => {
       try {
-        const response = await ChatApi.createThread(receiverEmail, {});
+        const response = await ChatApi.createThread(post.user, {});
         console.log(response);
         const thread = response.data;
+        console.log(thread);
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
       } catch (e) {
         console.log(e);
