@@ -46,7 +46,7 @@ function RegisterForm({ onSubmit, goLogin}) {
         <button 
           className="smallButton"
           onClick={goLogin}
-        > Already a Member</button>
+        > Already a Member?</button>
       </div>
       </div>
     </div>
