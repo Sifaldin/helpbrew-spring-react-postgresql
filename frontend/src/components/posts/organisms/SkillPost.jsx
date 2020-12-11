@@ -18,10 +18,15 @@ export default function SkillPost({ post, setPosts, user }) {
   };
 
   const dateDisplay = () => {
-    return post.meetingTimeAndDate.slice(0, 10);
+    if(post.meetingTimeAndDate !== null){
+      return post.meetingTimeAndDate.slice(0, 10);
+    }
+    
   };
   const timeDisplay = () => {
+    if(post.meetingTimeAndDate !== null){
     return post.meetingTimeAndDate.slice(16, 21);
+    }
   };
 
   {/* 
