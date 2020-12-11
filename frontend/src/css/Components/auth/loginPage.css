@@ -70,23 +70,25 @@
   outline:none;
   background:none;
   margin-top: 5px;
-  margin-bottom: 20px;
-  margin-right: 9rem;
+  margin-bottom: 1rem;
+  margin-right: 27rem;
   font-size: 14px;
   font-style: italic;
   cursor: pointer;
+  color: white;
 }
 
 .signinform .gotoRegister{
   border: none;
   outline:none;
   background:none;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  margin-right: 17rem;
+  margin-top: 16px;
+  margin-bottom: 0px;
+  margin-right: 27rem;
   font-size: 14px;
   font-style: italic;
   cursor: pointer;
+  color: white;
 }
 
 .signupform {
