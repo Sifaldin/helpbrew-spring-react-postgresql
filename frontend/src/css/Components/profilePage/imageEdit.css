@@ -14,6 +14,7 @@
 }
 
 .image-menu-wrapper .modal-box .image-edit-body {
+  display: grid;
   justify-self: center;
   justify-items: center;
 }
