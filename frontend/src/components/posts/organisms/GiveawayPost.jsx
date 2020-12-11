@@ -20,21 +20,25 @@ export default function GiveawayPost({ post, setPosts, deletePost, user }) {
       </div>
 
       {/* Map is a component unique to giveaway post */}
-      <button
-        className="medium-button location-button"
-        onClick={handleMapToggle}
-      >
-        {mapVisible ? "Hide map" : "See location"}
-      </button>
-      {mapVisible ? (
-        <div className="show-map map">
-          <Map position={post.position} />
+      {post.location ? (
+        <div>
+          <button
+            className="medium-button location-button"
+            onClick={handleMapToggle}
+          >
+            {mapVisible ? "Hide map" : "See location"}
+          </button>
+          {mapVisible ? (
+            <div className="show-map map">
+              <Map position={post.position} />
+            </div>
+          ) : (
+            <div className="map">
+              <Map position={post.position} style={{ display: "none" }} />
+            </div>
+          )}
         </div>
-      ) : (
-        <div className="map">
-          <Map position={post.position} style={{ display: "none" }} />
-        </div>
-      )}
+      ) : null}
 
       {/* <div className="single-post-card"> */}
       <SharedSinglePost

@@ -17,7 +17,7 @@ function SinglePost({ id, setPosts, user, posts }) {
       setPost(response.data);
     };
     fetchPost();
-  }, [id]);
+  }, [id, posts]);
 
   // const handleClaim = () => {
   //   const setClaimed = async () => {

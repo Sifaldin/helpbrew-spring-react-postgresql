@@ -84,6 +84,12 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   grid-row-gap: 16px;
 }
 
+.post-info .date,
+.comment-card .date {
+  font-size: 14px;
+  color: grey;
+}
+
 .post-info .post-body {
   font-size: 1.2rem;
 }

@@ -12,8 +12,13 @@ export default function SkillPost({ post, setPosts, user }) {
     displayCalendar ? setDisplayCalendar(false) : setDisplayCalendar(true);
   };
 
-  const dateDisplay = post.meetingTimeAndDate.slice(0, 10);
-  const timeDisplay = post.meetingTimeAndDate.slice(11, 16);
+  const dateDisplay = () => {
+    return post.meetingTimeAndDate.slice(0, 10);
+  };
+  const timeDisplay = () => {
+    return post.meetingTimeAndDate.slice(11, 16);
+  };
+
   console.log(dateDisplay);
   console.log(timeDisplay);
   return (
@@ -22,28 +27,31 @@ export default function SkillPost({ post, setPosts, user }) {
       <div className="post-pic">
         <img src={post.imageUrl} alt="Single post img" />
       </div>
-
       {/* consists of SharedSinglePost - component that displays post information
       {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
 
-      <button
-        className="medium-button location-button"
-        onClick={handleCalendarToggle}
-      >
-        {displayCalendar ? "Hide calendar" : "Edit event time"}
-      </button>
-
-      <div className="show-map map">
-        <h1>{` Meeting date: ${dateDisplay}`}</h1>
-        <h1>{` Meeting Time: ${timeDisplay}`}</h1>
-        {displayCalendar ? (
-          <div>
-            <MaterialUiCalendar />
-          </div>
-        ) : null}
-      </div>
-
+      {/* The ternary operator avoids getting an error if the field meetingTimeAndDate is null in database */}
+      {post.meetingTimeAndDate ? (
+        <div>
+          {/* ( */}
+          {/* <button
+            className="medium-button location-button"
+            onClick={handleCalendarToggle}
+          >
+            {displayCalendar ? "Hide calendar" : "Edit event time"}
+          </button>
+          <div className="show-map map"> */}
+          <h1>{` Meeting date: ${dateDisplay()}`}</h1>
+          <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
+          {/* {displayCalendar ? (
+              <div>
+                <MaterialUiCalendar />
+              </div>
+            ) : null} */}
+          {/* </div> */}
+        </div>
+      ) : null}
       {/* conssits of SharedSinglePost - component that displays post information
             which is common to posts of all the three categories, and a map */}
       <SharedSinglePost post={post} setPosts={setPosts} user={user} />
