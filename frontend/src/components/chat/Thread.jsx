@@ -5,7 +5,6 @@ import DropDownMenu from "../profile/DropDownMenu";
 import Api from "..//..//api/Api";
 
 function Thread({ thread, setMessageBox, loggedInUser }) {
-  // const senderMail = window.sessionStorage.getItem("userEmail");
   const receiver =
     loggedInUser.email === thread.user1.email ? thread.user2 : thread.user1;
   const receiverMessage = thread.receiverMessage;
@@ -30,15 +29,15 @@ function Thread({ thread, setMessageBox, loggedInUser }) {
         {" "}
         <img src={receiver.imageUrl} alt="name" />{" "}
       </div>
-      {/* <div> */}
-      <h5 className="chat-user-name">
-        <Link to="/chat" onClick={clickHandler}>
-          {receiver.name}
-        </Link>
-        {/* <span>{lastDate}</span> */}
-      </h5>
-      {/* <p>{receiverMessage}</p> */}
-      {/* </div> */}
+      <div>
+        <h5 className="chat-user-name">
+          <Link className="name" to="/chat" onClick={clickHandler}>
+            {receiver.name}
+          </Link>
+          {/* <span>{lastDate}</span> */}
+        </h5>
+        <p>{receiverMessage}</p>
+      </div>
     </div>
   );
 }
