@@ -15,7 +15,7 @@ import ThreadPage from "./components/chat/ThreadPage";
 import ProfilePage from "./components/profile/ProfilePage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
-import Footer from "./components/layout/footer";
+import Footer from "./components/layout/Footer";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
