@@ -65,6 +65,7 @@
 }
 
 @media screen and (max-width: 960px) {
+  
   .NavbarItems {
     position: relative;
   }
@@ -110,7 +111,11 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(80%, 0%);
+    transform: translate(50%, 0%);
+  }
+
+  .profile-icon {
+    transform: translate(-330%, 0%);
   }
 
   .menu-icon {

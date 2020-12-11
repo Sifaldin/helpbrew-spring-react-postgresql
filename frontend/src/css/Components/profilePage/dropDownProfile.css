@@ -1,5 +1,5 @@
 :root {
-  --bg: #f3d381;
+  --bg: #F2994A;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
   --border: 1px solid #474a4d;
@@ -57,11 +57,11 @@ a {
   filter: brightness(1.2);
 }
 
-.icon-button svg {
+/* .icon-button svg {
   fill: var(--text-color);
   width: 30px;
   height: 30px;
-}
+} */
 
 .dropdown {
   position: absolute;
@@ -85,7 +85,7 @@ a {
 }
 
 .menu-item:hover {
-  background-color: #e2d4b6;
+  background-color:  #eb8c38;
 }
 
 .icon-right {
@@ -127,4 +127,15 @@ a {
 
 .link-display {
   display: inline;
+}
+
+
+@media screen and (max-width: 750px) {
+  .dropdown {
+  position: absolute;
+  top: 45px;
+  width: 230px;
+  transform: translate(-20%);
+  
+}
 }
