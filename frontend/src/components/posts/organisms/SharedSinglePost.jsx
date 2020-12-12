@@ -1,10 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Comments from "../../comments/templates/Comments";
 import PostUpdateForm from "../templates/PostUpdateForm";
 import Api from "../../../api/Api";
 import { useHistory } from "react-router-dom";
 import ChatApi from "../../../api/ChatApi";
 import { useNotification } from "../../notifications/NotificationProvider";
+import ConfirmModal from "../templates/ConfirmModal";
 
 //Displays post belonging to giveaway category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
@@ -15,6 +16,12 @@ export default function SharedSinglePost({ post, setPosts, user }) {
   const history = useHistory();
   const receiverEmail = window.sessionStorage.getItem("userEmail");
 
+  const modalRef = useRef();
+
+  const openModal = () => {
+  modalRef.current.openModal();
+  }; 
+
   const updatePost = (updatedPost) => {
     Api.put("/posts", updatedPost).then((res) => {
       setCurPost(res.data);
@@ -23,13 +30,11 @@ export default function SharedSinglePost({ post, setPosts, user }) {
   };
 
   const deletePost = (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
       Api.delete("/posts/" + post.id).then((res) => {
         setPosts(res.data);
         handleDeleteNotification();
         history.push(`/posts/category/${post.category}`);
       });
-    }
   };
 
   //Notification Creator
@@ -103,7 +108,7 @@ export default function SharedSinglePost({ post, setPosts, user }) {
 
               <button
                 className="medium-button"
-                onClick={() => deletePost(curPost.id)}
+                onClick={openModal}
               >
                 Delete
               </button>
@@ -113,6 +118,10 @@ export default function SharedSinglePost({ post, setPosts, user }) {
       </div>
       <Comments post={post} />
       {/* </div> */}
+      <ConfirmModal 
+       ref={modalRef} 
+       handleConfirm={deletePost}
+      />
     </div>
   );
 }
