@@ -38,8 +38,8 @@ public class User {
     @OneToMany
     private List<Post> posts;
 
-    @ManyToOne
-    private Post post;
+    @ManyToMany(mappedBy = "registeredUsers")
+    private List<Post> events;
 
     @OneToMany List<Comment> comments;
 
