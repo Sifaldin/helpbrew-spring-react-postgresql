@@ -40,7 +40,14 @@ function SinglePost({ id, setPosts, user, posts }) {
   const getPost = () => {
     switch (post.category) {
       case "skills":
-        return <SkillPost post={post} setPosts={setPosts} user={user} />;
+        return (
+          <SkillPost
+            post={post}
+            setPosts={setPosts}
+            user={user}
+            posts={posts}
+          />
+        );
       case "giveaways":
         return <GiveawayPost post={post} setPosts={setPosts} user={user} />;
       case "monetary-support":

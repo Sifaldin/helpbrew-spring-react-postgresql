@@ -50,6 +50,12 @@ public class Post {
     @ElementCollection
     private List<Double> position;
 
+    @Column
+    private Integer eventCapacity;
+
+    @Column
+    private Integer bookedSpots;
+
 
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
@@ -178,5 +184,19 @@ public class Post {
         this.meetingTimeAndDate = meetingTime;
     }
 
+    public Integer getEventCapacity() {
+        return eventCapacity;
+    }
 
+    public void setEventCapacity(Integer eventCapacity) {
+        this.eventCapacity = eventCapacity;
+    }
+
+    public Integer getBookedSpots() {
+        return bookedSpots;
+    }
+
+    public void setBookedSpots(Integer bookedSpots) {
+        this.bookedSpots = bookedSpots;
+    }
 }
