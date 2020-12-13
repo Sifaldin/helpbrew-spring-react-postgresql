@@ -76,7 +76,6 @@ function NewGiverPost({ posts, setPosts, user }) {
       user: user,
       meetingTimeAndDate: selectedDateAndTime,
       eventCapacity: eventCapacity,
-      bookedSpots: 0,
     };
 
     console.log(newPost);

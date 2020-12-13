@@ -5,6 +5,8 @@ import SharedSinglePost from "./SharedSinglePost";
 
 //Displays post belonging to skills category.
 export default function SkillPost({ post, setPosts, user, posts }) {
+  console.log(post);
+
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
   );
@@ -30,14 +32,70 @@ export default function SkillPost({ post, setPosts, user, posts }) {
     }
   };
 
+  const alreadyRegistered = () => {
+    const emails = post.registeredUsers.map((user) => user.email);
+    console.log(emails);
+    if (emails.includes(user.email)) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const yourEvent = () => {
+    if (post.user.email === user.email) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
+  const eventFull = () => {
+    if (post.eventCapacity === post.registeredUsers.length) {
+      return true;
+    } else {
+      return false;
+    }
+  };
+
   const bookSpot = () => {
-    const spotsAfterBooking = post.bookedSpots + 1;
-    const updatedPost = { ...post, bookedSpots: spotsAfterBooking };
+    const updatedPost = {
+      ...post,
+      registeredUsers: [...post.registeredUsers, user],
+    };
     Api.put("./posts", updatedPost).then((res) => {
       const updatedPosts = posts.map((post) =>
         post.id === res.data.id ? res.data : post
       );
       setPosts(updatedPosts);
+    });
+  };
+
+  const handleBooking = () => {
+    if (alreadyRegistered()) {
+      window.alert("You have already reserved a spot at this event");
+    } else if (yourEvent()) {
+      window.alert("You cannot book spot at your own event");
+    } else {
+      bookSpot();
+      window.alert("Your spot has been booked.");
+    }
+  };
+
+  const handleUnbooking = () => {
+    const updatedUsers = post.registeredUsers.filter(
+      (regUser) => regUser.email !== user.email
+    );
+    const updatedPost = {
+      ...post,
+      registeredUsers: updatedUsers,
+    };
+    Api.put("./posts", updatedPost).then((res) => {
+      const updatedPosts = posts.map((post) =>
+        post.id === res.data.id ? res.data : post
+      );
+      setPosts(updatedPosts);
+      window.alert("Your spot has been unbooked");
     });
   };
 
@@ -80,7 +138,6 @@ export default function SkillPost({ post, setPosts, user, posts }) {
             <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
           </div>
         ) : null}
-
         {post.user.id === user.id && post.meetingTimeAndDate !== null ? (
           <div>
             <MaterialUiCalendar
@@ -98,12 +155,36 @@ export default function SkillPost({ post, setPosts, user, posts }) {
           </div>
         ) : null}
 
-        <span className="available-spots">{`There are ${
-          post.eventCapacity - post.bookedSpots
-        } out of ${post.eventCapacity} spots availbale at this event`}</span>
-        <button className="medium-button" onClick={bookSpot}>
-          Book your spot
-        </button>
+        <div>
+          {yourEvent() ? (
+            eventFull() ? (
+              <button className="medium-button">Fully booked</button>
+            ) : (
+              <span>{`${post.registeredUsers.length} out of ${post.eventCapacity} spot(s) have been booked at your event`}</span>
+            )
+          ) : (
+            <div>
+              <div>
+                {alreadyRegistered() ? (
+                  <button className="medium-button" onClick={handleUnbooking}>
+                    Unbook
+                  </button>
+                ) : eventFull() ? (
+                  <button className="medium-button">Fully booked</button>
+                ) : (
+                  <div>
+                    <button className="medium-button" onClick={handleBooking}>
+                      Book your spot
+                    </button>
+                    <span className="available-spots">{`There are ${
+                      post.eventCapacity - post.registeredUsers.length
+                    } spots availbale at this event.`}</span>
+                  </div>
+                )}
+              </div>
+            </div>
+          )}
+        </div>
       </div>
 
       {/* conssits of SharedSinglePost - component that displays post information

@@ -33,7 +33,8 @@ export default function SharedSinglePost({ post, setPosts, user, posts }) {
 
   const deletePost = (id) => {
     Api.delete("/posts/" + post.id).then((res) => {
-      setPosts(res.data);
+      const updatedPosts = posts.filter((post) => post.id !== res.data.id);
+      setPosts(updatedPosts);
       handleDeleteNotification();
       history.push(`/posts/category/${post.category}`);
     });
