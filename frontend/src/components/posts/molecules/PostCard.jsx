@@ -15,7 +15,7 @@ function PostCard({ post, loggedInUser }) {
   const history = useHistory();
 
   const getAvailability = () => {
-    const available = post.eventCapacity - post.bookedSpots;
+    const available = post.eventCapacity - post.registeredUsers.length;
 
     switch (available) {
       case 0: {
