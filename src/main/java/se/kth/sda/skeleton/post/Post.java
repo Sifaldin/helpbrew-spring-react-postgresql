@@ -37,7 +37,7 @@ public class Post {
     @ManyToOne
     private User user;
 
-    @OneToMany
+    @ManyToMany(mappedBy = "")
     private List<User> registeredUsers;
 
     @Column
