@@ -38,6 +38,9 @@ public class User {
     @OneToMany
     private List<Post> posts;
 
+    @ManyToOne
+    private Post post;
+
     @OneToMany List<Comment> comments;
 
     // Hibernate needs a default constructor to function

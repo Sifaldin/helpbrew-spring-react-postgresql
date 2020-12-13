@@ -13,6 +13,35 @@ function PostCard({ post, loggedInUser }) {
   console.log(loggedInUser);
   const [reaction, setReaction] = useState(post.reaction);
   const history = useHistory();
+
+  const getAvailability = () => {
+    const available = post.eventCapacity - post.bookedSpots;
+
+    switch (available) {
+      case 0: {
+        return (
+          <span className="small-button" style={{ backgroundColor: "red" }}>
+            Full
+          </span>
+        );
+      }
+      case 1: {
+        return (
+          <span className="small-button" style={{ backgroundColor: "green" }}>
+            1 spot
+          </span>
+        );
+      }
+      default: {
+        return (
+          <span className="small-button" style={{ backgroundColor: "green" }}>
+            {`${available} spots`}
+          </span>
+        );
+      }
+    }
+  };
+
   const incrementLike = () => {
     const url = "/reactions/" + reaction.id + "?incrementTarget=like";
     Api.put(url, reaction).then((r) => {
@@ -79,7 +108,7 @@ function PostCard({ post, loggedInUser }) {
           {post.claimed ? (
             <span className="small-button">Claimed</span>
           ) : (
-            <span className="small-button">Available</span>
+            getAvailability()
           )}
           {/* <span className="post-date">{post.date}</span> */}
         </div>

@@ -37,6 +37,9 @@ public class Post {
     @ManyToOne
     private User user;
 
+    @OneToMany
+    private List<User> registeredUsers;
+
     @Column
     private String postType;
 
@@ -52,11 +55,7 @@ public class Post {
 
     @Column
     private Integer eventCapacity;
-
-    @Column
-    private Integer bookedSpots;
-
-
+    
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "reaction_id", referencedColumnName = "id")
@@ -192,11 +191,11 @@ public class Post {
         this.eventCapacity = eventCapacity;
     }
 
-    public Integer getBookedSpots() {
-        return bookedSpots;
+    public List<User> getRegisteredUsers() {
+        return registeredUsers;
     }
 
-    public void setBookedSpots(Integer bookedSpots) {
-        this.bookedSpots = bookedSpots;
+    public void setRegisteredUsers(List<User> registeredUsers) {
+        this.registeredUsers = registeredUsers;
     }
 }
