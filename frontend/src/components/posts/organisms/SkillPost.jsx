@@ -23,6 +23,7 @@ export default function SkillPost({ post, setPosts, user, posts }) {
 
   const dateDisplay = () => {
     if (post.meetingTimeAndDate !== null) {
+      console.log(post.meetingTimeAndDate);
       return post.meetingTimeAndDate.slice(0, 10);
     }
   };

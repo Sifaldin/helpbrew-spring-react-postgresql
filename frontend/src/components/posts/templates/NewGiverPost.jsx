@@ -29,7 +29,7 @@ function NewGiverPost({ posts, setPosts, user }) {
   console.log(user);
   /* calendar related hook */
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
-    new Date("2020-01-01T12:00:00")
+    new Date()
   );
 
   const canBeSubmitted = () => {
