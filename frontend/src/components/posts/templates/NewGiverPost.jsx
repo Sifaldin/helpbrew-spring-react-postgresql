@@ -34,13 +34,13 @@ function NewGiverPost({ posts, setPosts, user }) {
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
-      ? imgUrl.length > 0 &&
+      ? imgUrl !== undefined && imgUrl.length>0 &&
           address.length > 0 &&
           postTitle.length > 0 &&
           details.length > 0
-      : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
+      : imgUrl !== undefined && imgUrl.length>0 && postTitle.length > 0 && details.length > 0;
   };
-
+  
   const getAll = () => {
     Api.get("/posts").then((res) => {
       setPosts(res.data);
