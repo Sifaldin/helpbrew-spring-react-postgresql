@@ -15,22 +15,62 @@ function PostCard({ post, loggedInUser }) {
   const history = useHistory();
 
   const getAvailability = () => {
+    //Available variable checks if there are any spots available at the event or if
+    // an item has been reserved by someone in case of giveaway post
+    //When a giveaway post created eventCapacity is set to 1 automatically
+
     const available = post.eventCapacity - post.registeredUsers.length;
 
     switch (available) {
       case 0: {
-        return (
-          <span className="small-button" style={{ backgroundColor: "red" }}>
-            Full
-          </span>
-        );
+        switch (post.category) {
+          case "skills": {
+            return (
+              <span className="small-button" style={{ backgroundColor: "red" }}>
+                Full
+              </span>
+            );
+          }
+
+          case "giveaways": {
+            return (
+              <span className="small-button" style={{ backgroundColor: "red" }}>
+                Reserved
+              </span>
+            );
+          }
+
+          default:
+            return null;
+        }
       }
       case 1: {
-        return (
-          <span className="small-button" style={{ backgroundColor: "green" }}>
-            1 spot
-          </span>
-        );
+        switch (post.category) {
+          case "skills": {
+            return (
+              <span
+                className="small-button"
+                style={{ backgroundColor: "green" }}
+              >
+                1 spot
+              </span>
+            );
+          }
+
+          case "giveaways": {
+            return (
+              <span
+                className="small-button"
+                style={{ backgroundColor: "green" }}
+              >
+                Available
+              </span>
+            );
+          }
+
+          default:
+            return null;
+        }
       }
       default: {
         return (

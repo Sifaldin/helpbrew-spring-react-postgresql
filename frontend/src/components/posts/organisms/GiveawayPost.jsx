@@ -25,6 +25,10 @@ export default function GiveawayPost({
         <img src={post.imageUrl} alt="Single post img" />
       </div>
 
+      {post.user.email === user.email ? null : (
+        <p>{`Contact ${post.user.name} to reserve the item`}</p>
+      )}
+
       {/* Map is a component unique to giveaway post */}
       {post.location ? (
         <div>
