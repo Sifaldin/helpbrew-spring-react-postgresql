@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import Map from "../molecules/Map";
 import SharedSinglePost from "./SharedSinglePost";
+import Api from "../../../api/Api";
 
 export default function GiveawayPost({
   post,
@@ -10,9 +11,37 @@ export default function GiveawayPost({
   posts,
 }) {
   const [mapVisible, setMapVisible] = useState(false);
+  const [availability, setAvailability] = useState(
+    post.eventCapacity ? "Set item as unavailable" : "Set item as available"
+  );
 
   const handleMapToggle = () => {
     mapVisible ? setMapVisible(false) : setMapVisible(true);
+  };
+
+  const toggleAvailability = () => {
+    let updatedPost;
+
+    if (post.eventCapacity === 1) {
+      setAvailability("Set item as available");
+      updatedPost = {
+        ...post,
+        eventCapacity: 0,
+      };
+    } else if (post.eventCapacity === 0) {
+      setAvailability("Set item as unavailable");
+      updatedPost = {
+        ...post,
+        eventCapacity: 1,
+      };
+    }
+
+    Api.put("./posts", updatedPost).then((res) => {
+      const updatedPosts = posts.map((post) =>
+        post.id === res.data.id ? res.data : post
+      );
+      setPosts(updatedPosts);
+    });
   };
 
   return (
@@ -25,7 +54,11 @@ export default function GiveawayPost({
         <img src={post.imageUrl} alt="Single post img" />
       </div>
 
-      {post.user.email === user.email ? null : (
+      {post.user.email === user.email ? (
+        <button className="medium-button" onClick={toggleAvailability}>
+          {availability}
+        </button>
+      ) : (
         <p>{`Contact ${post.user.name} to reserve the item`}</p>
       )}
 
