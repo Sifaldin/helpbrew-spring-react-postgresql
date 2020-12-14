@@ -4,9 +4,13 @@ import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 import SharedSinglePost from "./SharedSinglePost";
 
 //Displays post belonging to skills category.
-export default function SkillPost({ post, setPosts, user, posts }) {
-  console.log(post);
-
+export default function SkillPost({
+  post,
+  setPosts,
+  user,
+  posts,
+  threadHandler,
+}) {
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
   );
@@ -194,6 +198,7 @@ export default function SkillPost({ post, setPosts, user, posts }) {
         posts={posts}
         setPosts={setPosts}
         user={user}
+        threadHandler={threadHandler}
       />
     </div>
   );

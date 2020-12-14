@@ -62,8 +62,14 @@
   margin: 0 0 0 -27px;
 }
 
-.chat-user-name .name {
+.chat-user-name .name span {
+  display: block;
   color: black;
+}
+
+.chat-user-name .name {
+  display: grid;
+  grid-row-gap: 0.3rem;
 }
 
 .chat_ib h5 {
