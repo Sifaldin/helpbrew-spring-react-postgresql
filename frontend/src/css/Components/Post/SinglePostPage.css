@@ -162,6 +162,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 .post-info .button-group {
   display: grid;
   grid-template-columns: 1fr auto;
+  justify-items: end;
 }
 
 .button-group .medium-button {

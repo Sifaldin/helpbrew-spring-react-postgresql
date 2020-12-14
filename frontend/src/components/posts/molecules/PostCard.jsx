@@ -176,15 +176,17 @@ function PostCard({ post, loggedInUser }) {
             View post
           </Link>
 
-          <div>
-            <button
-              className="mes-button"
-              onClick={threadHandler}
-              type="submit"
-            >
-              <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            </button>
-          </div>
+          {loggedInUser.email === post.user.email ? null : (
+            <div>
+              <button
+                className="mes-button"
+                onClick={threadHandler}
+                type="submit"
+              >
+                <i className="fa fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+          )}
         </div>
         <hr />
         {/* Once View Post button is clicked by user, user is redirected to 
