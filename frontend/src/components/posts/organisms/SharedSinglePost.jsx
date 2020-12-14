@@ -52,9 +52,10 @@ export default function SharedSinglePost({ post, setPosts, user, posts }) {
   const threadHandler = () => {
     const createOrDirect = async () => {
       try {
-        const response = await ChatApi.createThread(receiverEmail, {});
+        const response = await ChatApi.createThread(post.user, {});
         console.log(response);
         const thread = response.data;
+        console.log(thread);
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
       } catch (e) {
         console.log(e);
