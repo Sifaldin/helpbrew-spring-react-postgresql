@@ -11,6 +11,7 @@ export default function GiveawayPost({
   deletePost,
   user,
   posts,
+  threadHandler,
 }) {
   const [mapVisible, setMapVisible] = useState(false);
   const [availability, setAvailability] = useState(
@@ -45,21 +46,6 @@ export default function GiveawayPost({
       );
       setPosts(updatedPosts);
     });
-  };
-
-  const threadHandler = () => {
-    const createOrDirect = async () => {
-      try {
-        const response = await ChatApi.createThread(post.user, {});
-        console.log(response);
-        const thread = response.data;
-        console.log(thread);
-        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    createOrDirect();
   };
 
   return (
@@ -111,6 +97,7 @@ export default function GiveawayPost({
         deletePost={deletePost}
         user={user}
         posts={posts}
+        threadHandler={threadHandler}
       />
       {/* </div> */}
     </div>

@@ -22,10 +22,18 @@ function ThreadPage({ loggedInUser }) {
   useEffect(() => {
     const getThreads = async () => {
       const response = await ChatApi.getAllThread();
-      setThreads(response.data);
+      const filtered = response.data.filter((thread) => {
+        console.log(thread.user2.email);
+        console.log(loggedInUser.email);
+        return (
+          thread.user2.email === loggedInUser.email ||
+          thread.user1.email === loggedInUser.email
+        );
+      });
+      setThreads(filtered);
     };
     getThreads();
-  }, []);
+  }, [loggedInUser]);
 
   const listOfThreads = threads.map((thread) => (
     <Thread

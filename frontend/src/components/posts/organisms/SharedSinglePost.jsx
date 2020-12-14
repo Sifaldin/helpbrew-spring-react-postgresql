@@ -9,10 +9,19 @@ import ConfirmModal from "../templates/ConfirmModal";
 
 //Displays post belonging to giveaway category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
-export default function SharedSinglePost({ post, setPosts, user, posts }) {
+export default function SharedSinglePost({
+  post,
+  setPosts,
+  user,
+  posts,
+  threadHandler,
+}) {
   const [isUpdating, setIsUpdating] = useState(false);
-
   const history = useHistory();
+
+  console.log(threadHandler);
+
+  // const history = useHistory();
   const receiverEmail = window.sessionStorage.getItem("userEmail");
 
   const modalRef = useRef();
@@ -49,20 +58,22 @@ export default function SharedSinglePost({ post, setPosts, user, posts }) {
     });
   };
 
-  const threadHandler = () => {
-    const createOrDirect = async () => {
-      try {
-        const response = await ChatApi.createThread(post.user, {});
-        console.log(response);
-        const thread = response.data;
-        console.log(thread);
-        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    createOrDirect();
-  };
+  // const threadHandler = () => {
+  //   const createOrDirect = async () => {
+  //     console.log(post.title);
+  //     try {
+  //       const response = await ChatApi.createThread(post.user, {
+  //         title: post.title,
+  //       });
+  //       const thread = response.data;
+  //       console.log(thread);
+  //       history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
+  //     } catch (e) {
+  //       console.log(e);
+  //     }
+  //   };
+  //   createOrDirect();
+  // };
 
   return (
     <div className="single-post-card">

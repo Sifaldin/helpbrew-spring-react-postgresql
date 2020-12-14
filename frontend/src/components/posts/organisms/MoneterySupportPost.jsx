@@ -9,6 +9,7 @@ export default function MonetarySupportPost({
   deletePost,
   user,
   posts,
+  threadHandler,
 }) {
   return (
     // consists of hero image for post and single-post-card
@@ -26,6 +27,7 @@ export default function MonetarySupportPost({
           deletePost={deletePost}
           user={user}
           posts={posts}
+          threadHandler={threadHandler}
         />
         {/* !!! Any piece of information unique
         to MonetarySupportPost component shall be inserted into this div */}
