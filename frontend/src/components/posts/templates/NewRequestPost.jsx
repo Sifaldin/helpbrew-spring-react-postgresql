@@ -5,7 +5,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import Api from "../../../api/Api";
 import { useNotification } from "../../notifications/NotificationProvider";
 import ImageUploader from "../molecules/ImageUploader";
-import RequestIntroduction from "../molecules/RequestIntroduction";
+import giveAwaycreate from "../../../assets/giveAways-create.jpg";
 
 function NewRequestPost({ setPosts, user }) {
     const history = useHistory();
@@ -52,11 +52,10 @@ function NewRequestPost({ setPosts, user }) {
     };
 
     return (
-        <div className="left">
-        <div className="card-container" >
+        <div className="create-container">
+        
             <form className="createcard" onSubmit={submitHandler}>
-                    <div className="card-body">
-                            
+                    <div className="card-body">    
                         <div className="page-title">
                             <h1>Need help?</h1>
                         </div>
@@ -95,17 +94,21 @@ function NewRequestPost({ setPosts, user }) {
                                         />
                                         <span className="placeholder">Ask for help</span>
                                     </label>
-                                    
+                                 <div className="ask-button">  
                                 <button  className="medium-button" disabled={uploading ? true : false} type="submit">
                                     {uploading ? "Submit" : "Submit"}
                                 </button>
+                    </div> 
                         </div>
             </form>
-        </div>
-        <div className="map">
-        <RequestIntroduction />
+
+            <div className="right">
+                <img src={giveAwaycreate} className="ask-image" alt="ask For help" />
             </div>
+
         </div>
+        
+        
     );
 }
 

@@ -7,9 +7,10 @@ import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
-import GiveIntroduction from "../molecules/GiveIntroduction";
+import { GrMapLocation } from 'react-icons/gr'
 import Error from "../../notifications/Error";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
+import giveAwayscreate from "../../../assets/giveAways-create.jpg";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ posts, setPosts, user }) {
@@ -122,8 +123,8 @@ function NewGiverPost({ posts, setPosts, user }) {
   console.log(selectedDateAndTime);
 
   return (
-    <div className="left">
-      <div className="card-container">
+    <div className="create-container">
+      
         <form className="createcard" onSubmit={submitHandler}>
           <div className="card-body">
             <div className="page-title">
@@ -144,10 +145,10 @@ function NewGiverPost({ posts, setPosts, user }) {
                   Choose Category
                 </option>
                 <option className="option-placeholder" value="giveaways">
-                  Giveaways
+                  Give Aways
                 </option>
                 <option value="skills">Skills</option>
-                <option value="monetary-support">Monetary support</option>
+                <option value="monetary-support">Monetary Support</option>
               </select>
             </label>
 
@@ -177,22 +178,26 @@ function NewGiverPost({ posts, setPosts, user }) {
             {postCategory === "giveaways" ? (
               /* The field allows user to enter a pick-up location for giveaway posts and search for
               it on the map when the button Find location is pushed */
-              <label className="custom-field">
+              
+              <label className="location-field">
                 <input
                   type="text"
                   required
-                  className="card-input"
+                  className="location-input"
+                  placeholder="Pick-Up Location"
                   onChange={(e) => setLocationInput(e.target.value)}
-                />
-                <span className="placeholder">Enter Pick-Up Location</span>
-
-                <button
-                  type="submit"
-                  className="small-button"
-                  onClick={handleSubmit}
-                >
-                  Find location
+                  
+              />
+                
+              
+              <button
+                type=""
+                className="location-input-button"
+                onClick={handleSubmit}
+              >
+                <GrMapLocation size="20px" />
                 </button>
+              
               </label>
             ) : null}
 
@@ -227,20 +232,25 @@ function NewGiverPost({ posts, setPosts, user }) {
               />
             ) : null}
           </div>
+            
         </form>
-      </div>
-
       {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
+     
       <div className="map">
         {address.length > 0 && position.length > 0 ? (
           <Map position={position} />
+        
         ) : (
-            <div>
-              <GiveIntroduction location={location} />
+            <div className="right">
+              <img src={giveAwayscreate} className="help-image" alt="give with love" />
             </div>
+
           )}
       </div>
-    </div>
+      <div></div>
+      </div>
+      
+      
   );
 }
 
