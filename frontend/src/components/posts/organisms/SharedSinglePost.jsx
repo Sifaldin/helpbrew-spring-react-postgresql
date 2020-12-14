@@ -93,7 +93,7 @@ export default function SharedSinglePost({
           </div>
         </div>
 
-        <h3 className="post-title">{post.title}</h3>
+
 
         {isUpdating ? (
           <PostUpdateForm
@@ -102,7 +102,10 @@ export default function SharedSinglePost({
             setIsUpdating={setIsUpdating}
           />
         ) : (
+          <>
+          <h3 className="post-title">{post.title}</h3>
           <p className="post-body">{post.body}</p>
+          </>
         )}
 
         <div className="button-group">

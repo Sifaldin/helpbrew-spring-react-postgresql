@@ -29,18 +29,18 @@ function NewGiverPost({ posts, setPosts, user }) {
   console.log(user);
   /* calendar related hook */
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
-    new Date("2020-01-01T12:00:00")
+    new Date()
   );
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
-      ? imgUrl.length > 0 &&
+      ? imgUrl !== undefined && imgUrl.length>0 &&
           address.length > 0 &&
           postTitle.length > 0 &&
           details.length > 0
-      : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
+      : imgUrl !== undefined && imgUrl.length>0 && postTitle.length > 0 && details.length > 0;
   };
-
+  
   const getAll = () => {
     Api.get("/posts").then((res) => {
       setPosts(res.data);
@@ -135,7 +135,7 @@ function NewGiverPost({ posts, setPosts, user }) {
               <select
                 required
                 name="category"
-                className="card-input"
+                className={`${postCategory.length>0 ? 'card-input' : 'waitInput'}`}
                 onChange={(e) => {
                   setPostCategory(e.target.value);
                 }}
@@ -155,7 +155,9 @@ function NewGiverPost({ posts, setPosts, user }) {
               <input
                 type="text"
                 required
-                className="card-input"
+                // className="card-input"
+                className={`${postTitle.length>0 ? 'card-input' : 'waitInput'}`}
+
                 onChange={(e) => setPostTitle(e.target.value)}
               />
               <span className="placeholder">Enter Title </span>
@@ -165,6 +167,8 @@ function NewGiverPost({ posts, setPosts, user }) {
               <textarea
                 type="text"
                 required
+                className={`${details.length>0 ? 'card-input' : 'waitInput'}`}
+
                 // className="card-input"
                 rows="5"
                 onChange={(e) => setDetails(e.target.value)}
@@ -181,7 +185,7 @@ function NewGiverPost({ posts, setPosts, user }) {
                 <input
                   type="text"
                   required
-                  className="card-input"
+                  className={`${position.length>0 ? 'card-input' : 'waitInput'}`}
                   onChange={(e) => setLocationInput(e.target.value)}
                 />
                 <span className="placeholder">Enter Pick-Up Location</span>
