@@ -1,7 +1,9 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Map from "../molecules/Map";
 import SharedSinglePost from "./SharedSinglePost";
 import Api from "../../../api/Api";
+import ChatApi from "../../../api/ChatApi";
 
 export default function GiveawayPost({
   post,
@@ -14,6 +16,7 @@ export default function GiveawayPost({
   const [availability, setAvailability] = useState(
     post.eventCapacity ? "Set item as unavailable" : "Set item as available"
   );
+  const history = useHistory();
 
   const handleMapToggle = () => {
     mapVisible ? setMapVisible(false) : setMapVisible(true);
@@ -44,6 +47,21 @@ export default function GiveawayPost({
     });
   };
 
+  const threadHandler = () => {
+    const createOrDirect = async () => {
+      try {
+        const response = await ChatApi.createThread(post.user, {});
+        console.log(response);
+        const thread = response.data;
+        console.log(thread);
+        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    createOrDirect();
+  };
+
   return (
     // consists of hero image for post and single-post-card
     <div className="single-post">
@@ -59,7 +77,10 @@ export default function GiveawayPost({
           {availability}
         </button>
       ) : (
-        <p>{`Contact ${post.user.name} to reserve the item`}</p>
+        <p
+          className="contact-link"
+          onClick={threadHandler}
+        >{`Contact ${post.user.name} to reserve the item`}</p>
       )}
 
       {/* Map is a component unique to giveaway post */}
