@@ -129,7 +129,7 @@
   cursor: pointer;
 }
 
-@media (min-width: 310px){
+@media (max-width: 450px){
   .logo {
     position: fixed;
     left: 13%;
