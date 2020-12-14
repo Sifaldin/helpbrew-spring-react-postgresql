@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import ReactImageUploadComponent from "react-images-upload"; /*
+import ReactImageUploadComponent from "react-images-upload"; 
+/*
 Image Uploading Note:
 Ideally the API should be in the backend, however, with testing, sending the image to the backend and then uploading takes too long.
 Ideally, the backend should just sign an upload request, return the signed request to the frontend, which then uploads the image 

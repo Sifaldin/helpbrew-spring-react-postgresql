@@ -14,7 +14,7 @@ function NewRequestPost({ setPosts, user }) {
     const [postTitle, setPostTitle] = useState("");
     const [details, setDetails] = useState("");
     const [uploading, setUploading] = useState(true);
-    const [postCategory, setPostCategory] = useState("giveaways");
+    const [postCategory, setPostCategory] = useState("");
     
 
     const getAll = () => {
@@ -61,12 +61,12 @@ function NewRequestPost({ setPosts, user }) {
                             <h1>Need help?</h1>
                         </div>
                                 <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
-                               
+
                                     <label className="custom-field">
                                         <select
                                             required
                                             name="category"
-                                            className="card-input"
+                                            className={`${postCategory.length>0 ? 'card-input' : 'waitInput'}`}
                                             onChange={(e) => setPostCategory(e.target.value)}>
                                             <option disabled selected>Choose a category</option>
                                             <option value="giveaways">Giveaways</option>
@@ -79,7 +79,7 @@ function NewRequestPost({ setPosts, user }) {
                                         <input
                                             type="text"
                                             required
-                                            className="card-input"
+                                            className={`${postTitle.length>0 ? 'card-input' : 'waitInput'}`}
                                             onChange={(e) => setPostTitle(e.target.value)}
                                         />
                                         <span className="placeholder">Enter Title</span>
@@ -89,7 +89,7 @@ function NewRequestPost({ setPosts, user }) {
                                         <textarea
                                             type="text"
                                             required
-                                            className="card-input"
+                                            className={`${details.length>0 ? 'card-input' : 'waitInput'}`}
                                             rows="3"
                                             onChange={(e) => setDetails(e.target.value)}
                                         />

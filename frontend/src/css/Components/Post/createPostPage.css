@@ -85,6 +85,23 @@
   font-family: "Source Sans Pro", sans-serif;
 }
 
+.custom-field .waitInput {
+  width: 300px;
+  height: 50px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #f2f2f2;
+  padding: 12px;
+  border:solid rgb(223, 174, 174);
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+
 .custom-field textarea {
   width: 300px;
   height: 80px;
@@ -156,6 +173,15 @@
     font-weight: 400;
   }
 
+  .custom-field .waitInput {
+    width: 300px;
+    height: 50px;
+    outline: none;
+    font-size: 14px;
+    border:solid rgb(223, 174, 174);
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+  }
   .card-body .medium-button {
     width: 10rem;
     justify-self: center;
@@ -200,6 +226,14 @@
     height: 70px;
     outline: none;
     font-size: 20px;
+    font-family: "Source Sans Pro", sans-serif;
+  }
+  .custom-field .waitInput {
+    width: 360px;
+    height: 70px;
+    outline: none;
+    font-size: 20px;
+    border:solid rgb(223, 174, 174);
     font-family: "Source Sans Pro", sans-serif;
   }
 
