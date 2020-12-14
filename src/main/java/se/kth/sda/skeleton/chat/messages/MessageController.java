@@ -44,8 +44,8 @@ public class MessageController {
     public MessageThread createThread(@RequestParam(required = true) String receiverEmail, @RequestBody MessageThread newThread) {
         User sender = userService.findUserByEmail(authService.getLoggedInUserEmail());
         User receiver = userService.findUserByEmail(receiverEmail);
-//        MessageThread existing = threadService.findByEmails(sender, receiver);
-//        if (existing != null) return existing;
+        MessageThread existing = threadService.findByEmails(sender, receiver, newThread.getTitle());
+        if (existing != null) return existing;
         newThread.setUser1(sender);
         newThread.setUser2(receiver);
         return threadService.create(newThread);
