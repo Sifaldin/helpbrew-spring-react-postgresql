@@ -53,9 +53,9 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
             <i class="fas fa-user"></i> {user.name}
           </h1> */}
 
-          <div>
+          
             <img className={"profileImg"} src={imgUrl} />
-          </div>
+         
 
           {/* <button className={"edit-btn"} onClick={changeImage}>
             <i class="fas fa-camera"></i>

@@ -1,35 +1,43 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Comments from "../../comments/templates/Comments";
 import PostUpdateForm from "../templates/PostUpdateForm";
 import Api from "../../../api/Api";
 import { useHistory } from "react-router-dom";
 import ChatApi from "../../../api/ChatApi";
 import { useNotification } from "../../notifications/NotificationProvider";
+import ConfirmModal from "../templates/ConfirmModal";
 
 //Displays post belonging to giveaway category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
-export default function SharedSinglePost({ post, setPosts, user }) {
+export default function SharedSinglePost({ post, setPosts, user, posts }) {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [curPost, setCurPost] = useState(post);
 
   const history = useHistory();
   const receiverEmail = window.sessionStorage.getItem("userEmail");
 
+  const modalRef = useRef();
+
+  const openModal = () => {
+    modalRef.current.openModal();
+  };
+
   const updatePost = (updatedPost) => {
     Api.put("/posts", updatedPost).then((res) => {
-      setCurPost(res.data);
-      // setPosts([...posts, res.data]);
+      console.log(res.data);
+      const updatedPosts = posts.map((post) =>
+        post.id === res.data.id ? res.data : post
+      );
+      setPosts(updatedPosts);
     });
   };
 
   const deletePost = (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
-      Api.delete("/posts/" + post.id).then((res) => {
-        setPosts(res.data);
-        handleDeleteNotification();
-        history.push(`/posts/category/${post.category}`);
-      });
-    }
+    Api.delete("/posts/" + post.id).then((res) => {
+      const updatedPosts = posts.filter((post) => post.id !== res.data.id);
+      setPosts(updatedPosts);
+      handleDeleteNotification();
+      history.push(`/posts/category/${post.category}`);
+    });
   };
 
   //Notification Creator
@@ -44,9 +52,10 @@ export default function SharedSinglePost({ post, setPosts, user }) {
   const threadHandler = () => {
     const createOrDirect = async () => {
       try {
-        const response = await ChatApi.createThread(receiverEmail, {});
+        const response = await ChatApi.createThread(post.user, {});
         console.log(response);
         const thread = response.data;
+        console.log(thread);
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
       } catch (e) {
         console.log(e);
@@ -77,12 +86,12 @@ export default function SharedSinglePost({ post, setPosts, user }) {
 
         {isUpdating ? (
           <PostUpdateForm
-            post={curPost}
+            post={post}
             onUpdateClick={updatePost}
             setIsUpdating={setIsUpdating}
           />
         ) : (
-          <p className="post-body">{curPost.body}</p>
+          <p className="post-body">{post.body}</p>
         )}
 
         <div className="button-group">
@@ -92,7 +101,7 @@ export default function SharedSinglePost({ post, setPosts, user }) {
 
           {/* The post is deleted only if the email of the logged in user and 
               email of the user who wrote the post are the same */}
-          {curPost.user.email === user.email ? (
+          {post.user.email === user.email ? (
             <div className="button-group">
               <button
                 className="medium-button"
@@ -101,10 +110,7 @@ export default function SharedSinglePost({ post, setPosts, user }) {
                 Update
               </button>
 
-              <button
-                className="medium-button"
-                onClick={() => deletePost(curPost.id)}
-              >
+              <button className="medium-button" onClick={openModal}>
                 Delete
               </button>
             </div>
@@ -113,6 +119,7 @@ export default function SharedSinglePost({ post, setPosts, user }) {
       </div>
       <Comments post={post} />
       {/* </div> */}
+      <ConfirmModal ref={modalRef} handleConfirm={deletePost} />
     </div>
   );
 }

@@ -5,14 +5,13 @@ import { useHistory } from "react-router-dom";
 import DropDownItem from "../profile/DropDownItem";
 
 function ChatPage({ id, thread, loggedInUser }) {
-  // const loggedInUser = window.sessionStorage.getItem('userEmail');
-  var receiverEmail = loggedInUser.name;
-  // if (id != 0) {
-  //   receiverEmail =
-  //     loggedInUser === thread.user1.email ? thread.user2.email : thread.user1.email;
-  // } else {
-  //   thread = { id: "0", user1.email: "", thread.user2.email: "", thread: "" };
-  // }
+  var receiver = loggedInUser;
+  if (id != 0) {
+    receiver =
+      loggedInUser.email === thread.user1.email ? thread.user2 : thread.user1;
+  } else {
+    thread = { id: "0", user1: null, user2: null, thread: "" };
+  }
 
   var [messageText, setMessageText] = useState({ text: "" });
   var [messageArray, setMessageArray] = useState(thread.thread);
@@ -20,7 +19,7 @@ function ChatPage({ id, thread, loggedInUser }) {
   //messageArray = null;
   const sendMessage = async () => {
     try {
-      const response = await ChatApi.createMessage(id, receiverEmail, {
+      const response = await ChatApi.createMessage(id, receiver, {
         messageBody: messageText.text,
         thread: { id: id },
         date: format(new Date(), "dd-MMM-yyyy HH:MM"),
@@ -54,7 +53,7 @@ function ChatPage({ id, thread, loggedInUser }) {
       try {
         const response_message = await ChatApi.createMessage(
           thread.id,
-          receiverEmail,
+          receiver,
           {
             messageBody: messageText.text,
             thread: { id: thread.id },
@@ -75,9 +74,13 @@ function ChatPage({ id, thread, loggedInUser }) {
     messageArray === null
       ? null
       : messageArray.map((message) => {
-          if (message.senderEmail === loggedInUser) {
+          if (message.senderEmail === loggedInUser.email) {
             return (
               <div className="outgoing_msg" key={message.id}>
+                <div className="incoming_msg_img">
+                  {" "}
+                  <img src={loggedInUser.imageUrl} alt="name" />{" "}
+                </div>
                 <div className="sent_msg">
                   <p>{message.messageBody}</p>
                   <span className="time_date"> {message.date}</span>{" "}
@@ -89,7 +92,7 @@ function ChatPage({ id, thread, loggedInUser }) {
               <div className="incoming_msg" key={message.id}>
                 <div className="incoming_msg_img">
                   {" "}
-                  <img src="/images/sender.jpeg" alt="name" />{" "}
+                  <img src={receiver.imageUrl} alt="name" />{" "}
                 </div>
                 <div className="received_msg">
                   <div className="received_withd_msg">

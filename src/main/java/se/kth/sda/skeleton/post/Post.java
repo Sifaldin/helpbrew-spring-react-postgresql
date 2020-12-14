@@ -37,6 +37,9 @@ public class Post {
     @ManyToOne
     private User user;
 
+    @ManyToMany(mappedBy = "")
+    private List<User> registeredUsers;
+
     @Column
     private String postType;
 
@@ -50,7 +53,9 @@ public class Post {
     @ElementCollection
     private List<Double> position;
 
-
+    @Column
+    private Integer eventCapacity;
+    
     @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
     @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "reaction_id", referencedColumnName = "id")
@@ -178,5 +183,19 @@ public class Post {
         this.meetingTimeAndDate = meetingTime;
     }
 
+    public Integer getEventCapacity() {
+        return eventCapacity;
+    }
 
+    public void setEventCapacity(Integer eventCapacity) {
+        this.eventCapacity = eventCapacity;
+    }
+
+    public List<User> getRegisteredUsers() {
+        return registeredUsers;
+    }
+
+    public void setRegisteredUsers(List<User> registeredUsers) {
+        this.registeredUsers = registeredUsers;
+    }
 }

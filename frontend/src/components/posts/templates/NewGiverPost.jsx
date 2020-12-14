@@ -24,23 +24,25 @@ function NewGiverPost({ posts, setPosts, user }) {
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
+  const [eventCapacity, setEventCapacity] = useState(1);
 
   console.log(user);
   /* calendar related hook */
-  const [selectedDateAndTime, setSelectedDateAndTime] = useState(new Date('2020-01-01T12:00:00'));
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(
+    new Date("2020-01-01T12:00:00")
+  );
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
       ? imgUrl.length > 0 &&
-      address.length > 0 &&
-      postTitle.length > 0 &&
-      details.length > 0
+          address.length > 0 &&
+          postTitle.length > 0 &&
+          details.length > 0
       : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
   };
 
   const getAll = () => {
     Api.get("/posts").then((res) => {
-
       setPosts(res.data);
     });
   };
@@ -73,11 +75,11 @@ function NewGiverPost({ posts, setPosts, user }) {
       position: position,
       user: user,
       meetingTimeAndDate: selectedDateAndTime,
+      eventCapacity: eventCapacity,
     };
 
     console.log(newPost);
     Api.post("/posts", newPost).then((res) => {
-
       getAll();
 
       setPosts([...posts, res.data]);
@@ -118,8 +120,6 @@ function NewGiverPost({ posts, setPosts, user }) {
       }
     }
   }
-
-  console.log(selectedDateAndTime);
 
   return (
     <div className="left">
@@ -204,6 +204,16 @@ function NewGiverPost({ posts, setPosts, user }) {
                   selectedDateAndTime={selectedDateAndTime}
                   setSelectedDateAndTime={setSelectedDateAndTime}
                 />
+
+                <label className="custom-field">
+                  <input
+                    type="text"
+                    required
+                    className="card-input"
+                    onChange={(e) => setEventCapacity(e.target.value)}
+                  />
+                  <span className="placeholder">Number of spots</span>
+                </label>
               </div>
             ) : null}
 
@@ -235,10 +245,10 @@ function NewGiverPost({ posts, setPosts, user }) {
         {address.length > 0 && position.length > 0 ? (
           <Map position={position} />
         ) : (
-            <div>
-              <GiveIntroduction location={location} />
-            </div>
-          )}
+          <div>
+            <GiveIntroduction location={location} />
+          </div>
+        )}
       </div>
     </div>
   );
