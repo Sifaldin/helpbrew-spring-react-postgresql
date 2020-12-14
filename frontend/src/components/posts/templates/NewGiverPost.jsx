@@ -24,7 +24,7 @@ function NewGiverPost({ posts, setPosts, user }) {
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
-  const [eventCapacity, setEventCapacity] = useState(0);
+  const [eventCapacity, setEventCapacity] = useState(1);
 
   console.log(user);
   /* calendar related hook */
