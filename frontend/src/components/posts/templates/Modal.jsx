@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io';
 import { RiHandHeartFill } from 'react-icons/ri';
 import { FaHandsHelping } from 'react-icons/fa';
-
+import { FaQuestionCircle } from 'react-icons/fa';
 
 const Modal = forwardRef( (props, ref) => {
     const [display, setDisplay] = useState(false);
