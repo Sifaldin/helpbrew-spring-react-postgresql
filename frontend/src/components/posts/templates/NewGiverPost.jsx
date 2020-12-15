@@ -187,7 +187,6 @@ function NewGiverPost({ posts, setPosts, user }) {
                   type="text"
                   required
 
-                  className="location-input"
                   placeholder="Pick-Up Location"
 
                   className={`${position.length>0 ? 'location-input' : 'waitInput'}`}
