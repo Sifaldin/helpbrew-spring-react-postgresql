@@ -17,6 +17,7 @@ import NewRequestPost from "./components/posts/templates/NewRequestPost";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
+import MonetarySupport from "./components/funding/MonetarySupport";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -46,10 +47,10 @@ function App() {
         const userToSet = fetchedUser.imageUrl
           ? fetchedUser
           : {
-              ...fetchedUser,
-              imageUrl:
-                "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png",
-            };
+            ...fetchedUser,
+            imageUrl:
+              "https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png",
+          };
         Api.put("/user/me", userToSet).then((response) => {
           setUser(response.data);
         });
@@ -115,6 +116,10 @@ function App() {
               />
             </Route>
 
+            <Route path="/donations" exact>
+              <MonetarySupport />
+            </Route>
+
             {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
 
@@ -157,7 +162,7 @@ function App() {
           </Switch>
         </div>
       </Router>
-    
+
     </>
   );
 

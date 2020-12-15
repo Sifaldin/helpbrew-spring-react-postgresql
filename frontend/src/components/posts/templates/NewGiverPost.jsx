@@ -28,9 +28,8 @@ function NewGiverPost({ posts, setPosts, user }) {
 
   console.log(user);
   /* calendar related hook */
-  const [selectedDateAndTime, setSelectedDateAndTime] = useState(
-    new Date()
-  );
+  const now = new Date().toString();
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
