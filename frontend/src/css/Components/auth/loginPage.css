@@ -9,17 +9,21 @@
   background-position: right 35%;
   min-height: 100vh;
   overflow: hidden;
-  background-color: rgb(255, 255, 255);
   display: grid;
   justify-content: center;
 }
 
 .loginpage-text {
   position: relative;
-  left: 15.5%;
-  top: 22%;
-  max-width: 300px;
-  text-align: left;
+  left: 2%;
+  top: 13%;
+  max-width: 350px;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.loginpage-text img {
+  margin-left: -2rem;
 }
 
 .loginGrid {
@@ -33,7 +37,7 @@
   text-align: end;
   font-family: Source-Sans-Pro;
   background-color: rgba(48, 46, 46, 0.5);
-  border-radius: 0.5rem 0rem 0rem 0.5rem; 
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
 }
 
 .signinform input {
@@ -50,11 +54,11 @@
   margin: 1rem;
 }
 
-.signin-1 input{
+.signin-1 input {
   margin-top: 10px;
 }
 
-.signup1 input{
+.signup1 input {
   margin-top: 10px;
 }
 
@@ -101,13 +105,11 @@
   text-align: end;
   border-style: none;
   font-family: Source-Sans-Pro;
-  
 }
 
-.signupBox{
+.signupBox {
   background-color: rgba(48, 46, 46, 0.5);
-  border-radius: 0.5rem 0rem 0rem 0.5rem; 
-
+  border-radius: 0.5rem 0rem 0rem 0.5rem;
 }
 
 .signupform input {
@@ -146,10 +148,21 @@
   font-style: italic;
   cursor: pointer;
   color: white;
-
 }
 
-@media (max-width: 1000px) {
+@media (min-width: 1190px) {
+  .loginpage {
+    padding-left: 6rem;
+  }
+}
+
+@media (min-width: 800px) {
+  .loginpage {
+    padding-left: 6rem;
+  }
+}
+
+@media (max-width: 1016px) {
   .loginGrid {
     display: grid;
     justify-content: center;
@@ -181,9 +194,14 @@
     margin: 1px;
     left: 7.5rem;
   }
+  .login-text-box {
+    background-color: rgba(48, 46, 46, 0.5);
+    border-radius: 0.5rem;
+    color: white;
+  }
 }
 
-@media (max-width: 410px) {
+@media (max-width: 450px) {
   .loginpage-text {
     max-width: 250px;
     left: 8rem;
@@ -206,5 +224,9 @@
     width: 17rem;
     margin-right: 16.5rem;
   }
-
+  .login-text-box {
+    background-color: rgba(48, 46, 46, 0.5);
+    border-radius: 0.5rem;
+    color: white;
+  }
 }
