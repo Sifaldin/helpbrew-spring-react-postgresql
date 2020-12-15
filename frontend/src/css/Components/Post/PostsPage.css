@@ -15,14 +15,21 @@
   font-size: 5rem;
 }
 
-.posts {
-  max-width: 90vw;
-  display: grid;
-  grid-row-gap: 3vh;
-}
-
 @media (min-width: 600px) {
   .posts {
+    display: grid;
+    grid-row-gap: 3vh;
+    grid-template-columns: 1fr;
     width: 30rem;
+  }
+}
+
+@media (min-width: 900px) {
+  .posts {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 3rem;
+    grid-row-gap: 3rem;
+    width: 63rem;
   }
 }
