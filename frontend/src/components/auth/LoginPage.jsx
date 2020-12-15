@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 import Auth from '../../services/Auth';
 import LoginForm from './LoginForm';
 import RegisterForm from './RegisterForm';
-import logo from "../../assets/logo_transparent_background_small.png";
+import logo from "../../assets/logo_transparent_background_M.png";
 
 function LoginPage() {
   const login = async loginData => {
@@ -35,12 +35,14 @@ function LoginPage() {
 
       <div className="loginGrid">
         <div className="loginpage-text">
+        <img src={logo} alt="HelpBrew Logo" />
+        <div className="login-text-box">
           
-            <img src={logo} alt="HelpBrew Logo" />
+            
             <h3>With HelpBrew, you can share and receive help with skills, give away stuff,
             receive and give monetary support. HelpBrew gives us all the opportunity to make a
               difference and create a better world. </h3>
-       
+              </div>
         </div>
         {isMember ?
           <LoginForm onSubmit={login} goRegister={goRegister} />
