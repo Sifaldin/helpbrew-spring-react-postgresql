@@ -144,7 +144,7 @@ function NewGiverPost({ posts, setPosts, user }) {
                   Choose Category
                 </option>
                 <option className="option-placeholder" value="giveaways">
-                  Give Aways
+                  Giveaways
                 </option>
                 <option value="skills">Skills</option>
                 <option value="monetary-support">Monetary Support</option>

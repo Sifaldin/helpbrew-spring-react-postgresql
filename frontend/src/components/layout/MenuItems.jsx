@@ -1,6 +1,6 @@
 export const MenuItems = [
     {
-        title: 'GiveAways',
+        title: 'Giveaways',
         path: '/posts/category/giveaways',
         cName: 'dropdown-link'
     },
@@ -10,7 +10,7 @@ export const MenuItems = [
         cName: 'dropdown-link'
     },
     {
-        title: 'monetary-support',
+        title: 'Monetary Support',
         path: '/posts/category/monetary-support',
         cName: 'dropdown-link'
     }

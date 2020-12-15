@@ -15,18 +15,18 @@ export default function MonetarySupport() {
                     <div>
 
                         <ol className="fundingList">
-                            <li>where you live </li>
-                            <li>your financial circumstances</li>
-                            <li>what your parents or sometimes other relatives do for a living</li>
-                            <li>any illnesses or disabilities you may have</li>
-                            <li>any special interests, activities or hobbies such as music, sport, drama</li>
-                            <li>whether you are the first in your family to attend university</li>
-                            <li>any circumstances which present you with particular barriers to education</li>
-                            <li>if you have specific career aspirations</li>
+                            <li>Where you live </li>
+                            <li>Your financial circumstances</li>
+                            <li>What your parents or sometimes other relatives do for a living</li>
+                            <li>Any illnesses or disabilities you may have</li>
+                            <li>Any special interests, activities or hobbies such as music, sports, drama</li>
+                            <li>Whether you are the first in your family to attend university</li>
+                            <li>Any circumstances which present you with particular barriers to education</li>
+                            <li>If you have specific career aspirations</li>
                         </ol>
 
                     </div>
-                    <h3>Donate today and make a difference in a someone else's life</h3>
+                    <h3>Donate today and make a difference in someone else's life</h3>
                 </div>
 
             </div>

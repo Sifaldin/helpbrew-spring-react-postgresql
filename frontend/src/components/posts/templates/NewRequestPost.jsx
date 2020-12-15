@@ -70,7 +70,7 @@ function NewRequestPost({ setPosts, user }) {
                                             <option disabled selected>Choose a category</option>
                                             <option value="giveaways">Giveaways</option>
                                             <option value="skills">Skills</option>
-                                            <option value="monetary-support">Monetary support</option>
+                                            <option value="monetary-support">Monetary Support</option>
                                         </select>
                                     </label>
 
