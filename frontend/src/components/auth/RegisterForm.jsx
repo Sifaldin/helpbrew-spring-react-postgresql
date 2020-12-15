@@ -7,6 +7,7 @@ function RegisterForm({ onSubmit, goLogin}) {
 
   return (
     <div className="signupform">
+    <div className="signupBox">
       <div className="signup1">
         <input
           id="user"
@@ -47,6 +48,7 @@ function RegisterForm({ onSubmit, goLogin}) {
           className="smallButton"
           onClick={goLogin}
         > Already a Member?</button>
+      </div>
       </div>
       </div>
     </div>

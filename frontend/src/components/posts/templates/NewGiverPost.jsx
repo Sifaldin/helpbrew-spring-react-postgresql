@@ -28,9 +28,8 @@ function NewGiverPost({ posts, setPosts, user }) {
   const [eventCapacity, setEventCapacity] = useState(1);
 
   /* calendar related hook */
-  const [selectedDateAndTime, setSelectedDateAndTime] = useState(
-    new Date()
-  );
+  const now = new Date().toString();
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(now);
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
@@ -186,8 +185,7 @@ function NewGiverPost({ posts, setPosts, user }) {
                 <input
                   type="text"
                   required
-                
-                  // className="location-input"
+
                   placeholder="Pick-Up Location"
 
                   className={`${locationInput.length>0 ? 'location-input' : 'waitInput'}`}

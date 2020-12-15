@@ -4,35 +4,41 @@ import DropDownMenu from "../profile/DropDownMenu";
 
 import Api from "..//..//api/Api";
 
-function Thread({ thread, setMessageBox, loggedInUser }) {
+function Thread({
+  thread,
+  setMessageBox,
+  loggedInUser,
+  threads,
+  selectItem,
+  id,
+}) {
   const receiver =
     loggedInUser.email === thread.user1.email ? thread.user2 : thread.user1;
   const receiverMessage = thread.receiverMessage;
-  // const [user, setUser] = useState("");
 
-  const clickHandler = () => {
+  const clickHandler = (e) => {
     setMessageBox({ threadId: thread.id, thread: thread });
+    selectItem(e.target);
   };
   const lastMessage = thread.thread.slice(-1)[0];
   const lastDate = lastMessage === undefined ? null : lastMessage.date;
 
-  // useEffect(() => {
-  //   Api.get("/user/me").then((response) => {
-  //     const user = response.data;
-  //     setUser(user);
-  //   });
-  // }, []);
-
   return (
-    <div className="chat_people">
+    <div
+      id={thread.id}
+      className={`chat_people`}
+      onClick={(e) => clickHandler(e)}
+    >
       <div className="chat_img">
-        {" "}
-        <img src={receiver.imageUrl} alt="name" />{" "}
+        <img src={receiver.imageUrl} alt="name" />
       </div>
       <div>
         <h5 className="chat-user-name">
-          <Link className="name" to="/chat" onClick={clickHandler}>
-            <span>To: {receiver.name}</span>
+          <Link className="name" to="/chat">
+            {receiver.email === loggedInUser.email ? null : (
+              <span>To: {receiver.name}</span>
+            )}
+
             <span>Post: {thread.title}</span>
           </Link>
           {/* <span>{lastDate}</span> */}

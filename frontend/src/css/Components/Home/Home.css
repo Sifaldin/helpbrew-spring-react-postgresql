@@ -4,7 +4,6 @@
   grid-template-columns: repeat(auto-fill, minmax(min(25rem, 100%), 1fr));
   grid-column-gap: 2rem;
   grid-row-gap: 2rem;
-  
 }
 
 .category-box {
@@ -55,7 +54,12 @@
 
 .category-box .bottom {
   padding: 1.5rem;
+  padding-right: 0.5rem;
   padding-top: 0;
+  display: grid;
+  grid-row-gap: 1rem;
+  min-height: 200px;
+  align-items: start;
 }
 
 .category-box .bottom .category-name {
@@ -65,7 +69,7 @@
 
 .category-box .bottom .post-icons {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(min(6rem, 100%), 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(5rem, 100%), 1fr));
 }
 
 .post-icon {
@@ -81,7 +85,6 @@
 }
 
 .post-icon img {
-  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   width: 60px;
   height: 60px;
   border-radius: 1rem;
@@ -89,13 +92,22 @@
 }
 
 .toggleButton {
+  font-size: 1.2rem;
   border: none;
   background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-self: right;
 }
 
-.toggleButton:hover{
+.toggleButton:hover {
   border: 1 px solid #888;
-  background-color:antiquewhite ;
+  background-color: antiquewhite;
+}
+
+.post-icon a li {
+  display: grid;
+  justify-items: center;
 }
 /* big screens */
 @media (min-width: 600px) {

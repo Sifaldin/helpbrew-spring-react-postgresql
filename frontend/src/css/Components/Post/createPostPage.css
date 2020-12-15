@@ -6,6 +6,7 @@
   margin-top: 20px;
 }
 
+
 /* .location-input-button .updateText {
   border-top: none;
 } */
@@ -28,8 +29,8 @@
   ::placeholder {
     color: black;
   }
+
 .location-input {
- 
   width: 300px;
   height: 50px;
   border: none;
@@ -44,11 +45,13 @@
   font-family: "Source Sans Pro", sans-serif;
   color: black;
 }
+
 .location-input-button {
+
   position: absolute;
-  top: 0;
-  bottom: 0;
-  right: 0;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
   border: none;
   background-color: #f2f2f2;
   padding-right: 20px;
@@ -59,34 +62,23 @@
   border-top: solid rgb(223, 174, 174); */
   border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
+
 }
-
-
 
 .page-title h1 {
   justify-self: center;
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 600;
   font-size: 16px;
- 
 }
 
-  .custom-field .card-input {
-    width: 300px;
-    height: 50px;
-    outline: none;
-    font-size: 14px;
-    font-family: "Source Sans Pro", sans-serif;
-    font-weight: 400;
-  }
+.card-body .medium-button {
+  width: 10rem;
+  justify-self: center;
+  margin-top: 1rem;
+}
 
-  .card-body .medium-button {
-    width: 10rem;
-    justify-self: center;
-    margin-top: 1rem;
-  }
-  
-  .card-body .medium-button {
+.card-body .medium-button {
   background-color: orange; 
   color: white;
   padding: 0.5rem;
@@ -129,24 +121,24 @@
   outline: none;
   font-size: 14px;
   font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
 }
 
 .custom-field .waitInput {
   width: 300px;
   height: 50px;
-  border: none;
+  border:solid rgb(223, 174, 174);
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
   background: #f2f2f2;
   padding: 12px;
-  border:solid rgb(223, 174, 174);
   border-radius: 10px;
   outline: none;
   font-size: 14px;
   font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
 }
-
 
 .custom-field textarea {
   width: 300px;
@@ -226,11 +218,10 @@
   color: #222;
 }
 
-  .ask-image{
+.ask-image{
   width: 300px;
   height: 100%;
 }
-
 
 .help-image {
   width: 300px;
@@ -241,6 +232,7 @@
   justify-items: center;
   margin-left: 30px;
 }
+
 
  .create-container .map {
     height: 140px;
@@ -261,6 +253,17 @@
     
   } */
   
+
+
+.location-field .waitInput {
+  width: 300px;
+  height: 50px;
+  outline: none;
+  font-size: 14px;
+  border:solid rgb(223, 174, 174);
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+}
 
 
 @media (min-width: 750px) {
@@ -293,44 +296,40 @@
 }
 
 @media (min-width: 950px) {
-
-.create-container {
+  .create-container {
     display: grid;
     grid-template-columns:  1fr 1fr;
-   justify-content: center;
+    justify-content: center;
   }
 
-.card-container {
-
+  .card-container {
     margin-left: 15px;
     justify-self: center;
   }
-.createcard {
+
+  .createcard {
     height: 100%;
     width: 90%;
     justify-self: center;
     margin-top: 20px;
   }
-  
+
   .right .help-image{
     width: 600px;
     height: 550px;
     margin-top: 0px;
   }
 
-.ask-image{
-  width: 600px;
-  height: 600px;
- margin-top:10px ;
-}
+  .ask-image{
+    width: 600px;
+    height: 600px;
+    margin-top:10px ;
+  }
 
-   .create-container .map {
+  .create-container .map {
     height: 500px;
     width: 500px;
     margin-top: 30px;
     border-radius: 8px;
-
-  }
-  
-  
+  } 
 }

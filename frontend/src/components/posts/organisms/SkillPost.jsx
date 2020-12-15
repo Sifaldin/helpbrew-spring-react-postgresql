@@ -2,6 +2,10 @@ import { useState } from "react";
 import Api from "../../../api/Api";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 import SharedSinglePost from "./SharedSinglePost";
+import ChatApi from "../../../api/ChatApi";
+import { useHistory } from "react-router-dom";
+import { format } from "date-fns";
+import { BsClock } from "react-icons/bs";
 
 //Displays post belonging to skills category.
 export default function SkillPost({
@@ -11,9 +15,11 @@ export default function SkillPost({
   posts,
   threadHandler,
 }) {
+  const history = useHistory();
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
   );
+  const [showList, setShowList] = useState(false);
 
   const updatePost = () => {
     const updatedPost = { ...post, meetingTimeAndDate: selectedDateAndTime };
@@ -27,7 +33,6 @@ export default function SkillPost({
 
   const dateDisplay = () => {
     if (post.meetingTimeAndDate !== null) {
-      console.log(post.meetingTimeAndDate);
       return post.meetingTimeAndDate.slice(0, 10);
     }
   };
@@ -39,7 +44,6 @@ export default function SkillPost({
 
   const alreadyRegistered = () => {
     const emails = post.registeredUsers.map((user) => user.email);
-    console.log(emails);
     if (emails.includes(user.email)) {
       return true;
     } else {
@@ -63,6 +67,16 @@ export default function SkillPost({
     }
   };
 
+  const getParticipants = () => {
+    return post.registeredUsers.map((user) => {
+      return (
+        <li>
+          {user.name}, {user.email}
+        </li>
+      );
+    });
+  };
+
   const bookSpot = () => {
     const updatedPost = {
       ...post,
@@ -76,6 +90,36 @@ export default function SkillPost({
     });
   };
 
+  const sendUserConfirmation = () => {
+    const createOrDirect = async () => {
+      try {
+        const response = await ChatApi.createThread(user, {
+          title: "Automatic confirmation",
+        });
+        const thread = response.data;
+        console.log(thread);
+
+        ChatApi.createMessage(thread.id, user, {
+          messageBody: `This is a confirmation of your booking to the event ${
+            post.title
+          } held by ${
+            post.user.name
+          } on ${dateDisplay()} at ${timeDisplay()}. Use Unbook button on the post page if you cannot make it.`,
+          thread: { id: thread.id },
+          date: format(new Date(), "dd-MMM-yyyy HH:MM"),
+        });
+
+        history.push({
+          pathname: `/posts/${post.id}`,
+          state: { thread },
+        });
+      } catch (e) {
+        console.log(e);
+      }
+    };
+    createOrDirect();
+  };
+
   const handleBooking = () => {
     if (alreadyRegistered()) {
       window.alert("You have already reserved a spot at this event");
@@ -83,7 +127,10 @@ export default function SkillPost({
       window.alert("You cannot book spot at your own event");
     } else {
       bookSpot();
-      window.alert("Your spot has been booked.");
+      sendUserConfirmation();
+      window.alert(
+        "You have booked a spot and a confirmation message has been sent to you."
+      );
     }
   };
 
@@ -135,60 +182,98 @@ export default function SkillPost({
       {/* consists of SharedSinglePost - component that displays post information
       {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
-
-      <div className="show-map">
-        {post.meetingTimeAndDate !== null ? (
-          <div>
-            <h1>{` Meeting date: ${dateDisplay()}`}</h1>
-            <h1>{` Meeting Time: ${timeDisplay()}`}</h1>
-          </div>
-        ) : null}
-        {post.user.id === user.id && post.meetingTimeAndDate !== null ? (
-          <div>
-            <MaterialUiCalendar
-              selectedDateAndTime={selectedDateAndTime}
-              setSelectedDateAndTime={setSelectedDateAndTime}
-            />
-            <button
-              className="medium-button edit"
-              onClick={(e) => {
-                updatePost();
-              }}
-            >
-              edit date
-            </button>
-          </div>
-        ) : null}
-
-        <div>
-          {yourEvent() ? (
-            eventFull() ? (
-              <button className="medium-button">Fully booked</button>
-            ) : (
-              <span>{`${post.registeredUsers.length} out of ${post.eventCapacity} spot(s) have been booked at your event`}</span>
-            )
-          ) : (
-            <div>
+      <div className="time-related">
+        <div className="show-map date-booking">
+          <div className="time-box">
+            {post.meetingTimeAndDate !== null ? (
+              <div className="event-time">
+                <BsClock></BsClock>
+                <div>
+                  <span>
+                    {dateDisplay()} at {timeDisplay()}
+                  </span>
+                  {/* <span>{timeDisplay()}</span> */}
+                </div>
+              </div>
+            ) : null}
+            {post.user.id === user.id && post.meetingTimeAndDate !== null ? (
               <div>
-                {alreadyRegistered() ? (
-                  <button className="medium-button" onClick={handleUnbooking}>
-                    Unbook
+                <MaterialUiCalendar
+                  selectedDateAndTime={selectedDateAndTime}
+                  setSelectedDateAndTime={setSelectedDateAndTime}
+                />
+                <button
+                  className="medium-button edit"
+                  onClick={(e) => {
+                    updatePost();
+                  }}
+                >
+                  edit date
+                </button>
+              </div>
+            ) : null}
+          </div>
+          <div className="participants-wrapper">
+            {yourEvent() ? (
+              <div className="participants">
+                {showList ? (
+                  <div>
+                    <button
+                      className="medium-button"
+                      onClick={() => setShowList(false)}
+                    >
+                      Hide participants
+                    </button>
+                    {getParticipants()}
+                  </div>
+                ) : (
+                  <button
+                    className="medium-button"
+                    onClick={() => setShowList(true)}
+                  >
+                    See participants
                   </button>
-                ) : eventFull() ? (
+                )}
+                {eventFull() ? (
                   <button className="medium-button">Fully booked</button>
                 ) : (
-                  <div>
-                    <button className="medium-button" onClick={handleBooking}>
-                      Book your spot
-                    </button>
-                    <span className="available-spots">{`There are ${
-                      post.eventCapacity - post.registeredUsers.length
-                    } spots availbale at this event.`}</span>
-                  </div>
+                  <span>{`${post.registeredUsers.length} out of ${post.eventCapacity} spot(s) have been booked at your event`}</span>
                 )}
               </div>
-            </div>
-          )}
+            ) : (
+              <div>
+                <div className="unbook-user">
+                  {alreadyRegistered() ? (
+                    <div className="unbook-user">
+                      <p>You have reserved a spot at this event.</p>
+                      <button
+                        className="medium-button"
+                        onClick={handleUnbooking}
+                      >
+                        Unbook
+                      </button>
+                    </div>
+                  ) : eventFull() ? (
+                    <button
+                      className="medium-button"
+                      style={{ backgroundColor: "red" }}
+                    >
+                      Fully booked
+                    </button>
+                  ) : (
+                    <div className="book-user">
+                      <button className="medium-button" onClick={handleBooking}>
+                        Book your spot
+                      </button>
+                      <span className="available-spots">{`There are ${
+                        post.eventCapacity - post.registeredUsers.length
+                      } spots availbale at this event.`}</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
         </div>
       </div>
 
