@@ -111,7 +111,7 @@ export default function SkillPost({
         });
 
         history.push({
-          pathname: `/chat/${thread.id}`,
+          pathname: `/posts/${post.id}`,
           state: { thread },
         });
       } catch (e) {
@@ -129,6 +129,9 @@ export default function SkillPost({
     } else {
       bookSpot();
       sendUserConfirmation();
+      window.alert(
+        "You have booked a spot and a confirmation message has been sent to you."
+      );
     }
   };
 
