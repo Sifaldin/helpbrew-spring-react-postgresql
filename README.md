@@ -9,6 +9,12 @@ HelpBrew was built with React, Spring, CSS and HTML.
 
 ### Used technologies
 
+VS Code
+IntellijIdea
+Docker
+
+
+
 
 
 
