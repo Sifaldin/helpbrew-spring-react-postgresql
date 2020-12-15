@@ -115,6 +115,7 @@
   clear: both;
   display: flex;
   align-items: center;
+  background-color: rgb(241, 238, 238);
 }
 
 .chat_people .chat-user-name {
@@ -126,6 +127,8 @@
   border-bottom: 1px solid #ddd;
   margin: 0;
   padding: 18px 16px 10px;
+  display: grid;
+  grid-row-gap: 0.2rem;
 }
 
 .inbox_chat {
@@ -134,12 +137,13 @@
 }
 
 .active_chat {
-  background: #e5e5e5;
+  /* background: #e5e5e5; */
 }
 
 .incoming_msg_img {
   display: inline-block;
-  width: 6%;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 }
 
@@ -193,13 +197,16 @@
 }
 
 .outgoing_msg {
-  overflow: hidden;
-  margin: 26px 0 26px;
+  /* overflow: hidden;
+  margin: 26px 0 26px; */
   display: grid;
   grid-template-columns: 1fr auto;
+  justify-items: end;
+  width: 100%;
 }
 
 .sent_msg {
+  max-width: 100%;
   /* float: right;
   width: 46%; */
 }
@@ -244,4 +251,20 @@
 .msg_history {
   height: 516px;
   overflow-y: auto;
+}
+
+.chat_people.selected {
+  background-color: rgb(196, 218, 250);
+}
+
+.chat_people > * {
+  pointer-events: none;
+}
+
+@media (min-width: 800px) {
+  .sent_msg {
+    max-width: 40vw;
+    /* float: right;
+  width: 46%; */
+  }
 }

@@ -58,6 +58,8 @@
   padding-top: 0;
   display: grid;
   grid-row-gap: 1rem;
+  min-height: 200px;
+  align-items: start;
 }
 
 .category-box .bottom .category-name {

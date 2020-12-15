@@ -91,7 +91,6 @@ export default function SkillPost({
   };
 
   const sendUserConfirmation = () => {
-    console.log(user);
     const createOrDirect = async () => {
       try {
         const response = await ChatApi.createThread(user, {
