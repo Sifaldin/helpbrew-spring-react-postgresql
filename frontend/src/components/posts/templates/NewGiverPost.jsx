@@ -10,7 +10,7 @@ import axios from "axios";
 import { GrMapLocation } from 'react-icons/gr'
 import Error from "../../notifications/Error";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
-import giveAwayscreate from "../../../assets/giveAways-create.jpg";
+import giveAwayscreate from "../../../assets/createPost.png";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ posts, setPosts, user }) {
@@ -27,7 +27,6 @@ function NewGiverPost({ posts, setPosts, user }) {
   const [displayError, setDisplayError] = useState(false);
   const [eventCapacity, setEventCapacity] = useState(1);
 
-  console.log(user);
   /* calendar related hook */
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     new Date()
@@ -187,11 +186,11 @@ function NewGiverPost({ posts, setPosts, user }) {
                 <input
                   type="text"
                   required
-
-                  className="location-input"
+                
+                  // className="location-input"
                   placeholder="Pick-Up Location"
 
-                  className={`${position.length>0 ? 'location-input' : 'waitInput'}`}
+                  className={`${locationInput.length>0 ? 'location-input' : 'waitInput'}`}
 
                   onChange={(e) => setLocationInput(e.target.value)}
                   
@@ -212,23 +211,38 @@ function NewGiverPost({ posts, setPosts, user }) {
             {/* Depending on the category chosen by user from drop-down menu,
             a field for entering a pick-up location will be displayed or not */}
             {postCategory === "skills" ? (
-              <div>
-                <MaterialUiCalendar
-                  selectedDateAndTime={selectedDateAndTime}
-                  setSelectedDateAndTime={setSelectedDateAndTime}
-                />
+           
+              
+              
+                
 
                 <label className="custom-field">
                   <input
                     type="text"
                     required
-                    className="card-input"
+                    className={`${eventCapacity.length > 0 ? 'card-input' : 'waitInput'}`}
+                    
                     onChange={(e) => setEventCapacity(e.target.value)}
                   />
                   <span className="placeholder">Number of spots</span>
+                
                 </label>
-              </div>
+              
             ) : null}
+
+          {postCategory === "skills" ? (
+
+
+
+            <MaterialUiCalendar
+              selectedDateAndTime={selectedDateAndTime}
+              setSelectedDateAndTime={setSelectedDateAndTime}
+            />
+
+            
+
+          ) : null}
+          
 
             <div>
               <button
