@@ -62,7 +62,8 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
           </button> */}
 
           <div className={"uploader"}>
-            <ProfileImageUploader setImgUrl={setImgUrl} />
+            <ProfileImageUploader setImgUrl={setImgUrl} 
+            />
             <button
               className="share-btn"
               onClick={() => {

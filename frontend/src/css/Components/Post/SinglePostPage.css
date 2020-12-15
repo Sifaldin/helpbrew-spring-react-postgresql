@@ -166,7 +166,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 }
 
 .button-group .medium-button {
-  background-color: orange;
+  background-color: #ff75ac;
 }
 
 .button-group button:first-child {

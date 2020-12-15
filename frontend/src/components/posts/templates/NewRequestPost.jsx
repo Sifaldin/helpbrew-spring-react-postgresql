@@ -1,11 +1,11 @@
-import { colors } from "@material-ui/core";
+
 import { format } from "date-fns";
 import React, { useState } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import Api from "../../../api/Api";
 import { useNotification } from "../../notifications/NotificationProvider";
 import ImageUploader from "../molecules/ImageUploader";
-import giveAwaycreate from "../../../assets/giveAways-create.jpg";
+import giveAwaycreate from "../../../assets/createPost.png";
 
 function NewRequestPost({ setPosts, user }) {
     const history = useHistory();

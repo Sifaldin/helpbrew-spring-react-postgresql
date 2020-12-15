@@ -34,7 +34,7 @@ const Modal = forwardRef( (props, ref) => {
                 <div className={"modal-box"}>
                     <div className="modal-icon">
                         <Link exact to="/">
-                                <IoMdCloseCircle color="orange" onClick={() => ref.current.close() } />
+                                <IoMdCloseCircle color="#ff75ac" onClick={() => ref.current.close() } />
                         </Link>
                         </div>
                         <div className="modal-body">
@@ -51,7 +51,7 @@ const Modal = forwardRef( (props, ref) => {
                                 }
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><RiHandHeartFill color="orange"/><p>Give</p>  </div> 
+                                    <div className="give_ask"><RiHandHeartFill color="#1e6fbf"/><p>Give</p>  </div> 
                             </Link>
                             </h1>
                             <h1>
@@ -67,7 +67,7 @@ const Modal = forwardRef( (props, ref) => {
 
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><FaHandsHelping color="orange" /><p>Ask For</p> </div> 
+                                    <div className="give_ask"><FaHandsHelping color="#1e6fbf" /><p>Ask For</p> </div> 
                             </Link>
                             </h1>
                         </div>

@@ -4,6 +4,7 @@
   height: 60vh;
   top: 20%;
   left: 10%;
+  
 }
 
 .image-menu-wrapper .modal-box {
@@ -11,12 +12,14 @@
   height: 80%;
   display: grid;
   grid-template-rows: auto 1fr;
+  
 }
 
 .image-menu-wrapper .modal-box .image-edit-body {
   display: grid;
   justify-self: center;
   justify-items: center;
+  
 }
 
 

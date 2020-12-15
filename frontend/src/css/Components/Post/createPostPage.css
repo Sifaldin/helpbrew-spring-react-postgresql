@@ -6,6 +6,30 @@
   margin-top: 20px;
 }
 
+
+/* .location-input-button .updateText {
+  border-top: none;
+} */
+ .location-field .waitInput {
+    width: 300px;
+    height: 50px;
+    outline: none;
+    font-size: 14px;
+    border: none;
+    /* border:solid rgb(223, 174, 174); */
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+    border-radius: 10px;
+    background-color: #f2f2f2;
+    padding: 12px;
+    color: black;
+  
+  }
+  
+  ::placeholder {
+    color: black;
+  }
+
 .location-input {
   width: 300px;
   height: 50px;
@@ -22,35 +46,23 @@
   color: black;
 }
 
-.location-field .waitInput{
-  width: 300px;
-  height: 50px;
-  border:solid rgb(223, 174, 174);
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-  background: #f2f2f2;
-  padding: 12px;
-  border-radius: 10px;
-  outline: none;
-  font-size: 14px;
-  font-family: "Source Sans Pro", sans-serif;
-  color: black;
-}
+.location-input-button {
 
-.location-input-button{
-  height: 40px;
-  width: 40px;
   position: absolute;
-  top: 5px;
-  bottom: 5px;
-  right: 5px;
+  top: 0px;
+  bottom: 0px;
+  right: 0px;
   border: none;
   background-color: #f2f2f2;
   padding-right: 20px;
-  border-radius: 10px;
   appearance: none;
   outline: none;
+  /* border-right: solid rgb(223, 174, 174);
+  border-bottom: solid rgb(223, 174, 174);
+  border-top: solid rgb(223, 174, 174); */
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+
 }
 
 .page-title h1 {
@@ -76,7 +88,7 @@
   width: 10rem;
   justify-self: center;
   margin-bottom: 8px;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 .createcard {
@@ -155,8 +167,25 @@
   border-radius: 10px;
   outline: none;
   font-size: 14px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Source Sans Pro", sans-serif; 
+  
+
+
 }
+/* .location-input-button   {
+  width: 300px;
+  height: 80px;
+  border: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: #fffcfc;
+  padding: 12px;
+  border-radius: 10px;
+  outline: none;
+  font-size: 14px;
+  font-family: "Source Sans Pro", sans-serif;
+} */
 
 .custom-field {
   position: relative;
@@ -204,9 +233,27 @@
   margin-left: 30px;
 }
 
-.create-container .map {
-  height: 140px;
-}
+
+ .create-container .map {
+    height: 140px;
+ }
+  .custom-field .waitInput {
+    width: 300px;
+    height: 50px;
+    outline: none;
+    font-size: 14px;
+    border:solid rgb(223, 174, 174);
+    font-family: "Source Sans Pro", sans-serif;
+    font-weight: 400;
+  }
+  
+  /* .calendar-position MaterialUiCalendar{
+    justify-content: center;
+    justify-self: center;
+    
+  } */
+  
+
 
 .location-field .waitInput {
   width: 300px;
@@ -218,33 +265,34 @@
   font-weight: 400;
 }
 
-.card-body .medium-button {
-  width: 10rem;
-  justify-self: center;
-  margin-top: 1rem;
+
+@media (min-width: 750px) {
+ .create-container {
+    display: grid;
+    grid-template-columns:  1fr 1fr;
+   justify-content: center;
+   margin: 20px 0px 0px 20px;
+  }
+  
+  .ask-image{
+  width: 400px;
+  height: 100%;
+ 
 }
 
 
-@media (min-width: 700px) {
-  .ask-image{
-    width: 400px;
-    height: 100%;
-  }
-
-  .right .help-image {
-    width: 400px;
+.right .help-image {
+  width: 380px;
+  height: 550px; 
+}
+.create-container .map {
     height: 400px;
-    text-align: center;
-    /* box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5); */
-    float: left;
-  }
-  .create-container .createmap {
-    height: 400px;
-    width: 500px;
-    /* display: flex;
+    width: 400px;
+    display: flex;
     justify-content: center;
-    border-radius: 8px; */
-  }
+    border-radius: 8px;
+    margin-top: 10px;
+}
 }
 
 @media (min-width: 950px) {
