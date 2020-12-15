@@ -4,6 +4,7 @@ import monetarySupport from "../../../assets/monetary-support.jpg";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { RiArrowDropDownLine } from "react-icons/ri";
+import ReactTooltip from 'react-tooltip';
 
 //CategoryBox is a box inside the dashboard. It displays posts within a certain category posted by
 //the logged in user.
@@ -67,14 +68,16 @@ export default function CategoryBox({ category, posts }) {
 
         {/* Toggling the button(requested/given) allows to see only posts requested or given by user */}
         <button
+          data-tip="Click here to change"
           className="toggleButton"
-          title="Click to change"
           onClick={() =>
             type === "requested" ? setType("given") : setType("requested")
           }
         >
           {type} <RiArrowDropDownLine />
         </button>
+
+        <ReactTooltip/>
 
         {/* !!! The posts below will be displayed in a different way depending on the category
         This stays to be done during next iteration!
