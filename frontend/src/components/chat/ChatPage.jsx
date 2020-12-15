@@ -17,19 +17,19 @@ function ChatPage({ id, thread, loggedInUser }) {
   var [messageArray, setMessageArray] = useState(thread.thread);
 
   //messageArray = null;
-  const sendMessage = async () => {
-    try {
-      const response = await ChatApi.createMessage(id, receiver, {
-        messageBody: messageText.text,
-        thread: { id: id },
-        date: format(new Date(), "dd-MMM-yyyy HH:MM"),
-      });
-      setMessageArray([...messageArray, response.data]);
-      setMessageText({ text: "" });
-    } catch (e) {
-      console.log(e);
-    }
-  };
+  // const sendMessage = async () => {
+  //   try {
+  //     const response = await ChatApi.createMessage(id, receiver, {
+  //       messageBody: messageText.text,
+  //       thread: { id: id },
+  //       date: format(new Date(), "dd-MMM-yyyy HH:MM"),
+  //     });
+  //     setMessageArray([...messageArray, response.data]);
+  //     setMessageText({ text: "" });
+  //   } catch (e) {
+  //     console.log(e);
+  //   }
+  // };
 
   useEffect(() => {
     const poll = setInterval(() => {

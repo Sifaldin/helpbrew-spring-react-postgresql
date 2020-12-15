@@ -57,18 +57,18 @@ export default function CategoryBox({ category, posts }) {
         {/* image should be added as a background here */}
         {/* toggle thing to add */}
         <h2>{formatCategory(category)}</h2>
-
-        
       </div>
 
       {/* the bottom of the box contains category name with a number of posts and posts icons and titles */}
       <div className="bottom">
-        <span className="category-name">
+        {/* <span className="category-name">
           Your {formatCategory(category)}({getPosts().length}): 
-        </span>
+        </span> */}
 
         {/* Toggling the button(requested/given) allows to see only posts requested or given by user */}
-        <button className="toggleButton" title="Click to change"
+        <button
+          className="toggleButton"
+          title="Click to change"
           onClick={() =>
             type === "requested" ? setType("given") : setType("requested")
           }
