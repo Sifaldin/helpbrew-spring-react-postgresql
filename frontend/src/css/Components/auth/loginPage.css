@@ -2,32 +2,38 @@
 * {
   margin: 0%;
 }
+
 .loginpage {
-  background-image: url("..//..//../assets/austin-kehmeier-lyiKExA4zQA-unsplash\ 1.png");
+  background-image: url("..//..//../assets/studying-guy.webp");
   background-repeat: no-repeat;
-  background-position: right 35% ;
+  background-position: right 35%;
   min-height: 100vh;
-  overflow:hidden;
+  overflow: hidden;
   background-color: rgb(255, 255, 255);
+  display: grid;
+  justify-content: center;
 }
 
-
-.logo {
-  position: fixed;
+.loginpage-text {
+  position: relative;
   left: 15.5%;
   top: 22%;
   max-width: 300px;
   text-align: left;
 }
 
-
-
+.loginGrid {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: 1fr 1fr;
+}
 
 .signinform {
+  margin-top: 20rem;
   text-align: end;
-  border-style: none;
-  margin-top: 17rem;
   font-family: Source-Sans-Pro;
+  background-color: rgba(48, 46, 46, 0.5);
+  border-radius: 0.5rem 0rem 0rem 0.5rem; 
 }
 
 .signinform input {
@@ -40,16 +46,23 @@
   border-radius: 1rem;
 }
 
-.signin-1,
-.signin2 {
-  margin: 1.5rem;
+.signin-1, .signin2 {
+  margin: 1rem;
+}
+
+.signin-1 input{
+  margin-top: 10px;
+}
+
+.signup1 input{
+  margin-top: 10px;
 }
 
 .signinform .submitButton {
   background: none;
   height: 4rem;
   width: 25rem;
-  margin-right: 16.5rem;
+  margin-right: 16rem;
   background-color: #F2994A;
   border-style: none;
   border-radius: 1rem;
@@ -57,26 +70,23 @@
   cursor: pointer;
 }
 
-.signinform .smallButton{
+.signinform .smallButton {
   border: none;
-  outline:none;
-  background:none;
+  outline: none;
+  background: none;
   margin-top: 5px;
-
   margin-bottom: 1rem;
   margin-right: 27rem;
-
-
   font-size: 14px;
   font-style: italic;
   cursor: pointer;
   color: white;
 }
 
-.signinform .gotoRegister{
+.signinform .gotoRegister {
   border: none;
-  outline:none;
-  background:none;
+  outline: none;
+  background: none;
   margin-top: 16px;
   margin-bottom: 0px;
   margin-right: 27rem;
@@ -87,10 +97,17 @@
 }
 
 .signupform {
+  margin-top: 18rem;
   text-align: end;
   border-style: none;
-  margin-top: 15rem;
   font-family: Source-Sans-Pro;
+  
+}
+
+.signupBox{
+  background-color: rgba(48, 46, 46, 0.5);
+  border-radius: 0.5rem 0rem 0rem 0.5rem; 
+
 }
 
 .signupform input {
@@ -103,9 +120,7 @@
   border-radius: 1rem;
 }
 
-.signup1,
-.signup2,
-.signup3 {
+.signup1, .signup2, .signup3 {
   margin: 1.5rem;
 }
 
@@ -114,109 +129,82 @@
   height: 4rem;
   width: 25rem;
   margin-right: 16.5rem;
-  background-color:#F2994A;
+  background-color: #F2994A;
   border-style: none;
   border-radius: 1rem;
   color: white;
   cursor: pointer;
 }
 
-.signupform .smallButton{
+.signupform .smallButton {
   border: none;
-  outline:none;
-  background:none;
+  outline: none;
+  background: none;
   margin-top: 5px;
   margin-bottom: 20px;
   margin-right: 17rem;
   font-style: italic;
   cursor: pointer;
+  color: white;
+
 }
 
-@media (max-width: 450px){
-  .logo {
-    position: fixed;
-    left: 13%;
-    top: 0%;
+@media (max-width: 1000px) {
+  .loginGrid {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+  .loginpage-text {
+    position: relative;
     max-width: 300px;
-    text-align: left;
+    margin: 1rem;
+    top: 30px;
+    left: 200px;
   }
+  .login-info {
+    justify-content: center;
+  }
+  .signinform {
+    margin-top: 0rem;
+    position: relative;
+    margin: 1px;
+    left: 7.5rem;
+  }
+  .signin3 {
+    position: relative;
+    left: 0.5rem;
+  }
+  .signupform {
+    margin-top: 0rem;
+    position: relative;
+    margin: 1px;
+    left: 7.5rem;
+  }
+}
 
-  .signinform input {
-    padding: 1.3rem;
-    margin-right: 5rem;
-    border-style: solid 0.02rem;
+@media (max-width: 410px) {
+  .loginpage-text {
+    max-width: 250px;
+    left: 8rem;
+  }
+  .signin-1 input, .signin2 input {
+    margin-right: 15.5rem;
     height: 3rem;
-    width: 18rem;
-    border: none;
-    border-radius: 1rem;
+    width: 16rem;
   }
-
-  .signinform .submitButton {
-    background: none;
-    height: 3rem;
-    width: 18rem;
-    margin-right: 9px;
-    background-color: #F2994A;
-    border-style: none;
-    border-radius: 1rem;
-    color: white;
-    cursor: pointer;
+  .signin3 .submitButton {
+    width: 17rem;
+    margin-right: 16.5rem;
   }
-
-  .signinform .smallButton{
-    border: none;
-    outline:none;
-    background:none;
-    margin-top: 5px;
-    margin-bottom: 1rem;
-    margin-right: 7rem;
-    font-size: 14px;
-    font-style: italic;
-    cursor: pointer;
-    color: white;
-  }
-  .signinform .gotoRegister{
-    border: none;
-    outline:none;
-    background:none;
-    margin-top: 16px;
-    margin-bottom: 5px;
-    margin-right: 8rem;
-    font-size: 14px;
-    font-style: italic;
-    cursor: pointer;
-    color: white;
-  }
-
   .signupform input {
-    padding: 1.3rem;
-    margin-right: 15rem;
-    border-style: solid 0.02rem;
+    margin-right: 15.5rem;
     height: 3rem;
-    width: 18rem;
-    border: none;
-    border-radius: 1rem;
+    width: 16rem;
   }
   .signupform .submitButton {
-    background: none;
-    height: 3rem;
-    width: 18rem;
-    margin-right: 6px;
-    background-color:#F2994A;
-    border-style: none;
-    border-radius: 1rem;
-    color: white;
-    cursor: pointer;
-  }
-  .signupform .smallButton{
-    border: none;
-    outline:none;
-    background:none;
-    margin-top: 5px;
-    margin-bottom: 20px;
-    margin-right: 7rem;
-    font-style: italic;
-    cursor: pointer;
+    width: 17rem;
+    margin-right: 16.5rem;
   }
 
 }
