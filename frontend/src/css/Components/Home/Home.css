@@ -88,6 +88,15 @@
   justify-self: start;
 }
 
+.toggleButton {
+  border: none;
+  background-color: #ffffff;
+}
+
+.toggleButton:hover{
+  border: 1 px solid #888;
+  background-color:antiquewhite ;
+}
 /* big screens */
 @media (min-width: 600px) {
   .category-box .top {
