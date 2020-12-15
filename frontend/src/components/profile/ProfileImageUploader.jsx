@@ -44,11 +44,11 @@ export default function ImageUploader({ setImgUrl }) {
     <ReactImageUploadComponent
       singleImage={true}
       onChange={updateImage}
-      buttonText="Choose Image"
-      withPreview={false}
+      buttonText="Edit Image"
+      withPreview={true}
       withLabel={false}
       withIcon={false}
-      buttonStyles={{ background: "#F2994A" }}
+      buttonStyles={{ background: "#1e6fbf", borderRadius: "8px" }}
       buttonClassName="upload-button"
     />
   );
