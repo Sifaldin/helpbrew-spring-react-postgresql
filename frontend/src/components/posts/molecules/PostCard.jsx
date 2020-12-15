@@ -13,6 +13,75 @@ function PostCard({ post, loggedInUser }) {
   console.log(loggedInUser);
   const [reaction, setReaction] = useState(post.reaction);
   const history = useHistory();
+
+  const getAvailability = () => {
+    //Available variable checks if there are any spots available at the event or if
+    // an item has been reserved by someone in case of giveaway post
+    //When a giveaway post created eventCapacity is set to 1 automatically
+
+    const available = post.eventCapacity - post.registeredUsers.length;
+
+    switch (available) {
+      case 0: {
+        switch (post.category) {
+          case "skills": {
+            return (
+              <span className="small-button" style={{ backgroundColor: "red" }}>
+                Full
+              </span>
+            );
+          }
+
+          case "giveaways": {
+            return (
+              <span className="small-button" style={{ backgroundColor: "red" }}>
+                Reserved
+              </span>
+            );
+          }
+
+          default:
+            return null;
+        }
+      }
+      case 1: {
+        switch (post.category) {
+          case "skills": {
+            return (
+              <span
+                className="small-button"
+                style={{ backgroundColor: "green" }}
+              >
+                1 spot
+              </span>
+            );
+          }
+
+          case "giveaways": {
+            return (
+              <span
+                className="small-button"
+                style={{ backgroundColor: "green" }}
+              >
+                Available
+              </span>
+            );
+          }
+
+          default:
+            return null;
+        }
+      }
+      default: {
+        return (
+          <span className="small-button" style={{ backgroundColor: "green" }}>
+            {`${available} spots`}
+          </span>
+        );
+      }
+    }
+  };
+
   const incrementLike = () => {
     const url = "/reactions/" + reaction.id + "?incrementTarget=like";
     Api.put(url, reaction).then((r) => {
@@ -29,9 +98,11 @@ function PostCard({ post, loggedInUser }) {
 
   const threadHandler = () => {
     const createOrDirect = async () => {
+      console.log(post.title);
       try {
-        const response = await ChatApi.createThread(post.user, {});
-        console.log(response);
+        const response = await ChatApi.createThread(post.user, {
+          title: post.title,
+        });
         const thread = response.data;
         console.log(thread);
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
@@ -79,7 +150,7 @@ function PostCard({ post, loggedInUser }) {
           {post.claimed ? (
             <span className="small-button">Claimed</span>
           ) : (
-            <span className="small-button">Available</span>
+            getAvailability()
           )}
           {/* <span className="post-date">{post.date}</span> */}
         </div>
@@ -105,15 +176,17 @@ function PostCard({ post, loggedInUser }) {
             View post
           </Link>
 
-          <div>
-            <button
-              className="mes-button"
-              onClick={threadHandler}
-              type="submit"
-            >
-              <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            </button>
-          </div>
+          {loggedInUser.email === post.user.email ? null : (
+            <div>
+              <button
+                className="mes-button"
+                onClick={threadHandler}
+                type="submit"
+              >
+                <i className="fa fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+          )}
         </div>
         <hr />
         {/* Once View Post button is clicked by user, user is redirected to 

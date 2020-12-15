@@ -62,6 +62,16 @@
   margin: 0 0 0 -27px;
 }
 
+.chat-user-name .name span {
+  display: block;
+  color: black;
+}
+
+.chat-user-name .name {
+  display: grid;
+  grid-row-gap: 0.3rem;
+}
+
 .chat_ib h5 {
   font-size: 15px;
   color: #464646;
@@ -86,10 +96,12 @@
 .chat_img {
   float: left;
   width: 11%;
+  border-radius: 50%;
 }
 
 .chat_img img {
   width: 100%;
+  border-radius: 50%;
 }
 
 .chat_ib {
@@ -128,10 +140,12 @@
 .incoming_msg_img {
   display: inline-block;
   width: 6%;
+  border-radius: 50%;
 }
 
 .incoming_msg_img img {
   width: 100%;
+  border-radius: 50%;
 }
 
 .received_msg {
@@ -181,11 +195,17 @@
 .outgoing_msg {
   overflow: hidden;
   margin: 26px 0 26px;
+  display: grid;
+  grid-template-columns: 1fr auto;
 }
 
 .sent_msg {
-  float: right;
-  width: 46%;
+  /* float: right;
+  width: 46%; */
+}
+
+.outgoing_msg .incoming_msg_img {
+  justify-self: end;
 }
 
 .input_msg_write input {

@@ -26,9 +26,9 @@ public class MessageThreadService {
     }
 
     // Refer to comment in MessageThreadRepository
-    public MessageThread findByEmails(User user1, User user2) {
+    public MessageThread findByEmails(User user1, User user2, String title) {
 
-        return repository.findByUser1EmailAndUser2Email(user1.getEmail(), user2.getEmail());
+        return repository.findByUser1EmailAndUser2EmailAndTitle(user1.getEmail(), user2.getEmail(), title);
     }
 
     public MessageThread create(MessageThread newThread) {

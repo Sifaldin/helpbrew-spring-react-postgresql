@@ -1,35 +1,52 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import Comments from "../../comments/templates/Comments";
 import PostUpdateForm from "../templates/PostUpdateForm";
 import Api from "../../../api/Api";
 import { useHistory } from "react-router-dom";
 import ChatApi from "../../../api/ChatApi";
 import { useNotification } from "../../notifications/NotificationProvider";
+import ConfirmModal from "../templates/ConfirmModal";
 
 //Displays post belonging to giveaway category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
-export default function SharedSinglePost({ post, setPosts, user }) {
+export default function SharedSinglePost({
+  post,
+  setPosts,
+  user,
+  posts,
+  threadHandler,
+}) {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [curPost, setCurPost] = useState(post);
-
   const history = useHistory();
+
+  console.log(threadHandler);
+
+  // const history = useHistory();
   const receiverEmail = window.sessionStorage.getItem("userEmail");
+
+  const modalRef = useRef();
+
+  const openModal = () => {
+    modalRef.current.openModal();
+  };
 
   const updatePost = (updatedPost) => {
     Api.put("/posts", updatedPost).then((res) => {
-      setCurPost(res.data);
-      // setPosts([...posts, res.data]);
+      console.log(res.data);
+      const updatedPosts = posts.map((post) =>
+        post.id === res.data.id ? res.data : post
+      );
+      setPosts(updatedPosts);
     });
   };
 
   const deletePost = (id) => {
-    if (window.confirm("Are you sure you want to delete this post?")) {
-      Api.delete("/posts/" + post.id).then((res) => {
-        setPosts(res.data);
-        handleDeleteNotification();
-        history.push(`/posts/category/${post.category}`);
-      });
-    }
+    Api.delete("/posts/" + post.id).then((res) => {
+      const updatedPosts = posts.filter((post) => post.id !== res.data.id);
+      setPosts(updatedPosts);
+      handleDeleteNotification();
+      history.push(`/posts/category/${post.category}`);
+    });
   };
 
   //Notification Creator
@@ -39,20 +56,6 @@ export default function SharedSinglePost({ post, setPosts, user }) {
       type: "ERROR",
       message: "Deleting Post!",
     });
-  };
-
-  const threadHandler = () => {
-    const createOrDirect = async () => {
-      try {
-        const response = await ChatApi.createThread(receiverEmail, {});
-        console.log(response);
-        const thread = response.data;
-        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    createOrDirect();
   };
 
   return (
@@ -73,46 +76,43 @@ export default function SharedSinglePost({ post, setPosts, user }) {
           </div>
         </div>
 
-        <h3 className="post-title">{post.title}</h3>
-
         {isUpdating ? (
           <PostUpdateForm
-            post={curPost}
+            post={post}
             onUpdateClick={updatePost}
             setIsUpdating={setIsUpdating}
           />
         ) : (
-          <p className="post-body">{curPost.body}</p>
+          <>
+            <h3 className="post-title">{post.title}</h3>
+            <p className="post-body">{post.body}</p>
+          </>
         )}
 
-        <div className="button-group">
+        {/* The post is deleted only if the email of the logged in user and 
+              email of the user who wrote the post are the same */}
+        {post.user.email === user.email ? (
+          <div className="button-group">
+            <button
+              className="medium-button"
+              onClick={() => setIsUpdating(true)}
+            >
+              Update
+            </button>
+
+            <button className="medium-button" onClick={openModal}>
+              Delete
+            </button>
+          </div>
+        ) : (
           <button className="mes-button" onClick={threadHandler} type="submit">
             <i className="fa fa-paper-plane" aria-hidden="true"></i>
           </button>
-
-          {/* The post is deleted only if the email of the logged in user and 
-              email of the user who wrote the post are the same */}
-          {curPost.user.email === user.email ? (
-            <div className="button-group">
-              <button
-                className="medium-button"
-                onClick={() => setIsUpdating(true)}
-              >
-                Update
-              </button>
-
-              <button
-                className="medium-button"
-                onClick={() => deletePost(curPost.id)}
-              >
-                Delete
-              </button>
-            </div>
-          ) : null}
-        </div>
+        )}
       </div>
       <Comments post={post} />
       {/* </div> */}
+      <ConfirmModal ref={modalRef} handleConfirm={deletePost} />
     </div>
   );
 }

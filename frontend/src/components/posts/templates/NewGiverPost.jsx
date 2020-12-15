@@ -25,23 +25,25 @@ function NewGiverPost({ posts, setPosts, user }) {
   const [address, setAddress] = useState("");
   const [position, setPosition] = useState([]);
   const [displayError, setDisplayError] = useState(false);
+  const [eventCapacity, setEventCapacity] = useState(1);
 
   console.log(user);
   /* calendar related hook */
-  const [selectedDateAndTime, setSelectedDateAndTime] = useState(new Date('2020-01-01T12:00:00'));
+  const [selectedDateAndTime, setSelectedDateAndTime] = useState(
+    new Date()
+  );
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
-      ? imgUrl.length > 0 &&
-      address.length > 0 &&
-      postTitle.length > 0 &&
-      details.length > 0
-      : imgUrl.length > 0 && postTitle.length > 0 && details.length > 0;
+      ? imgUrl !== undefined && imgUrl.length>0 &&
+          address.length > 0 &&
+          postTitle.length > 0 &&
+          details.length > 0
+      : imgUrl !== undefined && imgUrl.length>0 && postTitle.length > 0 && details.length > 0;
   };
-
+  
   const getAll = () => {
     Api.get("/posts").then((res) => {
-
       setPosts(res.data);
     });
   };
@@ -74,11 +76,11 @@ function NewGiverPost({ posts, setPosts, user }) {
       position: position,
       user: user,
       meetingTimeAndDate: selectedDateAndTime,
+      eventCapacity: eventCapacity,
     };
 
     console.log(newPost);
     Api.post("/posts", newPost).then((res) => {
-
       getAll();
 
       setPosts([...posts, res.data]);
@@ -120,8 +122,6 @@ function NewGiverPost({ posts, setPosts, user }) {
     }
   }
 
-  console.log(selectedDateAndTime);
-
   return (
     <div className="create-container">
       
@@ -136,7 +136,7 @@ function NewGiverPost({ posts, setPosts, user }) {
               <select
                 required
                 name="category"
-                className="card-input"
+                className={`${postCategory.length>0 ? 'card-input' : 'waitInput'}`}
                 onChange={(e) => {
                   setPostCategory(e.target.value);
                 }}
@@ -156,7 +156,9 @@ function NewGiverPost({ posts, setPosts, user }) {
               <input
                 type="text"
                 required
-                className="card-input"
+                // className="card-input"
+                className={`${postTitle.length>0 ? 'card-input' : 'waitInput'}`}
+
                 onChange={(e) => setPostTitle(e.target.value)}
               />
               <span className="placeholder">Enter Title </span>
@@ -166,6 +168,8 @@ function NewGiverPost({ posts, setPosts, user }) {
               <textarea
                 type="text"
                 required
+                className={`${details.length>0 ? 'card-input' : 'waitInput'}`}
+
                 // className="card-input"
                 rows="5"
                 onChange={(e) => setDetails(e.target.value)}
@@ -183,8 +187,12 @@ function NewGiverPost({ posts, setPosts, user }) {
                 <input
                   type="text"
                   required
+
                   className="location-input"
                   placeholder="Pick-Up Location"
+
+                  className={`${position.length>0 ? 'location-input' : 'waitInput'}`}
+
                   onChange={(e) => setLocationInput(e.target.value)}
                   
               />
@@ -209,6 +217,16 @@ function NewGiverPost({ posts, setPosts, user }) {
                   selectedDateAndTime={selectedDateAndTime}
                   setSelectedDateAndTime={setSelectedDateAndTime}
                 />
+
+                <label className="custom-field">
+                  <input
+                    type="text"
+                    required
+                    className="card-input"
+                    onChange={(e) => setEventCapacity(e.target.value)}
+                  />
+                  <span className="placeholder">Number of spots</span>
+                </label>
               </div>
             ) : null}
 
@@ -241,11 +259,13 @@ function NewGiverPost({ posts, setPosts, user }) {
           <Map position={position} />
         
         ) : (
+
             <div className="right">
               <img src={giveAwayscreate} className="help-image" alt="give with love" />
             </div>
 
           )}
+
       </div>
       <div></div>
       </div>

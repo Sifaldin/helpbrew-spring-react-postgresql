@@ -29,6 +29,9 @@ public class MessageThread {
     @ManyToOne
     private User user2;
 
+    @Column
+    private String title;
+
     public Long getId() {
         return id;
     }
@@ -56,5 +59,13 @@ public class MessageThread {
 
     public void setUser2(User user2) {
         this.user2 = user2;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

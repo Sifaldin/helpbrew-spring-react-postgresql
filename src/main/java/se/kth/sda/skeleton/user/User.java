@@ -38,6 +38,9 @@ public class User {
     @OneToMany
     private List<Post> posts;
 
+    @ManyToMany(mappedBy = "registeredUsers")
+    private List<Post> events;
+
     @OneToMany List<Comment> comments;
 
     // Hibernate needs a default constructor to function

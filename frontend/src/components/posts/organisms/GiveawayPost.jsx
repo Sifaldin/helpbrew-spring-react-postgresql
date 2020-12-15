@@ -1,12 +1,51 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import Map from "../molecules/Map";
 import SharedSinglePost from "./SharedSinglePost";
+import Api from "../../../api/Api";
+import ChatApi from "../../../api/ChatApi";
 
-export default function GiveawayPost({ post, setPosts, deletePost, user }) {
+export default function GiveawayPost({
+  post,
+  setPosts,
+  deletePost,
+  user,
+  posts,
+  threadHandler,
+}) {
   const [mapVisible, setMapVisible] = useState(false);
+  const [availability, setAvailability] = useState(
+    post.eventCapacity ? "Set item as unavailable" : "Set item as available"
+  );
+  const history = useHistory();
 
   const handleMapToggle = () => {
     mapVisible ? setMapVisible(false) : setMapVisible(true);
+  };
+
+  const toggleAvailability = () => {
+    let updatedPost;
+
+    if (post.eventCapacity === 1) {
+      setAvailability("Set item as available");
+      updatedPost = {
+        ...post,
+        eventCapacity: 0,
+      };
+    } else if (post.eventCapacity === 0) {
+      setAvailability("Set item as unavailable");
+      updatedPost = {
+        ...post,
+        eventCapacity: 1,
+      };
+    }
+
+    Api.put("./posts", updatedPost).then((res) => {
+      const updatedPosts = posts.map((post) =>
+        post.id === res.data.id ? res.data : post
+      );
+      setPosts(updatedPosts);
+    });
   };
 
   return (
@@ -18,6 +57,17 @@ export default function GiveawayPost({ post, setPosts, deletePost, user }) {
       <div className="post-pic">
         <img src={post.imageUrl} alt="Single post img" />
       </div>
+
+      {post.user.email === user.email ? (
+        <button className="medium-button" onClick={toggleAvailability}>
+          {availability}
+        </button>
+      ) : (
+        <p
+          className="contact-link"
+          onClick={threadHandler}
+        >{`Contact ${post.user.name} to reserve the item`}</p>
+      )}
 
       {/* Map is a component unique to giveaway post */}
       {post.location ? (
@@ -46,6 +96,8 @@ export default function GiveawayPost({ post, setPosts, deletePost, user }) {
         setPosts={setPosts}
         deletePost={deletePost}
         user={user}
+        posts={posts}
+        threadHandler={threadHandler}
       />
       {/* </div> */}
     </div>

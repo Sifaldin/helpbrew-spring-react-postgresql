@@ -32,13 +32,9 @@ function LoginForm({ onSubmit, goRegister }) {
         <button 
         className="smallButton"
         onClick = {()=>alert("Think hard!")}>
-          Forgot password
+          Forgot password?
         </button>
-        <button 
-        className="gotoRegister"
-        onClick = {goRegister}>
-          Not a member
-        </button>
+       
       </div>
       <div className="signin3">
         <button 
@@ -48,8 +44,15 @@ function LoginForm({ onSubmit, goRegister }) {
           value="Sign In">
           SIGN IN
           </button>
+
+         
         
       </div>
+      <button 
+        className="gotoRegister"
+        onClick = {goRegister}>
+          Not a member?
+        </button>
       </div>
     </div>
     

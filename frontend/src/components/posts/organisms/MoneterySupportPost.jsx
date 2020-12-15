@@ -3,7 +3,14 @@ import SharedSinglePost from "./SharedSinglePost";
 //Displays post belonging to monetary support category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
 
-export default function GiveawayPost({ post, setPosts, deletePost, user }) {
+export default function MonetarySupportPost({
+  post,
+  setPosts,
+  deletePost,
+  user,
+  posts,
+  threadHandler,
+}) {
   return (
     // consists of hero image for post and single-post-card
     <div className="single-post">
@@ -19,6 +26,8 @@ export default function GiveawayPost({ post, setPosts, deletePost, user }) {
           setPosts={setPosts}
           deletePost={deletePost}
           user={user}
+          posts={posts}
+          threadHandler={threadHandler}
         />
         {/* !!! Any piece of information unique
         to MonetarySupportPost component shall be inserted into this div */}
