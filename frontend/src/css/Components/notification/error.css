@@ -9,6 +9,7 @@
 .error-wrapper .modal-box {
   display: grid;
   grid-template-rows: 1fr 2fr;
+  width: 500px;
 }
 
 .error-wrapper .modal-box .error-body {
