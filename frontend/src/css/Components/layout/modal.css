@@ -1,3 +1,4 @@
+
 .modal-wrapper {
     position: fixed;
     top:0;
@@ -17,13 +18,13 @@
     background-color: rgba(0, 0, 0, 0.3 );
 }
 
-.modal-box {
+ .modal-box {
     position: relative;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 35%;
-    width: 50%;
+    height: 300px;
+    width: 300px;
     background-color: lightyellow;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     z-index: 101;
@@ -48,15 +49,19 @@
 
 .modal-body h1 {
     margin: 0px;
+    font-size: 60px;
+    
 }
 
-.give_ask {
+ .give_ask p{
     display: grid;
     grid-template-rows: 1fr 1fr;
+    color: orange;
+    font-size: 20px;
 }
 
  .help h1 {
-    color: lightskyblue;
+    color: orange;
     display: inline;
     display: flex;
     flex-direction: row;
@@ -87,4 +92,5 @@
   .btn-wrapper button:first-child {
     background-color: #1e6fbf;
   }
+
 

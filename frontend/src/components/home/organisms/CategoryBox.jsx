@@ -58,21 +58,23 @@ export default function CategoryBox({ category, posts }) {
         {/* toggle thing to add */}
         <h2>{formatCategory(category)}</h2>
 
+        
+      </div>
+
+      {/* the bottom of the box contains category name with a number of posts and posts icons and titles */}
+      <div className="bottom">
+        <span className="category-name">
+          Your {formatCategory(category)}({getPosts().length}): 
+        </span>
+
         {/* Toggling the button(requested/given) allows to see only posts requested or given by user */}
-        <button
+        <button className="toggleButton" title="Click to change"
           onClick={() =>
             type === "requested" ? setType("given") : setType("requested")
           }
         >
           {type} <RiArrowDropDownLine />
         </button>
-      </div>
-
-      {/* the bottom of the box contains category name with a number of posts and posts icons and titles */}
-      <div className="bottom">
-        <span className="category-name">
-          Your {formatCategory(category)}({getPosts().length})
-        </span>
 
         {/* !!! The posts below will be displayed in a different way depending on the category
         This stays to be done during next iteration!

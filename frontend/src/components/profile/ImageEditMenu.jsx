@@ -68,6 +68,7 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
               onClick={() => {
                 updateUser();
                 handleNewNotification();
+                setShowImageEdit(false);
               }}
             >
               Upload

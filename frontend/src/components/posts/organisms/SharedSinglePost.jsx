@@ -9,10 +9,19 @@ import ConfirmModal from "../templates/ConfirmModal";
 
 //Displays post belonging to giveaway category. Attention when you write delete block
 //for the post. Check comment in SkillPost.
-export default function SharedSinglePost({ post, setPosts, user, posts }) {
+export default function SharedSinglePost({
+  post,
+  setPosts,
+  user,
+  posts,
+  threadHandler,
+}) {
   const [isUpdating, setIsUpdating] = useState(false);
-
   const history = useHistory();
+
+  console.log(threadHandler);
+
+  // const history = useHistory();
   const receiverEmail = window.sessionStorage.getItem("userEmail");
 
   const modalRef = useRef();
@@ -49,21 +58,6 @@ export default function SharedSinglePost({ post, setPosts, user, posts }) {
     });
   };
 
-  const threadHandler = () => {
-    const createOrDirect = async () => {
-      try {
-        const response = await ChatApi.createThread(post.user, {});
-        console.log(response);
-        const thread = response.data;
-        console.log(thread);
-        history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
-      } catch (e) {
-        console.log(e);
-      }
-    };
-    createOrDirect();
-  };
-
   return (
     <div className="single-post-card">
       {/* consists of post area and comment area */}
@@ -82,8 +76,6 @@ export default function SharedSinglePost({ post, setPosts, user, posts }) {
           </div>
         </div>
 
-        <h3 className="post-title">{post.title}</h3>
-
         {isUpdating ? (
           <PostUpdateForm
             post={post}
@@ -91,31 +83,32 @@ export default function SharedSinglePost({ post, setPosts, user, posts }) {
             setIsUpdating={setIsUpdating}
           />
         ) : (
-          <p className="post-body">{post.body}</p>
+          <>
+            <h3 className="post-title">{post.title}</h3>
+            <p className="post-body">{post.body}</p>
+          </>
         )}
 
-        <div className="button-group">
+        {/* The post is deleted only if the email of the logged in user and 
+              email of the user who wrote the post are the same */}
+        {post.user.email === user.email ? (
+          <div className="button-group">
+            <button
+              className="medium-button"
+              onClick={() => setIsUpdating(true)}
+            >
+              Update
+            </button>
+
+            <button className="medium-button" onClick={openModal}>
+              Delete
+            </button>
+          </div>
+        ) : (
           <button className="mes-button" onClick={threadHandler} type="submit">
             <i className="fa fa-paper-plane" aria-hidden="true"></i>
           </button>
-
-          {/* The post is deleted only if the email of the logged in user and 
-              email of the user who wrote the post are the same */}
-          {post.user.email === user.email ? (
-            <div className="button-group">
-              <button
-                className="medium-button"
-                onClick={() => setIsUpdating(true)}
-              >
-                Update
-              </button>
-
-              <button className="medium-button" onClick={openModal}>
-                Delete
-              </button>
-            </div>
-          ) : null}
-        </div>
+        )}
       </div>
       <Comments post={post} />
       {/* </div> */}

@@ -98,9 +98,11 @@ function PostCard({ post, loggedInUser }) {
 
   const threadHandler = () => {
     const createOrDirect = async () => {
+      console.log(post.title);
       try {
-        const response = await ChatApi.createThread(post.user, {});
-        console.log(response);
+        const response = await ChatApi.createThread(post.user, {
+          title: post.title,
+        });
         const thread = response.data;
         console.log(thread);
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
@@ -174,15 +176,17 @@ function PostCard({ post, loggedInUser }) {
             View post
           </Link>
 
-          <div>
-            <button
-              className="mes-button"
-              onClick={threadHandler}
-              type="submit"
-            >
-              <i className="fa fa-paper-plane" aria-hidden="true"></i>
-            </button>
-          </div>
+          {loggedInUser.email === post.user.email ? null : (
+            <div>
+              <button
+                className="mes-button"
+                onClick={threadHandler}
+                type="submit"
+              >
+                <i className="fa fa-paper-plane" aria-hidden="true"></i>
+              </button>
+            </div>
+          )}
         </div>
         <hr />
         {/* Once View Post button is clicked by user, user is redirected to 
