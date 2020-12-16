@@ -8,13 +8,16 @@
 }
 
 .profile-icon {
-  display: flex;
-  justify-content: center;
+  display: grid;
+  justify-items: center;
   align-items: center;
+  grid-template-columns: 1fr auto;
+  grid-column-gap: 5px;
 }
 .profile-icon .user-name {
   color: white;
-  margin-right: 10px;
+  font-size: 16px;
+  /* margin-right: 10px; */
   text-transform: capitalize;
 }
 
@@ -179,20 +182,23 @@
 
 @media screen and (max-width: 550px) {
   .profile-icon {
-    transform: translate(-260%, 0%);
+    transform: translate(-390%, 0%);
     display: grid;
     grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr;
+    justify-items: center;
     margin-top: 15px;
   }
 
   .profile-icon .user-name {
     color: black;
+    font-size: 14px;
   }
 
   .navbar-logo {
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(50%, 0%);
+    transform: translate(65%, 0%);
   }
 }

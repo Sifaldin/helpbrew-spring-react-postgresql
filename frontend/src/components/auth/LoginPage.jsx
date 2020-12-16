@@ -42,21 +42,11 @@ function LoginPage() {
           {/* HelpBrew gives us all the opportunity to make a difference and create
           a better world! */}
         </div>
-        {/* </div> */}
         {isMember ? (
           <LoginForm onSubmit={login} goRegister={goRegister} />
         ) : (
           <RegisterForm onSubmit={register} goLogin={goLogin} />
         )}
-
-        {/*<<input id="tab-1" type="radio" name="tab"  checked />
-              <label htmlFor="tab-1" >
-                Login
-              </label>
-              <input id="tab-2" type="radio" name="tab"  />
-              <label htmlFor="tab-2" >
-                Sign Up
-              </label> <div >*/}
       </div>
     </div>
   );
