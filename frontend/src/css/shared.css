@@ -3,7 +3,6 @@ body > *,
 body {
   box-sizing: border-box;
   margin: 0;
- 
 }
 
 h1,
@@ -45,6 +44,10 @@ h3 {
   color: white;
   padding: 0.5rem 1rem;
   border-radius: 10px;
+}
+
+.medium-button:hover {
+  background-color: rgba(30, 111, 191, 0.7);
 }
 
 .medium-button:disabled,

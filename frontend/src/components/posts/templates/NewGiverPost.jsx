@@ -8,9 +8,9 @@ import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
 import { GrMapLocation } from "react-icons/gr";
-import Error from "../../notifications/Error";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 import giveAwayscreate from "../../../assets/createPost.png";
+import Warning from "../../notifications/Warning";
 
 //Displays the form for creation of a new post by user
 function NewGiverPost({ posts, setPosts, user }) {
@@ -81,7 +81,6 @@ function NewGiverPost({ posts, setPosts, user }) {
       eventCapacity: eventCapacity,
     };
 
-    console.log(newPost);
     Api.post("/posts", newPost).then((res) => {
       getAll();
 
@@ -240,7 +239,7 @@ function NewGiverPost({ posts, setPosts, user }) {
 
           {/* Displays error if API could not fetch location coordinates or any other error happenned */}
           {displayError ? (
-            <Error
+            <Warning
               message={
                 "Something went wrong. Please check the entered location and try again."
               }

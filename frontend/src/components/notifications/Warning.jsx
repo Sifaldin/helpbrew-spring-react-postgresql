@@ -2,7 +2,7 @@ import { useState } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-export default function Error({ message, setDisplayError }) {
+export default function Warning({ message, setDisplayError }) {
   return (
     <div className="error-wrapper">
       {/* <div onClick={close} className={"modal-backdrop"} /> */}

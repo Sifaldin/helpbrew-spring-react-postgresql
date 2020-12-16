@@ -156,23 +156,27 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   font-size: 14px;
 }
 
-.button-group button:first-child {
-  background-color: #1e6fbf;
-}
-
-.post-info .button-group {
+.button-group {
   display: grid;
   grid-template-columns: 1fr auto;
   justify-items: end;
   grid-column-gap: 0.5rem;
 }
 
-.button-group .medium-button {
+.comment-card .button-group {
+  justify-self: start;
+}
+
+/* .button-group .medium-button {
+  background-color: #ff75ac;
+} */
+
+.medium-button.pink {
   background-color: #ff75ac;
 }
 
-.pink {
-  background-color: #ff75ac;
+.medium-button.pink:hover {
+  background-color: rgba(255, 117, 172, 0.7);
 }
 
 .mes-button {
@@ -184,6 +188,9 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border: none;
   border-radius: 2px;
   color: rgb(255, 255, 255);
+}
+.mes-button:hover {
+  background-color: rgba(30, 111, 191, 0.7);
 }
 
 .single-post .show-map {
@@ -214,12 +221,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   /* display: block; */
   /* margin-top: 2rem; */
 }
-
-/* .edit {
-  float: right;
-  margin-right: 2.4rem;
-  margin-top: -2.4rem;
-} */
 
 .contact-link {
   color: grey;
@@ -260,7 +261,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 16px;
   display: grid;
   justify-items: center;
-  background-color: rgba(22, 91, 194, 0.7);
+  background-color: #5493d2;
   color: white;
 }
 
@@ -291,7 +292,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 @media (min-width: 1000px) {
   .single-post {
     width: 90vw;
-    grid-template-areas: "pic post" "unique-content post" "unique-content post";
+    grid-template-areas: "pic post" "unique-content post" "unique-content post" "unique-content post" "unique-content post" "unique-content post" "unique-content post" "unique-content post" "unique-content post" "unique-content post";
 
     padding: 2rem;
     align-items: start;
