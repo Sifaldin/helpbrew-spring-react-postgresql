@@ -11,8 +11,7 @@
   display: grid;
   justify-items: center;
   align-items: center;
-  grid-template-columns: 1fr auto;
-  grid-column-gap: 5px;
+  grid-row-gap: 5px;
 }
 .profile-icon .user-name {
   color: white;
@@ -52,6 +51,9 @@
   color: #fff;
   text-decoration: none;
   padding: 0.5rem 1rem;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
 }
 
 .nav-links:hover {
@@ -185,7 +187,7 @@
     transform: translate(-390%, 0%);
     display: grid;
     grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr;
+    align-items: start;
     justify-items: center;
     margin-top: 15px;
   }

@@ -9,6 +9,9 @@ import logo from "../../assets/logo-cropped.png";
 function LoginPage() {
   const login = async (loginData) => {
     const loginSuccess = await Auth.login(loginData);
+
+    if (loginSuccess) localStorage.setItem("popup", "true");
+
     if (!loginSuccess) {
       alert("Invalid credentials");
     }
@@ -16,6 +19,8 @@ function LoginPage() {
 
   const register = async (registrationData) => {
     const registerSuccess = await Auth.register(registrationData);
+    if (registerSuccess) localStorage.setItem("popup", "true");
+
     if (!registerSuccess) {
       alert("Couldn't register check credentials and try again");
     }
