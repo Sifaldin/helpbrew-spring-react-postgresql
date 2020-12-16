@@ -39,7 +39,9 @@ function Thread({
               <span>To: {receiver.name}</span>
             )}
 
-            <span>Post: {thread.title}</span>
+            <span>
+              Post: <strong>{thread.title}</strong>
+            </span>
           </Link>
           {/* <span>{lastDate}</span> */}
         </h5>

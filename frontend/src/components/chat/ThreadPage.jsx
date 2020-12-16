@@ -24,20 +24,29 @@ function ThreadPage({ loggedInUser }) {
     const getThreads = async () => {
       const response = await ChatApi.getAllThread();
       const filtered = response.data.filter((thread) => {
-        console.log(thread.user2.email);
-        console.log(loggedInUser.email);
         return (
           thread.user2.email === loggedInUser.email ||
           thread.user1.email === loggedInUser.email
         );
       });
-      setThreads(filtered);
+      const sorted = filtered.sort((thread1, thread2) => {
+        return (thread1.thread.length
+          ? thread1.thread[thread1.thread.length - 1].date
+          : -1) <
+          (thread2.thread.length
+            ? thread2.thread[thread2.thread.length - 1].date
+            : -1)
+          ? 1
+          : -1;
+      });
+
+      console.log(sorted);
+      setThreads(sorted);
     };
     getThreads();
   }, [loggedInUser]);
 
   useEffect(() => {
-    console.log(state === undefined);
     if (state !== undefined) {
       setMessageBox({ threadId: thread.id, thread: thread });
       selectItem(thread);
@@ -59,8 +68,6 @@ function ThreadPage({ loggedInUser }) {
       selectItem={selectItem}
     />
   ));
-
-  // console.log(threadRef.current.childNodes);
 
   function selectItem(item) {
     Array.from(threadRef.current.childNodes).map((thread) => {
