@@ -35,7 +35,7 @@
 }
 
 .recent_heading h4 {
-  color: orange;
+  color: #1E6FBF;
   font-size: 16px;
   margin: auto;
   line-height: 29px;
@@ -140,6 +140,12 @@
   /* background: #e5e5e5; */
 }
 
+.incoming_msg {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-column-gap: 0.5rem;
+}
+
 .incoming_msg_img {
   display: inline-block;
   width: 45px;
@@ -154,9 +160,8 @@
 
 .received_msg {
   display: inline-block;
-  padding: 0 0 0 10px;
   vertical-align: top;
-  width: 92%;
+  /* width: 92%; */
 }
 
 .received_withd_msg p {
@@ -201,6 +206,7 @@
   margin: 26px 0 26px; */
   display: grid;
   grid-template-columns: 1fr auto;
+  grid-column-gap: 0.5rem;
   justify-items: end;
   width: 100%;
 }

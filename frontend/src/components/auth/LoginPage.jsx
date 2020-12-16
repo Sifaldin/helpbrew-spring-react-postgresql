@@ -35,10 +35,10 @@ function LoginPage() {
 
       <div className="loginGrid">
         <div className="loginpage-text">
-        <img src={logo} alt="HelpBrew Logo" />
+        
         <div className="login-text-box">
           
-            
+        <img src={logo} alt="HelpBrew Logo" />
             <h3>With HelpBrew, you can share and receive help with skills, give away stuff,
             receive and give monetary support. HelpBrew gives us all the opportunity to make a
               difference and create a better world. </h3>
@@ -48,7 +48,6 @@ function LoginPage() {
           <LoginForm onSubmit={login} goRegister={goRegister} />
           : <RegisterForm onSubmit={register} goLogin={goLogin} />}
 
-
         {/*<<input id="tab-1" type="radio" name="tab"  checked />
               <label htmlFor="tab-1" >
                 Login
@@ -57,8 +56,6 @@ function LoginPage() {
               <label htmlFor="tab-2" >
                 Sign Up
               </label> <div >*/}
-
-
       </div>
 
     </div>
