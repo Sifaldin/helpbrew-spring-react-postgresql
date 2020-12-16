@@ -4,214 +4,126 @@
 }
 
 .loginpage {
-  background-image: url("..//..//../assets/image-flip.webp");
-  background-repeat: no-repeat;
-  background-position: -21rem -6.5rem;
-  min-height: 100vh;
-  overflow: hidden;
   display: grid;
+  padding: 0 40px;
   justify-content: center;
 }
 
-.loginpage-text {
-  position: relative;
-  max-width: 350px;
-  text-align: center;
-  line-height: 1.7;
+.login-grid {
+  display: grid;
+  grid-row-gap: 42px;
+  align-items: start;
 }
 
 .login-text-box {
-  position: relative;
-  left: 125%;
-  top: 5%;
+  display: grid;
+  grid-row-gap: 18px;
 }
 
-.loginpage-text img {
-  margin-left: -2rem;
+.login-text-box p {
+  color: #012e67;
+  font-size: 24px;
 }
 
-.loginGrid {
+.form-wrapper {
+  background-color: #1e6fbf;
+  display: grid;
+  border-radius: 1rem;
+  padding: 2rem;
+}
+
+.signupform,
+.signinform {
+  width: 100%;
   display: grid;
   justify-content: center;
-  grid-template-rows: 1fr 1fr;
-}
-
-.signinform {
-  position: relative;
-  top: -6%;
-  left: 73%;
-  text-align: end;
+  grid-row-gap: 15px;
   font-family: Source-Sans-Pro;
-  background-color: #1E6FBF;
-  border-radius: 1rem 0rem 0rem 1rem;
 }
 
-.signinform input {
+.signinform input,
+.signupform input {
   padding: 1.3rem;
-  margin-right: 15rem;
   border-style: solid 0.02rem;
   height: 4rem;
-  width: 20rem;
+  width: 100%;
   border: none;
   border-radius: 1rem;
 }
 
-.signin-1, .signin2 {
-  margin: 1rem;
-}
-
-.signin-1 input {
-  margin-top: 1rem;
-}
-
-.signup1 input {
-  margin-top: 10px;
-}
-
-.signinform .submitButton {
-  background: none;
-  height: 4rem;
-  width: 20rem;
-  margin-right: 16rem;
-  background-color: #f19a4a;
-  border-style: none;
-  border-radius: 1rem;
-  color: white;
-  cursor: pointer;
-}
-
-.signinform .smallButton {
-  border: none;
-  outline: none;
-  background: none;
-  margin-top: 5px;
-  margin-bottom: 1rem;
-  margin-right: 27rem;
-  font-size: 14px;
-  font-style: italic;
-  cursor: pointer;
-  color: white;
+.login-options {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  justify-items: start;
 }
 
 .signinform .gotoRegister {
   border: none;
   outline: none;
   background: none;
-  margin-top: 16px;
-  margin-bottom: 1rem;
-  margin-right: 27rem;
   font-size: 14px;
   font-style: italic;
   cursor: pointer;
   color: white;
 }
 
-.signupform {
-  position: relative;
-  top: -14%;
-  left: 70%;
-  text-align: end;
-  border-style: none;
-  font-family: Source-Sans-Pro;
-}
-
-.signupBox {
-  background-color: #1E6FBF;
-  border-radius: 1rem 0rem 0rem 1rem;
-}
-
-.signupform input {
-  padding: 1.3rem;
-  margin-right: 15rem;
-  border-style: solid 0.02rem;
-  height: 4rem;
-  width: 20rem;
-  border: none;
-  border-radius: 1rem;
-}
-
-.signup1, .signup2, .signup3 {
-  margin: 1.5rem;
-}
-
-.signup1 input {
-  margin-top: 1rem;
-}
-
+.signinform .submitButton,
 .signupform .submitButton {
   background: none;
   height: 4rem;
   width: 20rem;
-  margin-right: 16.5rem;
-  background-color: #f19a4a;
+  background-color: #ff75ac;
   border-style: none;
   border-radius: 1rem;
   color: white;
   cursor: pointer;
 }
 
-.signupform .smallButton {
+.signupform .smallButton,
+.signinform .smallButton {
   border: none;
   outline: none;
   background: none;
-  margin-top: 5px;
-  margin-bottom: 20px;
-  margin-right: 17rem;
+
   font-style: italic;
   cursor: pointer;
   color: white;
 }
 
-@media (max-width: 1000px) {
-  .login-text-box {
-    position: relative;
-    max-width: 300px;
-    margin: 1rem;
-    left: 190px;
-    background-color: white;
-    border-radius: 2rem;
-    color: black;
+@media (min-width: 800px) {
+  .loginpage {
+    padding: 0;
+    background-image: url("..//..//../assets/image-flip.webp");
+    background-repeat: no-repeat;
+    background-position: -21rem -6.5rem;
+    min-height: 100vh;
+    overflow: hidden;
+    justify-content: end;
   }
-  .login-info {
-    justify-content: center;
-  }
-  .signinform {
-    left: 12.8rem;
-  }
-  .signupform {
-    left: 12.8rem;
-  }
-  .signinform .smallButton {
-    margin-left: 4px;
-  }
-}
 
-@media (max-width: 505px) {
+  .login-grid {
+    grid-template-rows: auto 1fr;
+  }
+
   .login-text-box {
-    max-width: 290px;
-    left: 7.2rem;
+    width: 30rem;
   }
-  .signin-1 input, .signin2 input {
-    margin-right: 15.5rem;
-    height: 3rem;
-    width: 16rem;
+
+  .login-text-box p {
+    max-width: 90%;
   }
-  .signin3 .submitButton {
-    width: 17rem;
+
+  .form-wrapper {
+    background-color: #1e6fbf;
+    width: 35rem;
+    max-width: 100%;
+    border-radius: 1rem 0rem 0rem 1rem;
+    align-items: center;
   }
-  .signupform input {
-    margin-right: 15.5rem;
-    height: 3rem;
-    width: 16rem;
-  }
-  .signupform .submitButton {
-    width: 17rem;
-    margin-right: 16.5rem;
-  }
-  .signinform {
-    left: 8rem;
-  }
+
+  .signinform,
   .signupform {
-    left: 8rem;
+    width: 50%;
+    justify-content: start;
   }
 }
