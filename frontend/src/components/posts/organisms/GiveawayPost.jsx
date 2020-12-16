@@ -59,7 +59,14 @@ export default function GiveawayPost({
       </div>
 
       {post.user.email === user.email ? (
-        <button className="medium-button" onClick={toggleAvailability}>
+        <button
+          className={`${
+            availability === "Set item as unavailable"
+              ? "medium-button pink"
+              : "medium-button"
+          }`}
+          onClick={toggleAvailability}
+        >
           {availability}
         </button>
       ) : (
@@ -71,7 +78,7 @@ export default function GiveawayPost({
 
       {/* Map is a component unique to giveaway post */}
       {post.location ? (
-        <div>
+        <div className="map-group">
           <button
             className="medium-button location-button"
             onClick={handleMapToggle}

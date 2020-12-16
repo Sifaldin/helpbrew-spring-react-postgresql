@@ -7,7 +7,7 @@ import ImageUploader from "../molecules/ImageUploader";
 import Map from "../molecules/Map";
 import { useNotification } from "../../notifications/NotificationProvider";
 import axios from "axios";
-import { GrMapLocation } from 'react-icons/gr'
+import { GrMapLocation } from "react-icons/gr";
 import Error from "../../notifications/Error";
 import MaterialUiCalendar from "../../Calendar/MaterialUiCalendar";
 import giveAwayscreate from "../../../assets/createPost.png";
@@ -33,13 +33,17 @@ function NewGiverPost({ posts, setPosts, user }) {
 
   const canBeSubmitted = () => {
     return postCategory === "giveaways"
-      ? imgUrl !== undefined && imgUrl.length>0 &&
+      ? imgUrl !== undefined &&
+          imgUrl.length > 0 &&
           address.length > 0 &&
           postTitle.length > 0 &&
           details.length > 0
-      : imgUrl !== undefined && imgUrl.length>0 && postTitle.length > 0 && details.length > 0;
+      : imgUrl !== undefined &&
+          imgUrl.length > 0 &&
+          postTitle.length > 0 &&
+          details.length > 0;
   };
-  
+
   const getAll = () => {
     Api.get("/posts").then((res) => {
       setPosts(res.data);
@@ -122,167 +126,146 @@ function NewGiverPost({ posts, setPosts, user }) {
 
   return (
     <div className="create-container">
-      
-        <form className="createcard" onSubmit={submitHandler}>
-          <div className="card-body">
-            <div className="page-title">
-              <h1>OFFER HELP</h1>
-            </div>
-            <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
+      <form className="createcard" onSubmit={submitHandler}>
+        <div className="card-body">
+          <div className="page-title">
+            <h1>OFFER HELP</h1>
+          </div>
+          <ImageUploader setUploading={setUploading} setImgUrl={setImgUrl} />
 
-            <label className="custom-field">
-              <select
-                required
-                name="category"
-                className={`${postCategory.length>0 ? 'card-input' : 'waitInput'}`}
-                onChange={(e) => {
-                  setPostCategory(e.target.value);
-                }}
-              >
-                <option className="option-placeholder" disabled selected>
-                  Choose Category
-                </option>
-                <option className="option-placeholder" value="giveaways">
-                  Give Aways
-                </option>
-                <option value="skills">Skills</option>
-                <option value="monetary-support">Monetary Support</option>
-              </select>
-            </label>
+          <label className="custom-field">
+            <select
+              required
+              name="category"
+              className={`${
+                postCategory.length > 0 ? "card-input" : "waitInput"
+              }`}
+              onChange={(e) => {
+                setPostCategory(e.target.value);
+              }}
+            >
+              <option className="option-placeholder" disabled selected>
+                Choose Category
+              </option>
+              <option className="option-placeholder" value="giveaways">
+                Giveaways
+              </option>
+              <option value="skills">Skills</option>
+              <option value="monetary-support">Monetary Support</option>
+            </select>
+          </label>
 
-            <label className="custom-field">
+          <label className="custom-field">
+            <input
+              type="text"
+              required
+              // className="card-input"
+              className={`${postTitle.length > 0 ? "card-input" : "waitInput"}`}
+              onChange={(e) => setPostTitle(e.target.value)}
+            />
+            <span className="placeholder">Enter Title </span>
+          </label>
+
+          <label className="custom-field">
+            <textarea
+              type="text"
+              required
+              className={`${details.length > 0 ? "card-input" : "waitInput"}`}
+              //className="card-input"
+              rows="10"
+              onChange={(e) => setDetails(e.target.value)}
+            />
+            <span className="placeholder">Enter Details</span>
+          </label>
+
+          {/* Depending on the category chosen by user from drop-down menu,
+            a field for entering a pick-up location will be displayed or not */}
+          {postCategory === "giveaways" ? (
+            /* The field allows user to enter a pick-up location for giveaway posts and search for
+              it on the map when the button Find location is pushed */
+
+            <label className="location-field">
               <input
                 type="text"
                 required
-                // className="card-input"
-                className={`${postTitle.length>0 ? 'card-input' : 'waitInput'}`}
-
-                onChange={(e) => setPostTitle(e.target.value)}
+                placeholder="Pick-Up Location"
+                className={`${
+                  locationInput.length > 0 ? "location-input" : "waitInput"
+                }`}
+                onChange={(e) => setLocationInput(e.target.value)}
               />
-              <span className="placeholder">Enter Title </span>
-            </label>
 
-            <label className="custom-field">
-              <textarea
-                type="text"
-                required
-                className={`${details.length>0 ? 'card-input' : 'waitInput'}`}
-
-                // className="card-input"
-                rows="5"
-                onChange={(e) => setDetails(e.target.value)}
-              />
-              <span className="placeholder">Enter Details</span>
-            </label>
-
-            {/* Depending on the category chosen by user from drop-down menu,
-            a field for entering a pick-up location will be displayed or not */}
-            {postCategory === "giveaways" ? (
-              /* The field allows user to enter a pick-up location for giveaway posts and search for
-              it on the map when the button Find location is pushed */
-              
-              <label className="location-field">
-                <input
-                  type="text"
-                  required
-
-                  placeholder="Pick-Up Location"
-
-                  className={`${locationInput.length>0 ? 'location-input' : 'waitInput'}`}
-
-                  onChange={(e) => setLocationInput(e.target.value)}
-                  
-              />
-                
-              
               <button
                 type=""
                 className="location-input-button"
                 onClick={handleSubmit}
               >
                 <GrMapLocation size="20px" />
-                </button>
-              
-              </label>
-            ) : null}
+              </button>
+            </label>
+          ) : null}
 
-            {/* Depending on the category chosen by user from drop-down menu,
+          {/* Depending on the category chosen by user from drop-down menu,
             a field for entering a pick-up location will be displayed or not */}
-            {postCategory === "skills" ? (
-           
-              
-              
-                
-
-                <label className="custom-field">
-                  <input
-                    type="text"
-                    required
-                    className={`${eventCapacity.length > 0 ? 'card-input' : 'waitInput'}`}
-                    
-                    onChange={(e) => setEventCapacity(e.target.value)}
-                  />
-                  <span className="placeholder">Number of spots</span>
-                
-                </label>
-              
-            ) : null}
+          {postCategory === "skills" ? (
+            <label className="custom-field">
+              <input
+                type="text"
+                required
+                className={`${
+                  eventCapacity.length > 0 ? "card-input" : "waitInput"
+                }`}
+                onChange={(e) => setEventCapacity(e.target.value)}
+              />
+              <span className="placeholder">Number of spots</span>
+            </label>
+          ) : null}
 
           {postCategory === "skills" ? (
-
-
-
             <MaterialUiCalendar
               selectedDateAndTime={selectedDateAndTime}
               setSelectedDateAndTime={setSelectedDateAndTime}
             />
-
-            
-
           ) : null}
-          
 
-            <div>
-              <button
-                className="medium-button"
-                disabled={!canBeSubmitted() ? true : false}
-                type="submit"
-              >
-                Submit
-              </button>
-            </div>
-
-            {/* Displays error if API could not fetch location coordinates or any other error happenned */}
-            {displayError ? (
-              <Error
-                message={
-                  "Something went wrong. Please check the entered location and try again."
-                }
-                setDisplayError={setDisplayError}
-              />
-            ) : null}
+          <div>
+            <button
+              className="medium-button"
+              disabled={!canBeSubmitted() ? true : false}
+              type="submit"
+            >
+              Submit
+            </button>
           </div>
-            
-        </form>
+
+          {/* Displays error if API could not fetch location coordinates or any other error happenned */}
+          {displayError ? (
+            <Error
+              message={
+                "Something went wrong. Please check the entered location and try again."
+              }
+              setDisplayError={setDisplayError}
+            />
+          ) : null}
+        </div>
+      </form>
       {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
-     
+
       <div className="map">
         {address.length > 0 && position.length > 0 ? (
           <Map position={position} />
-        
         ) : (
-
-            <div className="right">
-              <img src={giveAwayscreate} className="help-image" alt="give with love" />
-            </div>
-
-          )}
-
+          <div className="right">
+            <img
+              src={giveAwayscreate}
+              className="help-image"
+              alt="give with love"
+            />
+          </div>
+        )}
       </div>
       <div></div>
-      </div>
-      
-      
+    </div>
   );
 }
 
