@@ -5,7 +5,12 @@ HelpBrew is a collaborative tool where a user can interact with other like minde
 ### Building the project 
 
 HelpBrew was built with React, Spring, CSS and HTML. 
+![](GIFs/signup_GIF.gif)
 ![](GIFs/NewPost.gif)
+![](GIFs/request-min.gif)
+![](GIFs/book:unbook-min.gif)
+![](GIFs/chat-min.gif)
+![](GIFs/giveaway.gif)
 
 ### Used technologies
 
