@@ -16,6 +16,7 @@ export default function SkillPost({
   posts,
   threadHandler,
 }) {
+  console.log(post.postType);
   const history = useHistory();
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
@@ -205,100 +206,106 @@ export default function SkillPost({
       {/* consists of SharedSinglePost - component that displays post information
       {/* !!! A calendar or any other piece of information unique
         to SKillPost component shall be inserted into this div */}
-      <div className="time-related">
-        <div className="show-map date-booking">
-          <div className="time-box">
-            {post.meetingTimeAndDate !== null ? (
-              <div className="event-time">
-                <BsClock></BsClock>
-                <div>
-                  <span>
-                    {dateDisplay()} at {timeDisplay()}
-                  </span>
-                  {/* <span>{timeDisplay()}</span> */}
-                </div>
-              </div>
-            ) : null}
-            {post.user.id === user.id && post.meetingTimeAndDate !== null ? (
-              <div>
-                <MaterialUiCalendar
-                  selectedDateAndTime={selectedDateAndTime}
-                  setSelectedDateAndTime={setSelectedDateAndTime}
-                />
-                <button
-                  className="medium-button edit"
-                  onClick={(e) => {
-                    updatePost();
-                  }}
-                >
-                  edit date
-                </button>
-              </div>
-            ) : null}
-          </div>
-          <div className="participants-wrapper">
-            {yourEvent() ? (
-              <div className="participants">
-                {showList ? (
+
+      {post.postType === "give" ? (
+        <div className="time-related">
+          <div className="show-map date-booking">
+            <div className="time-box">
+              {post.meetingTimeAndDate !== null ? (
+                <div className="event-time">
+                  <BsClock></BsClock>
                   <div>
-                    <button
-                      className="medium-button"
-                      onClick={() => setShowList(false)}
-                    >
-                      Hide participants
-                    </button>
-                    {getParticipants()}
+                    <span>
+                      {dateDisplay()} at {timeDisplay()}
+                    </span>
+                    {/* <span>{timeDisplay()}</span> */}
                   </div>
-                ) : (
+                </div>
+              ) : null}
+              {post.user.id === user.id && post.meetingTimeAndDate !== null ? (
+                <div>
+                  <MaterialUiCalendar
+                    selectedDateAndTime={selectedDateAndTime}
+                    setSelectedDateAndTime={setSelectedDateAndTime}
+                  />
                   <button
-                    className="medium-button"
-                    onClick={() => setShowList(true)}
+                    className="medium-button edit"
+                    onClick={(e) => {
+                      updatePost();
+                    }}
                   >
-                    See participants
+                    edit date
                   </button>
-                )}
-                {eventFull() ? (
-                  <button className="medium-button">Fully booked</button>
-                ) : (
-                  <span>{`${post.registeredUsers.length} out of ${post.eventCapacity} spot(s) have been booked at your event`}</span>
-                )}
-              </div>
-            ) : (
-              <div>
-                <div className="unbook-user">
-                  {alreadyRegistered() ? (
-                    <div className="unbook-user">
-                      <p>You have reserved a spot at this event.</p>
+                </div>
+              ) : null}
+            </div>
+            <div className="participants-wrapper">
+              {yourEvent() ? (
+                <div className="participants">
+                  {showList ? (
+                    <div>
                       <button
                         className="medium-button"
-                        onClick={handleUnbooking}
+                        onClick={() => setShowList(false)}
                       >
-                        Unbook
+                        Hide participants
                       </button>
+                      {getParticipants()}
                     </div>
-                  ) : eventFull() ? (
+                  ) : (
                     <button
                       className="medium-button"
-                      style={{ backgroundColor: "red" }}
+                      onClick={() => setShowList(true)}
                     >
-                      Fully booked
+                      See participants
                     </button>
+                  )}
+                  {eventFull() ? (
+                    <button className="medium-button">Fully booked</button>
                   ) : (
-                    <div className="book-user">
-                      <button className="medium-button" onClick={handleBooking}>
-                        Book your spot
-                      </button>
-                      <span className="available-spots">{`There are ${
-                        post.eventCapacity - post.registeredUsers.length
-                      } spots availbale at this event.`}</span>
-                    </div>
+                    <span>{`${post.registeredUsers.length} out of ${post.eventCapacity} spot(s) have been booked at your event`}</span>
                   )}
                 </div>
-              </div>
-            )}
+              ) : (
+                <div>
+                  <div className="unbook-user">
+                    {alreadyRegistered() ? (
+                      <div className="unbook-user">
+                        <p>You have reserved a spot at this event.</p>
+                        <button
+                          className="medium-button"
+                          onClick={handleUnbooking}
+                        >
+                          Unbook
+                        </button>
+                      </div>
+                    ) : eventFull() ? (
+                      <button
+                        className="medium-button"
+                        style={{ backgroundColor: "red" }}
+                      >
+                        Fully booked
+                      </button>
+                    ) : (
+                      <div className="book-user">
+                        <button
+                          className="medium-button"
+                          onClick={handleBooking}
+                        >
+                          Book your spot
+                        </button>
+                        <span className="available-spots">{`There are ${
+                          post.eventCapacity - post.registeredUsers.length
+                        } spots availbale at this event.`}</span>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              )}
+            </div>
           </div>
         </div>
-      </div>
+      ) : null}
 
       {displayBookedConfirmation ? (
         <Warning

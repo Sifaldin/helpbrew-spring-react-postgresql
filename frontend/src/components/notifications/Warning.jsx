@@ -2,7 +2,11 @@ import { useState } from "react";
 import { IoMdCloseCircle } from "react-icons/io";
 import { Link } from "react-router-dom";
 
-export default function Warning({ message, setDisplayError }) {
+export default function Warning({
+  message,
+  setDisplayError,
+  seenPopup = null,
+}) {
   return (
     <div className="error-wrapper">
       <div className="modal-backdrop">
@@ -10,12 +14,15 @@ export default function Warning({ message, setDisplayError }) {
           <div className="modal-icon">
             <IoMdCloseCircle
               color="lightblue"
-              onClick={() => setDisplayError(false)}
+              onClick={() => {
+                setDisplayError(false);
+                if (seenPopup) seenPopup();
+              }}
             />
           </div>
 
           <div className="error-body">
-            <p>{message}</p>
+            <p className="error-mes">{message}</p>
           </div>
         </div>
       </div>
