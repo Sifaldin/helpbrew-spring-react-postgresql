@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { CgProfile } from "react-icons/cg";
+import { BiBook } from "react-icons/bi";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { CSSTransition } from "react-transition-group";
 import { RiDoorOpenLine } from "react-icons/ri";
@@ -7,7 +7,6 @@ import ChatApi from "../../api/ChatApi";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
 import Auth from "../../services/Auth";
-import ProfileImageUploader from "./ProfileImageUploader";
 import ImageEditMenu from "./ImageEditMenu";
 import { RiDashboardLine } from "react-icons/ri";
 
@@ -105,6 +104,15 @@ function DropDownMenu({ user, setUser }) {
                     Messages
                   </DisplayItem>
                 </Link>
+               
+                  <Link to="/policy" 
+                  className="link-display" 
+                  onClick={() => setOpen(!open)}>
+                  <DisplayItem leftIcon={<BiBook size="40px" />}>
+                    Terms and Policies
+                    </DisplayItem>
+                  </Link>
+                
                 <Link className="link-display" onClick={onLogout}>
                   <DisplayItem leftIcon={<RiDoorOpenLine size="40px" />}>
                     Log Out
