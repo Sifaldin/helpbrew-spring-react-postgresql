@@ -48,7 +48,6 @@ function LoginPage() {
           <LoginForm onSubmit={login} goRegister={goRegister} />
           : <RegisterForm onSubmit={register} goLogin={goLogin} />}
 
-
         {/*<<input id="tab-1" type="radio" name="tab"  checked />
               <label htmlFor="tab-1" >
                 Login
@@ -57,8 +56,6 @@ function LoginPage() {
               <label htmlFor="tab-2" >
                 Sign Up
               </label> <div >*/}
-
-
       </div>
 
     </div>

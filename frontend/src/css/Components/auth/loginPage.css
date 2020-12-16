@@ -6,7 +6,7 @@
 .loginpage {
   background-image: url("..//..//../assets/image-flip.webp");
   background-repeat: no-repeat;
-  background-position: -20rem -6rem; 
+  background-position: -21rem -6.5rem;
   min-height: 100vh;
   overflow: hidden;
   display: grid;
@@ -20,11 +20,10 @@
   line-height: 1.7;
 }
 
-.login-text-box{
+.login-text-box {
   position: relative;
-  left: 192%;
-  top: 12%;
-  
+  left: 125%;
+  top: 5%;
 }
 
 .loginpage-text img {
@@ -34,11 +33,13 @@
 .loginGrid {
   display: grid;
   justify-content: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 
 .signinform {
-  margin-top: 26rem;
+  position: relative;
+  top: -6%;
+  left: 73%;
   text-align: end;
   font-family: Source-Sans-Pro;
   background-color: #1E6FBF;
@@ -50,7 +51,7 @@
   margin-right: 15rem;
   border-style: solid 0.02rem;
   height: 4rem;
-  width: 25rem;
+  width: 20rem;
   border: none;
   border-radius: 1rem;
 }
@@ -70,7 +71,7 @@
 .signinform .submitButton {
   background: none;
   height: 4rem;
-  width: 25rem;
+  width: 20rem;
   margin-right: 16rem;
   background-color: #F2994A;
   border-style: none;
@@ -106,7 +107,9 @@
 }
 
 .signupform {
-  margin-top: 24rem;
+  position: relative;
+  top: -14%;
+  left: 70%;
   text-align: end;
   border-style: none;
   font-family: Source-Sans-Pro;
@@ -122,7 +125,7 @@
   margin-right: 15rem;
   border-style: solid 0.02rem;
   height: 4rem;
-  width: 25rem;
+  width: 20rem;
   border: none;
   border-radius: 1rem;
 }
@@ -131,14 +134,14 @@
   margin: 1.5rem;
 }
 
-.signup1 input{
+.signup1 input {
   margin-top: 1rem;
 }
 
 .signupform .submitButton {
   background: none;
   height: 4rem;
-  width: 25rem;
+  width: 20rem;
   margin-right: 16.5rem;
   background-color: #F2994A;
   border-style: none;
@@ -159,65 +162,34 @@
   color: white;
 }
 
-/* @media (min-width: 1190px) {
-  .loginpage {
-    padding-left: 6rem;
-  }
-} */
-
-/* @media (min-width: 800px) {
-  .loginpage {
-    padding-left: 6rem;
-  }
-} */
-
-@media (max-width: 1016px) {
-  .loginGrid {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: 1fr;
-  }
+@media (max-width: 1000px) {
   .login-text-box {
     position: relative;
     max-width: 300px;
     margin: 1rem;
-    top: 30px;
-    left: 200px;
-    background-color: #1E6FBF;
-    border-radius: 0.5rem;
-    color: white;
+    left: 190px;
+    background-color: white;
+    border-radius: 2rem;
+    color: black;
   }
   .login-info {
     justify-content: center;
   }
   .signinform {
-    margin-top: 0rem;
-    position: relative;
-    margin: 1px;
-    left: 7.5rem;
-  }
-  .signin3 {
-    position: relative;
-    left: 0.5rem;
+    left: 12.8rem;
   }
   .signupform {
-    margin-top: 0rem;
-    position: relative;
-    margin: 1px;
-    left: 7.5rem;
+    left: 12.8rem;
   }
   .signinform .smallButton {
     margin-left: 4px;
   }
- 
 }
 
-@media (max-width: 450px) {
+@media (max-width: 505px) {
   .login-text-box {
     max-width: 290px;
-    left: 8rem;
-    border-radius: 0.5rem;
-    color: white;
+    left: 7.2rem;
   }
   .signin-1 input, .signin2 input {
     margin-right: 15.5rem;
@@ -226,7 +198,6 @@
   }
   .signin3 .submitButton {
     width: 17rem;
-    margin-right: 16.5rem;
   }
   .signupform input {
     margin-right: 15.5rem;
@@ -236,5 +207,11 @@
   .signupform .submitButton {
     width: 17rem;
     margin-right: 16.5rem;
+  }
+  .signinform {
+    left: 8rem;
+  }
+  .signupform {
+    left: 8rem;
   }
 }
