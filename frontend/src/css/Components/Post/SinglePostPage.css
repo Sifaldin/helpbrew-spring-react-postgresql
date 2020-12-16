@@ -195,8 +195,8 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 .single-post .show-map {
   border-radius: 16px;
-  width: 380px;
-  height: 300px;
+  width: 280px;
+  height: 250px;
   margin-top: 2rem;
   /* margin-top: 2rem; */
 }
@@ -208,8 +208,8 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 .single-post .show-map .map-wrapper .map {
   border-radius: 16px;
-  width: 380px;
-  height: 300px;
+  width: 280px;
+  height: 250px;
 }
 
 .map-group {

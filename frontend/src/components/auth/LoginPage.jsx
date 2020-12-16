@@ -1,20 +1,20 @@
-import { React, useState } from 'react';
+import { React, useState } from "react";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 
-import Auth from '../../services/Auth';
-import LoginForm from './LoginForm';
-import RegisterForm from './RegisterForm';
-import logo from "../../assets/logo_transparent_background_M.png";
+import Auth from "../../services/Auth";
+import LoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
+import logo from "../../assets/logo-cropped.png";
 
 function LoginPage() {
-  const login = async loginData => {
+  const login = async (loginData) => {
     const loginSuccess = await Auth.login(loginData);
     if (!loginSuccess) {
-      alert('Invalid credentials');
+      alert("Invalid credentials");
     }
   };
 
-  const register = async registrationData => {
+  const register = async (registrationData) => {
     const registerSuccess = await Auth.register(registrationData);
     if (!registerSuccess) {
       alert("Couldn't register check credentials and try again");
@@ -25,28 +25,29 @@ function LoginPage() {
 
   const goRegister = () => {
     setIsMember(false);
-  }
+  };
   const goLogin = () => {
     setIsMember(true);
-  }
+  };
 
   return (
     <div className="loginpage">
-
-      <div className="loginGrid">
-        <div className="loginpage-text">
-        
+      <div className="login-grid">
         <div className="login-text-box">
-          
-        <img src={logo} alt="HelpBrew Logo" />
-            <h3>With HelpBrew, you can share and receive help with skills, give away stuff,
-            receive and give monetary support. HelpBrew gives us all the opportunity to make a
-              difference and create a better world. </h3>
-              </div>
+          <img src={logo} alt="HelpBrew Logo" />
+          <p>
+            With HelpBrew, you can share and receive help with skills, give away
+            stuff, receive and give monetary support.
+          </p>
+          {/* HelpBrew gives us all the opportunity to make a difference and create
+          a better world! */}
         </div>
-        {isMember ?
+        {/* </div> */}
+        {isMember ? (
           <LoginForm onSubmit={login} goRegister={goRegister} />
-          : <RegisterForm onSubmit={register} goLogin={goLogin} />}
+        ) : (
+          <RegisterForm onSubmit={register} goLogin={goLogin} />
+        )}
 
         {/*<<input id="tab-1" type="radio" name="tab"  checked />
               <label htmlFor="tab-1" >
@@ -57,9 +58,7 @@ function LoginPage() {
                 Sign Up
               </label> <div >*/}
       </div>
-
     </div>
-
   );
 }
 

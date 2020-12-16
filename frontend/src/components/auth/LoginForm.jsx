@@ -1,59 +1,57 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 
 function LoginForm({ onSubmit, goRegister }) {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   return (
-    <div >
+    <div className="form-wrapper">
       <div className="signinform">
-      <div className="signin-1">
+        {/* <div className="signin-1"> */}
         <input
           id="email1"
           type="text"
           value={email}
           className="input"
-          onChange={e => setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
         />
-      </div>
-      <div className="signin2">
+        {/* </div> */}
+        {/* <div className="signin2"> */}
         <input
           id="pass2"
           type="password"
           value={password}
-          onChange={e => setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           data-type="password"
           placeholder="Enter your password"
         />
-      </div>
-      <div>
+        {/* </div> */}
+        {/* <div> */}
 
-        <button 
-        className="smallButton"
-        onClick = {()=>alert("Think hard!")}>
-             Forgot password?
-        </button>
-       
-      </div>
-      <div className="signin3">
-        <button 
+        {/* </div> */}
+        {/* <div className="signin3"> */}
+        <button
           className="submitButton"
           type="submit"
           onClick={() => onSubmit({ email, password })}
-          value="Sign In">
+          value="Sign In"
+        >
           SIGN IN
-          </button>
-             
-      </div>
-      <button 
-        className="gotoRegister"
-        onClick = {goRegister}>
-          Not a member?
         </button>
+
+        {/* </div> */}
+
+        <div className="login-options">
+          <button className="smallButton" onClick={() => alert("Think hard!")}>
+            Forgot password?
+          </button>
+          <button className="gotoRegister" onClick={goRegister}>
+            Not a member?
+          </button>
+        </div>
       </div>
     </div>
-    
   );
 }
 
