@@ -53,7 +53,7 @@ const Modal = forwardRef( (props, ref) => {
                                 }
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><RiHandHeartFill color="#1e6fbf"/><p>Give</p>  </div> 
+                                    <div className="give_ask"><RiHandHeartFill color="#ff75ac"/><p>Give</p>  </div> 
                             </Link>
                             </h1>
                             <h1>
@@ -69,7 +69,7 @@ const Modal = forwardRef( (props, ref) => {
 
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><FaHandsHelping color="#1e6fbf" /><p>Ask For</p> </div> 
+                                    <div className="give_ask"><FaHandsHelping color="#ff75ac" /><p>Ask For</p> </div> 
                             </Link>
                             </h1>
                         </div>

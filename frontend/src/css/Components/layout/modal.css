@@ -23,8 +23,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    height: 300px;
-    width: 300px;
+    height: 350px;
+    width: 600px;
     background-color: #5493d2;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
     z-index: 101;
@@ -49,23 +49,24 @@
 
 .modal-body h1 {
     margin: 0px;
-    font-size: 60px;
+    font-size: 70px;
     
 }
 
  .give_ask p{
     display: grid;
     grid-template-rows: 1fr 1fr;
-    color: #ff75ac;
-    font-size: 20px;
+    color: white;
+    font-size: 40px;
 }
 
  .help h1 {
-    color: #ff75ac;
+    color: white;
     display: inline;
     display: flex;
     flex-direction: row;
     justify-content: center;
+    
 }
 
   
@@ -93,4 +94,20 @@
     background-color: #1e6fbf;
   }
 
+ @media (max-width: 500px) {
 
+  .modal-box {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 300px;
+    width: 300px;
+    background-color: #5493d2;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.25);
+    z-index: 101;
+    padding: 5px;
+    border-radius: 3rem;
+}
+
+ }
