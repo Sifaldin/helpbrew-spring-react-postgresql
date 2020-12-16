@@ -19,7 +19,7 @@ import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
 import MonetarySupport from './components/funding/MonetarySupport';
-import MonetarySupportPost from './components/posts/organisms/MoneterySupportPost'
+
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
