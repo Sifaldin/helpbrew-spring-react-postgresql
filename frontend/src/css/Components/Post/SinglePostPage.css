@@ -252,8 +252,8 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 16px;
   display: grid;
   justify-items: center;
-  background-color: rgba(22, 91, 194, 0.7);
-  color: white;
+  background-color: rgba(219, 215, 215, 0.4);
+  color: black;
 }
 
 .participants-wrapper {

@@ -45,11 +45,12 @@ export default function ImageUploader({ setImgUrl }) {
       singleImage={true}
       onChange={updateImage}
       buttonText="Edit Image"
-      withPreview={true}
       withLabel={false}
       withIcon={false}
-      buttonStyles={{ background: "#1e6fbf", borderRadius: "8px" }}
+      buttonStyles={{ background: "#ff75ac", borderRadius: "8px" }}
       buttonClassName="upload-button"
+      fileContainerStyle={{ background: "#5493d2", boxShadow:"none" }}
+
     />
   );
 }

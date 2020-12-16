@@ -57,7 +57,7 @@ function ChatPage({ id, thread, loggedInUser }) {
           {
             messageBody: messageText.text,
             thread: { id: thread.id },
-            date: format(new Date(), "dd-MMM-yyyy HH:MM"),
+            date: format(new Date(), "dd-MM-yyyy HH:mm"),
           }
         );
         setMessageArray([...messageArray, response_message.data]);

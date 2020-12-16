@@ -6,13 +6,13 @@
   left: 10%;
   
 }
-
+ 
 .image-menu-wrapper .modal-box {
   width: 50%;
   height: 80%;
   display: grid;
   grid-template-rows: auto 1fr;
-  
+
 }
 
 .image-menu-wrapper .modal-box .image-edit-body {

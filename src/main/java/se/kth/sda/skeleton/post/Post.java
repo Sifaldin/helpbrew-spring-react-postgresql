@@ -23,6 +23,7 @@ public class Post {
     private String title;
 
     @Column(name = "body")
+
     private String body;
 
 //    @Column(name = "claimed")
