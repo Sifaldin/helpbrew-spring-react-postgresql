@@ -7,7 +7,7 @@ export default function Policy() {
  
                 <div>
                     <h1>Safeguarding Policy</h1>
-                    <h3>The purpose and Scope of this policy statement</h3>
+                    <h2>The Purpose and Scope of this policy statement</h2>
                     <p> Protecting children, young people and vulnerable adults from harm is central to achieving our mission of providing a platform for learning opportunities.
 
 At HelpBrew we are committed to ensuring the experience of our platform is one that is free from any form of abuse or exploitation. Everyone who comes into contact with any person associated with HelpBrew should at all times feel respected and safeguarded.
@@ -15,7 +15,7 @@ At HelpBrew we are committed to ensuring the experience of our platform is one t
 To enforce this, HelpBrew's safeguarding policy has a range of preventative measures and systems to prevent any form of abuse, and clear procedures for disciplinary action in the event this policy is breached.  
 
 </p>
-                   <h3>Legal Framework</h3> 
+                   <h2>Legal Framework</h2> 
                    <p>This policy has been drawn up on the basis of legislation, policy and guidance that seeks to protect children in Sweden. We believe that:</p>
                     
                     <div>
@@ -37,7 +37,7 @@ To enforce this, HelpBrew's safeguarding policy has a range of preventative meas
                         </ul>
                     
                     </div>
-                    <h3>We will seek to keep children and young people safe through:</h3> 
+                    <h2>We will seek to keep children and young people safe through:</h2> 
 
                     <p>Responding to allegations of abuse:</p>
                     <div>
@@ -61,13 +61,13 @@ To enforce this, HelpBrew's safeguarding policy has a range of preventative meas
 
                     <p>The Safeguarding Policy and procedures will be reviewed by HelpBrew on a regular basis to ensure they are adequate and relevant to safeguarding standards.</p>
 
-                    <h3>Contact Details</h3>
+                    <h2>Contact Details</h2>
                     <p>If you have concerns or wish to talk to someone in confidence about a safeguarding issue please contact us:</p>
                     <p>Designated Safeguarding Officer: Sif Aldin Abbas</p>
                     <p>Phone number: +46 73800 2251</p>
-                    <p>Email: <a href="mailto: contact@helpbrew.com" 
-                             target="_blank">
-                             @contact@helpbrew.com
+                    <p>Email: <a className="policycontact-link" href="mailto: contact@helpbrew.com" 
+                             target="_blank" rel="noreferrer">
+                             contact@helpbrew.com
                              </a>
                     </p>
 

@@ -8,13 +8,8 @@ import { RiArrowDropDownLine } from "react-icons/ri";
 import DropDownItem from "../profile/DropDownItem";
 import DropDownMenu from "../profile/DropDownMenu";
 
-function Nav({ onLogout, user, setUser }) {
-  const skillsRef = useRef();
-  const monetRef = useRef();
-  const giveRef = useRef();
-  const newPostRef = useRef();
-  const homeRef = useRef();
-  const profileRef = useRef();
+function Nav({ user, setUser }) {
+ 
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
 
@@ -83,11 +78,11 @@ function Nav({ onLogout, user, setUser }) {
               Donations
             </Link>
           </li>
-          <li className="nav-item">
+          {/* <li className="nav-item">
             <Link to="/policy" className="nav-links" onClick={closeMobileMenu}>
               Terms and Policies
             </Link>
-          </li>
+          </li> */}
         </ul>
         <div className="profile-icon">
           <DropDownItem
