@@ -14,10 +14,12 @@ import SinglePost from "./components/posts/templates/SinglePost";
 import ThreadPage from "./components/chat/ThreadPage";
 import NewGiverPost from "./components/posts/templates/NewGiverPost";
 import NewRequestPost from "./components/posts/templates/NewRequestPost";
+import Policy from "./components/policy/Policy";
 import Api from "./api/Api";
 import Modal from "./components/posts/templates/Modal";
 import Nav from "./components/layout/Nav";
-import MonetarySupport from "./components/funding/MonetarySupport";
+import MonetarySupport from './components/funding/MonetarySupport';
+import MonetarySupportPost from './components/posts/organisms/MoneterySupportPost'
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(Auth.isLoggedIn());
@@ -107,7 +109,6 @@ function App() {
                 loggedInUser={user}
               />
             </Route>
-
             <Route path="/posts/category/monetary-support" exact>
               <PostsPage
                 category={"monetary-support"}
@@ -119,7 +120,7 @@ function App() {
             <Route path="/donations" exact>
               <MonetarySupport />
             </Route>
-
+            
             {/* This route is used to create new posts when user clicks on new post button
           displayed in the NavBar */}
 
@@ -147,7 +148,9 @@ function App() {
                 />
               )}
             />
-
+            <Route exact path="/policy">
+              <Policy />
+            </Route>
             {/* The functionality for the routes below is not implemented yet.
           Uncomment or remove if the routes are not needed.
           */}

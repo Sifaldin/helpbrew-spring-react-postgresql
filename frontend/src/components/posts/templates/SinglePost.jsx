@@ -1,16 +1,15 @@
 import React, { useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
 import ErrorScreen from "../../tempscreens/ErrorScreen";
 import SkillPost from "../organisms/SkillPost";
 import GiveawayPost from "../organisms/GiveawayPost";
+import MonetarySupport from '../../funding/MonetarySupport'
 import MonetarySupportPost from "../organisms/MoneterySupportPost";
 import Api from "../../../api/Api";
 import { useHistory } from "react-router-dom";
 import ChatApi from "../../../api/ChatApi";
 
 function SinglePost({ id, setPosts, user, posts }) {
-  // console.log(posts);
-  // const post = posts.filter((p) => p.id === parseInt(id))[0];
+  
   const history = useHistory();
   const [post, setPost] = useState({});
   useEffect(() => {
@@ -84,7 +83,7 @@ function SinglePost({ id, setPosts, user, posts }) {
       //followed by comments to that post.
       <div className="post-wrapper">
         {getPost()}
-        {/* <Comments post={post} /> */}
+        
       </div>
     );
   } catch (e) {

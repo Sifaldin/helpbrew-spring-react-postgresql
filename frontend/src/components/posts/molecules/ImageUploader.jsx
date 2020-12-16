@@ -55,6 +55,7 @@ function ImageUploader({ setImgUrl, setUploading }) {
       withIcon={false}
       buttonStyles={{ background: "#1e6fbf", borderRadius: "8px" }}
       buttonClassName="upload-button"
+      fileContainerStyle={{  boxShadow: "none" }}
       
     />
     </div>

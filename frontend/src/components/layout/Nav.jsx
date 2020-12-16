@@ -5,7 +5,6 @@ import Drop from './Drop';
 import Modal from "../posts/templates/Modal";
 import logo from "../../assets/logo_transparent_background_small.png";
 import { RiArrowDropDownLine } from 'react-icons/ri';
-import DropDownProfile from "../profile/DropDownProfile";
 import DropDownItem from "../profile/DropDownItem";
 import DropDownMenu from "../profile/DropDownMenu";
 
@@ -60,6 +59,8 @@ function Nav({onLogout, user, setUser}) {
                         className='nav-item'
                         onMouseEnter={onMouseEnter}
                         onMouseLeave={onMouseLeave}
+                        onTouchStart={onMouseEnter}
+                        onTouchEnd={onMouseLeave}
                     >
                         
                         <div className="nav-links">
@@ -76,16 +77,24 @@ function Nav({onLogout, user, setUser}) {
                             onClick={ openModal }
                         >
                             New Post
-            </Link>
+                        </Link>
                         <Modal ref={modalRef} />
                     </li>
                     <li className='nav-item'>
-                        {/* <DropDownProfile> */}
-                        
+                        <Link to='/donations' className='nav-links' onClick={closeMobileMenu}>
+                            Donations
+                    </Link>
+                    </li>
+                    <li className='nav-item'>
+                        <Link to='/policy' className='nav-links' onClick={closeMobileMenu}>
+                            Terms and Policies
+                    </Link>
                     </li>
                 </ul>
                 <div className="profile-icon">
+                  
                 <DropDownItem
+                        
                     icon={
                         <img
                             src={user.imageUrl}
@@ -97,11 +106,17 @@ function Nav({onLogout, user, setUser}) {
                                 marginRight: "5px",
                             }}
                         />
+                       
                     }
+                    
+
                 >
+                        
                     <DropDownMenu user={user} setUser={setUser} />
                 </DropDownItem>
+                    <div className="user-name">{user.name}</div>
                 </div>
+                
             </nav>
         </>
     );

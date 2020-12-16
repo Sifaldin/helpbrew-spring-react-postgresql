@@ -5,6 +5,7 @@ import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
 import { IoMdCloseCircle } from "react-icons/io";
 
+
 export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
   const [imgUrl, setImgUrl] = useState(user.imageUrl);
 
@@ -62,8 +63,9 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
           </button> */}
 
           <div className={"uploader"}>
-            <ProfileImageUploader setImgUrl={setImgUrl} 
+           <ProfileImageUploader setImgUrl={setImgUrl}
             />
+            
             <button
               className="share-btn"
               onClick={() => {
