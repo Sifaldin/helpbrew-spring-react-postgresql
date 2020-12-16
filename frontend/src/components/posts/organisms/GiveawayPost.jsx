@@ -58,45 +58,47 @@ export default function GiveawayPost({
         <img src={post.imageUrl} alt="Single post img" />
       </div>
 
-      {post.user.email === user.email ? (
-        <button
-          className={`${
-            availability === "Set item as unavailable"
-              ? "medium-button pink"
-              : "medium-button"
-          }`}
-          onClick={toggleAvailability}
-        >
-          {availability}
-        </button>
-      ) : (
-        <p
-          className="contact-link"
-          onClick={threadHandler}
-        >{`Contact ${post.user.name} to reserve the item`}</p>
-      )}
-
-      {/* Map is a component unique to giveaway post */}
-      {post.location ? (
-        <div className="map-group">
-          <button
-            className="medium-button location-button"
-            onClick={handleMapToggle}
-          >
-            {mapVisible ? "Hide map" : "See location"}
-          </button>
-          {mapVisible ? (
-            <div className="show-map map">
-              <Map position={post.position} />
-            </div>
+      {post.postType === "give" ? (
+        <div className="give-map">
+          {post.user.email === user.email ? (
+            <button
+              className={`${
+                availability === "Set item as unavailable"
+                  ? "medium-button pink"
+                  : "medium-button"
+              }`}
+              onClick={toggleAvailability}
+            >
+              {availability}
+            </button>
           ) : (
-            <div className="map">
-              <Map position={post.position} style={{ display: "none" }} />
-            </div>
+            <p
+              className="contact-link"
+              onClick={threadHandler}
+            >{`Contact ${post.user.name} to reserve the item`}</p>
           )}
+          {/* Map is a component unique to giveaway post */}
+          {post.location ? (
+            <div className="map-group">
+              <button
+                className="medium-button location-button"
+                onClick={handleMapToggle}
+              >
+                {mapVisible ? "Hide map" : "See location"}
+              </button>
+              {mapVisible ? (
+                <div className="show-map map">
+                  <Map position={post.position} />
+                </div>
+              ) : (
+                <div className="map">
+                  <Map position={post.position} style={{ display: "none" }} />
+                </div>
+              )}
+            </div>
+          ) : null}
         </div>
       ) : null}
-
       {/* <div className="single-post-card"> */}
       <SharedSinglePost
         post={post}
