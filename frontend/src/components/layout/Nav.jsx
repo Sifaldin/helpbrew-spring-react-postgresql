@@ -91,8 +91,8 @@ function Nav({ user, setUser }) {
                 src={user.imageUrl}
                 alt="profile-pic"
                 style={{
-                  height: "45px",
-                  width: "45px",
+                  height: "40px",
+                  width: "40px",
                   borderRadius: "20px",
                   // marginRight: "5px",
                 }}

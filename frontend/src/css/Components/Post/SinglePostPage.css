@@ -15,7 +15,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 32px;
   width: 90vw;
   padding-bottom: 1rem;
-  grid-row-gap: 2rem;
+  grid-row-gap: 1rem;
   grid-column-gap: 4rem;
 }
 
@@ -46,7 +46,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 }
 
 .signature {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -81,7 +81,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   background-color: rgba(219, 215, 215, 0.4);
   padding: 1rem;
   border-radius: 16px;
-  margin-bottom: 2rem;
   display: grid;
   grid-row-gap: 16px;
 }
@@ -135,6 +134,10 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 .comment-card p {
   font-size: 1.1rem;
+}
+
+.comments-wrapper {
+  padding-top: 2rem;
 }
 
 .comments-wrapper h3 {
@@ -197,8 +200,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 16px;
   width: 280px;
   height: 250px;
-  margin-top: 2rem;
-  /* margin-top: 2rem; */
 }
 
 .single-post .show-map .map-wrapper {
@@ -267,7 +268,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 
 .participants-wrapper {
   /* box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5); */
-  padding: 1rem;
+  /* padding: 1rem; */
   border-radius: 16px;
   display: grid;
   /* align-items: center; */
@@ -287,6 +288,10 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   grid-row-gap: 1rem;
   justify-items: center;
   align-items: center;
+}
+
+.available-spots {
+  text-align: center;
 }
 
 @media (min-width: 1000px) {
