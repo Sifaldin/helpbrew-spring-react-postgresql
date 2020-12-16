@@ -44,9 +44,7 @@ function LoginForm({ onSubmit, goRegister }) {
           value="Sign In">
           SIGN IN
           </button>
-
-         
-        
+             
       </div>
       <button 
         className="gotoRegister"
