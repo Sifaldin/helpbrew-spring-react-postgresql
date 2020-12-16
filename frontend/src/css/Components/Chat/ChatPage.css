@@ -35,7 +35,7 @@
 }
 
 .recent_heading h4 {
-  color: #1E6FBF;
+  color: #1e6fbf;
   font-size: 16px;
   margin: auto;
   line-height: 29px;
@@ -111,6 +111,7 @@
 }
 
 .chat_people {
+  padding: 10px;
   overflow: hidden;
   clear: both;
   display: flex;
@@ -237,7 +238,7 @@
 }
 
 .msg_send_btn {
-  background: #2fbce9 none repeat scroll 0 0;
+  background: #1e6fbf none repeat scroll 0 0;
   border: none;
   border-radius: 50%;
   color: #fff;

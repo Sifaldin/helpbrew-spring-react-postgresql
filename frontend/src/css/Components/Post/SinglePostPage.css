@@ -196,6 +196,12 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   background-color: rgba(30, 111, 191, 0.7);
 }
 
+.give-map {
+  display: grid;
+  justify-items: center;
+  grid-row-gap: 1rem;
+}
+
 .single-post .show-map {
   border-radius: 16px;
   width: 280px;
@@ -216,11 +222,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 .map-group {
   display: grid;
   justify-items: center;
-}
-
-.single-post .location-button {
-  /* display: block; */
-  /* margin-top: 2rem; */
 }
 
 .contact-link {
