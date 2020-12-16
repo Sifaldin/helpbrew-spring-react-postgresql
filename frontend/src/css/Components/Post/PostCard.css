@@ -19,6 +19,11 @@ hr {
 
 .postcard .post-bottom {
   padding: 1rem;
+  display: grid;
+}
+
+.down-wrapper {
+  align-self: end;
 }
 
 .postcard .post-bottom .header {
@@ -77,6 +82,7 @@ hr {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
+  align-self: end;
 }
 
 .postcard .post-bottom .react .medium-button {

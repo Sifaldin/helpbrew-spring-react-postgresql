@@ -146,49 +146,52 @@ function PostCard({ post, loggedInUser }) {
         {/* Post body */}
         <p className="post-text">{post.body}</p>
         {/* Signature includes post status and date */}
-        <div className="signature">
-          {post.claimed ? (
-            <span className="small-button">Claimed</span>
-          ) : (
-            getAvailability()
-          )}
-          {/* <span className="post-date">{post.date}</span> */}
-        </div>
-        <hr />
-        {/* React container includes reactions and link to the post details */}
-        <div className="react">
-          <div className="reaction">
-            <button onClick={incrementLike}>
-              <FaLongArrowAltUp className="up" />
-              <span>{reaction.like}</span>
-
-              {/* <i className="fas fa-thumbs-up"></i> {reaction.like} */}
-            </button>
-            <button onClick={incrementDislike}>
-              <FaLongArrowAltDown className="down" />
-              <span>{reaction.dislike}</span>
-
-              {/* <i className="fas fa-thumbs-down"></i> {reaction.dislike} */}
-            </button>
+        <div className="down-wrapper">
+          <div className="signature">
+            {post.claimed ? (
+              <span className="small-button">Claimed</span>
+            ) : (
+              getAvailability()
+            )}
+            {/* <span className="post-date">{post.date}</span> */}
           </div>
+          <hr />
+          {/* React container includes reactions and link to the post details */}
+          <div className="react">
+            <div className="reaction">
+              <button onClick={incrementLike}>
+                <FaLongArrowAltUp className="up" />
+                <span>{reaction.like}</span>
 
-          <Link className="medium-button" to={`/posts/${post.id}`}>
-            View post
-          </Link>
+                {/* <i className="fas fa-thumbs-up"></i> {reaction.like} */}
+              </button>
+              <button onClick={incrementDislike}>
+                <FaLongArrowAltDown className="down" />
+                <span>{reaction.dislike}</span>
 
-          {loggedInUser.email === post.user.email ? null : (
-            <div>
-              <button
-                className="mes-button"
-                onClick={threadHandler}
-                type="submit"
-              >
-                <i className="fa fa-paper-plane" aria-hidden="true"></i>
+                {/* <i className="fas fa-thumbs-down"></i> {reaction.dislike} */}
               </button>
             </div>
-          )}
+
+            <Link className="medium-button" to={`/posts/${post.id}`}>
+              View post
+            </Link>
+
+            {loggedInUser.email === post.user.email ? null : (
+              <div>
+                <button
+                  className="mes-button"
+                  onClick={threadHandler}
+                  type="submit"
+                >
+                  <i className="fa fa-paper-plane" aria-hidden="true"></i>
+                </button>
+              </div>
+            )}
+          </div>
+          <hr />
         </div>
-        <hr />
+
         {/* Once View Post button is clicked by user, user is redirected to 
           the SinglePost page where all the details about the post are specified.
           */}

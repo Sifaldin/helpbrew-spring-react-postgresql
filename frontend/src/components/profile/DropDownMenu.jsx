@@ -3,7 +3,6 @@ import { CgProfile } from "react-icons/cg";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { CSSTransition } from "react-transition-group";
 import { RiDoorOpenLine } from "react-icons/ri";
-import MessageNotification from "./MessageNotification";
 import ChatApi from "../../api/ChatApi";
 import Api from "../../api/Api";
 import { Link } from "react-router-dom";
@@ -22,11 +21,9 @@ function DropDownMenu({ user, setUser }) {
   const [showImageEdit, setShowImageEdit] = useState(false);
 
   const showModalAndCloseMenu = () => {
-    setShowImageEdit(true)
-    setOpen(!open)
-
-  }
-
+    setShowImageEdit(true);
+    setOpen(!open);
+  };
 
   //Callback function that will send a user update call to the server
   const updateUser = () => {
