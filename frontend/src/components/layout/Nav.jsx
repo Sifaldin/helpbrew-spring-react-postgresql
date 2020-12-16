@@ -45,12 +45,11 @@ function Nav({ user, setUser }) {
               Home
             </Link>
           </li>
+          <div class="desktopSize">
           <li
             className="nav-item"
             onMouseEnter={onMouseEnter}
             onMouseLeave={onMouseLeave}
-            onTouchStart={onMouseEnter}
-            onTouchEnd={onMouseLeave}
           >
             <div className="nav-links">
               Posts
@@ -62,7 +61,24 @@ function Nav({ user, setUser }) {
             </div>
             {dropdown && <Drop ClickStatus={setClick} />}
           </li>
-
+          </div>
+          <div className="phoneSize">
+            <li className="nav-item">
+              <Link to='/posts/category/giveaways' className="nav-links" onClick={closeMobileMenu}>
+                Give Aways
+            </Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/posts/category/skills' className="nav-links" onClick={closeMobileMenu}>
+                Skills
+            </Link>
+            </li>
+            <li className="nav-item">
+              <Link to='/posts/category/monetary-support' className="nav-links" onClick={closeMobileMenu}>
+                Monetary Support
+            </Link>
+            </li>
+          </div>
           <li className="nav-item">
             <Link to="/Modal" className="nav-links" onClick={openModal}>
               New Post
@@ -78,11 +94,7 @@ function Nav({ user, setUser }) {
               Donations
             </Link>
           </li>
-          {/* <li className="nav-item">
-            <Link to="/policy" className="nav-links" onClick={closeMobileMenu}>
-              Terms and Policies
-            </Link>
-          </li> */}
+          
         </ul>
         <div className="profile-icon">
           <DropDownItem

@@ -1,3 +1,6 @@
+.phoneSize {
+  display: none;
+}
 .navbar {
   background: linear-gradient(90deg, #fefefe 0, #012e67 100%);
   height: 80px;
@@ -16,7 +19,6 @@
 .profile-icon .user-name {
   color: white;
   font-size: 16px;
-  /* margin-right: 10px; */
   text-transform: capitalize;
 }
 
@@ -74,8 +76,12 @@
 .menu-icon {
   display: none;
 }
+.desktopSize{
+  display: block;
+}
 
 @media screen and (max-width: 950px) {
+
   .profile-icon {
     transform: translate(-330%, 0%);
   }
@@ -113,7 +119,7 @@
   }
 
   .nav-menu.active {
-    background: lightyellow;
+    background: #5493d2ba;
     left: 0;
     opacity: 0.9;
     transition: all 0.5s ease;
@@ -128,7 +134,7 @@
   }
 
   .nav-links:hover {
-    background-color: #5493d2;
+    background-color: #ff75ac;
     border-radius: 0;
   }
 
@@ -164,8 +170,16 @@
     color: #5493d2;
     transition: 250ms;
   }
+    .phoneSize {
+  display: block;
+}
+.desktopSize {
+  display: none;
+}
+  
 }
 @media screen and (max-width: 768px) {
+
   .profile-icon {
     transform: translate(-240%, 0%);
   }
@@ -184,7 +198,7 @@
 
 @media screen and (max-width: 550px) {
   .profile-icon {
-    transform: translate(-390%, 0%);
+    transform: translate(-310%, 0%); 
     display: grid;
     grid-template-rows: 1fr 1fr;
     align-items: start;
@@ -201,6 +215,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    transform: translate(65%, 0%);
+    transform: translate(40%, 0%);
   }
+  
 }
