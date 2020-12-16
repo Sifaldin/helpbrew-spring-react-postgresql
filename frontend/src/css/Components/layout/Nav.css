@@ -9,7 +9,16 @@
   
 }
 
-
+.profile-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .profile-icon .user-name {
+    color: white;
+    margin-right: 10px;
+    text-transform: capitalize;
+  }
 
 .navbar-logo {
   justify-self: start;
@@ -65,8 +74,27 @@
   display: none;
 }
 
-@media screen and (max-width: 960px) {
+
+
+@media screen and (max-width: 950px) {
   
+.profile-icon {
+    transform: translate(-330%, 0%);
+   
+  }
+
+  .profile-icon .user-name {
+    color: black;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(150%, 0%);
+  }
+
+
   .NavbarItems {
     position: relative;
   }
@@ -108,17 +136,6 @@
     border-radius: 0;
   }
 
-  .navbar-logo {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translate(50%, 0%);
-  }
-
-  .profile-icon {
-    transform: translate(-330%, 0%);
-  }
-
   .menu-icon {
     display: block;
     position: absolute;
@@ -152,4 +169,44 @@
     transition: 250ms;
   }
 
+}
+@media screen and (max-width: 768px) {
+  
+.profile-icon {
+    transform: translate(-240%, 0%);
+   
+  }
+
+  .profile-icon .user-name {
+    color: black;
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(120%, 0%);
+  }
+}
+
+@media screen and (max-width: 550px) {
+  
+.profile-icon {
+    transform: translate(-200%, 0%);
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   margin-top: 15px;
+  }
+
+  .profile-icon .user-name {
+    color: black;
+    
+  }
+
+  .navbar-logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(50%, 0%);
+  }
 }

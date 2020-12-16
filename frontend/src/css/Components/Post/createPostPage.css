@@ -6,17 +6,12 @@
   margin-top: 20px;
 }
 
-
-/* .location-input-button .updateText {
-  border-top: none;
-} */
  .location-field .waitInput {
     width: 300px;
     height: 50px;
     outline: none;
     font-size: 14px;
     border: none;
-    /* border:solid rgb(223, 174, 174); */
     font-family: "Source Sans Pro", sans-serif;
     font-weight: 400;
     border-radius: 10px;
@@ -79,7 +74,7 @@
 }
 
 .card-body .medium-button {
-  background-color: orange; 
+  background-color: #1e6fbf; 
   color: white;
   padding: 0.5rem;
   border-radius: 8px;
@@ -247,25 +242,7 @@
     font-weight: 400;
   }
   
-  /* .calendar-position MaterialUiCalendar{
-    justify-content: center;
-    justify-self: center;
-    
-  } */
   
-
-
-.location-field .waitInput {
-  width: 300px;
-  height: 50px;
-  outline: none;
-  font-size: 14px;
-  border:solid rgb(223, 174, 174);
-  font-family: "Source Sans Pro", sans-serif;
-  font-weight: 400;
-}
-
-
 @media (min-width: 750px) {
  .create-container {
     display: grid;
