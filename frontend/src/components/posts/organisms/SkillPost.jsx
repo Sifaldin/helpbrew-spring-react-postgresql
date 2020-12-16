@@ -90,21 +90,33 @@ export default function SkillPost({
     });
   };
 
-  const sendUserConfirmation = () => {
+  const sendUserConfirmation = (action) => {
+    const messageBooking = `This is a confirmation of your booking to the event ${
+      post.title
+    } held by ${
+      post.user.name
+    } on ${dateDisplay()} at ${timeDisplay()}. Use Unbook button on the post page if you cannot make it.`;
+
+    const messageUnbooking = `You have successfully unbooked your spot at the event ${
+      post.title
+    } held by ${
+      post.user.name
+    } on ${dateDisplay()} at ${timeDisplay()}. Use Unbook button on the post page if you cannot make it.`;
+
     const createOrDirect = async () => {
       try {
         const response = await ChatApi.createThread(user, {
-          title: "Automatic confirmation",
+          title: `${
+            action === "book" ? "Booking confirmation" : "Unbooked"
+          } - ${post.title}, ${format(new Date(), "dd-MMM-yyyy HH:MM")}`,
         });
         const thread = response.data;
         console.log(thread);
 
         ChatApi.createMessage(thread.id, user, {
-          messageBody: `This is a confirmation of your booking to the event ${
-            post.title
-          } held by ${
-            post.user.name
-          } on ${dateDisplay()} at ${timeDisplay()}. Use Unbook button on the post page if you cannot make it.`,
+          messageBody: `${
+            action === "book" ? messageBooking : messageUnbooking
+          }`,
           thread: { id: thread.id },
           date: format(new Date(), "dd-MMM-yyyy HH:MM"),
         });
@@ -127,7 +139,7 @@ export default function SkillPost({
       window.alert("You cannot book spot at your own event");
     } else {
       bookSpot();
-      sendUserConfirmation();
+      sendUserConfirmation("book");
       window.alert(
         "You have booked a spot and a confirmation message has been sent to you."
       );
@@ -147,6 +159,7 @@ export default function SkillPost({
         post.id === res.data.id ? res.data : post
       );
       setPosts(updatedPosts);
+      sendUserConfirmation("unbook");
       window.alert("Your spot has been unbooked");
     });
   };
