@@ -76,22 +76,20 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
         </button>
       </div> */}
 
-      <div className="button-group">
-        {comment.user.name === user.name ? (
-          <div>
-            <button className="medium-button" onClick={handleUpdateClick}>
-              Update
-            </button>
+      {comment.user.name === user.name ? (
+        <div className="button-group">
+          <button className="medium-button" onClick={handleUpdateClick}>
+            Update
+          </button>
 
-            <button
-              className="medium-button"
-              onClick={() => onDeleteClick(comment.id)}
-            >
-              Delete
-            </button>
-          </div>
-        ) : null}
-      </div>
+          <button
+            className="medium-button pink"
+            onClick={() => onDeleteClick(comment.id)}
+          >
+            Delete
+          </button>
+        </div>
+      ) : null}
     </div>
   );
 }

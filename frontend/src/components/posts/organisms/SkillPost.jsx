@@ -6,6 +6,7 @@ import ChatApi from "../../../api/ChatApi";
 import { useHistory } from "react-router-dom";
 import { format } from "date-fns";
 import { BsClock } from "react-icons/bs";
+import Warning from "../../notifications/Warning";
 
 //Displays post belonging to skills category.
 export default function SkillPost({
@@ -19,6 +20,13 @@ export default function SkillPost({
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
   );
+  const [displayBookedConfirmation, setDisplayBookedConfirmation] = useState(
+    false
+  );
+  const [
+    displayUnbookedConfirmation,
+    setDisplayUnbookedConfirmation,
+  ] = useState(false);
   const [showList, setShowList] = useState(false);
 
   const updatePost = () => {
@@ -140,9 +148,10 @@ export default function SkillPost({
     } else {
       bookSpot();
       sendUserConfirmation("book");
-      window.alert(
-        "You have booked a spot and a confirmation message has been sent to you."
-      );
+      setDisplayBookedConfirmation(true);
+      // window.alert(
+      //   "You have booked a spot and a confirmation message has been sent to you."
+      // );
     }
   };
 
@@ -160,7 +169,8 @@ export default function SkillPost({
       );
       setPosts(updatedPosts);
       sendUserConfirmation("unbook");
-      window.alert("Your spot has been unbooked");
+      setDisplayUnbookedConfirmation(true);
+      // window.alert("Your spot has been unbooked");
     });
   };
 
@@ -290,6 +300,19 @@ export default function SkillPost({
         </div>
       </div>
 
+      {displayBookedConfirmation ? (
+        <Warning
+          message="You have booked a spot and a confirmation message has been sent to you."
+          setDisplayError={setDisplayBookedConfirmation}
+        />
+      ) : null}
+
+      {displayUnbookedConfirmation ? (
+        <Warning
+          message="Your spot has been unbooked."
+          setDisplayError={setDisplayUnbookedConfirmation}
+        />
+      ) : null}
       {/* conssits of SharedSinglePost - component that displays post information
             which is common to posts of all the three categories, and a map */}
       <SharedSinglePost

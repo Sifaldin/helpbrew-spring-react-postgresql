@@ -19,11 +19,6 @@ export default function SharedSinglePost({
   const [isUpdating, setIsUpdating] = useState(false);
   const history = useHistory();
 
-  console.log(threadHandler);
-
-  // const history = useHistory();
-  const receiverEmail = window.sessionStorage.getItem("userEmail");
-
   const modalRef = useRef();
 
   const openModal = () => {
@@ -100,7 +95,7 @@ export default function SharedSinglePost({
               Update
             </button>
 
-            <button className="medium-button" onClick={openModal}>
+            <button className="medium-button pink" onClick={openModal}>
               Delete
             </button>
           </div>
