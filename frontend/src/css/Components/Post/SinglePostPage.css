@@ -10,6 +10,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 .single-post {
   display: grid;
   justify-items: center;
+  align-items: center;
   box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
   border-radius: 32px;
   width: 90vw;
@@ -163,14 +164,15 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   display: grid;
   grid-template-columns: 1fr auto;
   justify-items: end;
+  grid-column-gap: 0.5rem;
 }
 
 .button-group .medium-button {
-  background-color: orange;
+  background-color: #ff75ac;
 }
 
-.button-group button:first-child {
-  margin-right: 1rem;
+.pink {
+  background-color: #ff75ac;
 }
 
 .mes-button {
@@ -188,6 +190,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   border-radius: 16px;
   width: 380px;
   height: 300px;
+  margin-top: 2rem;
   /* margin-top: 2rem; */
 }
 
@@ -202,8 +205,13 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   height: 300px;
 }
 
+.map-group {
+  display: grid;
+  justify-items: center;
+}
+
 .single-post .location-button {
-  display: block;
+  /* display: block; */
   /* margin-top: 2rem; */
 }
 
@@ -327,6 +335,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
     border-radius: 16px;
     width: 380px;
     height: 300px;
+    margin: 0;
   }
   .single-post .map .map-wrapper .map {
     width: 380px;

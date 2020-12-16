@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 import { IoMdCloseCircle } from 'react-icons/io';
 import { RiHandHeartFill } from 'react-icons/ri';
 import { FaHandsHelping } from 'react-icons/fa';
+import { AiOutlineQuestionCircle } from 'react-icons/ai';
+import ReactTooltip from 'react-tooltip';
 
 
 const Modal = forwardRef( (props, ref) => {
@@ -34,7 +36,7 @@ const Modal = forwardRef( (props, ref) => {
                 <div className={"modal-box"}>
                     <div className="modal-icon">
                         <Link exact to="/">
-                                <IoMdCloseCircle color="orange" onClick={() => ref.current.close() } />
+                                <IoMdCloseCircle color="#ff75ac" onClick={() => ref.current.close() } />
                         </Link>
                         </div>
                         <div className="modal-body">
@@ -51,7 +53,7 @@ const Modal = forwardRef( (props, ref) => {
                                 }
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><RiHandHeartFill color="orange"/><p>Give</p>  </div> 
+                                    <div className="give_ask"><RiHandHeartFill color="#1e6fbf"/><p>Give</p>  </div> 
                             </Link>
                             </h1>
                             <h1>
@@ -67,12 +69,17 @@ const Modal = forwardRef( (props, ref) => {
 
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><FaHandsHelping color="orange" /><p>Ask For</p> </div> 
+                                    <div className="give_ask"><FaHandsHelping color="#1e6fbf" /><p>Ask For</p> </div> 
                             </Link>
                             </h1>
                         </div>
                         <div className="help">
-                        <h1>HELP</h1>
+                        <h1>HELP 
+                        < AiOutlineQuestionCircle data-tip="Click on 'Give' or 'Ask for' to get the service you need" > </AiOutlineQuestionCircle>
+                        </h1>
+                        
+                        <ReactTooltip/>
+
                         </div>
                 </div>
                 

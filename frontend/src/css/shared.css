@@ -3,6 +3,7 @@ body > *,
 body {
   box-sizing: border-box;
   margin: 0;
+ 
 }
 
 h1,
@@ -40,16 +41,15 @@ h3 {
 
 .medium-button {
   border: none;
-  /* background-color: #f2994a; */
-  background-color: orange;
+  background-color: #1e6fbf;
   color: white;
   padding: 0.5rem 1rem;
-  border-radius: 2rem;
+  border-radius: 10px;
 }
 
 .medium-button:disabled,
 .medium-button[disabled="disabled"] {
-  background-color: #eba767 !important;
+  background-color: #1e6fbf !important;
   cursor: not-allowed;
 }
 
@@ -58,6 +58,6 @@ h3 {
   background-color: green;
   color: white;
   padding: 0.2rem 0.5rem;
-  border-radius: 2rem;
+  border-radius: 10px;
   font-size: 0.8rem;
 }

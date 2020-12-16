@@ -1,5 +1,5 @@
 :root {
-  --bg: #F2994A;
+  --bg: #5493d2;
   --bg-accent: #484a4d;
   --text-color: #dadce1;
   --border: 1px solid #474a4d;
@@ -85,7 +85,7 @@ a {
 }
 
 .menu-item:hover {
-  background-color:  #eb8c38;
+  background-color:  #1e6fbf;
 }
 
 .icon-right {
