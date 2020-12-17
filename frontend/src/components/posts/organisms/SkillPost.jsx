@@ -116,7 +116,7 @@ export default function SkillPost({
         const response = await ChatApi.createThread(user, {
           title: `${
             action === "book" ? "Booking confirmation" : "Unbooked"
-          } - ${post.title}, ${format(new Date(), "dd-MMM-yyyy HH:MM")}`,
+          } - ${post.title}, ${format(new Date(), "dd-MMM-yyyy HH:mm")}`,
         });
         const thread = response.data;
 
@@ -125,7 +125,7 @@ export default function SkillPost({
             action === "book" ? messageBooking : messageUnbooking
           }`,
           thread: { id: thread.id },
-          date: format(new Date(), "dd-MMM-yyyy HH:MM"),
+          date: format(new Date(), "dd-MMM-yyyy HH:mm"),
         });
 
         history.push({
