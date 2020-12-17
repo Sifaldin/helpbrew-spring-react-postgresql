@@ -26,17 +26,6 @@
   grid-row-gap: 2rem;
 }
 
-.error-body.welcome .instructions {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-column-gap: 20px;
-  align-items: center;
-  background-color: #012e67;
-  border-radius: 8px;
-  margin: 0 200px;
-  padding: 20px;
-}
-
 .error-wrapper .modal-box .error-body span {
   font-size: 36px;
   color: white;
@@ -52,17 +41,23 @@
 }
 
 .error-wrapper .modal-box.welcome {
-  width: 1000px;
-  height: 650px;
-  max-width: 80vw;
   grid-template-rows: auto 1fr;
+  width: 95vw;
+  max-width: 95vw;
+  margin-top: 20px;
+  height: 100%;
+}
+
+.error-body.welcome {
+  width: 90%;
+  justify-self: start;
 }
 
 .error-body p.welcome-par {
-  font-size: 22px;
-  padding: 0 8rem;
+  font-size: 18px;
   color: white;
   text-align: center;
+  width: 100%;
 }
 
 .service-list {
@@ -72,10 +67,43 @@
 
 .service-list li {
   color: white;
-  padding: 0 5rem;
-  font-size: 18px;
+  font-size: 16px;
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
+  grid-column-gap: 10px;
+}
+
+.error-body.welcome .instructions {
+  display: grid;
+  grid-template-columns: auto 1fr;
   grid-column-gap: 20px;
+  align-items: center;
+  background-color: #012e67;
+  border-radius: 8px;
+  padding: 5px;
+}
+
+@media (min-width: 800px) {
+  .error-wrapper .modal-box.welcome {
+    width: 1000px;
+    height: 650px;
+    max-width: 80vw;
+  }
+
+  .error-body p.welcome-par {
+    font-size: 22px;
+    padding: 0 8rem;
+  }
+
+  .service-list li {
+    padding: 0 5rem;
+    font-size: 18px;
+    grid-column-gap: 20px;
+  }
+
+  .error-body.welcome .instructions {
+    margin: 0 200px;
+    padding: 20px;
+  }
 }
