@@ -65,7 +65,7 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
             >
               Upload
             </button>
-
+</div>
           </div>
         </div>
       </div>
