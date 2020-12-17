@@ -1,5 +1,4 @@
 import { React, useState } from "react";
-import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import Auth from "../../services/Auth";
 import LoginForm from "./LoginForm";
@@ -44,8 +43,7 @@ function LoginPage() {
             With HelpBrew, you can share and receive help with skills, give away
             stuff, receive and give monetary support.
           </p>
-          {/* HelpBrew gives us all the opportunity to make a difference and create
-          a better world! */}
+          
         </div>
         {isMember ? (
           <LoginForm onSubmit={login} goRegister={goRegister} />

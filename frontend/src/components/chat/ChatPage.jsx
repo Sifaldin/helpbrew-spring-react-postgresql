@@ -1,12 +1,11 @@
 import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 import ChatApi from "../../api/ChatApi";
-import { useHistory } from "react-router-dom";
-import DropDownItem from "../profile/DropDownItem";
+
 
 function ChatPage({ id, thread, loggedInUser }) {
   var receiver = loggedInUser;
-  if (id != 0) {
+  if (id !== 0) {
     receiver =
       loggedInUser.email === thread.user1.email ? thread.user2 : thread.user1;
   } else {
@@ -16,20 +15,7 @@ function ChatPage({ id, thread, loggedInUser }) {
   var [messageText, setMessageText] = useState({ text: "" });
   var [messageArray, setMessageArray] = useState(thread.thread);
 
-  //messageArray = null;
-  // const sendMessage = async () => {
-  //   try {
-  //     const response = await ChatApi.createMessage(id, receiver, {
-  //       messageBody: messageText.text,
-  //       thread: { id: id },
-  //       date: format(new Date(), "dd-MMM-yyyy HH:MM"),
-  //     });
-  //     setMessageArray([...messageArray, response.data]);
-  //     setMessageText({ text: "" });
-  //   } catch (e) {
-  //     console.log(e);
-  //   }
-  // };
+ 
 
   useEffect(() => {
     const poll = setInterval(() => {
@@ -42,10 +28,7 @@ function ChatPage({ id, thread, loggedInUser }) {
     return () => clearInterval(poll);
   }, [id]);
 
-  // const handleClick = e => {
-  //   e.preventDefault();
-  //   //sendMessage();
-  // };
+
 
   const messageHandler = (e) => {
     e.preventDefault();
@@ -64,7 +47,7 @@ function ChatPage({ id, thread, loggedInUser }) {
         );
         setMessageArray([...messageArray, response_message.data]);
         setMessageText({ text: "" });
-        /*history.push({ pathname: `/chat/${thread.id}`, state: { thread } });*/
+
       } catch (e) {
         console.log(e);
       }

@@ -1,22 +1,16 @@
 import React, { useState, useEffect } from "react";
 import CommentUpdateForm from "../organisms/CommentUpdateForm";
 import Api from "../../../api/Api";
-import { useNotification } from "../../notifications/NotificationProvider";
+
 
 function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
   const [isUpdating, setIsUpdating] = useState(false);
-  const [reaction, setReaction] = useState(comment.reaction);
   const [user, setUser] = useState("");
 
-  console.log(comment);
+  
   //Notification Creator
-  const dispatch = useNotification();
-  const handleDeletenotification = () => {
-    dispatch({
-      type: "ERROR",
-      message: "Deleting Comment...",
-    });
-  };
+
+
 
   useEffect(() => {
     Api.get("/user/me").then((response) => {
@@ -29,19 +23,7 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
     setIsUpdating(true);
   };
 
-  // const incrementLike = () => {
-  //   const url = "/reactions/" + reaction.id + "?incrementTarget=like";
-  //   Api.put(url, reaction).then((r) => {
-  //     setReaction(r.data);
-  //   });
-  // };
 
-  // const incrementDislike = () => {
-  //   const url = "/reactions/" + reaction.id + "?incrementTarget=dislike";
-  //   Api.put(url, reaction).then((r) => {
-  //     setReaction(r.data);
-  //   });
-  // };
 
   return (
     <div className="comment-card">
@@ -67,14 +49,6 @@ function CommentCard({ comment, onDeleteClick, onUpdateClick }) {
         <p>{comment.body}</p>
       )}
 
-      {/* <div>
-        <button onClick={incrementLike}>
-          <i></i> {reaction.like}
-        </button>
-        <button onClick={incrementDislike}>
-          <i></i> {reaction.dislike}
-        </button>
-      </div> */}
 
       {comment.user.name === user.name ? (
         <div className="button-group">

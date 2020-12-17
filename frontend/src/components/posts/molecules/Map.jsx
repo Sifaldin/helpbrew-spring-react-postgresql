@@ -2,8 +2,7 @@ import { MapContainer, Marker, TileLayer } from "react-leaflet";
 import { icon } from "leaflet";
 import { useMap } from "react-leaflet";
 import mapPin from "../../../assets/map-pin.png";
-import { useEffect, useState } from "react";
-import axios from "axios";
+
 
 export default function Map({ position }) {
   // const [position, setPosition] = useState([0, 0]);
@@ -12,7 +11,6 @@ export default function Map({ position }) {
     iconSize: [36, 36],
   });
 
-  // console.log(process.env.REACT_API_KEY);
 
   function ChangeView({ center, zoom }) {
     const map = useMap();

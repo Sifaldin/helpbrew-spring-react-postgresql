@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Api from "../../../api/Api";
-import { useHistory, useLocation } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import ChatApi from "../../../api/ChatApi";
 import { Link } from "react-router-dom";
 import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
@@ -10,7 +10,6 @@ import { FaLongArrowAltUp, FaLongArrowAltDown } from "react-icons/fa";
 //The code below should be worked through. What information should be displayed on
 //PostCard? Shall tags "Available"/"Claimed" stay as they are or are we changing that?
 function PostCard({ post, loggedInUser }) {
-  console.log(loggedInUser);
   const [reaction, setReaction] = useState(post.reaction);
   const history = useHistory();
 
@@ -98,13 +97,13 @@ function PostCard({ post, loggedInUser }) {
 
   const threadHandler = () => {
     const createOrDirect = async () => {
-      console.log(post.title);
+      
       try {
         const response = await ChatApi.createThread(post.user, {
           title: post.title,
         });
         const thread = response.data;
-        console.log(thread);
+        
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
       } catch (e) {
         console.log(e);
@@ -118,7 +117,7 @@ function PostCard({ post, loggedInUser }) {
       <Link to={{ pathname: `/posts/${post.id}`, state: { post } }}>
         <img
           className="post-image"
-          // className={post.claimed ? "claimed pic-1" : "pic-1"}
+          
           src={post.imageUrl}
           alt=""
         />
@@ -163,13 +162,13 @@ function PostCard({ post, loggedInUser }) {
                 <FaLongArrowAltUp className="up" />
                 <span>{reaction.like}</span>
 
-                {/* <i className="fas fa-thumbs-up"></i> {reaction.like} */}
+                
               </button>
               <button onClick={incrementDislike}>
                 <FaLongArrowAltDown className="down" />
                 <span>{reaction.dislike}</span>
 
-                {/* <i className="fas fa-thumbs-down"></i> {reaction.dislike} */}
+                
               </button>
             </div>
 

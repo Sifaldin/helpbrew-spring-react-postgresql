@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import CategoryBox from "../organisms/CategoryBox";
-import Warning from "../../notifications/Warning";
 import WelcomeScreen from "../../notifications/WelcomeScreen";
 
 // The page should show posts posted by the logged in user,

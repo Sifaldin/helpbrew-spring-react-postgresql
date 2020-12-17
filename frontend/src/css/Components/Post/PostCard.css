@@ -106,11 +106,7 @@ hr {
   color: #fff;
   cursor: pointer;
   font-size: 15px;
-  /*height: 33px;
-	position: absolute;
-	right: 0;
-	top: 11px;
-	width: 33px;*/
+
 }
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
@@ -121,21 +117,4 @@ hr {
   width: 100%;
   outline: none;
 }
-/* img .post-image
-div .post-bottom */
 
-/* .post-bottom
-    h3 .post-title
-    span .type-tag
-    p .post-text
-    span .post-date
-    a .interested-button
-    div .reaction
-        button
-        button */
-/* 
-@media (min-width: 600px) {
-  .postcard {
-    width: 100%;
-  }
-} */

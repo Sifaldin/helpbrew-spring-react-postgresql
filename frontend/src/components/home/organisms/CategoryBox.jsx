@@ -17,7 +17,7 @@ export default function CategoryBox({ category, posts }) {
   const requestPosts = posts.filter((post) => post.postType === "request");
 
   //this state is used to have the right posts(requested or given) to map through in this component
-  let postsByType = givePosts;
+  
 
   //removes dashes and capitilizes the category. ex. from "monetary-support" to "Monetary support"
   const formatCategory = (category) => {
@@ -62,10 +62,7 @@ export default function CategoryBox({ category, posts }) {
 
       {/* the bottom of the box contains category name with a number of posts and posts icons and titles */}
       <div className="bottom">
-        {/* <span className="category-name">
-          Your {formatCategory(category)}({getPosts().length}): 
-        </span> */}
-
+       
         {/* Toggling the button(requested/given) allows to see only posts requested or given by user */}
         <button
           data-tip="Click here to change"

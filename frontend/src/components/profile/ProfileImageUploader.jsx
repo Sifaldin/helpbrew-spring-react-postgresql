@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ReactImageUploadComponent from "react-images-upload";
-import Api from "../../api/Api";
+
 
 export default function ImageUploader({ setImgUrl }) {
   const [payload, setPayload] = useState(null);

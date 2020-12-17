@@ -1,6 +1,6 @@
-import { useState } from "react";
+import React from "react";
 import { IoMdCloseCircle } from "react-icons/io";
-import { Link } from "react-router-dom";
+
 
 export default function Warning({
   message,

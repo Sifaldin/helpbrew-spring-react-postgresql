@@ -8,7 +8,7 @@ function RegisterForm({ onSubmit, goLogin }) {
   return (
     <div className="form-wrapper">
       <div className="signupform">
-        {/* <div className="signup1"> */}
+        
         <input
           id="user"
           type="text"
@@ -16,8 +16,7 @@ function RegisterForm({ onSubmit, goLogin }) {
           onChange={(e) => setName(e.target.value)}
           placeholder="Create your Username"
         />
-        {/* </div> */}
-        {/* <div className="signup2"> */}
+      
         <input
           id="email2"
           type="text"
@@ -25,8 +24,7 @@ function RegisterForm({ onSubmit, goLogin }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email address"
         />
-        {/* </div> */}
-        {/* <div className="signup3"> */}
+     
         <input
           id="pass1"
           type="password"
@@ -35,8 +33,7 @@ function RegisterForm({ onSubmit, goLogin }) {
           data-type="password"
           placeholder="Create your password"
         />
-        {/* </div> */}
-        {/* <div> */}
+       
         <button
           className="submitButton"
           type="submit"
@@ -46,14 +43,14 @@ function RegisterForm({ onSubmit, goLogin }) {
           {" "}
           SIGN UP
         </button>
-        {/* <div> */}
+        
         <button className="smallButton" onClick={goLogin}>
           {" "}
           Already a Member?
         </button>
-        {/* </div> */}
+      
       </div>
-      {/* </div> */}
+   
     </div>
   );
 }

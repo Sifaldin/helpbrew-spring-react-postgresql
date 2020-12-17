@@ -40,13 +40,12 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   width: 80vw;
   min-height: 100vh;
   display: grid;
-  /* margin-top: 2rem; */
   justify-items: center;
   align-items: start;
 }
 
 .signature {
-  /* margin-top: 1rem; */
+
   display: grid;
   grid-template-columns: auto 1fr;
   align-items: center;
@@ -170,10 +169,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   justify-self: start;
 }
 
-/* .button-group .medium-button {
-  background-color: #ff75ac;
-} */
-
 .medium-button.pink {
   background-color: #ff75ac;
 }
@@ -245,7 +240,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   align-items: center;
   grid-column-gap: 0.5rem;
   font-size: 1.5rem;
-  /* justify-items: center; */
+  
 }
 
 .event-time div span {
@@ -268,19 +263,17 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
 }
 
 .participants-wrapper {
-  /* box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5); */
-  /* padding: 1rem; */
+ 
   border-radius: 16px;
   display: grid;
-  /* align-items: center; */
+
 }
 .participants {
-  /* margin-top: 1rem; */
+  
   display: grid;
   justify-items: center;
   grid-row-gap: 1rem;
-  /* box-shadow:
-   5px 5px 16px rgba(163, 177, 198, 0.5); */
+
 }
 
 .book-user,
@@ -305,7 +298,6 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   }
   .single-post-card {
     width: 100%;
-    /* max-width: 90%; */
     grid-area: post;
     justify-items: start;
     align-items: start;
@@ -317,13 +309,7 @@ the classes are mostly defined in SinglePost.jsx and SharedSinglePost.jsx */
   .single-post-card .post-info {
     font-size: 14px;
   }
-  /* .comment-card {
-    grid-row-gap: 8px;
-    font-size: 12px;
-  } */
-  /* .comment-area textarea {
-    width: 23rem;
-  } */
+ 
   .single-post .post-pic {
     grid-area: pic;
     height: 60vh;

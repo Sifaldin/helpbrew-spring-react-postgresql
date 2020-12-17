@@ -23,8 +23,6 @@ function CommentUpdateForm({ oldComment, onUpdateClick, setIsUpdating }) {
       <button
         className="medium-button"
         onClick={() => {
-          const updated = { ...oldComment, body };
-          console.log(updated);
           onUpdateClick({ ...oldComment, body });
           setIsUpdating(false);
           handleUpdateNotification();

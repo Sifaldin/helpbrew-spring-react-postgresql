@@ -26,7 +26,7 @@ function App() {
   const [posts, setPosts] = useState([]);
   const [user, setUser] = useState({});
   const [userPosts, setUserPosts] = useState([]);
-  const [category, useCategory] = useState([]);
+
 
   Auth.bindLoggedInStateSetter(setLoggedIn);
 
