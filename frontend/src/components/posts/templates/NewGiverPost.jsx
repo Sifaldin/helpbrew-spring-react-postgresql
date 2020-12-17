@@ -105,7 +105,7 @@ function NewGiverPost({ posts, setPosts, user }) {
     while (!fetched) {
       try {
         const response = await axios.get(
-          `http://api.positionstack.com/v1/forward?access_key=26f92b100e63df8995a3669559ae5d78&query=${address}&limit=10&output=json`
+          `https://api.positionstack.com/v1/forward?access_key=26f92b100e63df8995a3669559ae5d78&query=${address}&limit=10&output=json`
         );
 
         setPosition([
