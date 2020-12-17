@@ -16,7 +16,6 @@ export default function SkillPost({
   posts,
   threadHandler,
 }) {
-  
   const history = useHistory();
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
@@ -120,7 +119,6 @@ export default function SkillPost({
           } - ${post.title}, ${format(new Date(), "dd-MMM-yyyy HH:MM")}`,
         });
         const thread = response.data;
-        
 
         ChatApi.createMessage(thread.id, user, {
           messageBody: `${
@@ -150,7 +148,6 @@ export default function SkillPost({
       bookSpot();
       sendUserConfirmation("book");
       setDisplayBookedConfirmation(true);
-     
     }
   };
 
@@ -169,11 +166,8 @@ export default function SkillPost({
       setPosts(updatedPosts);
       sendUserConfirmation("unbook");
       setDisplayUnbookedConfirmation(true);
-      
     });
   };
-
-  
 
   return (
     // consists of hero image for post and single-post-card
@@ -196,7 +190,6 @@ export default function SkillPost({
                     <span>
                       {dateDisplay()} at {timeDisplay()}
                     </span>
-                    
                   </div>
                 </div>
               ) : null}
@@ -221,7 +214,7 @@ export default function SkillPost({
               {yourEvent() ? (
                 <div className="participants">
                   {showList ? (
-                    <div>
+                    <div className="participants-list">
                       <button
                         className="medium-button"
                         onClick={() => setShowList(false)}
@@ -239,7 +232,12 @@ export default function SkillPost({
                     </button>
                   )}
                   {eventFull() ? (
-                    <button className="medium-button">Fully booked</button>
+                    <button
+                      className="medium-button"
+                      style={{ backgroundColor: "red" }}
+                    >
+                      Fully booked
+                    </button>
                   ) : (
                     <span>{`${post.registeredUsers.length} out of ${post.eventCapacity} spot(s) have been booked at your event`}</span>
                   )}

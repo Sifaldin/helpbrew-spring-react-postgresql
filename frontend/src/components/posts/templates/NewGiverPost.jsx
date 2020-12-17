@@ -158,7 +158,6 @@ function NewGiverPost({ posts, setPosts, user }) {
             <input
               type="text"
               required
-              
               className={`${postTitle.length > 0 ? "card-input" : "waitInput"}`}
               onChange={(e) => setPostTitle(e.target.value)}
             />
@@ -170,7 +169,6 @@ function NewGiverPost({ posts, setPosts, user }) {
               type="text"
               required
               className={`${details.length > 0 ? "card-input" : "waitInput"}`}
-              
               rows="10"
               onChange={(e) => setDetails(e.target.value)}
             />
@@ -251,7 +249,9 @@ function NewGiverPost({ posts, setPosts, user }) {
       {/* Displays Map if coordinates(position) of the address searched above have been fetched */}
 
       <div className="map">
-        {address.length > 0 && position.length > 0 ? (
+        {address.length > 0 &&
+        position[0] !== undefined &&
+        position[1] !== undefined ? (
           <Map position={position} address={address} />
         ) : (
           <div className="right">
