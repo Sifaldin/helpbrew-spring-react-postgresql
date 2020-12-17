@@ -198,7 +198,7 @@
 
 @media screen and (max-width: 550px) {
   .profile-icon {
-    transform: translate(-310%, 0%); 
+    transform: translate(-350%, 10%); 
     display: grid;
     grid-template-rows: 1fr 1fr;
     align-items: start;
