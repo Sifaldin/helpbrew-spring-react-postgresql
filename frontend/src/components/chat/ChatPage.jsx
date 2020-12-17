@@ -2,7 +2,6 @@ import { format } from "date-fns";
 import React, { useEffect, useState } from "react";
 import ChatApi from "../../api/ChatApi";
 
-
 function ChatPage({ id, thread, loggedInUser }) {
   var receiver = loggedInUser;
   if (id !== 0) {
@@ -15,8 +14,6 @@ function ChatPage({ id, thread, loggedInUser }) {
   var [messageText, setMessageText] = useState({ text: "" });
   var [messageArray, setMessageArray] = useState(thread.thread);
 
- 
-
   useEffect(() => {
     const poll = setInterval(() => {
       const updateThread = async () => {
@@ -27,8 +24,6 @@ function ChatPage({ id, thread, loggedInUser }) {
     }, 1000);
     return () => clearInterval(poll);
   }, [id]);
-
-
 
   const messageHandler = (e) => {
     e.preventDefault();
@@ -41,13 +36,11 @@ function ChatPage({ id, thread, loggedInUser }) {
             messageBody: messageText.text,
             thread: { id: thread.id },
 
-            date: format(new Date(), "dd-mm-yyyy hh:mm"),
-
+            date: format(new Date(), "dd-MMM-yyyy HH:mm"),
           }
         );
         setMessageArray([...messageArray, response_message.data]);
         setMessageText({ text: "" });
-
       } catch (e) {
         console.log(e);
       }
