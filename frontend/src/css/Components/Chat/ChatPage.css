@@ -138,9 +138,7 @@
   overflow-y: scroll;
 }
 
-.active_chat {
-  /* background: #e5e5e5; */
-}
+
 
 .incoming_msg {
   display: grid;

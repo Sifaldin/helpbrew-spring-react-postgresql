@@ -39,7 +39,8 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
   };
   return (
     <div className="image-menu-wrapper">
-      <div className="modal-backdrop">
+      {/* <div className="modal-backdrop"> */}
+        
         <div className="modal-box">
           <div className="modal-icon">
             <IoMdCloseCircle
@@ -69,6 +70,6 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
           </div>
         </div>
       </div>
-    </div>
+    // </div>
   );
 }
