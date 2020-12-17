@@ -6,7 +6,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Map({ position, address }) {
-  // const [position, setPosition] = useState([0, 0]);
+  let pos = position[0] === undefined ? [59.3293, 18.0686] : position;
+
   const myIcon = icon({
     iconUrl: mapPin,
     iconSize: [36, 36],
@@ -22,13 +23,13 @@ export default function Map({ position, address }) {
 
   return (
     <div className="map-wrapper">
-      <MapContainer className="map" zoom={12} center={position}>
-        <ChangeView center={position} zoom={12} />
+      <MapContainer className="map" zoom={12} center={pos}>
+        <ChangeView center={pos} zoom={12} />
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
-        <Marker position={position} icon={myIcon}>
+        <Marker position={pos} icon={myIcon}>
           <Popup>{address}</Popup>
         </Marker>
       </MapContainer>
