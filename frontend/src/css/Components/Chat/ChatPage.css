@@ -95,7 +95,8 @@
 
 .chat_img {
   float: left;
-  width: 11%;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
 }
 
@@ -111,6 +112,7 @@
 }
 
 .chat_people {
+  padding: 10px;
   overflow: hidden;
   clear: both;
   display: flex;
@@ -157,6 +159,11 @@
   width: 100%;
   height: 100%;
   border-radius: 50%;
+}
+
+.chat_img img {
+  height: 100%;
+  width: 100%;
 }
 
 .received_msg {
