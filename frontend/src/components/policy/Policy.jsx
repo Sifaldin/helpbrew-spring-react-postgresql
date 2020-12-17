@@ -45,7 +45,7 @@ To enforce this, HelpBrew's safeguarding policy has a range of preventative meas
                         <ul className="policyList">
                             <li>Any allegation of abuse will be taken seriously and will be reviewed as soon as possible. All lessons by the tutor will be suspended pending investigations, which include viewing recordings of the lessons, where available. </li>
                             <li>If a report concerns a minor breach of the safeguarding policy, HelpBrew will make a decision as to appropriate action, which may include barring the reported tutor from all further use of the platform.</li>
-                            <li>If a report concerns the student’s safety or any illegal activity, HelpBrew will contact UK police to report the incident. </li>
+                            <li>If a report concerns the student’s safety or any illegal activity, HelpBrew will contact Swedish police to report the incident. </li>
                         </ul>
                     
                     </div>
