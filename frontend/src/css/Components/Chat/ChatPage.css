@@ -111,7 +111,6 @@
 }
 
 .chat_people {
-  padding: 10px;
   overflow: hidden;
   clear: both;
   display: flex;
@@ -238,7 +237,7 @@
 }
 
 .msg_send_btn {
-  background: #1e6fbf none repeat scroll 0 0;
+  background: #2fbce9 none repeat scroll 0 0;
   border: none;
   border-radius: 50%;
   color: #fff;
@@ -258,6 +257,9 @@
 .msg_history {
   height: 516px;
   overflow-y: auto;
+  display: grid;
+  align-content: start;
+  grid-row-gap: 1rem;
 }
 
 .chat_people.selected {

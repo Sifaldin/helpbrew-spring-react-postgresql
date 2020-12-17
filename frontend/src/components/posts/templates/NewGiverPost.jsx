@@ -252,7 +252,7 @@ function NewGiverPost({ posts, setPosts, user }) {
 
       <div className="map">
         {address.length > 0 && position.length > 0 ? (
-          <Map position={position} />
+          <Map position={position} address={address} />
         ) : (
           <div className="right">
             <img
