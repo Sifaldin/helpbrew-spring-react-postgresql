@@ -4,7 +4,6 @@ import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
 import { IoMdCloseCircle } from "react-icons/io";
 
-
 export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
   const [imgUrl, setImgUrl] = useState(user.imageUrl);
 
@@ -40,13 +39,15 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
   };
   return (
     <div className="image-menu-wrapper">
-      <div className="modal-box">
-        <div className="modal-icon">
-          <IoMdCloseCircle
-            color="lightblue"
-            onClick={() => setShowImageEdit(false)}
-          />
-        </div>
+      <div className="modal-backdrop">
+        <div className="modal-box">
+          <div className="modal-icon">
+            <IoMdCloseCircle
+              color="lightblue"
+              onClick={() => setShowImageEdit(false)}
+            />
+          </div>
+
 
         <div className="image-edit-body">
             <img className={"profileImg"} src={imgUrl} />
@@ -64,6 +65,7 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
             >
               Upload
             </button>
+
           </div>
         </div>
       </div>

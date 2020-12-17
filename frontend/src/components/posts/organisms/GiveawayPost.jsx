@@ -87,11 +87,15 @@ export default function GiveawayPost({
               </button>
               {mapVisible ? (
                 <div className="show-map map">
-                  <Map position={post.position} />
+                  <Map position={post.position} address={post.location} />
                 </div>
               ) : (
                 <div className="map">
-                  <Map position={post.position} style={{ display: "none" }} />
+                  <Map
+                    position={post.position}
+                    style={{ display: "none" }}
+                    address={post.location}
+                  />
                 </div>
               )}
             </div>
