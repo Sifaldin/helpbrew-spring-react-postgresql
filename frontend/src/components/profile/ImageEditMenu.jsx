@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import Api from "../../api/Api";
-import Auth from "../../services/Auth";
 import { useNotification } from "../notifications/NotificationProvider";
 import ProfileImageUploader from "./ProfileImageUploader";
 import { IoMdCloseCircle } from "react-icons/io";
@@ -29,7 +28,7 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
   const updateUser = () => {
     const updated = { ...user, imageUrl: imgUrl };
     Api.put("/user/me", updated).then((res) => setUser(res.data));
-    console.log(user);
+   
   };
 
   //Callback function that will return the image uploader to change the image
@@ -49,31 +48,24 @@ export default function ImageEditMenu({ user, setUser, setShowImageEdit }) {
             />
           </div>
 
-          <div className="image-edit-body">
-            {/* <h1>
-            <i class="fas fa-user"></i> {user.name}
-          </h1> */}
 
+        <div className="image-edit-body">
             <img className={"profileImg"} src={imgUrl} />
+          <div className={"uploader"}>
+           <ProfileImageUploader setImgUrl={setImgUrl}
+            />
+            
+            <button
+              className="share-btn"
+              onClick={() => {
+                updateUser();
+                handleNewNotification();
+                setShowImageEdit(false);
+              }}
+            >
+              Upload
+            </button>
 
-            {/* <button className={"edit-btn"} onClick={changeImage}>
-            <i class="fas fa-camera"></i>
-          </button> */}
-
-            <div className={"uploader"}>
-              <ProfileImageUploader setImgUrl={setImgUrl} />
-
-              <button
-                className="share-btn"
-                onClick={() => {
-                  updateUser();
-                  handleNewNotification();
-                  setShowImageEdit(false);
-                }}
-              >
-                Upload
-              </button>
-            </div>
           </div>
         </div>
       </div>

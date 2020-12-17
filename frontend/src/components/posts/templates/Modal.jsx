@@ -69,7 +69,7 @@ const Modal = forwardRef( (props, ref) => {
 
                             }
                                 onClick={() => ref.current.close()}>
-                                    <div className="give_ask"><FaHandsHelping color="#ff75ac" /><p>Ask For</p> </div> 
+                                    <div className="give_ask"><FaHandsHelping color="#ff75ac" /><p>Ask</p> </div> 
                             </Link>
                             </h1>
                         </div>

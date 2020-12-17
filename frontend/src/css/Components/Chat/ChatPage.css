@@ -273,7 +273,5 @@
 @media (min-width: 800px) {
   .sent_msg {
     max-width: 40vw;
-    /* float: right;
-  width: 46%; */
   }
 }

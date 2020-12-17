@@ -16,7 +16,7 @@ export default function SkillPost({
   posts,
   threadHandler,
 }) {
-  console.log(post.postType);
+  
   const history = useHistory();
   const [selectedDateAndTime, setSelectedDateAndTime] = useState(
     post.meetingTimeAndDate
@@ -120,7 +120,7 @@ export default function SkillPost({
           } - ${post.title}, ${format(new Date(), "dd-MMM-yyyy HH:MM")}`,
         });
         const thread = response.data;
-        console.log(thread);
+        
 
         ChatApi.createMessage(thread.id, user, {
           messageBody: `${
@@ -150,9 +150,7 @@ export default function SkillPost({
       bookSpot();
       sendUserConfirmation("book");
       setDisplayBookedConfirmation(true);
-      // window.alert(
-      //   "You have booked a spot and a confirmation message has been sent to you."
-      // );
+     
     }
   };
 
@@ -171,31 +169,11 @@ export default function SkillPost({
       setPosts(updatedPosts);
       sendUserConfirmation("unbook");
       setDisplayUnbookedConfirmation(true);
-      // window.alert("Your spot has been unbooked");
+      
     });
   };
 
-  {
-    /* 
-               HIDING CALENDAR CODE
-
-       const [displayCalendar, setDisplayCalendar] = useState(true);
-
-       const handleCalendarToggle = () => {
-       displayCalendar ? setDisplayCalendar(false) : setDisplayCalendar(true);
-       };
-      
-      <button
-        className="medium-button location-button"
-        onClick={handleCalendarToggle}
-      >
-        {displayCalendar ? "Hide calendar" : "Edit event time"}
-      </button> 
-      
-       {/* {displayCalendar ? (
-          
-        ) : null} */
-  }
+  
 
   return (
     // consists of hero image for post and single-post-card
@@ -218,7 +196,7 @@ export default function SkillPost({
                     <span>
                       {dateDisplay()} at {timeDisplay()}
                     </span>
-                    {/* <span>{timeDisplay()}</span> */}
+                    
                   </div>
                 </div>
               ) : null}

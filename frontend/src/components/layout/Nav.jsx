@@ -45,7 +45,7 @@ function Nav({ user, setUser }) {
               Home
             </Link>
           </li>
-          <div class="desktopSize">
+          <div className="desktopSize">
           <li
             className="nav-item"
             onMouseEnter={onMouseEnter}
@@ -106,7 +106,6 @@ function Nav({ user, setUser }) {
                   height: "40px",
                   width: "40px",
                   borderRadius: "20px",
-                  // marginRight: "5px",
                 }}
               />
             }

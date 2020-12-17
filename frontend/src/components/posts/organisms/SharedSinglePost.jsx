@@ -27,7 +27,7 @@ export default function SharedSinglePost({
 
   const updatePost = (updatedPost) => {
     Api.put("/posts", updatedPost).then((res) => {
-      console.log(res.data);
+      
       const updatedPosts = posts.map((post) =>
         post.id === res.data.id ? res.data : post
       );
@@ -55,9 +55,7 @@ export default function SharedSinglePost({
 
   return (
     <div className="single-post-card">
-      {/* consists of post area and comment area */}
-      {/* <div className="main"> */}
-      {/* consists of signature(photo, name, date), post block and comment block */}
+
       <div className="post-info">
         <div className="signature">
           <img
@@ -106,7 +104,7 @@ export default function SharedSinglePost({
         )}
       </div>
       <Comments post={post} />
-      {/* </div> */}
+     
       <ConfirmModal ref={modalRef} handleConfirm={deletePost} />
     </div>
   );

@@ -32,11 +32,7 @@ export default function NewCommentForm({ onSubmit, post }) {
         onChange={(event) => setBody(event.target.value)}
       />
 
-      {/* <label> User </label>
-            <textarea
-            placeholder="type here"
-            value= {authorName}
-       onChange = {event => setAuthorName(event.target.value)}/>*/}
+     
 
       <button
         className="medium-button"

@@ -158,7 +158,7 @@ function NewGiverPost({ posts, setPosts, user }) {
             <input
               type="text"
               required
-              // className="card-input"
+              
               className={`${postTitle.length > 0 ? "card-input" : "waitInput"}`}
               onChange={(e) => setPostTitle(e.target.value)}
             />
@@ -170,7 +170,7 @@ function NewGiverPost({ posts, setPosts, user }) {
               type="text"
               required
               className={`${details.length > 0 ? "card-input" : "waitInput"}`}
-              //className="card-input"
+              
               rows="10"
               onChange={(e) => setDetails(e.target.value)}
             />

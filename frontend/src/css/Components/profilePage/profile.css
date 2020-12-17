@@ -1,61 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito:400,600,700');
 
-/* .edit-btn {
-  position: relative;
-  left: 12rem;
-  bottom: 3rem;
-  background-color: green;
-  color: white;
-  padding: 0.2rem 0.5rem;
-  border-radius: 0.5rem;
- 
-} */
-
-/* .profilePage {
-  width: 100%;
-  min-height: 35rem;
-  display: grid;
-  grid-template-rows: 20rem auto;
-  border-radius: 3rem;
-  box-shadow: 5px 5px 16px rgba(163, 177, 198, 0.5);
-} */
-
-/* .imgOuterContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  
-} */
-
-/* .img-container {
-  height: 15rem;
-  width: 15rem;
-  border: 1px solid rgb(172, 169, 169);
-  border-radius: 50%;
-  position: relative;
-  left: 4rem;
-  top: 1rem;
-} */
 
 .profileImg {
   width: 100px;
   height: 100px;
   border-radius: 8px;
 }
-
-/* .profileTools {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 15rem;
-  margin: 2rem auto;
-} */
-
-/* .user-info {
-  position: absolute;
-  right: 10rem;
-  top: 10rem;
-} */
 
 .share-btn {
   color: white;
@@ -68,16 +18,3 @@
   display: block;
 }
 
-
-
-/* .profileLogoutBtn{
-  
-  color: white;
-  border-radius: 2rem;
-  margin: 0 auto 0.7rem;
-  width: 10rem;
-  border: none;
-  background-color: #f2994a;
-  padding: 0.5rem 1rem;
-
-} */

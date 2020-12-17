@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
 import Map from "../molecules/Map";
 import SharedSinglePost from "./SharedSinglePost";
 import Api from "../../../api/Api";
-import ChatApi from "../../../api/ChatApi";
+
 
 export default function GiveawayPost({
   post,
@@ -17,7 +16,7 @@ export default function GiveawayPost({
   const [availability, setAvailability] = useState(
     post.eventCapacity ? "Set item as unavailable" : "Set item as available"
   );
-  const history = useHistory();
+  
 
   const handleMapToggle = () => {
     mapVisible ? setMapVisible(false) : setMapVisible(true);
@@ -103,7 +102,7 @@ export default function GiveawayPost({
           ) : null}
         </div>
       ) : null}
-      {/* <div className="single-post-card"> */}
+     
       <SharedSinglePost
         post={post}
         setPosts={setPosts}

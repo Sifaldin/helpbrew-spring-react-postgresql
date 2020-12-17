@@ -19,7 +19,6 @@ export default function Comments({ post }) {
 
   const createComment = (commentData) => {
     Api.post("/comments", commentData).then((response) => {
-      console.log(response.data);
       setComments([...comments, response.data]);
     });
   };

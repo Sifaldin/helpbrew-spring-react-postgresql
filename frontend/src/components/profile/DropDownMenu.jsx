@@ -64,7 +64,6 @@ function DropDownMenu({ user, setUser }) {
                 <Link
                   className="link-display"
                   to="/"
-                  // onClick={() => setShowImageEdit(true)}
                   onClick={showModalAndCloseMenu}
                 >
                   <DisplayItem
@@ -81,7 +80,7 @@ function DropDownMenu({ user, setUser }) {
                       />
                     }
                   >
-                    Change profile
+                    Edit Photo
                   </DisplayItem>
                 </Link>
 
@@ -119,29 +118,10 @@ function DropDownMenu({ user, setUser }) {
                   </DisplayItem>
                 </Link>
 
-                {/* <DisplayItem leftIcon={<CgProfile/>}></DisplayItem> */}
+                
               </div>
             </CSSTransition>
 
-            {/* <CSSTransition
-                in={activeMenu === 'messages'}
-                unmountOnExit
-                timeout={500}
-                classNames="menu-secondary"
-            >
-                <div className="menu">
-                    {history}
-                     <DropdownItem leftIcon={<BiMessageSquareDetail size="40px" />}>
-                         <Thread />
-                    </DropdownItem>
-                    <MessageNotification />
-                    {
-                        threads.map(thread => (
-                            <MessageNotification key={thread.id} thread={thread}  />
-                        ))
-                    }
-                     </div>
-            </CSSTransition> */}
           </div>
         ) : null}
       </div>

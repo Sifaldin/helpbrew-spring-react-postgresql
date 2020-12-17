@@ -19,7 +19,7 @@ function ThreadPage({ loggedInUser }) {
     thread: thread,
   });
 
-  console.log(thread);
+  
   useEffect(() => {
     const getThreads = async () => {
       const response = await ChatApi.getAllThread();
@@ -40,7 +40,7 @@ function ThreadPage({ loggedInUser }) {
           : -1;
       });
 
-      console.log(sorted);
+      
       setThreads(sorted);
     };
     getThreads();

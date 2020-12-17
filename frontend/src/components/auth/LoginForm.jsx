@@ -7,7 +7,7 @@ function LoginForm({ onSubmit, goRegister }) {
   return (
     <div className="form-wrapper">
       <div className="signinform">
-        {/* <div className="signin-1"> */}
+        
         <input
           id="email1"
           type="text"
@@ -16,8 +16,7 @@ function LoginForm({ onSubmit, goRegister }) {
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Enter your email"
         />
-        {/* </div> */}
-        {/* <div className="signin2"> */}
+       
         <input
           id="pass2"
           type="password"
@@ -26,11 +25,7 @@ function LoginForm({ onSubmit, goRegister }) {
           data-type="password"
           placeholder="Enter your password"
         />
-        {/* </div> */}
-        {/* <div> */}
-
-        {/* </div> */}
-        {/* <div className="signin3"> */}
+       
         <button
           className="submitButton"
           type="submit"
@@ -40,7 +35,7 @@ function LoginForm({ onSubmit, goRegister }) {
           SIGN IN
         </button>
 
-        {/* </div> */}
+       
 
         <div className="login-options">
           <button className="smallButton" onClick={() => alert("Think hard!")}>

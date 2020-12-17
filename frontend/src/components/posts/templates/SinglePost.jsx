@@ -22,13 +22,13 @@ function SinglePost({ id, setPosts, user, posts }) {
 
   const threadHandler = () => {
     const createOrDirect = async () => {
-      console.log(post.title);
+      
       try {
         const response = await ChatApi.createThread(post.user, {
           title: post.title,
         });
         const thread = response.data;
-        console.log(thread);
+       
         history.push({ pathname: `/chat/${thread.id}`, state: { thread } });
       } catch (e) {
         console.log(e);

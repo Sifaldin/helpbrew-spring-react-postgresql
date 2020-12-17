@@ -6,7 +6,7 @@ import Api from "../../../api/Api";
 //The PostsPage displays a listing of posts belonging to the category(skills, giveaways or monetary support)
 // selected by the user
 export default function PostsPage({ category, posts, loggedInUser }) {
-  console.log(posts);
+  
   const [postsByCategory, setPostsByCategory] = useState([]);
 
   //The component fetches posts belonging to the category passed as props.
@@ -18,27 +18,10 @@ export default function PostsPage({ category, posts, loggedInUser }) {
       setPostsByCategory(response.data);
     };
     fetchPosts();
-    console.log(postsByCategory);
+    
   }, [category, posts]); //refetches posts every time category changes
 
-  // const [postsByCategory, setPostsByCategory] = useState([]);
-
-  // useEffect(() => {
-  //   const filtered = posts.filter((post) => post.category === category);
-  //   setPostsByCategory();
-  // }, [category, posts]);
-
-  // useEffect(() => {
-  //   const fetchPosts = async () => {
-  //     const response = await Api.get(`/posts`);
-  //     const filteredByCategory = response.data.filter(
-  //       (post) => post.category === category
-  //     );
-  //     setPostsByCategory(filteredByCategory);
-  //   };
-  //   fetchPosts();
-  // }, [category]);
-
+  
   return (
     <div className="posts-page">
       {/* The fetched posts are mapped through and a post card is displayed

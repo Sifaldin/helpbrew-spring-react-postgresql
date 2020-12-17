@@ -11,7 +11,7 @@ function Calendar() {
   
     const handleClick = () => {
       gapi.load('client:auth2', () => {
-        console.log('loaded client')
+        
   
         gapi.client.init({
           apiKey: API_KEY,
@@ -58,7 +58,7 @@ function Calendar() {
             })
   
             request.execute(event => {
-              console.log(event)
+              
               window.open(event.htmlLink)
             })
             // get events
@@ -88,4 +88,4 @@ function Calendar() {
   );
 }
 
-export default App;
+export default Calendar;
